@@ -88,7 +88,7 @@ namespace Main
                 }
                 else if (ckey.Key == ConsoleKey.D2)
                 {
-                    Menu.text();
+                    getMenu.gettingMenu();
                 }
                 else if (ckey.Key == ConsoleKey.D3)
                 {
