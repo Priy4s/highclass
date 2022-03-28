@@ -1,0 +1,32 @@
+C:\Users\shery\OneDrive\Bureaublad\School\Project&Skills\Project B\HighClass\bin\Debug\net5.0\HighClass.exe
+C:\Users\shery\OneDrive\Bureaublad\School\Project&Skills\Project B\HighClass\bin\Debug\net5.0\HighClass.deps.json
+C:\Users\shery\OneDrive\Bureaublad\School\Project&Skills\Project B\HighClass\bin\Debug\net5.0\HighClass.runtimeconfig.json
+C:\Users\shery\OneDrive\Bureaublad\School\Project&Skills\Project B\HighClass\bin\Debug\net5.0\HighClass.runtimeconfig.dev.json
+C:\Users\shery\OneDrive\Bureaublad\School\Project&Skills\Project B\HighClass\bin\Debug\net5.0\HighClass.dll
+C:\Users\shery\OneDrive\Bureaublad\School\Project&Skills\Project B\HighClass\bin\Debug\net5.0\HighClass.pdb
+C:\Users\shery\OneDrive\Bureaublad\School\Project&Skills\Project B\HighClass\obj\Debug\net5.0\HighClass.csproj.AssemblyReference.cache
+C:\Users\shery\OneDrive\Bureaublad\School\Project&Skills\Project B\HighClass\obj\Debug\net5.0\HighClass.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\shery\OneDrive\Bureaublad\School\Project&Skills\Project B\HighClass\obj\Debug\net5.0\HighClass.AssemblyInfoInputs.cache
+C:\Users\shery\OneDrive\Bureaublad\School\Project&Skills\Project B\HighClass\obj\Debug\net5.0\HighClass.AssemblyInfo.cs
+C:\Users\shery\OneDrive\Bureaublad\School\Project&Skills\Project B\HighClass\obj\Debug\net5.0\HighClass.csproj.CoreCompileInputs.cache
+C:\Users\shery\OneDrive\Bureaublad\School\Project&Skills\Project B\HighClass\obj\Debug\net5.0\HighClass.dll
+C:\Users\shery\OneDrive\Bureaublad\School\Project&Skills\Project B\HighClass\obj\Debug\net5.0\refint\HighClass.dll
+C:\Users\shery\OneDrive\Bureaublad\School\Project&Skills\Project B\HighClass\obj\Debug\net5.0\HighClass.pdb
+C:\Users\shery\OneDrive\Bureaublad\School\Project&Skills\Project B\HighClass\obj\Debug\net5.0\HighClass.genruntimeconfig.cache
+C:\Users\shery\OneDrive\Bureaublad\School\Project&Skills\Project B\HighClass\obj\Debug\net5.0\ref\HighClass.dll
+C:\Users\shery\OneDrive\Documenten\GitHub\highclass\highclass\bin\Debug\net5.0\HighClass.exe
+C:\Users\shery\OneDrive\Documenten\GitHub\highclass\highclass\bin\Debug\net5.0\HighClass.deps.json
+C:\Users\shery\OneDrive\Documenten\GitHub\highclass\highclass\bin\Debug\net5.0\HighClass.runtimeconfig.json
+C:\Users\shery\OneDrive\Documenten\GitHub\highclass\highclass\bin\Debug\net5.0\HighClass.runtimeconfig.dev.json
+C:\Users\shery\OneDrive\Documenten\GitHub\highclass\highclass\bin\Debug\net5.0\HighClass.dll
+C:\Users\shery\OneDrive\Documenten\GitHub\highclass\highclass\bin\Debug\net5.0\HighClass.pdb
+C:\Users\shery\OneDrive\Documenten\GitHub\highclass\highclass\obj\Debug\net5.0\HighClass.csproj.AssemblyReference.cache
+C:\Users\shery\OneDrive\Documenten\GitHub\highclass\highclass\obj\Debug\net5.0\HighClass.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\shery\OneDrive\Documenten\GitHub\highclass\highclass\obj\Debug\net5.0\HighClass.AssemblyInfoInputs.cache
+C:\Users\shery\OneDrive\Documenten\GitHub\highclass\highclass\obj\Debug\net5.0\HighClass.AssemblyInfo.cs
+C:\Users\shery\OneDrive\Documenten\GitHub\highclass\highclass\obj\Debug\net5.0\HighClass.csproj.CoreCompileInputs.cache
+C:\Users\shery\OneDrive\Documenten\GitHub\highclass\highclass\obj\Debug\net5.0\HighClass.dll
+C:\Users\shery\OneDrive\Documenten\GitHub\highclass\highclass\obj\Debug\net5.0\refint\HighClass.dll
+C:\Users\shery\OneDrive\Documenten\GitHub\highclass\highclass\obj\Debug\net5.0\HighClass.pdb
+C:\Users\shery\OneDrive\Documenten\GitHub\highclass\highclass\obj\Debug\net5.0\HighClass.genruntimeconfig.cache
+C:\Users\shery\OneDrive\Documenten\GitHub\highclass\highclass\obj\Debug\net5.0\ref\HighClass.dll
