@@ -48,3 +48,5 @@ C:\Users\priya\source\repos\highclass\highclass\obj\Debug\net5.0\HighClass.pdb
 C:\Users\priya\source\repos\highclass\highclass\obj\Debug\net5.0\HighClass.genruntimeconfig.cache
 C:\Users\priya\source\repos\highclass\highclass\bin\Debug\net5.0\Newtonsoft.Json.dll
 C:\Users\priya\source\repos\highclass\highclass\obj\Debug\net5.0\HighClass.csproj.CopyComplete
+C:\Users\shery\OneDrive\Documenten\GitHub\highclass\highclass\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\shery\OneDrive\Documenten\GitHub\highclass\highclass\obj\Debug\net5.0\HighClass.csproj.CopyComplete
