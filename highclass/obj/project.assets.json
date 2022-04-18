@@ -53,11 +53,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\priya\\source\\repos\\highclass\\highclass\\HighClass.csproj",
+      "projectUniqueName": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\HighClass.csproj",
       "projectName": "HighClass",
-      "projectPath": "C:\\Users\\priya\\source\\repos\\highclass\\highclass\\HighClass.csproj",
+      "projectPath": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\HighClass.csproj",
       "packagesPath": "C:\\Users\\priya\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\priya\\source\\repos\\highclass\\highclass\\obj\\",
+      "outputPath": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\priya\\AppData\\Roaming\\NuGet\\NuGet.Config",

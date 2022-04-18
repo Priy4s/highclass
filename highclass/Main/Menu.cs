@@ -21,7 +21,7 @@ namespace Main
         {
             
             {
-                string menuPath = Path.GetFullPath(@"json1.json"); // find path to file
+                string menuPath = Path.GetFullPath(@"json1.json"); // find path to files
 
                 var JsonData = File.ReadAllText(menuPath);
                 var menuList = JsonConvert.DeserializeObject<List<Menu>>(JsonData) ?? new List<Menu>();
