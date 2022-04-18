@@ -1,63 +1,94 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+
 
 
 namespace Main
 {
-    public class Accounts
+    public class MedewerkerINFO
     {
-        public static bool Inloggen()
+        public string naam { get; set; }
+        public string pronouns { get; set; }
+        public string telefoonnummer { get; set; }
+        public string eMail { get; set; }
+        public string gebruikersnaam { get; set; }
+        public string wachtwoord { get; set; }
+    }
+    public class Medewerkers
+    {
+        public static void AddMederwerker()
         {
-            int tries = 3; // Aantal kansen die de gebruiker heeft om de goede inloggegevens in te vullen.
-            while (tries > 0)
-            {
-                Console.Clear();
-                Console.WriteLine("Gebruikersnaam: ");
-                string gebruikersnaam = Console.ReadLine();
-                Console.WriteLine("Wachtwoord: ");
-                string wachtwoord = Console.ReadLine();
 
-                for (int i = 0; i < Globals.gebruikersnamen.Count; i++) // Deze for-loop zorgt ervoor dat zo vaak loopt als dat de lijst met gebruikersnamen lang is.
-                {
-                    if (Globals.gebruikersnamen[i] == gebruikersnaam) // Gaat door de lijst met gebruikersnamen heen, totdat de gebruikersnaam die op plaats i staat
-                                                                      // gelijk is aan de (door de gebruiker) ingevulde gebruikersnaam.
-                    {
-                        if (Globals.wachtwoorden[i] == wachtwoord) // Hier is i gelijk aan de plaats van het (JUIST) ingevulde gebruikersnaam en checkt of op dezelfde
-                                                                   // plaats in de wachtwoorden lijst het wachtwoord overeen komt met het (door de gebruiker) ingevulde
-                                                                   // wachtwoord.
-                        {
-                            Console.Clear();
-                            while (true)
-                            {
-                                Console.WriteLine("Welkom, " + gebruikersnaam + "!");
-                                Console.WriteLine("\nKlik op 'Enter' om verder te gaan naar het hoofdmenu.");
-                                ConsoleKeyInfo done = Console.ReadKey();
-                                if (done.Key == ConsoleKey.Enter)
-                                {
-                                    break;
-                                }
-                            }
-                            return true; // Zet de boolean "ingelogd" op true, waardoor het programma weet dat er succesvol is ingelogd.
-                        }
-                    }
-                }
-                while (true)
-                {
-                    Console.WriteLine("Gebruikersnaam en/of wachtwoord onjuist. U heeft nog " + tries + " over.\nKlik op 'Enter' om het opnieuw te proberen.");
-                    ConsoleKeyInfo done = Console.ReadKey();
-                    if (done.Key == ConsoleKey.Enter)
-                    {
-                        break;
-                    }
-                }
-                tries--;
+            string medewerkerPath = Path.GetFullPath(@"Medewerker.json"); // find path to file
+            bool fileExist = File.Exists(medewerkerPath); // checks if the file exists, if so does nothing, else creates it
+            if (!fileExist)
+            {
+                using (File.Create(medewerkerPath)) ;
+                Console.WriteLine("it exists now");
             }
-            return false; // Wanneer er 3 keer foute inloggegevens zijn ingevuld, blijft de boolean "ingelogd" op false.
+            var JsonData = File.ReadAllText(medewerkerPath); // file can be found in the bin => just keep clicking until you find all extra files
+            var MederwerkerList = JsonConvert.DeserializeObject<List<MedewerkerINFO>>(JsonData) ?? new List<MedewerkerINFO>();
+
+            Console.WriteLine("Wat is uw volledige naam?");
+            string naamIN = Console.ReadLine();
+            Console.WriteLine("Wat zijn uw voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] hen/hun");
+            ConsoleKeyInfo ckey = Console.ReadKey();
+            Console.SetCursorPosition(0, Console.CursorTop);
+            ClearCurrentConsoleLine();
+            string pronounsIN = "";
+            if (ckey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
+            {
+                pronounsIN = "hij/hem";
+            }
+            else if (ckey.Key == ConsoleKey.D2)
+            {
+                pronounsIN = "zij/haar";
+            }
+            else if (ckey.Key == ConsoleKey.D3)
+            {
+                pronounsIN = "hen/hun";
+            }
+            Console.WriteLine("Wat is uw telefoonnummber?");
+            string telefoonnummerIN = Console.ReadLine();
+            Console.WriteLine("Wat is uw e-mail?");
+            string eMailIN = Console.ReadLine();
+            Console.WriteLine("Voer uw gebruikers naam in:");
+            string gebruikersnaamIN = Console.ReadLine();
+            Console.WriteLine("Voer uw wachtwoord in:");
+            string wachtwoordIN = Console.ReadLine();
+
+            MederwerkerList.Add(new MedewerkerINFO()
+            {
+                naam = naamIN,
+                pronouns = pronounsIN,
+                telefoonnummer = telefoonnummerIN,
+                eMail = eMailIN,
+                gebruikersnaam = gebruikersnaamIN,
+                wachtwoord = wachtwoordIN
+            });
+
+            JsonData = JsonConvert.SerializeObject(MederwerkerList);
+            System.IO.File.WriteAllText(medewerkerPath, JsonData);
+            Console.WriteLine("Opgeslagen!");
         }
-        public static bool Aanmelden()
+
+        private static void ClearCurrentConsoleLine()
+        {
+            int currentLineCursor = Console.CursorTop;
+            Console.SetCursorPosition(0, Console.CursorTop);
+            Console.Write(new string(' ', Console.WindowWidth));
+            Console.SetCursorPosition(0, currentLineCursor);
+        }
+    public static bool Inloggen()
+        {
+            return true;
+        }
+    public static bool Aanmelden()
         {
             Console.Clear();
             string gebruikersnaam; string wachtwoord;
@@ -109,7 +140,7 @@ namespace Main
             }
             else if (cakey.Key == ConsoleKey.D2)
             {
-                Globals.ingelogd = Aanmelden();
+                AddMederwerker();
             }
             else if (Globals.ingelogd == true && (cakey.Key == ConsoleKey.D3))
             {

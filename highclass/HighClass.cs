@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static Main.Reserveringen; // Opent de file (achter de punt) waarvan je code/methods gaat gebruiken.
-using static Main.Accounts;
+using static Main.Medewerkers;
 using static Main.Menu;
 
 namespace Main
@@ -92,7 +92,7 @@ namespace Main
                 }
                 else if (ckey.Key == ConsoleKey.D3)
                 {
-                    Accounts.Account();
+                    Medewerkers.Account();
                 }
                 else if (ckey.Key == ConsoleKey.D4)
                 {
@@ -133,7 +133,7 @@ namespace Main
                         break;
                     }
                 }
-                Accounts.Account();
+                Medewerkers.AddMederwerker();
             }
         }
     }
