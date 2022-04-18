@@ -40,7 +40,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             {
                 Console.WriteLine("Uw reservering is succesvol opgeslagen.");
                 Console.WriteLine("U heeft nu een reservering voor " + aantal + " personen om " + tijd + ".\n" +
-                    "\nKlik op 'Enter' om verder te gaan naar het hoofdmenu.");
+                    "\nKlik op 'Enter' om terug te gaan naar het hoofdmenu.");
                 ConsoleKeyInfo done = Console.ReadKey();
                 if (done.Key == ConsoleKey.Enter)
                 {
@@ -121,7 +121,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             {
                 Console.WriteLine("\nUw reservering is succesvol geannuleerd.");
                 Console.WriteLine("Er zijn nu " + Globals.available_seats + " plekken beschikbaar.");
-                Console.WriteLine("\nKlik op 'Enter' om verder te gaan naar het hoofdmenu.");
+                Console.WriteLine("\nKlik op 'Enter' om terug te gaan naar het hoofdmenu.");
                 ConsoleKeyInfo done = Console.ReadKey();
                 if (done.Key == ConsoleKey.Enter)
                 {
@@ -154,7 +154,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             while (true)
             {
                 Console.WriteLine($"Er zijn nu {Globals.available_seats} plekken beschikbaar.");
-                Console.WriteLine("\nKlik op 'Enter' om verder te gaan naar het hoofdmenu.");
+                Console.WriteLine("\nKlik op 'Enter' om terug te gaan naar het hoofdmenu.");
                 ConsoleKeyInfo done = Console.ReadKey();
                 if (done.Key == ConsoleKey.Enter)
                 {

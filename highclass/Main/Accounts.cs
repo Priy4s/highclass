@@ -57,7 +57,7 @@ namespace Main
             string telefoonnummerIN = Console.ReadLine();
             Console.WriteLine("Wat is uw e-mail?");
             string eMailIN = Console.ReadLine();
-            Console.WriteLine("Voer uw gebruikers naam in:");
+            Console.WriteLine("Voer uw gebruikersnaam in:");
             string gebruikersnaamIN = Console.ReadLine();
             Console.WriteLine("Voer uw wachtwoord in:");
             string wachtwoordIN = Console.ReadLine();
@@ -102,7 +102,7 @@ namespace Main
 
             while (true)
             {
-                Console.WriteLine("Account is succesvol aangemaakt.\n\nKlik op 'Enter' om in te loggen en verder te gaan.");
+                Console.WriteLine("Account is succesvol aangemaakt.\n\nKlik op 'Enter' om in te loggen.");
                 ConsoleKeyInfo done = Console.ReadKey();
                 if (done.Key == ConsoleKey.Enter)
                 {

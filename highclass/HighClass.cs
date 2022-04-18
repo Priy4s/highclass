@@ -32,11 +32,23 @@ namespace Main
             bij het HOOFDMENU op de cijfer 0 wordt geklikt.
              */
             {
+                // Console.BackgroundColor = ConsoleColor.Green; verandert de gehele console kleur op tekst na
+                Console.ForegroundColor = ConsoleColor.DarkYellow; // verandert alle tekst naar donkerrood
                 Console.Clear(); // Maakt de console leeg, zodat het lijkt alsof er een nieuw scherm is geopend.
-                Console.WriteLine("Welkom bij HighClass!\n");
-                Console.WriteLine("Hoofdmenu");
-                string scherm = "[1] Reserveren\n[2] Menu\n[3] Account\n[4] Omzet"; // De "knoppen"
-                Console.WriteLine(scherm);
+
+                Console.WriteLine("╒════════════════════════╕");
+                Console.WriteLine("│                        │");
+                Console.WriteLine("│  Welkom bij HighClass  │");
+                Console.WriteLine("│                        │");
+                Console.WriteLine("│      |Hoofdmenu|       │");
+                Console.WriteLine("│    [1] Reserveren      │");
+                Console.WriteLine("│    [2] Menu            │");
+                Console.WriteLine("│    [3] Account         │");
+                Console.WriteLine("│    [4] Omzet           │");
+                Console.WriteLine("│    [5] Contact         │");
+                Console.WriteLine("│                        │");
+                Console.WriteLine("╘════════════════════════╛");
+
                 ConsoleKeyInfo ckey = Console.ReadKey(); // Deze variabele krijgt als input de toets die de gebruiker op het toetsenbord heeft aangeklikt.
                 if (ckey.Key == ConsoleKey.D1) // Checkt of de aangeklikte toets overeenkomt met het cijfer die aan de knop is gekoppeld (D1, D2, etc zijn de cijfers).
                 {
@@ -44,9 +56,16 @@ namespace Main
                     if (Globals.ingelogd) // Checkt of een medewerker is ingelogd, om een functie uit te voeren.
                     {
                         Console.Clear();
-                        Console.WriteLine("Wilt u de beschikbare plekken wijzigen?");
-                        string vraagje = "[1] Ja\n[2] Nee";
-                        Console.WriteLine(vraagje);
+                        Console.WriteLine("╒═════════════════════════════════════════╕");
+                        Console.WriteLine("│HC                                       │");
+                        Console.WriteLine("│              |Reserveren|               │");
+                        Console.WriteLine("│                                         │");
+                        Console.WriteLine("│ Wilt u de beschikbare plekken wijzigen? │");
+                        Console.WriteLine("│                                         │");
+                        Console.WriteLine("│                [1] Ja                   │");
+                        Console.WriteLine("│                [2] Nee                  │");
+                        Console.WriteLine("│                                         │");
+                        Console.WriteLine("╘═════════════════════════════════════════╛");
                         ConsoleKeyInfo cvjkey = Console.ReadKey();
                         if (cvjkey.Key == ConsoleKey.D1)
                         {
@@ -60,13 +79,30 @@ namespace Main
                     else if (Globals.ingelogd == false || no == false)
                     {
                         Console.Clear();
-                        Console.WriteLine("Heeft u al een reservering?");
-                        string vraag = "[1] Ja\n[2] Nee";
-                        Console.WriteLine(vraag);
+                        Console.WriteLine("╒═════════════════════════════╕");
+                        Console.WriteLine("│HC                           │");
+                        Console.WriteLine("│         |Reserveren|        │");
+                        Console.WriteLine("│                             │");
+                        Console.WriteLine("│ Heeft u al een reservering? │");
+                        Console.WriteLine("│                             │");
+                        Console.WriteLine("│           [1] Ja            │");
+                        Console.WriteLine("│           [2] Nee           │");
+                        Console.WriteLine("│                             │");
+                        Console.WriteLine("╘═════════════════════════════╛");
                         ConsoleKeyInfo cvkey = Console.ReadKey();
                         if (cvkey.Key == ConsoleKey.D1)
                         {
                             Console.Clear();
+                            Console.WriteLine("╒════════════════════════════════════╕");
+                            Console.WriteLine("│HC                                  │");
+                            Console.WriteLine("│            |Reserveren|            │");
+                            Console.WriteLine("│                                    │");
+                            Console.WriteLine("│ Wilt u deze wijzigen of annuleren? │");
+                            Console.WriteLine("│                                    │");
+                            Console.WriteLine("│              [1] Ja                │");
+                            Console.WriteLine("│              [2] Nee               │");
+                            Console.WriteLine("│                                    │");
+                            Console.WriteLine("╘════════════════════════════════════╛");
                             Console.WriteLine("Wilt u deze wijzigen of annuleren?");
                             string vraag2 = "[1] Wijzigen\n[2] Annuleren";
                             Console.WriteLine(vraag2);
@@ -98,11 +134,29 @@ namespace Main
                 {
                     Omzet();
                 }
+                else if (ckey.Key == ConsoleKey.D5)
+                {
+                    Contactgegevens();
+                }
                 else if (ckey.Key == ConsoleKey.D0)
                 {
                     break;
                 }
             }
+        }
+
+        static void Contactgegevens()
+        {
+            Console.Clear();
+            Console.WriteLine("╒════════════════════════╕");
+            Console.WriteLine("│HC                      │");
+            Console.WriteLine("│   |Contactgegevens|    │");
+            Console.WriteLine("│                        │");
+            Console.WriteLine("│    Naam: HighClass     │");
+            Console.WriteLine("│  Adres: Wijnhaven 107  │");
+            Console.WriteLine("│    Tel.: 0107940000    │");
+            Console.WriteLine("│                        │");
+            Console.WriteLine("╘════════════════════════╛");
         }
 
         static void Omzet()
@@ -113,8 +167,14 @@ namespace Main
                 double omzet = 50 * Globals.taken_seats;
                 while (true)
                 {
-                    Console.WriteLine($"Als we ervan uitgaan dat een klant 50 euro zal uitgeven, wordt uw omzet van vandaag: {omzet} euro.");
-                    Console.WriteLine("\nKlik op 'Enter' om verder te gaan naar het hoofdmenu.");
+                    Console.WriteLine("╒══════════════════════════════════════════════════════════╕");
+                    Console.WriteLine("│HC                                                        │");
+                    Console.WriteLine("│                         |Omzet|                          │");
+                    Console.WriteLine("│                                                          │");
+                    Console.WriteLine("│ Als we ervan uitgaan dat een klant 50 euro zal uitgeven, │");
+                    Console.WriteLine($"│        wordt de omzet van vandaag: {omzet} euro.         │");
+                    Console.WriteLine("│                                                          │");
+                    Console.WriteLine("╘══════════════════════════════════════════════════════════╛");
                     ConsoleKeyInfo done = Console.ReadKey();
                     if (done.Key == ConsoleKey.Enter)
                     {
@@ -126,13 +186,21 @@ namespace Main
             {
                 while (true)
                 {
-                    Console.WriteLine("Alleen medewerkers kunnen de omzet bekijken.\nKlik op 'Enter' om in te loggen en probeer het opnieuw.");
+                    Console.WriteLine("╒══════════════════════════════════════════════════════════════════════════╕");
+                    Console.WriteLine("│HC                                                                        │");
+                    Console.WriteLine("│                                  |Omzet|                                 │");
+                    Console.WriteLine("│                                                                          │");
+                    Console.WriteLine("│              Alleen medewerkers kunnen de omzet bekijken.                │");
+                    Console.WriteLine("│ Klik op 'Enter' om in te loggen en probeer opnieuw de omzet te bekijken. │");
+                    Console.WriteLine("│                                                                          │");
+                    Console.WriteLine("╘══════════════════════════════════════════════════════════════════════════╛");
                     ConsoleKeyInfo done = Console.ReadKey();
                     if (done.Key == ConsoleKey.Enter)
                     {
                         break;
                     }
                 }
+                Console.Clear();
                 Medewerkers.AddMederwerker();
             }
         }
