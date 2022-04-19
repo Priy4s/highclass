@@ -1,6 +1,6 @@
 ﻿namespace Main
 {
-    internal class Personeelsleden
+    public class Personeelsleden
     {
     }
 }

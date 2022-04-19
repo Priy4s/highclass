@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using static Main.Reserveringen; // Opent de file (achter de punt) waarvan je code/methods gaat gebruiken.
 using static Main.Medewerkers;
 using static Main.Menu;
+using static Main.Personeelsleden;
+using static Main.Admin;
 
 namespace Main
 {
@@ -32,7 +34,7 @@ namespace Main
             bij het HOOFDMENU op de cijfer 0 wordt geklikt.
              */
             {
-                // Console.BackgroundColor = ConsoleColor.Green; verandert de gehele console kleur op tekst na
+                // Console.BackgroundColor = ConsoleColor.White; verandert de gehele console kleur op tekst na
                 Console.ForegroundColor = ConsoleColor.DarkYellow; // verandert alle tekst naar donkerrood
                 Console.Clear(); // Maakt de console leeg, zodat het lijkt alsof er een nieuw scherm is geopend.
 
@@ -56,7 +58,7 @@ namespace Main
                     if (Globals.ingelogd) // Checkt of een medewerker is ingelogd, om een functie uit te voeren.
                     {
                         Console.Clear();
-                        Console.WriteLine("╒═════════════════════════════════════════╕");
+                        Console.WriteLine("╒═════════════════════════════════════════╕"); // Zorgt voor de omlijning
                         Console.WriteLine("│HC                                       │");
                         Console.WriteLine("│              |Reserveren|               │");
                         Console.WriteLine("│                                         │");
@@ -147,16 +149,24 @@ namespace Main
 
         static void Contactgegevens()
         {
-            Console.Clear();
-            Console.WriteLine("╒════════════════════════╕");
-            Console.WriteLine("│HC                      │");
-            Console.WriteLine("│   |Contactgegevens|    │");
-            Console.WriteLine("│                        │");
-            Console.WriteLine("│    Naam: HighClass     │");
-            Console.WriteLine("│  Adres: Wijnhaven 107  │");
-            Console.WriteLine("│    Tel.: 0107940000    │");
-            Console.WriteLine("│                        │");
-            Console.WriteLine("╘════════════════════════╛");
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("╒════════════════════════╕");
+                Console.WriteLine("│HC                      │");
+                Console.WriteLine("│   |Contactgegevens|    │");
+                Console.WriteLine("│                        │");
+                Console.WriteLine("│    Naam: HighClass     │");
+                Console.WriteLine("│  Adres: Wijnhaven 107  │");
+                Console.WriteLine("│    Tel.: 0107940000    │");
+                Console.WriteLine("│                        │");
+                Console.WriteLine("╘════════════════════════╛");
+                ConsoleKeyInfo done = Console.ReadKey();
+                if (done.Key == ConsoleKey.Enter)
+                {
+                    break;
+                }
+            }
         }
 
         static void Omzet()

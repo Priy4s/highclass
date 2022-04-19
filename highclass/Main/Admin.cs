@@ -1,6 +1,6 @@
 ﻿namespace Main
 {
-    internal class Admin
+    public class Admin
     {
     }
 }
