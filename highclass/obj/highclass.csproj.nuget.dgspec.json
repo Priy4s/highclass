@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\highclass\\HighClass.csproj": {}
+    "/Users/wafae/Library/Mobile Documents/com~apple~CloudDocs/OneDrive HR/Project/GitHub/highclass/highclass/HighClass.csproj": {}
   },
   "projects": {
-    "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\highclass\\HighClass.csproj": {
+    "/Users/wafae/Library/Mobile Documents/com~apple~CloudDocs/OneDrive HR/Project/GitHub/highclass/highclass/HighClass.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\highclass\\HighClass.csproj",
+        "projectUniqueName": "/Users/wafae/Library/Mobile Documents/com~apple~CloudDocs/OneDrive HR/Project/GitHub/highclass/highclass/HighClass.csproj",
         "projectName": "HighClass",
-        "projectPath": "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\highclass\\HighClass.csproj",
-        "packagesPath": "C:\\Users\\shery\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\highclass\\obj\\",
+        "projectPath": "/Users/wafae/Library/Mobile Documents/com~apple~CloudDocs/OneDrive HR/Project/GitHub/highclass/highclass/HighClass.csproj",
+        "packagesPath": "/Users/wafae/.nuget/packages/",
+        "outputPath": "/Users/wafae/Library/Mobile Documents/com~apple~CloudDocs/OneDrive HR/Project/GitHub/highclass/highclass/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\shery\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/wafae/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net5.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.201/RuntimeIdentifierGraph.json"
         }
       }
     }

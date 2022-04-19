@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "bDnu8PBO8A3Rg1r8soVdlwU9L1JkZRJp3zr16NhQiqvP6DJALSvWa3OhAcRcpDpjmPzi3uWBSJgu1H01m0yNNQ==",
+  "dgSpecHash": "4ms7Vkx1m5KfV05jlO32CiRwkk+IlPHzQxnTrM76hWjoEc+BlWDlwkAiJ6aylg/5Ge0mTbuoQecYhTiffSIguQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\highclass\\HighClass.csproj",
+  "projectFilePath": "/Users/wafae/Library/Mobile Documents/com~apple~CloudDocs/OneDrive HR/Project/GitHub/highclass/highclass/HighClass.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\shery\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+    "/Users/wafae/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []
 }

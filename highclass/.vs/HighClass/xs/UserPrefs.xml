@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{4C99798A-D0E5-4649-8790-6439E346AF43}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="HighClass.cs">
+    <Files>
+      <File FileName="HighClass.cs" Line="1" Column="1" />
+      <File FileName="Main/Reserveringen.cs" Line="1" Column="1" />
+      <File FileName="Main/Personeelsleden.cs" Line="1" Column="1" />
+      <File FileName="Main/Menu.cs" Line="1" Column="1" />
+      <File FileName="Main/Admin.cs" Line="1" Column="1" />
+      <File FileName="Main/Accounts.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="HighClass" expanded="True">
+            <Node name="HighClass" expanded="True">
+              <Node name="Main" expanded="True" />
+              <Node name="HighClass.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.HighClass PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

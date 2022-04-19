@@ -38,18 +38,23 @@ namespace Main
                 Console.ForegroundColor = ConsoleColor.DarkYellow; // verandert alle tekst naar donkerrood
                 Console.Clear(); // Maakt de console leeg, zodat het lijkt alsof er een nieuw scherm is geopend.
 
-                Console.WriteLine("╒════════════════════════╕");
-                Console.WriteLine("│                        │");
-                Console.WriteLine("│  Welkom bij HighClass  │");
-                Console.WriteLine("│                        │");
-                Console.WriteLine("│      |Hoofdmenu|       │");
-                Console.WriteLine("│    [1] Reserveren      │");
-                Console.WriteLine("│    [2] Menu            │");
-                Console.WriteLine("│    [3] Account         │");
-                Console.WriteLine("│    [4] Omzet           │");
-                Console.WriteLine("│    [5] Contact         │");
-                Console.WriteLine("│                        │");
-                Console.WriteLine("╘════════════════════════╛");
+                Console.WriteLine("╒══════════════════════════════╕");
+                Console.WriteLine("│                              │");
+                Console.WriteLine("│     Welkom bij HighClass     │");
+                Console.WriteLine("│                              │");
+                Console.WriteLine("│         |Hoofdmenu|          │");
+                Console.WriteLine("│       [1] Reserveren         │");
+                Console.WriteLine("│       [2] Menu               │");
+                Console.WriteLine("│       [3] Account            │");
+                Console.WriteLine("│       [4] Omzet              │");
+                Console.WriteLine("│       [5] Contact            │");
+                Console.WriteLine("│                              │");
+                Console.WriteLine("│                              │");
+                Console.WriteLine("│                              │");
+                Console.WriteLine("│ Wijnhaven 107                │");
+                Console.WriteLine("│ 3011 WN, Rotterdam           │");
+                Console.WriteLine("│ ma t/m zo - 11:00 tot 23:00  │");
+                Console.WriteLine("╘══════════════════════════════╛");
 
                 ConsoleKeyInfo ckey = Console.ReadKey(); // Deze variabele krijgt als input de toets die de gebruiker op het toetsenbord heeft aangeklikt.
                 if (ckey.Key == ConsoleKey.D1) // Checkt of de aangeklikte toets overeenkomt met het cijfer die aan de knop is gekoppeld (D1, D2, etc zijn de cijfers).
@@ -152,15 +157,15 @@ namespace Main
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("╒════════════════════════╕");
-                Console.WriteLine("│HC                      │");
-                Console.WriteLine("│   |Contactgegevens|    │");
-                Console.WriteLine("│                        │");
-                Console.WriteLine("│    Naam: HighClass     │");
-                Console.WriteLine("│  Adres: Wijnhaven 107  │");
-                Console.WriteLine("│    Tel.: 0107940000    │");
-                Console.WriteLine("│                        │");
-                Console.WriteLine("╘════════════════════════╛");
+                Console.WriteLine("╒════════════════════════════╕");
+                Console.WriteLine("│HC                          │");
+                Console.WriteLine("│                            │");
+                Console.WriteLine("│     |Contactgegevens|      │");
+                Console.WriteLine("│                            │");
+                Console.WriteLine("│                            │");
+                Console.WriteLine("│ Tel. : 0107940000          │");
+                Console.WriteLine("│ email: highclass@info.com  │");
+                Console.WriteLine("╘════════════════════════════╛");
                 ConsoleKeyInfo done = Console.ReadKey();
                 if (done.Key == ConsoleKey.Enter)
                 {
