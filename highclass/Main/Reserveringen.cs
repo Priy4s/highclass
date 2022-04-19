@@ -134,8 +134,8 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             Console.Clear();
             Console.WriteLine("Er zijn " + Globals.available_seats + " plekken beschikbaar.");
 
-            Console.WriteLine("Zijn er meer of minder stoelen vrijgekomen?");
-            string meerofminder = "[1] Meer\n[2] Minder";
+            Console.WriteLine("Zijn er meer of minder stoelen beschikbaar?");
+            string meerofminder = "[1] Meer beschikbare stoelen\n[2] Minder beschikbare stoelen";
             Console.WriteLine(meerofminder);
             ConsoleKeyInfo cpkey = Console.ReadKey();
             Console.WriteLine("\n\nMet hoeveel?");
