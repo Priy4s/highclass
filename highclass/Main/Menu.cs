@@ -17,7 +17,7 @@ namespace Main
 
     public class getMenu
     {
-        public static void gettingMenu()
+        public static void gettingMenu(string gebruiker = "nietIngelogd") //default is niet ingelogd, bij oproepen parameter opgeven zoals "admin" of "personeel"
         {
 
             {
@@ -329,13 +329,17 @@ namespace Main
                             }
                         }
                     }
-                    else if (mainMenu.Key == ConsoleKey.D0)
+                    else if (mainMenu.Key == ConsoleKey.D0 && gebruiker == "nietIngelogd")
                     {
                         menurunnen = false;
                     }
-                } // einde if drinken
+                    else if(mainMenu.Key == ConsoleKey.D0 && gebruiker == "personeel")
+                    {
+                        Personeelsleden.menuMain();
+                    }
+                } 
 
-            } //einde programma
+            } 
         }
     }
 }

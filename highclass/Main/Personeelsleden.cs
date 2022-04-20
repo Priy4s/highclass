@@ -28,18 +28,38 @@ namespace Main
                 reserverenMain(); 
             }
             else if (ckey.Key == ConsoleKey.D2) {
-
+                menuMain();
+            }
+            else if(ckey.Key == ConsoleKey.D3)
+            {
+                Program.Main();
             }
         }
         public static void reserverenMain()
         {
             Console.Clear();
-            Console.WriteLine("Reserveren main menu personeel");
+            Console.WriteLine("Reserveren menu - personeel");
             Console.WriteLine("         [0] Terug            ");
             ConsoleKeyInfo ckey = Console.ReadKey();
             if (ckey.Key == ConsoleKey.D0)
             {
                 personeelMain();
+            }
+        }
+        public static void menuMain()
+        {
+            Console.Clear();
+            Console.WriteLine("       Menu menu - personeel");
+            Console.WriteLine("         [1] Bekijk menu           ");
+            Console.WriteLine("         [2] Pas menu aan            ");
+            Console.WriteLine("         [0] Terug            ");
+            ConsoleKeyInfo ckey = Console.ReadKey();
+            if (ckey.Key == ConsoleKey.D0)
+            {
+                personeelMain();
+            }
+            else if (ckey.Key == ConsoleKey.D1) { 
+                getMenu.gettingMenu("personeel");
             }
         }
     }
