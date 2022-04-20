@@ -61,6 +61,10 @@ namespace Main
             else if (ckey.Key == ConsoleKey.D1) { 
                 getMenu.gettingMenu("personeel");
             }
+            else if(ckey.Key == ConsoleKey.D2)
+            {
+                MenuAanpassen.mainAanpassen();
+            }
         }
     }
 }

@@ -395,4 +395,87 @@ namespace Main
             } 
         }
     }
+    public class MenuAanpassen
+    {
+        public static void mainAanpassen()
+        {
+            Console.Clear();
+            Console.WriteLine("[1] Menu Item verwijderen \n[2] Menu Item toevoegen");
+            ConsoleKeyInfo readkey = Console.ReadKey();
+            if (readkey.Key == ConsoleKey.D1)
+            {
+                verwijderen();
+            }
+            if(readkey.Key == ConsoleKey.D2)
+            {
+                toevoegen();
+            }
+        }
+        public static void verwijderen()
+        {
+            string menuPath = Path.GetFullPath(@"json1.json"); // find path to files
+
+            var JsonData = File.ReadAllText(menuPath);
+            var menuList = JsonConvert.DeserializeObject<List<Menu>>(JsonData) ?? new List<Menu>();
+
+            Console.WriteLine("Wat is Menu Item ID?");
+            int zoekID = Convert.ToInt32(Console.ReadLine());
+
+            foreach (Menu menuItem in menuList)
+            {
+                if (menuItem.ID == zoekID)
+                {
+                    Console.WriteLine($"Menu Item met ID {zoekID} is verwijderd");
+                }
+            }
+        }
+        public static void toevoegen()
+        {
+            string menuPath = Path.GetFullPath(@"json1.json"); // find path to files
+
+            var JsonData = File.ReadAllText(menuPath);
+            var menuList = JsonConvert.DeserializeObject<List<Menu>>(JsonData) ?? new List<Menu>();
+
+            Console.WriteLine("Welke ID heeft het nieuwe Menu Item?");
+            int ID_IN = Convert.ToInt32(Console.ReadLine());
+            foreach (Menu menuItem in menuList)
+            {
+                if (menuItem.ID == ID_IN)
+                {
+                    Console.WriteLine($"Menu Item met ID {ID_IN} bestaat al probeer opnieuw druk op [0]");
+                    ConsoleKeyInfo readkey = Console.ReadKey();
+                    if (readkey.Key == ConsoleKey.D0)
+                    {
+                        toevoegen();
+                    }
+                }
+            }
+            Console.WriteLine("Wat is de naam van het neiuwe Menu Item?");
+            string NaamIN = Console.ReadLine();
+            Console.WriteLine("Wat is de prijs van het nieuwe Menu Item?");
+            double PrijsIN = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Welke allergenen komen er in het nieuwe Menu Item voor?");
+            string allorgieIN = Console.ReadLine();
+            Console.WriteLine("Wat is de catogorie van het nieuwe Menu Item?");
+            string catogorieIN = Console.ReadLine();
+
+            bool IDloop = true;
+            while (IDloop)
+            {
+                
+
+                
+            }
+            
+            menuList.Add(new Menu()
+            {
+                Naam = NaamIN,
+                Prijs = PrijsIN,
+                Allergie = allorgieIN,
+                Categorie = catogorieIN,
+                ID = ID_IN,
+            });
+            Console.WriteLine($"Het nieuwe Menu Item met de naam {NaamIN} is toegevoegd aan Menu?");
+        }
+    }
 }
