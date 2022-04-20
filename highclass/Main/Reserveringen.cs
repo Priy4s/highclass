@@ -1,12 +1,80 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code niet gebruiken (error).
 {
-    public class Reserveringen
+    public class Reserveringenjson
+    {
+        public string Naam { get; set; }
+        public string Voornaamwoorden { get; set; }
+        public int Groepsgrootte { get; set; }
+        public string Starttijd { get; set; }
+        public string Datum { get; set; }
+    }
+
+    public class Reservering
+    {
+        public static void AddReserveringen()
+        {
+            string ReserveringPath = Path.GetFullPath(@"Reserveringen.json"); // find path to file
+            bool fileExist = File.Exists(ReserveringPath); // checks if the file exists, if so does nothing, else creates it
+            if (!fileExist)
+            {
+                using (File.Create(ReserveringPath)) ;
+                Console.WriteLine("it exists now");
+            }
+
+            var JsonData = File.ReadAllText(ReserveringPath); // file can be found in the bin => just keep clicking until you find all extra files
+            var ReserveringenList = JsonConvert.DeserializeObject<List<Reserveringenjson>>(JsonData) ?? new List<Reserveringenjson>();
+
+            Console.WriteLine("Volledige naam: ");
+            string naamIN = Console.ReadLine();
+            Console.WriteLine("Wat zijn uw persoonlijke voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] hen/hun");
+            ConsoleKeyInfo ckey = Console.ReadKey();
+            // Console.SetCursorPosition(0, Console.CursorTop);
+            // ClearCurrentConsoleLine();
+            string pronounsIN = "";
+            if (ckey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
+            {
+                pronounsIN = "hij/hem";
+            }
+            else if (ckey.Key == ConsoleKey.D2)
+            {
+                pronounsIN = "zij/haar";
+            }
+            else if (ckey.Key == ConsoleKey.D3)
+            {
+                pronounsIN = "hen/hun";
+            }
+            Console.WriteLine("Aantal personen: ");
+            int aantalIN = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Datum van reservering: ");
+            string datumIN = Console.ReadLine();
+            Console.WriteLine("Starttijd van reservering: ");
+            string tijdIN = Console.ReadLine();
+
+            ReserveringenList.Add(new Reserveringenjson()
+            {
+                Naam = naamIN,
+                Voornaamwoorden = pronounsIN,
+                Groepsgrootte = aantalIN,
+                Datum = datumIN,
+                Starttijd = tijdIN
+            });
+
+            JsonData = JsonConvert.SerializeObject(ReserveringenList);
+            System.IO.File.WriteAllText(ReserveringPath, JsonData);
+            Console.WriteLine("Opgeslagen!");
+        }
+    }
+
+
+    public class Reserveringenoud
     {
         public static void Reserveren()
         {
