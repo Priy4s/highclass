@@ -48,24 +48,26 @@
     ]
   },
   "packageFolders": {
-    "/Users/wafae/.nuget/packages/": {}
+    "C:\\Users\\priya\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/wafae/Library/Mobile Documents/com~apple~CloudDocs/OneDrive HR/Project/GitHub/highclass/highclass/HighClass.csproj",
+      "projectUniqueName": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\HighClass.csproj",
       "projectName": "HighClass",
-      "projectPath": "/Users/wafae/Library/Mobile Documents/com~apple~CloudDocs/OneDrive HR/Project/GitHub/highclass/highclass/HighClass.csproj",
-      "packagesPath": "/Users/wafae/.nuget/packages/",
-      "outputPath": "/Users/wafae/Library/Mobile Documents/com~apple~CloudDocs/OneDrive HR/Project/GitHub/highclass/highclass/obj/",
+      "projectPath": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\HighClass.csproj",
+      "packagesPath": "C:\\Users\\priya\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/wafae/.config/NuGet/NuGet.Config"
+        "C:\\Users\\priya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -104,7 +106,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/x64/sdk/6.0.201/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

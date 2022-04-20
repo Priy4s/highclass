@@ -85,3 +85,21 @@ C:/Users/shery/OneDrive/Documenten/GitHub/highclass/highclass/obj/Debug/net5.0/H
 /Users/wafae/Library/Mobile Documents/com~apple~CloudDocs/OneDrive HR/Project/GitHub/highclass/highclass/obj/Debug/net5.0/ref/HighClass.dll
 /Users/wafae/Library/Mobile Documents/com~apple~CloudDocs/OneDrive HR/Project/GitHub/highclass/highclass/obj/Debug/net5.0/HighClass.pdb
 /Users/wafae/Library/Mobile Documents/com~apple~CloudDocs/OneDrive HR/Project/GitHub/highclass/highclass/obj/Debug/net5.0/HighClass.genruntimeconfig.cache
+C:\Users\priya\OneDrive\Documenten\GitHub\Restaurant\highclass\highclass\bin\Debug\net5.0\HighClass.exe
+C:\Users\priya\OneDrive\Documenten\GitHub\Restaurant\highclass\highclass\bin\Debug\net5.0\HighClass.deps.json
+C:\Users\priya\OneDrive\Documenten\GitHub\Restaurant\highclass\highclass\bin\Debug\net5.0\HighClass.runtimeconfig.json
+C:\Users\priya\OneDrive\Documenten\GitHub\Restaurant\highclass\highclass\bin\Debug\net5.0\HighClass.runtimeconfig.dev.json
+C:\Users\priya\OneDrive\Documenten\GitHub\Restaurant\highclass\highclass\bin\Debug\net5.0\HighClass.dll
+C:\Users\priya\OneDrive\Documenten\GitHub\Restaurant\highclass\highclass\bin\Debug\net5.0\ref\HighClass.dll
+C:\Users\priya\OneDrive\Documenten\GitHub\Restaurant\highclass\highclass\bin\Debug\net5.0\HighClass.pdb
+C:\Users\priya\OneDrive\Documenten\GitHub\Restaurant\highclass\highclass\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\priya\OneDrive\Documenten\GitHub\Restaurant\highclass\highclass\obj\Debug\net5.0\HighClass.csproj.AssemblyReference.cache
+C:\Users\priya\OneDrive\Documenten\GitHub\Restaurant\highclass\highclass\obj\Debug\net5.0\HighClass.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\priya\OneDrive\Documenten\GitHub\Restaurant\highclass\highclass\obj\Debug\net5.0\HighClass.AssemblyInfoInputs.cache
+C:\Users\priya\OneDrive\Documenten\GitHub\Restaurant\highclass\highclass\obj\Debug\net5.0\HighClass.AssemblyInfo.cs
+C:\Users\priya\OneDrive\Documenten\GitHub\Restaurant\highclass\highclass\obj\Debug\net5.0\HighClass.csproj.CoreCompileInputs.cache
+C:\Users\priya\OneDrive\Documenten\GitHub\Restaurant\highclass\highclass\obj\Debug\net5.0\HighClass.csproj.CopyComplete
+C:\Users\priya\OneDrive\Documenten\GitHub\Restaurant\highclass\highclass\obj\Debug\net5.0\HighClass.dll
+C:\Users\priya\OneDrive\Documenten\GitHub\Restaurant\highclass\highclass\obj\Debug\net5.0\ref\HighClass.dll
+C:\Users\priya\OneDrive\Documenten\GitHub\Restaurant\highclass\highclass\obj\Debug\net5.0\HighClass.pdb
+C:\Users\priya\OneDrive\Documenten\GitHub\Restaurant\highclass\highclass\obj\Debug\net5.0\HighClass.genruntimeconfig.cache

@@ -84,11 +84,11 @@ namespace Main
             Console.Write(new string(' ', Console.WindowWidth));
             Console.SetCursorPosition(0, currentLineCursor);
         }
-    public static bool Inloggen()
+    public static void Inloggen()
         {
-            return true;
+            Personeelsleden.personeelMain();
         }
-    public static bool Aanmelden()
+    public static void Aanmelden()
         {
             Console.Clear();
             string gebruikersnaam; string wachtwoord;
@@ -109,8 +109,7 @@ namespace Main
                     break;
                 }
             }
-            bool verder = Inloggen();
-            return verder;
+            Inloggen();
         }
         public static bool Uitloggen()
         {
@@ -136,7 +135,7 @@ namespace Main
 
             if (cakey.Key == ConsoleKey.D1)
             {
-                Globals.ingelogd = Inloggen();
+                Inloggen();
             }
             else if (cakey.Key == ConsoleKey.D2)
             {

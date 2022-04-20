@@ -19,7 +19,7 @@ namespace Main
     {
         public static void gettingMenu()
         {
-            
+
             {
                 string menuPath = Path.GetFullPath(@"json1.json"); // find path to files
 
@@ -29,6 +29,7 @@ namespace Main
                 while (menurunnen)
                 {
                     Console.Clear();
+                    Console.WriteLine("╒══════════════════════════╕");
                     Console.WriteLine("\n Menukaart\n");
                     Console.WriteLine("[1] Brunch");
                     Console.WriteLine("[2] Lunch");
@@ -36,7 +37,7 @@ namespace Main
                     Console.WriteLine("[4] Drinken");
                     Console.WriteLine("[5] Allergieën informatie");
                     Console.WriteLine("[0] Terug");
-
+                    Console.WriteLine("╘═══════════════════════════╛");
                     ConsoleKeyInfo mainMenu = Console.ReadKey();
 
                     if (mainMenu.Key == ConsoleKey.D1)
@@ -45,15 +46,19 @@ namespace Main
                         while (brunch)
                         {
                             Console.Clear();
+                            Console.WriteLine("╒════════════════════════════════════════════════╕");
                             Console.WriteLine("Brunch\n");
 
                             foreach (Menu menuItem in menuList)
                             {
                                 if (menuItem.Categorie == "Brunch")
-                                    Console.WriteLine($"{menuItem.Naam} : {menuItem.Prijs} {menuItem.Allergie}");
+
+                                    Console.WriteLine($" {menuItem.Naam} : {menuItem.Prijs} {menuItem.Allergie} ");
+
                             }
 
                             Console.WriteLine("\n[0] Terug");
+                            Console.WriteLine("╘════════════════════════════════════════════════╛");
                             ConsoleKeyInfo terugBrunch = Console.ReadKey();
 
                             if (terugBrunch.Key == ConsoleKey.D0)
@@ -70,6 +75,7 @@ namespace Main
                         {
                             Console.Clear();
                             Console.WriteLine("Lunch\n");
+                            Console.WriteLine("╒══════════════════════════════════════════╕");
 
                             foreach (Menu menuItem in menuList)
                             {
@@ -84,6 +90,7 @@ namespace Main
                                     Console.WriteLine($"{menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
                             }
                             Console.WriteLine("\n[0] Terug");
+                            Console.WriteLine("╘══════════════════════════════════════════╛");
 
                             ConsoleKeyInfo lunchkey = Console.ReadKey();
 
@@ -100,11 +107,13 @@ namespace Main
                         while (dinerMenu)
                         {
                             Console.Clear();
+                            Console.WriteLine("╒══════════════════════════════════════════╕");
                             Console.WriteLine("Diner");
                             Console.WriteLine("[1] Voorgerechten");
                             Console.WriteLine("[2] Hoofdgerechten");
                             Console.WriteLine("[3] Nagerechten");
                             Console.WriteLine("[0] Terug");
+                            Console.WriteLine("╘══════════════════════════════════════════╛");
                             ConsoleKeyInfo dinerkey = Console.ReadKey();
 
                             if (dinerkey.Key == ConsoleKey.D0)
@@ -118,6 +127,7 @@ namespace Main
                                 while (voorgerecht)
                                 {
                                     Console.Clear();
+                                    Console.WriteLine("╒══════════════════════════════════════════╕");
                                     Console.WriteLine("Voorgerechten\n");
 
                                     foreach (Menu menuItem in menuList)
@@ -133,6 +143,7 @@ namespace Main
                                             Console.WriteLine($"{menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
                                     }
                                     Console.WriteLine("\n[0] Terug");
+                                    Console.WriteLine("╘══════════════════════════════════════════╛");
 
                                     ConsoleKeyInfo voorgerechtterug = Console.ReadKey();
 
@@ -148,6 +159,7 @@ namespace Main
                                 while (hoofgerecht)
                                 {
                                     Console.Clear();
+                                    Console.WriteLine("╒══════════════════════════════════════════╕");
                                     Console.WriteLine("Hoofdgerechten\n");
 
                                     foreach (Menu menuItem in menuList)
@@ -163,6 +175,7 @@ namespace Main
                                             Console.WriteLine($"{menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
                                     }
                                     Console.WriteLine("\n[0] Terug");
+                                    Console.WriteLine("╘══════════════════════════════════════════╛");
                                     ConsoleKeyInfo hoofdterug = Console.ReadKey();
 
 
@@ -179,6 +192,7 @@ namespace Main
                                 while (nagerecht)
                                 {
                                     Console.Clear();
+                                    Console.WriteLine("╒══════════════════════════════════════════╕");
                                     Console.WriteLine("Nagerechten\n");
 
                                     foreach (Menu menuItem in menuList)
@@ -187,6 +201,7 @@ namespace Main
                                             Console.WriteLine($"{menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
                                     }
                                     Console.WriteLine("\n[0] Terug");
+                                    Console.WriteLine("╘══════════════════════════════════════════╛");
                                     ConsoleKeyInfo nagerechtterug = Console.ReadKey();
 
 
@@ -205,10 +220,12 @@ namespace Main
                         bool drinken = true;
                         while (drinken)
                         {
+                            Console.WriteLine("╒══════════════════════════════════════════╕");
                             Console.WriteLine("\n Drinken\n");
                             Console.WriteLine("[1] Non alcoholische dranken");
                             Console.WriteLine("[2] Alcoholische dranken (A)");
                             Console.WriteLine("[0] Terug");
+                            Console.WriteLine("╘══════════════════════════════════════════╛");
                             ConsoleKeyInfo drankkeus = Console.ReadKey();
                             //Warme dranken
                             if (drankkeus.Key == ConsoleKey.D0)
@@ -221,6 +238,7 @@ namespace Main
                                 while (noAlcohol)
                                 {
                                     Console.Clear();
+                                    Console.WriteLine("╒══════════════════════════════════════════╕");
                                     Console.WriteLine("Warme drankjes: ");
                                     foreach (Menu menuItem in menuList)
                                     {
@@ -235,6 +253,7 @@ namespace Main
                                             Console.WriteLine($"{menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
                                     }
                                     Console.WriteLine("\n[0] Terug");
+                                    Console.WriteLine("╘══════════════════════════════════════════╛");
                                     ConsoleKeyInfo noalcoholterug = Console.ReadKey();
 
                                     if (noalcoholterug.Key == ConsoleKey.D0)
@@ -252,6 +271,7 @@ namespace Main
                                 while (alcohol)
                                 {
                                     Console.Clear();
+                                    Console.WriteLine("╒══════════════════════════════════════════╕");
                                     Console.WriteLine("Alcoholische drankjes");
                                     Console.WriteLine("Bier:\n");
                                     foreach (Menu menuItem in menuList)
@@ -273,6 +293,7 @@ namespace Main
                                     }
 
                                     Console.WriteLine("\n[0] Terug");
+                                    Console.WriteLine("╘══════════════════════════════════════════╛");
                                     ConsoleKeyInfo alcoholterug = Console.ReadKey();
                                     if (alcoholterug.Key == ConsoleKey.D0)
                                     {
@@ -291,6 +312,7 @@ namespace Main
                         {
 
                             Console.Clear();
+                            Console.WriteLine("╒══════════════════════════════════════════╕");
                             Console.WriteLine("Allergieën informatie\n");
                             Console.WriteLine("V - Vegan");
                             Console.WriteLine("N - Bevat noten");
@@ -298,6 +320,7 @@ namespace Main
                             Console.WriteLine("G - Gluten vrij");
                             Console.WriteLine("A - Bevat alocohol");
                             Console.WriteLine("\n[0] Terug");
+                            Console.WriteLine("╘══════════════════════════════════════════╛");
                             ConsoleKeyInfo allergieterug = Console.ReadKey();
                             if (allergieterug.Key == ConsoleKey.D0)
                             {
