@@ -12,6 +12,7 @@ namespace Main
         public double Prijs { get; set; }
         public string Allergie { get; set; }
         public string Categorie { get; set; }
+        public int ID { get; set; }
 
     }
 
