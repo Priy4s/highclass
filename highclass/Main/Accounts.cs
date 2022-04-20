@@ -129,13 +129,13 @@ namespace Main
                     {
                         Console.WriteLine(" ");
                         Console.WriteLine("    Ingelogd");
-                        Console.WriteLine("[0] Terug");
+                        Console.WriteLine("[1] Doorgaan");
                         Console.WriteLine("╘════════════════════╛");
 
                         ConsoleKeyInfo terug = Console.ReadKey();
-                        if (ConsoleKey.D0 == terug.Key)
+                        if (ConsoleKey.D1 == terug.Key)
                         {
-                            Console.WriteLine(" ");
+                            Personeelsleden.personeelMain();
                         }
                     }
                     else
