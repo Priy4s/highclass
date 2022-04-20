@@ -55,6 +55,10 @@ namespace Main
                                 if (menuItem.Categorie == "Brunch")
 
                                     Console.WriteLine($" {menuItem.Naam} : {menuItem.Prijs} {menuItem.Allergie} ");
+                                    if (gebruiker == "personeel" && menuItem.Categorie == "Brunch")
+                                {
+                                    Console.WriteLine($" {menuItem.ID}");
+                                }
 
                             }
 
@@ -82,6 +86,10 @@ namespace Main
                             {
                                 if (menuItem.Categorie == "Lunch")
                                     Console.WriteLine($"{menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                if (gebruiker == "personeel" && menuItem.Categorie == "Lunch")
+                                {
+                                    Console.WriteLine($" {menuItem.ID}");
+                                }
                             }
                             Console.WriteLine("\nSoepen: ");
 
@@ -89,6 +97,10 @@ namespace Main
                             {
                                 if (menuItem.Categorie == "LunchSoep")
                                     Console.WriteLine($"{menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                if (gebruiker == "personeel" && menuItem.Categorie == "LunchSoep")
+                                {
+                                    Console.WriteLine($" {menuItem.ID}");
+                                }
                             }
                             Console.WriteLine("\n[0] Terug");
                             Console.WriteLine("╘══════════════════════════════════════════╛");
@@ -135,6 +147,10 @@ namespace Main
                                     {
                                         if (menuItem.Categorie == "DinerVoorgerecht")
                                             Console.WriteLine($"{menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                        if (gebruiker == "personeel" && menuItem.Categorie == "DinerVoorgerecht")
+                                        {
+                                            Console.WriteLine($" {menuItem.ID}");
+                                        }
                                     }
                                     Console.WriteLine("\nSoepen: ");
 
@@ -142,6 +158,10 @@ namespace Main
                                     {
                                         if (menuItem.Categorie == "DinerSoep")
                                             Console.WriteLine($"{menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                        if (gebruiker == "personeel" && menuItem.Categorie == "DinerSoep")
+                                        {
+                                            Console.WriteLine($" {menuItem.ID}");
+                                        }
                                     }
                                     Console.WriteLine("\n[0] Terug");
                                     Console.WriteLine("╘══════════════════════════════════════════╛");
@@ -167,6 +187,10 @@ namespace Main
                                     {
                                         if (menuItem.Categorie == "DinerHoofdgerecht")
                                             Console.WriteLine($"{menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                        if (gebruiker == "personeel" && menuItem.Categorie == "DinerHoofdgerecht")
+                                        {
+                                            Console.WriteLine($" {menuItem.ID}");
+                                        }
                                     }
                                     Console.WriteLine("\nSushi: ");
 
@@ -174,6 +198,10 @@ namespace Main
                                     {
                                         if (menuItem.Categorie == "DinerSushi")
                                             Console.WriteLine($"{menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                        if (gebruiker == "personeel" && menuItem.Categorie == "DinerSushi")
+                                        {
+                                            Console.WriteLine($" {menuItem.ID}");
+                                        }
                                     }
                                     Console.WriteLine("\n[0] Terug");
                                     Console.WriteLine("╘══════════════════════════════════════════╛");
@@ -200,6 +228,10 @@ namespace Main
                                     {
                                         if (menuItem.Categorie == "DinerNagerecht")
                                             Console.WriteLine($"{menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                        if (gebruiker == "personeel" && menuItem.Categorie == "DinerNagerecht")
+                                        {
+                                            Console.WriteLine($" {menuItem.ID}");
+                                        }
                                     }
                                     Console.WriteLine("\n[0] Terug");
                                     Console.WriteLine("╘══════════════════════════════════════════╛");
@@ -245,6 +277,10 @@ namespace Main
                                     {
                                         if (menuItem.Categorie == "DrinkenWarm")
                                             Console.WriteLine($"{menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                        if (gebruiker == "personeel" && menuItem.Categorie == "DrinkenWarm")
+                                        {
+                                            Console.WriteLine($" {menuItem.ID}");
+                                        }
                                     }
                                     Console.WriteLine("\nKoude drankjes: ");
 
@@ -252,6 +288,10 @@ namespace Main
                                     {
                                         if (menuItem.Categorie == "DrinkenKoud")
                                             Console.WriteLine($"{menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                             if (gebruiker == "personeel" && menuItem.Categorie == "DrinkenKoud") 
+                                        {
+                                            Console.WriteLine($" {menuItem.ID}");
+                                        }
                                     }
                                     Console.WriteLine("\n[0] Terug");
                                     Console.WriteLine("╘══════════════════════════════════════════╛");
@@ -279,18 +319,30 @@ namespace Main
                                     {
                                         if (menuItem.Categorie == "DrinkenBier")
                                             Console.WriteLine($"{menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                        if (gebruiker == "personeel" && menuItem.Categorie == "DrinkenBier")
+                                        {
+                                            Console.WriteLine($" {menuItem.ID}");
+                                        }
                                     }
                                     Console.WriteLine("Wijn:\n");
                                     foreach (Menu menuItem in menuList)
                                     {
                                         if (menuItem.Categorie == "DrinkenWijn")
                                             Console.WriteLine($"{menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                        if (gebruiker == "personeel" && menuItem.Categorie == "DrinkenWijn")
+                                        {
+                                            Console.WriteLine($" {menuItem.ID}");
+                                        }
                                     }
                                     Console.WriteLine("Cocktail:\n");
                                     foreach (Menu menuItem in menuList)
                                     {
                                         if (menuItem.Categorie == "DrinkenCocktail")
                                             Console.WriteLine($"{menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                        if (gebruiker == "personeel" && menuItem.Categorie == "DrinkenCocktail")
+                                        {
+                                            Console.WriteLine($" {menuItem.ID}");
+                                        }
                                     }
 
                                     Console.WriteLine("\n[0] Terug");

@@ -17,7 +17,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
         public string Datum { get; set; }
     }
 
-    public class Reservering
+    public class Reserveringen
     {
         public static void AddReserveringen()
         {

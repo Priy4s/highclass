@@ -76,7 +76,7 @@ namespace Main
                         ConsoleKeyInfo cvjkey = Console.ReadKey();
                         if (cvjkey.Key == ConsoleKey.D1)
                         {
-                            Reserveringen.Plekken(); // Roept de method (achter de punt) van de file (voor de punt) op.
+                            Reserveringenoud.Plekken(); // Roept de method (achter de punt) van de file (voor de punt) op.
                         }
                         else if (cvjkey.Key == ConsoleKey.D2)
                         {
@@ -116,16 +116,16 @@ namespace Main
                             ConsoleKeyInfo cv2key = Console.ReadKey();
                             if (cv2key.Key == ConsoleKey.D1)
                             {
-                                Reserveringen.Wijzigen();
+                                Reserveringenoud.Wijzigen();
                             }
                             else if (cv2key.Key == ConsoleKey.D2)
                             {
-                                Reserveringen.Annuleren();
+                                Reserveringenoud.Annuleren();
                             }
                         }
                         else if (cvkey.Key == ConsoleKey.D2)
                         {
-                            Reserveringen.Reserveren();
+                            Reserveringen.AddReserveringen();
                         }
                     }
                 }
