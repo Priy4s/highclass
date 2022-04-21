@@ -62,17 +62,17 @@ namespace Main
             string telefoonnummerIN = Console.ReadLine();
             Console.WriteLine("Wat is uw e-mail?");
             string eMailIN = Console.ReadLine();
-            Console.WriteLine("Wat is uw functie?\n\t[1]Admin\n\t[2]Mederwerker");
+            Console.WriteLine("Wat is uw functie?\n\t[1]Admin\n\t[2]Personeel");
             ConsoleKeyInfo AKey = Console.ReadKey();
             ClearCurrentConsoleLine();
             string functieIN = "";
             if (AKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
             {
-                functieIN = "Admin";
+                functieIN = "admin";
             }
             else if (AKey.Key == ConsoleKey.D2)
             {
-                functieIN = "Mederwerker";
+                functieIN = "personeel";
             }
             Console.WriteLine("Voer uw gebruikersnaam in:");
             string gebruikersnaamIN = Console.ReadLine();

@@ -4,7 +4,7 @@
     "pronouns": "zij/haar",
     "telefoonnummer": "0640919997",
     "eMail": "yvonnemaan@gmail.com",
-    "functie": null,
+    "functie": "personeel",
     "gebruikersnaam": "yvon",
     "wachtwoord": "yvon123"
   },
@@ -13,8 +13,17 @@
     "pronouns": "hij/hem",
     "telefoonnummer": "0649494949",
     "eMail": "henkie@gmail.nl",
-    "functie": "",
+    "functie": "admin",
     "gebruikersnaam": "admin",
     "wachtwoord": "admin123"
+  },
+  {
+    "naam": "Samantha Kim",
+    "pronouns": "zij/haar",
+    "telefoonnummer": "0627385748",
+    "eMail": "sam@hotmail.com",
+    "functie": "admin",
+    "gebruikersnaam": "sam",
+    "wachtwoord": "sam123"
   }
 ]
