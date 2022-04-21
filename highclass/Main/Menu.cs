@@ -22,7 +22,7 @@ namespace Main
         {
 
             {
-                string menuPath = Path.GetFullPath(@"json1.json"); // find path to files
+                string menuPath = Path.GetFullPath(@"Menu.json"); // find path to files
 
                 var JsonData = File.ReadAllText(menuPath);
                 var menuList = JsonConvert.DeserializeObject<List<Menu>>(JsonData) ?? new List<Menu>();
@@ -418,7 +418,7 @@ namespace Main
         }
         public static void verwijderen()
         {
-            string menuPath = Path.GetFullPath(@"json1.json"); // find path to files
+            string menuPath = Path.GetFullPath(@"Menu.json"); // find path to files
 
             var JsonData = File.ReadAllText(menuPath);
             var menuList = JsonConvert.DeserializeObject<List<Menu>>(JsonData) ?? new List<Menu>();
@@ -436,7 +436,7 @@ namespace Main
         }
         public static void toevoegen()
         {
-            string menuPath = Path.GetFullPath(@"json1.json"); // find path to files
+            string menuPath = Path.GetFullPath(@"Menu.json"); // find path to files
 
             var JsonData = File.ReadAllText(menuPath);
             var menuList = JsonConvert.DeserializeObject<List<Menu>>(JsonData) ?? new List<Menu>();
