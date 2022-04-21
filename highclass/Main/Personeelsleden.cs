@@ -62,18 +62,16 @@ namespace Main
             {
                 Admin.adminMain();
             }
-            else if (ckey.Key == ConsoleKey.D1 && gebruiker == "personeel") { 
+            else if (ckey.Key == ConsoleKey.D1 && gebruiker == "personeel") {
                 getMenu.gettingMenu("personeel");
             }
-<<<<<<< Updated upstream
-            else if(ckey.Key == ConsoleKey.D2)
+            else if (ckey.Key == ConsoleKey.D2)
             {
                 MenuAanpassen.mainAanpassen();
-=======
+            }
             else if (ckey.Key == ConsoleKey.D1 && gebruiker == "admin")
             {
                 getMenu.gettingMenu("admin");
->>>>>>> Stashed changes
             }
         }
     }
