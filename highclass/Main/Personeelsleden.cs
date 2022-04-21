@@ -35,7 +35,7 @@ namespace Main
                 Program.Main();
             }
         }
-        public static void reserverenMain()
+        public static void reserverenMain(string gebruiker = "personeel")
         {
             Console.Clear();
             Console.WriteLine("Reserveren menu - personeel");
@@ -46,7 +46,7 @@ namespace Main
                 personeelMain();
             }
         }
-        public static void menuMain()
+        public static void menuMain(string gebruiker = "personeel")
         {
             Console.Clear();
             Console.WriteLine("       Menu menu - personeel");
@@ -54,16 +54,26 @@ namespace Main
             Console.WriteLine("         [2] Pas menu aan            ");
             Console.WriteLine("         [0] Terug            ");
             ConsoleKeyInfo ckey = Console.ReadKey();
-            if (ckey.Key == ConsoleKey.D0)
+            if (ckey.Key == ConsoleKey.D0 && gebruiker == "personeel")
             {
                 personeelMain();
             }
-            else if (ckey.Key == ConsoleKey.D1) { 
+            else if (ckey.Key == ConsoleKey.D0 && gebruiker == "admin")
+            {
+                Admin.adminMain();
+            }
+            else if (ckey.Key == ConsoleKey.D1 && gebruiker == "personeel") { 
                 getMenu.gettingMenu("personeel");
             }
+<<<<<<< Updated upstream
             else if(ckey.Key == ConsoleKey.D2)
             {
                 MenuAanpassen.mainAanpassen();
+=======
+            else if (ckey.Key == ConsoleKey.D1 && gebruiker == "admin")
+            {
+                getMenu.gettingMenu("admin");
+>>>>>>> Stashed changes
             }
         }
     }
