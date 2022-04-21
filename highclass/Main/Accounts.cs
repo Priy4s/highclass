@@ -63,17 +63,16 @@ namespace Main
             Console.WriteLine("Wat is uw e-mail?");
             string eMailIN = Console.ReadLine();
             Console.WriteLine("Wat is uw functie?\n\t[1]Admin\n\t[2]Mederwerker");
-            _ = Console.ReadKey();
-            Console.SetCursorPosition(0, Console.CursorTop);
+            ConsoleKeyInfo AKey = Console.ReadKey();
             ClearCurrentConsoleLine();
             string functieIN = "";
-            if (ckey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
+            if (AKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
             {
-                pronounsIN = "hij/hem";
+                functieIN = "Admin";
             }
-            else if (ckey.Key == ConsoleKey.D2)
+            else if (AKey.Key == ConsoleKey.D2)
             {
-                pronounsIN = "zij/haar";
+                functieIN = "Mederwerker";
             }
             Console.WriteLine("Voer uw gebruikersnaam in:");
             string gebruikersnaamIN = Console.ReadLine();
@@ -163,15 +162,6 @@ namespace Main
                         Console.WriteLine("hallo");
                     }
                 }
-            }
-            Console.WriteLine("Er is een fout ontstaan. ");
-            Console.WriteLine("Ga terug en probeer opnieuw in te loggen ");
-            Console.WriteLine("[0] Terug ");
-            Console.WriteLine("╘═══════════════════════════════╛");
-            ConsoleKeyInfo hallo = Console.ReadKey();
-            if (ConsoleKey.D0 == hallo.Key)
-            {
-                Console.WriteLine("hallo");
             }
         }
         public static void Aanmelden()

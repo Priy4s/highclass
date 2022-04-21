@@ -102,3 +102,4 @@ C:\Users\Yvonn\OneDrive\Documents\GitHub\highclasss\highclass\obj\Debug\net5.0\H
 C:\Users\Yvonn\OneDrive\Documents\GitHub\highclasss\highclass\obj\Debug\net5.0\ref\HighClass.dll
 C:\Users\Yvonn\OneDrive\Documents\GitHub\highclasss\highclass\obj\Debug\net5.0\HighClass.pdb
 C:\Users\Yvonn\OneDrive\Documents\GitHub\highclasss\highclass\obj\Debug\net5.0\HighClass.genruntimeconfig.cache
+C:\Users\Yvonn\OneDrive\Documents\GitHub\highclasss\highclass\obj\Debug\net5.0\HighClass.csproj.AssemblyReference.cache
