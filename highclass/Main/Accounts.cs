@@ -62,17 +62,17 @@ namespace Main
             string telefoonnummerIN = Console.ReadLine();
             Console.WriteLine("Wat is uw e-mail?");
             string eMailIN = Console.ReadLine();
-            Console.WriteLine("Wat is uw functie?\n\t[1]Admin\n\t[2]Personeel");
+            Console.WriteLine("Wat is uw functie?\n\t[1]Admin\n\t[2]Mederwerker");
             ConsoleKeyInfo AKey = Console.ReadKey();
             ClearCurrentConsoleLine();
             string functieIN = "";
             if (AKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
             {
-                functieIN = "admin";
+                functieIN = "Admin";
             }
             else if (AKey.Key == ConsoleKey.D2)
             {
-                functieIN = "personeel";
+                functieIN = "Mederwerker";
             }
             Console.WriteLine("Voer uw gebruikersnaam in:");
             string gebruikersnaamIN = Console.ReadLine();
@@ -93,7 +93,6 @@ namespace Main
 
             JsonData = JsonConvert.SerializeObject(MederwerkerList);
             System.IO.File.WriteAllText(medewerkerPath, JsonData);
-            Console.WriteLine("Opgeslagen!");
         }
 
         private static void ClearCurrentConsoleLine()
@@ -106,15 +105,14 @@ namespace Main
         public static void Inloggen()
         {
             Console.Clear();
-            Console.WriteLine("╒════════════════════╕");
+            Console.WriteLine("╒══════════════════════════╕");
             Console.WriteLine("HC   ");
             Console.WriteLine(" ");
             Console.WriteLine("     |Inloggen|");
             Console.WriteLine(" ");
             Console.WriteLine("Gebruikersnaam: ");
             string gebruikersnaamCheck = Console.ReadLine();
-            Console.WriteLine("Wachtwoord: ");
-            string wachtwoordCheck = Console.ReadLine();
+
 
             string medewerkerPath = Path.GetFullPath(@"Medewerker.json"); // find path to file
             var JsonData = File.ReadAllText(medewerkerPath); // file can be found in the bin => just keep clicking until you find all extra files
@@ -124,12 +122,14 @@ namespace Main
             {
                 if (gebruikersnaamCheck == accountList.gebruikersnaam)
                 {
+                    Console.WriteLine("Wachtwoord: ");
+                    string wachtwoordCheck = Console.ReadLine();
                     if (wachtwoordCheck == accountList.wachtwoord)
                     {
                         Console.WriteLine(" ");
                         Console.WriteLine("    Ingelogd");
                         Console.WriteLine("[1] Doorgaan");
-                        Console.WriteLine("╘════════════════════╛");
+                        Console.WriteLine("╘══════════════════════════╛");
 
                         ConsoleKeyInfo terug = Console.ReadKey();
                         if (ConsoleKey.D1 == terug.Key)
@@ -142,54 +142,29 @@ namespace Main
                         Console.WriteLine(" ");
                         Console.WriteLine("   Fout Wachtwoord");
                         Console.WriteLine("   [0] Terug ");
-                        Console.WriteLine("╘════════════════════╛");
+                        Console.WriteLine("╘══════════════════════════╛");
                         ConsoleKeyInfo terug = Console.ReadKey();
                         if (ConsoleKey.D0 == terug.Key)
                         {
-                            Console.WriteLine("hallo");
+                            Program.Main();
                         }
                     }
                 }
-                else
-                {
-                    Console.WriteLine(" ");
-                    Console.WriteLine("   Fout gebruikersnaam");
-                    Console.WriteLine("[0] Terug");
-                    Console.WriteLine("╘════════════════════╛");
-                    ConsoleKeyInfo terug = Console.ReadKey();
-                    if (ConsoleKey.D0 == terug.Key)
-                    {
-                        Console.WriteLine("hallo");
-                    }
-                }
             }
-        }
-        public static void Aanmelden()
-        {
-            Console.Clear();
-            string gebruikersnaam; string wachtwoord;
-            Console.WriteLine("╒═══════════════════════════════╕");
-            Console.WriteLine("HC   ");
-            Console.WriteLine("Gebruikersnaam: ");
-            gebruikersnaam = Console.ReadLine();
-            Globals.gebruikersnamen.Add(gebruikersnaam); // Voegt de ingevulde gebruikersnaam toe aan de lijst 
-            Console.WriteLine("Wachtwoord: ");
-            wachtwoord = Console.ReadLine();
-            Globals.wachtwoorden.Add(wachtwoord); // Voegt het ingevulde wachtwoord toe aan de lijst op dezelfde plek als de gebruikersnaam (maar in een andere lijst).
-            Console.WriteLine("╘═══════════════════════════════╛");
-            Console.Clear();
-
-            while (true)
+            Console.WriteLine(" ");
+            Console.WriteLine("Gebruikersnaam bestaat niet");
+            Console.WriteLine("[0] Terug");
+            Console.WriteLine("[1] Maak een account aan");
+            Console.WriteLine("╘══════════════════════════╛");
+            ConsoleKeyInfo begin = Console.ReadKey();
+            if (ConsoleKey.D0 == begin.Key)
             {
-                Console.WriteLine("Account is succesvol aangemaakt.\n\nKlik op 'Enter' om in te loggen.");
-                ConsoleKeyInfo done = Console.ReadKey();
-                Console.WriteLine("╘═══════════════════════════════╛");
-                if (done.Key == ConsoleKey.Enter)
-                {
-                    break;
-                }
+                Program.Main();
             }
-            Inloggen();
+            else if (ConsoleKey.D1 == begin.Key)
+            {
+                Medewerkers.AddMederwerker();
+            }
         }
         public static bool Uitloggen()
         {

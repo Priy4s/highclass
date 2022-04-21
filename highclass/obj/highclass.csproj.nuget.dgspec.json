@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\HighClass.csproj": {}
+    "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\highclass\\HighClass.csproj": {}
   },
   "projects": {
-    "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\HighClass.csproj": {
+    "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\highclass\\HighClass.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\HighClass.csproj",
+        "projectUniqueName": "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\highclass\\HighClass.csproj",
         "projectName": "HighClass",
-        "projectPath": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\HighClass.csproj",
-        "packagesPath": "C:\\Users\\priya\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\obj\\",
+        "projectPath": "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\highclass\\HighClass.csproj",
+        "packagesPath": "C:\\Users\\Yvonn\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\highclass\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\priya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Yvonn\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,6 +55,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[5.0.14, 5.0.14]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
