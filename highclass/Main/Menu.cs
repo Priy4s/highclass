@@ -426,13 +426,29 @@ namespace Main
             Console.WriteLine("Wat is Menu Item ID?");
             int zoekID = Convert.ToInt32(Console.ReadLine());
 
-            foreach (Menu menuItem in menuList)
-            {
-                if (menuItem.ID == zoekID)
+            int len = menuList.Count;
+            int i = 0;
+            int count = 0;
+            while( i < len){
+                if(menuList[i].ID == zoekID)
                 {
-                    Console.WriteLine($"Menu Item met ID {zoekID} is verwijderd");
+                    menuList.RemoveAt(i);
+                    Console.WriteLine($"Menu Item met ID { zoekID} is verwijderd");
+
+                    count++;
+                    break;
                 }
+                i++;
             }
+            
+            if(count == 0)
+            {
+                Console.WriteLine("Menu Item ID bestaat niet. Probeer opnieuw.");
+                verwijderen();
+            }
+
+            JsonData = JsonConvert.SerializeObject(menuList);
+            System.IO.File.WriteAllText(menuPath, JsonData);
         }
         public static void toevoegen()
         {
