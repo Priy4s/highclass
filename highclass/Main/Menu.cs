@@ -429,19 +429,40 @@ namespace Main
             int len = menuList.Count;
             int i = 0;
             int count = 0;
-            while( i < len){
-                if(menuList[i].ID == zoekID)
-                {
-                    menuList.RemoveAt(i);
-                    Console.WriteLine($"Menu Item met ID { zoekID} is verwijderd");
-
-                    count++;
-                    break;
-                }
-                i++;
+            string naamGerecht = "";
+            foreach (Menu menuItem in menuList)
+            {
+                if (menuItem.ID == zoekID)
+                    naamGerecht = menuItem.Naam;
             }
-            
-            if(count == 0)
+            Console.WriteLine("Weet je zeker dat je: " + naamGerecht +  " wil verwijderen?");
+            Console.WriteLine("[1] Ja\n[2] Nee");
+            ConsoleKeyInfo readkey = Console.ReadKey();
+            if (readkey.Key == ConsoleKey.D1)
+            {
+
+
+                while (i < len)
+                {
+                    if (menuList[i].ID == zoekID)
+                    {
+                        menuList.RemoveAt(i);
+                        Console.WriteLine($"Menu Item met ID { zoekID} is verwijderd");
+
+                        count++;
+                        break;
+                    }
+                    i++;
+                }
+
+            }
+            else
+            {
+                mainAanpassen();
+            }
+
+
+            if (count == 0)
             {
                 Console.WriteLine("Menu Item ID bestaat niet. Probeer opnieuw.");
                 verwijderen();
@@ -449,6 +470,15 @@ namespace Main
 
             JsonData = JsonConvert.SerializeObject(menuList);
             System.IO.File.WriteAllText(menuPath, JsonData);
+
+            Console.WriteLine("Succesvol verwijderd!");
+            Console.WriteLine("[1] Doorgaan");
+            ConsoleKeyInfo keus = Console.ReadKey();
+            if (keus.Key == ConsoleKey.D1)
+            {
+                Personeelsleden.menuMain();
+            }
+
         }
         public static void toevoegen()
         {

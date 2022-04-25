@@ -14,7 +14,7 @@ namespace Main
 
             Console.WriteLine("╒══════════════════════════════╕");
             Console.WriteLine("│                              │");
-            Console.WriteLine("│       Welkom, 'naam '        │");
+            Console.WriteLine("│       Welkom, personeel      │");
             Console.WriteLine("│                              │");
             Console.WriteLine("│         |Hoofdmenu|          │");
             Console.WriteLine("│       [1] Reserveringen      │");
@@ -51,7 +51,7 @@ namespace Main
             Console.Clear();
             Console.WriteLine("       Menu menu - personeel");
             Console.WriteLine("         [1] Bekijk menu           ");
-            Console.WriteLine("         [2] Pas menu aan            ");
+            Console.WriteLine("         [2] Aanpassen menu           ");
             Console.WriteLine("         [0] Terug            ");
             ConsoleKeyInfo ckey = Console.ReadKey();
             if (ckey.Key == ConsoleKey.D0 && gebruiker == "personeel")

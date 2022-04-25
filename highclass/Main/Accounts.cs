@@ -132,9 +132,13 @@ namespace Main
                         Console.WriteLine("╘══════════════════════════╛");
 
                         ConsoleKeyInfo terug = Console.ReadKey();
-                        if (ConsoleKey.D1 == terug.Key)
+                        if (ConsoleKey.D1 == terug.Key && accountList.functie == "personeel")
                         {
-                            Personeelsleden.personeelMain();
+                                Personeelsleden.personeelMain();
+                        }
+                        else if (ConsoleKey.D1 == terug.Key && accountList.functie == "admin")
+                        {
+                            Admin.adminMain();
                         }
                     }
                     else
