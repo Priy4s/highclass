@@ -106,22 +106,20 @@ namespace Main
                             Console.WriteLine("│                                    │");
                             Console.WriteLine("│ Wilt u deze wijzigen of annuleren? │");
                             Console.WriteLine("│                                    │");
-                            Console.WriteLine("│              [1] Ja                │");
-                            Console.WriteLine("│              [2] Nee               │");
+                            Console.WriteLine("│            [1] Wijzigen            │");
+                            Console.WriteLine("│            [2] Annuleren           │");
                             Console.WriteLine("│                                    │");
                             Console.WriteLine("╘════════════════════════════════════╛");
-                            Console.WriteLine("Wilt u deze wijzigen of annuleren?");
-                            string vraag2 = "[1] Wijzigen\n[2] Annuleren";
-                            Console.WriteLine(vraag2);
                             ConsoleKeyInfo cv2key = Console.ReadKey();
                             if (cv2key.Key == ConsoleKey.D1)
                             {
-                                Reserveringenoud.Wijzigen();
+                                Reserveringen.WijzigReservering();
                             }
                             else if (cv2key.Key == ConsoleKey.D2)
                             {
                                 Reserveringenoud.Annuleren();
                             }
+
                         }
                         else if (cvkey.Key == ConsoleKey.D2)
                         {
