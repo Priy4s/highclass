@@ -113,6 +113,8 @@ namespace Main
             Console.WriteLine("Gebruikersnaam: ");
             string gebruikersnaamCheck = Console.ReadLine();
 
+            Console.WriteLine("Wachtwoord: ");
+            string wachtwoordCheck = Console.ReadLine();
 
             string medewerkerPath = Path.GetFullPath(@"Medewerker.json"); // find path to file
             var JsonData = File.ReadAllText(medewerkerPath); // file can be found in the bin => just keep clicking until you find all extra files
@@ -120,54 +122,39 @@ namespace Main
 
             foreach (MedewerkerINFO accountList in MederwerkerList)
             {
-                if (gebruikersnaamCheck == accountList.gebruikersnaam)
+                if (gebruikersnaamCheck == accountList.gebruikersnaam && wachtwoordCheck == accountList.wachtwoord)
                 {
-                    Console.WriteLine("Wachtwoord: ");
-                    string wachtwoordCheck = Console.ReadLine();
-                    if (wachtwoordCheck == accountList.wachtwoord)
-                    {
-                        Console.WriteLine(" ");
-                        Console.WriteLine("    Ingelogd");
-                        Console.WriteLine("[1] Doorgaan");
-                        Console.WriteLine("╘══════════════════════════╛");
+                    Console.WriteLine(" ");
+                    Console.WriteLine("    Ingelogd");
+                    Console.WriteLine("[1] Doorgaan");
+                    Console.WriteLine("╘══════════════════════════╛");
 
-                        ConsoleKeyInfo terug = Console.ReadKey();
-                        if (ConsoleKey.D1 == terug.Key && accountList.functie == "personeel")
-                        {
-                                Personeelsleden.personeelMain();
-                        }
-                        else if (ConsoleKey.D1 == terug.Key && accountList.functie == "admin")
-                        {
-                            Admin.adminMain();
-                        }
-                    }
-                    else
+                    ConsoleKeyInfo terug = Console.ReadKey();
+                    if (ConsoleKey.D1 == terug.Key && accountList.functie == "personeel")
                     {
-                        Console.WriteLine(" ");
-                        Console.WriteLine("   Fout Wachtwoord");
-                        Console.WriteLine("   [0] Terug ");
-                        Console.WriteLine("╘══════════════════════════╛");
-                        ConsoleKeyInfo terug = Console.ReadKey();
-                        if (ConsoleKey.D0 == terug.Key)
-                        {
-                            Program.Main();
-                        }
+                        Personeelsleden.personeelMain();
+                    }
+                    else if (ConsoleKey.D1 == terug.Key && accountList.functie == "admin")
+                    {
+                        Admin.adminMain();
                     }
                 }
-            }
-            Console.WriteLine(" ");
-            Console.WriteLine("Gebruikersnaam bestaat niet");
-            Console.WriteLine("[0] Terug");
-            Console.WriteLine("[1] Maak een account aan");
-            Console.WriteLine("╘══════════════════════════╛");
-            ConsoleKeyInfo begin = Console.ReadKey();
-            if (ConsoleKey.D0 == begin.Key)
-            {
-                Program.Main();
-            }
-            else if (ConsoleKey.D1 == begin.Key)
-            {
-                Medewerkers.AddMederwerker();
+                else
+                {
+                    Console.WriteLine("Gebruikersnaam en of wachtwoord is verkeerd");
+                    Console.WriteLine("[0] Terug");
+                    Console.WriteLine("[1] Maak een account aan");
+                    Console.WriteLine("╘══════════════════════════╛");
+                    ConsoleKeyInfo begin = Console.ReadKey();
+                    if (ConsoleKey.D0 == begin.Key)
+                    {
+                        Program.Main();
+                    }
+                    else if (ConsoleKey.D1 == begin.Key)
+                    {
+                        Medewerkers.AddMederwerker();
+                    }
+                }
             }
         }
         public static bool Uitloggen()
