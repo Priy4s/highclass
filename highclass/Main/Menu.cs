@@ -405,7 +405,7 @@ namespace Main
         public static void mainAanpassen()
         {
             Console.Clear();
-            Console.WriteLine("[1] Menu Item verwijderen \n[2] Menu Item toevoegen");
+            Console.WriteLine("[1] Menu Item verwijderen \n[2] Menu Item toevoegen\n");
             ConsoleKeyInfo readkey = Console.ReadKey();
             if (readkey.Key == ConsoleKey.D1)
             {
@@ -418,6 +418,7 @@ namespace Main
         }
         public static void verwijderen()
         {
+            Console.Clear();
             string menuPath = Path.GetFullPath(@"Menu.json"); // find path to files
 
             var JsonData = File.ReadAllText(menuPath);
@@ -482,6 +483,7 @@ namespace Main
         }
         public static void toevoegen()
         {
+            Console.Clear();
             string menuPath = Path.GetFullPath(@"Menu.json"); // find path to files
 
             var JsonData = File.ReadAllText(menuPath);
