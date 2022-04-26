@@ -13,7 +13,7 @@ namespace Main
 
             Console.WriteLine("╒══════════════════════════════╕");
             Console.WriteLine("│                              │");
-            Console.WriteLine("│       Welkom, admin          │");
+            Console.WriteLine("│        Welkom, admin         │");
             Console.WriteLine("│                              │");
             Console.WriteLine("│         |Hoofdmenu|          │");
             Console.WriteLine("│       [1] Reserveringen      │");
@@ -52,7 +52,7 @@ namespace Main
 
         public static void adminOmzet()
         {
-            Console.WriteLine("Omzet komen hier");
+            Console.WriteLine("Omzet komt hier");
         }
     }
 }
