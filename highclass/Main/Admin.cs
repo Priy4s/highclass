@@ -52,7 +52,41 @@ namespace Main
 
         public static void adminOmzet()
         {
-            Console.WriteLine("Omzet komt hier");
+            Console.Clear();
+            Console.WriteLine("Omzet");
+            Console.WriteLine(" [1] Omzet bekijken\n [2] Besetellingen toevoegen\n [0] Terug");
+            ConsoleKeyInfo keuze = Console.ReadKey();
+            if (keuze.Key == ConsoleKey.D1)
+            {
+                Console.Clear();
+                Console.WriteLine("╒══════════════════════════════════════════════════════════╕");
+                Console.WriteLine("│HC                                                        │");
+                Console.WriteLine("│                         |Omzet|                          │");
+                Console.WriteLine("│                                                          │");
+                Console.WriteLine("│                   De huidige omzet is:                   │");
+                Console.WriteLine("│                         - euro                           │");
+                Console.WriteLine("│                       [0] Terug                          │");
+                Console.WriteLine("╘══════════════════════════════════════════════════════════╛");
+                ConsoleKeyInfo done = Console.ReadKey();
+                if (done.Key == ConsoleKey.D0)
+                {
+                    adminOmzet();
+                }
+            }
+            else if (keuze.Key == ConsoleKey.D2)
+            {
+                Console.Clear();
+                Console.WriteLine("Bestelling toevoegen zal hier komen\nDruk op 0 om terug te gaan.");
+                ConsoleKeyInfo keuzeterug = Console.ReadKey();
+                if (keuzeterug.Key == ConsoleKey.D0)
+                {
+                    adminOmzet();
+                }
+            }
+            else
+            {
+                adminMain();
+            }
         }
     }
 }

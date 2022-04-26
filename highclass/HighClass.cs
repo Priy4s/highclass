@@ -46,8 +46,7 @@ namespace Main
                 Console.WriteLine("│       [1] Reserveren         │");
                 Console.WriteLine("│       [2] Menu               │");
                 Console.WriteLine("│       [3] Account            │");
-                Console.WriteLine("│       [4] Omzet              │");
-                Console.WriteLine("│       [5] Contact            │");
+                Console.WriteLine("│       [4] Contact            │");
                 Console.WriteLine("│                              │");
                 Console.WriteLine("│                              │");
                 Console.WriteLine("│                              │");
@@ -137,10 +136,6 @@ namespace Main
                 }
                 else if (ckey.Key == ConsoleKey.D4)
                 {
-                    Omzet();
-                }
-                else if (ckey.Key == ConsoleKey.D5)
-                {
                     Contactgegevens();
                 }
                 else if (ckey.Key == ConsoleKey.D0)
@@ -169,52 +164,6 @@ namespace Main
                 {
                     break;
                 }
-            }
-        }
-
-        static void Omzet()
-        {
-            Console.Clear();
-            if (Globals.ingelogd == true)
-            {
-                double omzet = 50 * Globals.taken_seats;
-                while (true)
-                {
-                    Console.WriteLine("╒══════════════════════════════════════════════════════════╕");
-                    Console.WriteLine("│HC                                                        │");
-                    Console.WriteLine("│                         |Omzet|                          │");
-                    Console.WriteLine("│                                                          │");
-                    Console.WriteLine("│ Als we ervan uitgaan dat een klant 50 euro zal uitgeven, │");
-                    Console.WriteLine($"│        wordt de omzet van vandaag: {omzet} euro.         │");
-                    Console.WriteLine("│                                                          │");
-                    Console.WriteLine("╘══════════════════════════════════════════════════════════╛");
-                    ConsoleKeyInfo done = Console.ReadKey();
-                    if (done.Key == ConsoleKey.Enter)
-                    {
-                        break;
-                    }
-                }
-            }
-            else
-            {
-                while (true)
-                {
-                    Console.WriteLine("╒══════════════════════════════════════════════════════════════════════════╕");
-                    Console.WriteLine("│HC                                                                        │");
-                    Console.WriteLine("│                                  |Omzet|                                 │");
-                    Console.WriteLine("│                                                                          │");
-                    Console.WriteLine("│              Alleen medewerkers kunnen de omzet bekijken.                │");
-                    Console.WriteLine("│ Klik op 'Enter' om in te loggen en probeer opnieuw de omzet te bekijken. │");
-                    Console.WriteLine("│                                                                          │");
-                    Console.WriteLine("╘══════════════════════════════════════════════════════════════════════════╛");
-                    ConsoleKeyInfo done = Console.ReadKey();
-                    if (done.Key == ConsoleKey.Enter)
-                    {
-                        break;
-                    }
-                }
-                Console.Clear();
-                Medewerkers.AddMederwerker();
             }
         }
     }

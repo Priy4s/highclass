@@ -119,7 +119,7 @@ namespace Main
             string medewerkerPath = Path.GetFullPath(@"Medewerker.json"); // find path to file
             var JsonData = File.ReadAllText(medewerkerPath); // file can be found in the bin => just keep clicking until you find all extra files
             var MederwerkerList = JsonConvert.DeserializeObject<List<MedewerkerINFO>>(JsonData) ?? new List<MedewerkerINFO>();
-
+            int count = 0;
             foreach (MedewerkerINFO accountList in MederwerkerList)
             {
                 if (gebruikersnaamCheck == accountList.gebruikersnaam && wachtwoordCheck == accountList.wachtwoord)
@@ -128,7 +128,7 @@ namespace Main
                     Console.WriteLine("    Ingelogd");
                     Console.WriteLine("[1] Doorgaan");
                     Console.WriteLine("╘══════════════════════════╛");
-
+                    count++;
                     ConsoleKeyInfo terug = Console.ReadKey();
                     if (ConsoleKey.D1 == terug.Key && accountList.functie == "personeel")
                     {
@@ -139,21 +139,21 @@ namespace Main
                         Admin.adminMain();
                     }
                 }
-                else
+            }
+            if(count == 0)
+            {
+                Console.WriteLine("Gebruikersnaam en of wachtwoord is verkeerd");
+                Console.WriteLine("[0] Terug");
+                Console.WriteLine("[1] Maak een account aan");
+                Console.WriteLine("╘══════════════════════════╛");
+                ConsoleKeyInfo begin = Console.ReadKey();
+                if (ConsoleKey.D0 == begin.Key)
                 {
-                    Console.WriteLine("Gebruikersnaam en of wachtwoord is verkeerd");
-                    Console.WriteLine("[0] Terug");
-                    Console.WriteLine("[1] Maak een account aan");
-                    Console.WriteLine("╘══════════════════════════╛");
-                    ConsoleKeyInfo begin = Console.ReadKey();
-                    if (ConsoleKey.D0 == begin.Key)
-                    {
-                        Program.Main();
-                    }
-                    else if (ConsoleKey.D1 == begin.Key)
-                    {
-                        Medewerkers.AddMederwerker();
-                    }
+                    Program.Main();
+                }
+                else if (ConsoleKey.D1 == begin.Key)
+                {
+                    Medewerkers.AddMederwerker();
                 }
             }
         }
