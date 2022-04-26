@@ -94,7 +94,68 @@ namespace Main
             JsonData = JsonConvert.SerializeObject(MederwerkerList);
             System.IO.File.WriteAllText(medewerkerPath, JsonData);
         }
+        public static void verwijderMedewerker()
+        {
+            Console.Clear();
+            string MedewerkerPath = Path.GetFullPath(@"Menu.json"); // find path to files
 
+            var JsonData = File.ReadAllText(MedewerkerPath);
+            var MedewerkersList = JsonConvert.DeserializeObject<List<MedewerkerINFO>>(JsonData) ?? new List<MedewerkerINFO>();
+
+            Console.WriteLine("Wat is naam van de medewerker?");
+            string zoekNaam = Console.ReadLine();
+
+            int len = MedewerkersList.Count;
+            int i = 0;
+            int count = 0;
+            string medewerkerNaam = "";
+            foreach (MedewerkerINFO person in MedewerkersList)
+            {
+                if (person.naam == zoekNaam)
+                    medewerkerNaam = person.naam;
+            }
+            Console.WriteLine("Weet je zeker dat je: " + medewerkerNaam + " wil verwijderen?");
+            Console.WriteLine("[1] Ja\n[2] Nee");
+            ConsoleKeyInfo readkey = Console.ReadKey();
+            if (readkey.Key == ConsoleKey.D1)
+            {
+                while (i < len)
+                {
+                    if (MedewerkersList[i].naam == zoekNaam)
+                    {
+                        MedewerkersList.RemoveAt(i);
+                        Console.WriteLine($"Medewerker met naam: {zoekNaam} is verwijderd");
+
+                        count++;
+                        break;
+                    }
+                    i++;
+                }
+
+            }
+            else
+            {
+                Personeelsleden.menuMain();
+            }
+
+
+            if (count == 0)
+            {
+                Console.WriteLine("Medewerker met die naam bestaat niet. Probeer opnieuw.");
+                verwijderMedewerker();
+            }
+
+            JsonData = JsonConvert.SerializeObject(MedewerkersList);
+            System.IO.File.WriteAllText(MedewerkerPath, JsonData);
+
+            Console.WriteLine("Succesvol verwijderd!");
+            Console.WriteLine("[1] Doorgaan");
+            ConsoleKeyInfo keus = Console.ReadKey();
+            if (keus.Key == ConsoleKey.D1)
+            {
+                Personeelsleden.menuMain();
+            }
+        }
         private static void ClearCurrentConsoleLine()
         {
             int currentLineCursor = Console.CursorTop;
