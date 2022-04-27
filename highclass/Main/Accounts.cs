@@ -118,6 +118,16 @@ namespace Main
                     medewerkerNaam = person.naam;
                 }
             }
+            if (medewerkerNaam == "")
+            {
+                Console.WriteLine("Medewerker met die naam bestaat niet. \n[1] Probeer opnieuw.");
+                ConsoleKeyInfo rkey = Console.ReadKey();
+                if (rkey.Key == ConsoleKey.D1)
+                {
+                    verwijderMedewerker();
+                }
+            }
+
             Console.WriteLine("Weet je zeker dat je: " + medewerkerNaam + " wil verwijderen?");
             Console.WriteLine("[1] Ja\n[2] Nee");
             ConsoleKeyInfo readkey = Console.ReadKey();
@@ -141,12 +151,7 @@ namespace Main
             {
                 Admin.adminMain();
             }
-            if (count == 0)
-            {
-                Console.WriteLine("Medewerker met die naam bestaat niet. Probeer opnieuw.");
-                verwijderMedewerker();
-            }
-
+            
             JsonData = JsonConvert.SerializeObject(MedewerkersList);
             System.IO.File.WriteAllText(MedewerkerPath, JsonData);
 
