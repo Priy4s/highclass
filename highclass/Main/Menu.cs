@@ -424,6 +424,7 @@ namespace Main
             var JsonData = File.ReadAllText(menuPath);
             var menuList = JsonConvert.DeserializeObject<List<Menu>>(JsonData) ?? new List<Menu>();
 
+            Console.WriteLine("╒══════════════════════════════╕");
             Console.WriteLine("Wat is Menu Item ID?");
             int zoekID = Convert.ToInt32(Console.ReadLine());
 
@@ -474,6 +475,7 @@ namespace Main
 
             Console.WriteLine("Succesvol verwijderd!");
             Console.WriteLine("[1] Doorgaan");
+            Console.WriteLine("╘══════════════════════════════╛");
             ConsoleKeyInfo keus = Console.ReadKey();
             if (keus.Key == ConsoleKey.D1)
             {
@@ -489,6 +491,8 @@ namespace Main
             var JsonData = File.ReadAllText(menuPath);
             var menuList = JsonConvert.DeserializeObject<List<Menu>>(JsonData) ?? new List<Menu>();
 
+
+            Console.WriteLine("╒══════════════════════════════════════════════════════════════╕");
             Console.WriteLine("Welke ID heeft het nieuwe Menu Item?");
             int ID_IN = Convert.ToInt32(Console.ReadLine());
             foreach (Menu menuItem in menuList)
@@ -512,14 +516,6 @@ namespace Main
             Console.WriteLine("Wat is de catogorie van het nieuwe Menu Item?");
             string catogorieIN = Console.ReadLine();
 
-            bool IDloop = true;
-            while (IDloop)
-            {
-
-
-
-            }
-
             menuList.Add(new Menu()
             {
                 Naam = NaamIN,
@@ -529,6 +525,7 @@ namespace Main
                 ID = ID_IN,
             });
             Console.WriteLine($"Het nieuwe Menu Item met de naam {NaamIN} is toegevoegd aan Menu?");
+            Console.WriteLine("╘══════════════════════════════════════════════════════════════════╛");
         }
     }
 }

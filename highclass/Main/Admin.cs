@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
+using static Main.Medewerkers;
+
 
 namespace Main
 {
@@ -47,7 +49,25 @@ namespace Main
         }
         public static void adminMedewerkers()
         {
-            Console.WriteLine("Medewerkers komen hier");
+            Console.Clear();
+
+            Console.WriteLine("╒══════════════════════════════╕");
+            Console.WriteLine("[1] medewerkers list zien\n[2] medewerker verwijderen\n[3] medewerker wijzigen");
+            ConsoleKeyInfo keuze = Console.ReadKey();
+            if (keuze.Key == ConsoleKey.D1)
+            {
+                Console.WriteLine("hier komen de medewerkers");
+                Console.WriteLine("╘══════════════════════════════╛");
+            }
+            else if(keuze.Key == ConsoleKey.D2)
+            {
+                Medewerkers.verwijderMedewerker();
+            }
+            else if(keuze.Key== ConsoleKey.D3)
+            {
+                Console.WriteLine("deze functie komt binnekort");
+                Console.WriteLine("╘══════════════════════════════╛");
+            }
         }
 
         public static void adminOmzet()

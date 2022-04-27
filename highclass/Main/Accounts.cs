@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using static Main.Admin;
 
 
 
@@ -39,6 +40,7 @@ namespace Main
             var JsonData = File.ReadAllText(medewerkerPath); // file can be found in the bin => just keep clicking until you find all extra files
             var MederwerkerList = JsonConvert.DeserializeObject<List<MedewerkerINFO>>(JsonData) ?? new List<MedewerkerINFO>();
 
+            Console.WriteLine("╒══════════════════════════════╕");
             Console.WriteLine("Wat is uw volledige naam?");
             string naamIN = Console.ReadLine();
             Console.WriteLine("Wat zijn uw voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] hen/hun");
@@ -97,7 +99,7 @@ namespace Main
         public static void verwijderMedewerker()
         {
             Console.Clear();
-            string MedewerkerPath = Path.GetFullPath(@"Menu.json"); // find path to files
+            string MedewerkerPath = Path.GetFullPath(@"Medewerker.json"); // find path to files
 
             var JsonData = File.ReadAllText(MedewerkerPath);
             var MedewerkersList = JsonConvert.DeserializeObject<List<MedewerkerINFO>>(JsonData) ?? new List<MedewerkerINFO>();
@@ -111,8 +113,10 @@ namespace Main
             string medewerkerNaam = "";
             foreach (MedewerkerINFO person in MedewerkersList)
             {
-                if (person.naam == zoekNaam)
+                if(person.naam == zoekNaam)
+                {
                     medewerkerNaam = person.naam;
+                }
             }
             Console.WriteLine("Weet je zeker dat je: " + medewerkerNaam + " wil verwijderen?");
             Console.WriteLine("[1] Ja\n[2] Nee");
@@ -135,10 +139,8 @@ namespace Main
             }
             else
             {
-                Personeelsleden.menuMain();
+                Admin.adminMain();
             }
-
-
             if (count == 0)
             {
                 Console.WriteLine("Medewerker met die naam bestaat niet. Probeer opnieuw.");
@@ -150,11 +152,16 @@ namespace Main
 
             Console.WriteLine("Succesvol verwijderd!");
             Console.WriteLine("[1] Doorgaan");
+            Console.WriteLine("╘══════════════════════════════╛");
             ConsoleKeyInfo keus = Console.ReadKey();
             if (keus.Key == ConsoleKey.D1)
             {
-                Personeelsleden.menuMain();
+                Admin.adminMain();
             }
+        }
+        private static void wijzigMedewerkers()
+        {
+            Console.WriteLine("deze functie komt binnekort");
         }
         private static void ClearCurrentConsoleLine()
         {
@@ -242,7 +249,7 @@ namespace Main
             Console.Clear();
             Console.WriteLine("╒══════════════╕");
             Console.WriteLine("HC   ");
-            string doen = "[1] Inloggen\n[2] Aanmelden\n[3] Uitloggen";
+            string doen = "[1] Inloggen\n[2] Aanmelden\n";
             Console.WriteLine(doen);
             Console.WriteLine("╘══════════════╛");
             ConsoleKeyInfo cakey = Console.ReadKey();
@@ -254,10 +261,6 @@ namespace Main
             else if (cakey.Key == ConsoleKey.D2)
             {
                 AddMederwerker();
-            }
-            else if (Globals.ingelogd == true && (cakey.Key == ConsoleKey.D3))
-            {
-                Globals.ingelogd = Uitloggen();
             }
         }
     }
