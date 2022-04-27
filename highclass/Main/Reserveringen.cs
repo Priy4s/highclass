@@ -21,25 +21,27 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
     {
         public static void AddReserveringen()
         {
-            string ReserveringPath = Path.GetFullPath(@"Reserveringen.json"); // find path to file
-            bool fileExist = File.Exists(ReserveringPath); // checks if the file exists, if so does nothing, else creates it
+            string ReserveringPath = Path.GetFullPath(@"Reserveringen.json"); 
+            bool fileExist = File.Exists(ReserveringPath); 
             if (!fileExist)
             {
                 using (File.Create(ReserveringPath)) ;
             }
 
-            var JsonData = File.ReadAllText(ReserveringPath); // file can be found in the bin => just keep clicking until you find all extra files
+            var JsonData = File.ReadAllText(ReserveringPath); 
             var ReserveringenList = JsonConvert.DeserializeObject<List<Reserveringenjson>>(JsonData) ?? new List<Reserveringenjson>();
 
             Console.Clear();
+            Console.WriteLine("╒═════════════════════════════════════════════════════╕");
+            Console.WriteLine(" HC\n");
             Console.WriteLine("Volledige naam: ");
             string naamIN = Console.ReadLine();
-            Console.WriteLine("Wat zijn uw persoonlijke voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] hen/hun");
+            Console.WriteLine("\nWat zijn uw persoonlijke voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] hen/hun");
             ConsoleKeyInfo ckey = Console.ReadKey();
             // Console.SetCursorPosition(0, Console.CursorTop);
             // ClearCurrentConsoleLine();
             string pronounsIN = "";
-            if (ckey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
+            if (ckey.Key == ConsoleKey.D1) 
             {
                 pronounsIN = "hij/hem";
             }
@@ -51,11 +53,11 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             {
                 pronounsIN = "hen/hun";
             }
-            Console.WriteLine("\nAantal personen: ");
+            Console.WriteLine("\n\nAantal personen: ");
             int aantalIN = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Datum van reservering: ");
+            Console.WriteLine("\nDatum van reservering: ");
             string datumIN = Console.ReadLine();
-            Console.WriteLine("Starttijd van reservering: ");
+            Console.WriteLine("\nStarttijd van reservering: ");
             string tijdIN = Console.ReadLine();
 
             ReserveringenList.Add(new Reserveringenjson()
@@ -69,22 +71,23 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
 
             JsonData = JsonConvert.SerializeObject(ReserveringenList);
             System.IO.File.WriteAllText(ReserveringPath, JsonData);
-            Console.WriteLine(" Uw reservering is succesvol opgeslagen.");
+            Console.WriteLine("\nUw reservering is succesvol opgeslagen.");
+            Console.WriteLine("╘═════════════════════════════════════════════════════╛");
 
             Globals.available_seats -= aantalIN;
             Globals.taken_seats += aantalIN;
         }
 
-        public static void WijzigReservering()
+        public static void WijzigReservering() //NIET GOED
         {
-            string ReserveringPath = Path.GetFullPath(@"Reserveringen.json"); // find path to file
-            bool fileExist = File.Exists(ReserveringPath); // checks if the file exists, if so does nothing, else creates it
+            string ReserveringPath = Path.GetFullPath(@"Reserveringen.json"); 
+            bool fileExist = File.Exists(ReserveringPath); 
             if (!fileExist)
             {
                 using (File.Create(ReserveringPath)) ;
             }
 
-            var JsonData = File.ReadAllText(ReserveringPath); // file can be found in the bin => just keep clicking until you find all extra files
+            var JsonData = File.ReadAllText(ReserveringPath); 
             var ReserveringenList = JsonConvert.DeserializeObject<List<Reserveringenjson>>(JsonData) ?? new List<Reserveringenjson>();
 
             Console.Clear();
@@ -155,6 +158,84 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                     }
 
                 }
+            }
+        }
+        public static void verwijderReservering()
+        {
+            string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
+            bool fileExist = File.Exists(ReserveringPath);
+            if (!fileExist)
+            {
+                using (File.Create(ReserveringPath)) ;
+            }
+
+            var JsonData = File.ReadAllText(ReserveringPath);
+            var ReserveringenList = JsonConvert.DeserializeObject<List<Reserveringenjson>>(JsonData) ?? new List<Reserveringenjson>();
+            
+            Console.Clear();
+            Console.WriteLine("╒════════════════════════════════════════════════════════════════════════════════════════╕");
+            Console.WriteLine(" HC\n");
+            Console.WriteLine("Volledige naam: ");
+            string zoekNaam = Console.ReadLine();
+
+            int len = ReserveringenList.Count;
+            int i = 0;
+            int count = 0;
+            string reserveringNaam = "";
+            foreach (Reserveringenjson reservering in ReserveringenList)
+            {
+                if (reservering.Naam == zoekNaam)
+                {
+                    reserveringNaam = reservering.Naam;
+                }
+            }
+            if (reserveringNaam == "")
+            {
+                Console.WriteLine("\nEen reservering onder de gegeven naam bestaat niet. \n[1] Probeer opnieuw.");
+                ConsoleKeyInfo rkey = Console.ReadKey();
+                if (rkey.Key == ConsoleKey.D1)
+                {
+                    verwijderReservering();
+                }
+            }
+
+            Console.WriteLine($"\nWeet u zeker dat u de reservering onder de naam, '{reserveringNaam}', wilt verwijderen?");
+            Console.WriteLine("[1]Ja\n[2]Nee\n");
+            Console.WriteLine("╘════════════════════════════════════════════════════════════════════════════════════════╛");
+            ConsoleKeyInfo readkey = Console.ReadKey();
+            if (readkey.Key == ConsoleKey.D1)
+            {
+                while (i < len)
+                {
+                    if (ReserveringenList[i].Naam == zoekNaam)
+                    {
+                        ReserveringenList.RemoveAt(i);
+                        Console.Clear();
+                        Console.WriteLine("╒════════════════════════════════════════════════════════════════════════════╕");
+                        Console.WriteLine(" HC\n");
+                        Console.WriteLine($"De reservering onder de naam, '{zoekNaam}', is verwijderd");
+
+                        count++;
+                        break;
+                    }
+                    i++;
+                }
+
+            }
+            /* else
+            {
+                Admin.adminMain();
+            }*/
+
+            JsonData = JsonConvert.SerializeObject(ReserveringenList);
+            System.IO.File.WriteAllText(ReserveringPath, JsonData);
+
+            Console.WriteLine("\n [1] Doorgaan");
+            Console.WriteLine("╘════════════════════════════════════════════════════════════════════════════╛");
+            ConsoleKeyInfo keus = Console.ReadKey();
+            if (keus.Key == ConsoleKey.D1)
+            {
+                Program.Main();
             }
         }
     }

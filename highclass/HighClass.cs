@@ -116,7 +116,7 @@ namespace Main
                             }
                             else if (cv2key.Key == ConsoleKey.D2)
                             {
-                                Reserveringenoud.Annuleren();
+                                Reserveringen.verwijderReservering();
                             }
 
                         }
