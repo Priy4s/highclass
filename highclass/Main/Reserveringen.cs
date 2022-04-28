@@ -12,14 +12,14 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
     {
         public string Naam { get; set; }
         public string Voornaamwoorden { get; set; }
-        public int Groepsgrootte { get; set; }
+        public int Groepsgrote { get; set; }
         public string Starttijd { get; set; }
         public string Datum { get; set; }
     }
 
     public class Reserveringen
     {
-        public static void AddReserveringen()
+        public static void AddReservering()
         {
             string ReserveringPath = Path.GetFullPath(@"Reserveringen.json"); 
             bool fileExist = File.Exists(ReserveringPath); 
@@ -53,7 +53,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             {
                 pronounsIN = "hen/hun";
             }
-            Console.WriteLine("\n\nAantal personen: ");
+            Console.WriteLine("\n\nGroepsgrote: ");
             int aantalIN = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("\nDatum van reservering: ");
             string datumIN = Console.ReadLine();
@@ -64,7 +64,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             {
                 Naam = naamIN,
                 Voornaamwoorden = pronounsIN,
-                Groepsgrootte = aantalIN,
+                Groepsgrote = aantalIN,
                 Datum = datumIN,
                 Starttijd = tijdIN
             });
@@ -72,91 +72,210 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             JsonData = JsonConvert.SerializeObject(ReserveringenList);
             System.IO.File.WriteAllText(ReserveringPath, JsonData);
             Console.WriteLine("\nUw reservering is succesvol opgeslagen.");
+
             Console.WriteLine("╘═════════════════════════════════════════════════════╛");
 
             Globals.available_seats -= aantalIN;
             Globals.taken_seats += aantalIN;
         }
 
-        public static void WijzigReservering() //NIET GOED
+        public static void WijzigReservering()
         {
-            string ReserveringPath = Path.GetFullPath(@"Reserveringen.json"); 
-            bool fileExist = File.Exists(ReserveringPath); 
+            Console.Clear();
+            string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
+            bool fileExist = File.Exists(ReserveringPath);
             if (!fileExist)
             {
                 using (File.Create(ReserveringPath)) ;
             }
 
-            var JsonData = File.ReadAllText(ReserveringPath); 
+            var JsonData = File.ReadAllText(ReserveringPath);
             var ReserveringenList = JsonConvert.DeserializeObject<List<Reserveringenjson>>(JsonData) ?? new List<Reserveringenjson>();
 
-            Console.Clear();
-            Console.WriteLine("╒════════════════════════════════════════════════════════════════════════╕");
-            Console.WriteLine(" Volledige naam:");
-            string naam = Console.ReadLine();
-            Console.WriteLine(" Wilt u de datum of het aantal personen van uw reservering wijzigen?");
-            string vraag = " [1] Datum\n [2] Aantal personen";
-            Console.WriteLine(vraag);
-            ConsoleKeyInfo cwkey = Console.ReadKey();
+            Console.WriteLine("╒════════════════════════════════════════════════════════╕");
+            Console.WriteLine(" HC\n");
+            Console.WriteLine("Volledige naam: ");
+            string zoekNaam = Console.ReadLine();
 
-            if (cwkey.Key == ConsoleKey.D2)
+            int len = ReserveringenList.Count;
+            int i = 0;
+            string reserveringsNaam = "";
+            foreach (Reserveringenjson reservering in ReserveringenList)
             {
-                Console.WriteLine(" Nieuw aantal personen: ");
-                int wijzigingen = Convert.ToInt32(Console.ReadLine());
-                foreach (Reserveringenjson welkenaam in ReserveringenList)
+                if (reservering.Naam == zoekNaam)
                 {
-                    if (welkenaam.Naam == naam)
-                    {
-                        Globals.available_seats += welkenaam.Groepsgrootte;
-                        Globals.taken_seats -= welkenaam.Groepsgrootte;
-                        welkenaam.Groepsgrootte = wijzigingen;
-                        Globals.available_seats -= welkenaam.Groepsgrootte;
-                        Globals.taken_seats += welkenaam.Groepsgrootte;
-
-                        while (true)
-                        {
-                            Console.WriteLine("\n Uw reservering is succesvol gewijzigd.");
-                            Console.WriteLine($" U heeft nu een reservering voor {welkenaam.Groepsgrootte} personen.\n\n");
-                            Console.WriteLine("\n Klik op 'Enter' om verder te gaan naar het hoofdmenu.");
-                            Console.WriteLine("╘════════════════════════════════════════════════════════════════════════╛");
-                            ConsoleKeyInfo done = Console.ReadKey();
-                            if (done.Key == ConsoleKey.Enter)
-                            {
-                                break;
-                            }
-                        }
-                    }
+                    reserveringsNaam = reservering.Naam;
                 }
-                Console.Clear();
             }
-            else if (cwkey.Key == ConsoleKey.D1)
+            if (reserveringsNaam == "")
             {
-                Console.WriteLine(" Nieuwe Datum: ");
-                string wijziging = Console.ReadLine();
-                Console.WriteLine(" Starttijd: ");
-                string tijdwijziging = Console.ReadLine();
-
-                foreach (Reserveringenjson welkenaam in ReserveringenList)
+                Console.WriteLine($"\nEen reservering onder de naam '{zoekNaam}' bestaat niet. \n[1] Probeer opnieuw.\n[2] Maak nieuwe reservering aan.\n");
+                Console.WriteLine("╘════════════════════════════════════════════════════════╛");
+                ConsoleKeyInfo rkey = Console.ReadKey();
+                if (rkey.Key == ConsoleKey.D1)
                 {
-                    if (welkenaam.Naam == naam)
+                    WijzigReservering();
+                }
+                else if (rkey.Key == ConsoleKey.D2)
+                {
+                    AddReservering();
+                }
+            }
+            Console.WriteLine("\nWat wilt u wijzigen? \n\t[1] Naam\n\t[2] Persoonlijk voornaamwoorden\n\t[3] Groepsgrote\n\t[4] Datum\n\t[5] Starttijd\n");
+            Console.WriteLine("╘════════════════════════════════════════════════════════╛");
+            ConsoleKeyInfo readkey = Console.ReadKey();
+            if (readkey.Key == ConsoleKey.D1)
+            {
+                Console.Clear();
+                Console.WriteLine("╒══════════════════════════════════════════════════════════════════════════════════════════════╕");
+                Console.WriteLine(" HC\n");
+                Console.WriteLine("Nieuwe volledige naam: ");
+                string new_naam = Console.ReadLine();
+
+                while (i < len)
+                {
+                    Console.WriteLine(ReserveringenList[i].Naam);
+                    if (ReserveringenList[i].Naam == zoekNaam)
                     {
-                        welkenaam.Datum = wijziging;
-                        welkenaam.Starttijd = tijdwijziging;
-
-                        while (true)
+                        ReserveringenList[i].Naam = new_naam;
+                        Console.WriteLine($"\n\nDe naam waaronder de reservering is opgeslagen is gewijzigd naar: {new_naam}\n");
+                        Console.WriteLine("[1] Doorgaan\n");
+                        Console.WriteLine("╘══════════════════════════════════════════════════════════════════════════════════════════════╛");
+                        ConsoleKeyInfo keus = Console.ReadKey();
+                        if (keus.Key == ConsoleKey.D1)
                         {
-                            Console.WriteLine("\n Uw reservering is succesvol gewijzigd.");
-                            Console.WriteLine($" U heeft nu een reservering op {welkenaam.Datum} om {welkenaam.Starttijd}.\n\n");
-                            Console.WriteLine("\n Klik op 'Enter' om verder te gaan naar het hoofdmenu.");
-                            Console.WriteLine("╘════════════════════════════════════════════════════════════════════════╛");
-                            ConsoleKeyInfo done = Console.ReadKey();
-                            if (done.Key == ConsoleKey.Enter)
-                            {
-                                break;
-                            }
+                            JsonData = JsonConvert.SerializeObject(ReserveringenList);
+                            System.IO.File.WriteAllText(ReserveringPath, JsonData);
+                            Program.Main();
                         }
+                        break;
                     }
+                    i++;
+                }
+            }
+            else if (readkey.Key == ConsoleKey.D2)
+            {
+                Console.Clear();
+                Console.WriteLine("╒══════════════════════════════════════════════════════════════════════════╕");
+                Console.WriteLine(" HC\n");
+                Console.WriteLine("Nieuwe persoonlijk voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] hen/hun");
+                ConsoleKeyInfo AKey = Console.ReadKey();
+                string pronounsIN = "";
+                if (AKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
+                {
+                    pronounsIN = "hij/hem";
+                }
+                else if (AKey.Key == ConsoleKey.D2)
+                {
+                    pronounsIN = "zij/haar";
+                }
+                else if (AKey.Key == ConsoleKey.D3)
+                {
+                    pronounsIN = "hen/hun";
+                }
 
+                while (i < len)
+                {
+                    if (ReserveringenList[i].Naam == zoekNaam)
+                    {
+                        ReserveringenList[i].Voornaamwoorden = pronounsIN;
+                        Console.WriteLine($"\n\nUw persoonlijk voornaamwoorden zijn gewijzigd naar: {pronounsIN}\n");
+                        Console.WriteLine("[1] Doorgaan\n");
+                        Console.WriteLine("╘══════════════════════════════════════════════════════════════════════════╛");
+                        ConsoleKeyInfo keus = Console.ReadKey();
+                        if (keus.Key == ConsoleKey.D1)
+                        {
+                            JsonData = JsonConvert.SerializeObject(ReserveringenList);
+                            System.IO.File.WriteAllText(ReserveringPath, JsonData);
+                            Program.Main();
+                        }
+                        break;
+                    }
+                    i++;
+                }
+            }
+            else if (readkey.Key == ConsoleKey.D3)
+            {
+                Console.Clear();
+                Console.WriteLine("╒══════════════════════════════════════════════════════════════╕");
+                Console.WriteLine(" HC\n");
+                Console.WriteLine("Nieuwe groepsgrote: ");
+                int new_groepsgrote = Convert.ToInt32(Console.ReadLine());
+
+                while (i < len)
+                {
+                    if (ReserveringenList[i].Naam == zoekNaam)
+                    {
+                        ReserveringenList[i].Groepsgrote = new_groepsgrote;
+                        Console.WriteLine($"\n\nDe groepsgrote van uw reservering is gewijzigd naar: {new_groepsgrote}\n");
+                        Console.WriteLine("[1] Doorgaan\n");
+                        Console.WriteLine("╘══════════════════════════════════════════════════════════════╛");
+                        ConsoleKeyInfo keus = Console.ReadKey();
+                        if (keus.Key == ConsoleKey.D1)
+                        {
+                            JsonData = JsonConvert.SerializeObject(ReserveringenList);
+                            System.IO.File.WriteAllText(ReserveringPath, JsonData);
+                            Program.Main();
+                        }
+                        break;
+                    }
+                    i++;
+                }
+            }
+            else if (readkey.Key == ConsoleKey.D4)
+            {
+                Console.Clear();
+                Console.WriteLine("╒════════════════════════════════════════════════════════════════╕");
+                Console.WriteLine(" HC\n");
+                Console.WriteLine("Nieuwe datum: ");
+                string new_Datum = Console.ReadLine();
+
+                while (i < len)
+                {
+                    if (ReserveringenList[i].Naam == zoekNaam)
+                    {
+                        ReserveringenList[i].Datum = new_Datum;
+                        Console.WriteLine($"De datum van uw reservering is gewijzigd naar: {new_Datum}\n");
+                        Console.WriteLine("[1] Doorgaan\n");
+                        Console.WriteLine("╘════════════════════════════════════════════════════════════════╛");
+                        ConsoleKeyInfo keus = Console.ReadKey();
+                        if (keus.Key == ConsoleKey.D1)
+                        {
+                            JsonData = JsonConvert.SerializeObject(ReserveringenList);
+                            System.IO.File.WriteAllText(ReserveringPath, JsonData);
+                            Program.Main();
+                        }
+                        break;
+                    }
+                    i++;
+                }
+            }
+            else if (readkey.Key == ConsoleKey.D5)
+            {
+                Console.Clear();
+                Console.WriteLine("╒════════════════════════════════════════════════════════════════╕");
+                Console.WriteLine(" HC\n");
+                Console.WriteLine("Nieuwe starttijd: ");
+                string new_Tijd = Console.ReadLine();
+
+                while (i < len)
+                {
+                    if (ReserveringenList[i].Naam == zoekNaam)
+                    {
+                        ReserveringenList[i].Starttijd = new_Tijd;
+                        Console.WriteLine($"De starttijd van uw reservering is gewijzigd naar: {new_Tijd}\n");
+                        Console.WriteLine("[1] Doorgaan\n");
+                        Console.WriteLine("╘════════════════════════════════════════════════════════════════╛");
+                        ConsoleKeyInfo keus = Console.ReadKey();
+                        if (keus.Key == ConsoleKey.D1)
+                        {
+                            JsonData = JsonConvert.SerializeObject(ReserveringenList);
+                            System.IO.File.WriteAllText(ReserveringPath, JsonData);
+                            Program.Main();
+                        }
+                        break;
+                    }
+                    i++;
                 }
             }
         }
@@ -191,7 +310,8 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
             if (reserveringNaam == "")
             {
-                Console.WriteLine("\nEen reservering onder de gegeven naam bestaat niet. \n[1] Probeer opnieuw.");
+                Console.WriteLine("\nEen reservering onder de gegeven naam bestaat niet. \n[1] Probeer opnieuw.\n");
+                Console.WriteLine("╘════════════════════════════════════════════════════════════════════════════════════════╛");
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
                 {

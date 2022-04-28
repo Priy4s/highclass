@@ -122,7 +122,7 @@ namespace Main
                         }
                         else if (cvkey.Key == ConsoleKey.D2)
                         {
-                            Reserveringen.AddReserveringen();
+                            Reserveringen.AddReservering();
                         }
                     }
                 }
