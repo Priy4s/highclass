@@ -65,8 +65,7 @@ namespace Main
             }
             else if(keuze.Key== ConsoleKey.D3)
             {
-                Console.WriteLine("deze functie komt binnekort");
-                Console.WriteLine("╘══════════════════════════════╛");
+                Medewerkers.wijzigMedewerkers();
             }
         }
 

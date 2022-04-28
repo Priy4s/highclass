@@ -109,11 +109,10 @@ namespace Main
 
             int len = MedewerkersList.Count;
             int i = 0;
-            int count = 0;
             string medewerkerNaam = "";
             foreach (MedewerkerINFO person in MedewerkersList)
             {
-                if(person.naam == zoekNaam)
+                if (person.naam == zoekNaam)
                 {
                     medewerkerNaam = person.naam;
                 }
@@ -139,8 +138,6 @@ namespace Main
                     {
                         MedewerkersList.RemoveAt(i);
                         Console.WriteLine($"Medewerker met naam: {zoekNaam} is verwijderd");
-
-                        count++;
                         break;
                     }
                     i++;
@@ -151,7 +148,7 @@ namespace Main
             {
                 Admin.adminMain();
             }
-            
+
             JsonData = JsonConvert.SerializeObject(MedewerkersList);
             System.IO.File.WriteAllText(MedewerkerPath, JsonData);
 
@@ -164,9 +161,183 @@ namespace Main
                 Admin.adminMain();
             }
         }
-        private static void wijzigMedewerkers()
+        public static void wijzigMedewerkers()
         {
-            Console.WriteLine("deze functie komt binnekort");
+            Console.Clear();
+            string MedewerkerPath = Path.GetFullPath(@"Medewerker.json"); // find path to files
+
+            var JsonData = File.ReadAllText(MedewerkerPath);
+            var MedewerkersList = JsonConvert.DeserializeObject<List<MedewerkerINFO>>(JsonData) ?? new List<MedewerkerINFO>();
+
+            Console.WriteLine("Wat is naam van de medewerker?");
+            string zoekNaam = Console.ReadLine();
+
+            int len = MedewerkersList.Count;
+            int i = 0;
+            string medewerkerNaam = "";
+            foreach (MedewerkerINFO person in MedewerkersList)
+            {
+                if (person.naam == zoekNaam)
+                {
+                    medewerkerNaam = person.naam;
+                }
+            }
+            if (medewerkerNaam == "")
+            {
+                Console.WriteLine("Medewerker met die naam bestaat niet. \n[1] Probeer opnieuw.");
+                ConsoleKeyInfo rkey = Console.ReadKey();
+                if (rkey.Key == ConsoleKey.D1)
+                {
+                    wijzigMedewerkers();
+                }
+            }
+            Console.WriteLine("Wat wil je wijzigen? \n\t[1] Naam\n\t[2] pronouns\n\t[3] telefoonnummer\n\t[4] eMail\n\t[5] functie\n\t[6] gebruikersnaam\n\t[7] wachtwoord\n");
+            ConsoleKeyInfo readkey = Console.ReadKey();
+            if (readkey.Key == ConsoleKey.D1)
+            {
+                Console.WriteLine("\nWat wordt medewerkers nieuwe naam?");
+                string new_naam = Console.ReadLine();
+
+                while (i < len)
+                {
+                    Console.WriteLine(MedewerkersList[i].naam);
+                    if (MedewerkersList[i].naam == zoekNaam)
+                    {
+                        MedewerkersList[i].naam = new_naam;
+                        Console.WriteLine($"Medewerkers naam is gewijzigd naar {new_naam}");
+                        break;
+                    }
+                    i++;
+                }
+            }
+            else if (readkey.Key == ConsoleKey.D2)
+            {
+                Console.WriteLine("Wat zijn uw voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] hen/hun");
+                ConsoleKeyInfo AKey = Console.ReadKey();
+                string pronounsIN = "";
+                if (AKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
+                {
+                    pronounsIN = "hij/hem";
+                }
+                else if (AKey.Key == ConsoleKey.D2)
+                {
+                    pronounsIN = "zij/haar";
+                }
+                else if (AKey.Key == ConsoleKey.D3)
+                {
+                    pronounsIN = "hen/hun";
+                }
+
+                while (i < len)
+                {
+                    if (MedewerkersList[i].naam == zoekNaam)
+                    {
+                        MedewerkersList[i].pronouns = pronounsIN;
+                        Console.WriteLine($"Medewerkers naam is gewijzigd naar {pronounsIN}");
+                        break;
+                    }
+                    i++;
+                }
+            }
+            else if (readkey.Key == ConsoleKey.D3)
+            {
+                Console.WriteLine("\nWat wordt medewerkers nieuwe telefoonnummer?");
+                string new_telefoonnummer = Console.ReadLine();
+
+                while (i < len)
+                {
+                    if (MedewerkersList[i].naam == zoekNaam)
+                    {
+                        MedewerkersList[i].telefoonnummer = new_telefoonnummer;
+                        Console.WriteLine($"Medewerkers naam is gewijzigd naar {new_telefoonnummer}");
+                        break;
+                    }
+                    i++;
+                }
+            }
+            else if (readkey.Key == ConsoleKey.D4)
+            {
+                Console.WriteLine("\nWat wordt medewerkers nieuwe eMail?");
+                string new_eMail = Console.ReadLine();
+
+                while (i < len)
+                {
+                    if (MedewerkersList[i].naam == zoekNaam)
+                    {
+                        MedewerkersList[i].eMail = new_eMail;
+                        Console.WriteLine($"Medewerkers naam is gewijzigd naar {new_eMail}");
+                        break;
+                    }
+                    i++;
+                }
+            }
+            else if (readkey.Key == ConsoleKey.D5)
+            {
+                Console.WriteLine("Wat is uw functie?\n\t[1]Admin\n\t[2]Mederwerker");
+                ConsoleKeyInfo AKey = Console.ReadKey();
+                string new_functie = "";
+                if (AKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
+                {
+                    new_functie = "Admin";
+                }
+                else if (AKey.Key == ConsoleKey.D2)
+                {
+                    new_functie = "Mederwerker";
+                }
+                while (i < len)
+                {
+                    if (MedewerkersList[i].naam == zoekNaam)
+                    {
+                        MedewerkersList[i].functie = new_functie;
+                        Console.WriteLine($"Medewerkers naam is gewijzigd naar {new_functie}");
+                        break;
+                    }
+                    i++;
+                }
+            }
+            else if (readkey.Key == ConsoleKey.D6)
+            {
+                Console.WriteLine("\nWat wordt medewerkers nieuwe gebruikersnaam?");
+                string new_gebruikersnaam = Console.ReadLine();
+
+                while (i < len)
+                {
+                    if (MedewerkersList[i].naam == zoekNaam)
+                    {
+                        MedewerkersList[i].gebruikersnaam = new_gebruikersnaam;
+                        Console.WriteLine($"Medewerkers naam is gewijzigd naar {new_gebruikersnaam}");
+                        break;
+                    }
+                    i++;
+                }
+            }
+            else if (readkey.Key == ConsoleKey.D7)
+            {
+                Console.WriteLine("\nWat wordt medewerkers nieuwe wachtwoord?");
+                string new_wachtword = Console.ReadLine();
+
+                while (i < len)
+                {
+                    if (MedewerkersList[i].naam == zoekNaam)
+                    {
+                        MedewerkersList[i].wachtwoord = new_wachtword;
+                        Console.WriteLine($"Medewerkers naam is gewijzigd naar {new_wachtword}");
+                        break;
+                    }
+                    i++;
+                }
+            }
+            JsonData = JsonConvert.SerializeObject(MedewerkersList);
+            System.IO.File.WriteAllText(MedewerkerPath, JsonData);
+
+            Console.WriteLine("Succesvol gewijzigd!");
+            Console.WriteLine("[1] Doorgaan");
+            Console.WriteLine("╘══════════════════════════════╛");
+            ConsoleKeyInfo keus = Console.ReadKey();
+            if (keus.Key == ConsoleKey.D1)
+            {
+                Admin.adminMain();
+            }
         }
         private static void ClearCurrentConsoleLine()
         {
@@ -213,11 +384,11 @@ namespace Main
                     }
                 }
             }
-            if(count == 0)
+            if (count == 0)
             {
-                Console.WriteLine("\nGebruikersnaam en of wachtwoord is verkeerd");
-                Console.WriteLine("[0] Terug naar hoofdmenu");
-                Console.WriteLine("[1] Probeer het opnieuw");
+                Console.WriteLine("Gebruikersnaam en of wachtwoord is verkeerd");
+                Console.WriteLine("[0] Terug");
+                Console.WriteLine("[1] Maak een account aan");
                 Console.WriteLine("╘══════════════════════════╛");
                 ConsoleKeyInfo begin = Console.ReadKey();
                 if (ConsoleKey.D0 == begin.Key)
@@ -226,7 +397,7 @@ namespace Main
                 }
                 else if (ConsoleKey.D1 == begin.Key)
                 {
-                    Medewerkers.Inloggen();
+                    Medewerkers.AddMederwerker();
                 }
             }
         }
