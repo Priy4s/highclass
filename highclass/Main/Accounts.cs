@@ -215,9 +215,9 @@ namespace Main
             }
             if(count == 0)
             {
-                Console.WriteLine("Gebruikersnaam en of wachtwoord is verkeerd");
-                Console.WriteLine("[0] Terug");
-                Console.WriteLine("[1] Maak een account aan");
+                Console.WriteLine("\nGebruikersnaam en of wachtwoord is verkeerd");
+                Console.WriteLine("[0] Terug naar hoofdmenu");
+                Console.WriteLine("[1] Probeer het opnieuw");
                 Console.WriteLine("╘══════════════════════════╛");
                 ConsoleKeyInfo begin = Console.ReadKey();
                 if (ConsoleKey.D0 == begin.Key)
@@ -226,7 +226,7 @@ namespace Main
                 }
                 else if (ConsoleKey.D1 == begin.Key)
                 {
-                    Medewerkers.AddMederwerker();
+                    Medewerkers.Inloggen();
                 }
             }
         }

@@ -45,7 +45,7 @@ namespace Main
                 Console.WriteLine("│         |Hoofdmenu|          │");
                 Console.WriteLine("│       [1] Reserveren         │");
                 Console.WriteLine("│       [2] Menu               │");
-                Console.WriteLine("│       [3] Account            │");
+                Console.WriteLine("│       [3] Inloggen           │");
                 Console.WriteLine("│       [4] Contact            │");
                 Console.WriteLine("│                              │");
                 Console.WriteLine("│                              │");
@@ -132,7 +132,7 @@ namespace Main
                 }
                 else if (ckey.Key == ConsoleKey.D3)
                 {
-                    Medewerkers.Account();
+                    Medewerkers.Inloggen();
                 }
                 else if (ckey.Key == ConsoleKey.D4)
                 {

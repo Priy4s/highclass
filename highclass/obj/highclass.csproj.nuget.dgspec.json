@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\highclass\\HighClass.csproj": {}
+    "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\HighClass.csproj": {}
   },
   "projects": {
-    "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\highclass\\HighClass.csproj": {
+    "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\HighClass.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\highclass\\HighClass.csproj",
+        "projectUniqueName": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\HighClass.csproj",
         "projectName": "HighClass",
-        "projectPath": "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\highclass\\HighClass.csproj",
-        "packagesPath": "C:\\Users\\shery\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\highclass\\obj\\",
+        "projectPath": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\HighClass.csproj",
+        "packagesPath": "C:\\Users\\priya\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\shery\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\priya\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -60,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }
