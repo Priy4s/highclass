@@ -15,6 +15,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
         public int Groepsgrote { get; set; }
         public string Starttijd { get; set; }
         public string Datum { get; set; }
+        public double Prijs { get; set; }
     }
 
     public class Reserveringen
@@ -66,7 +67,8 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 Voornaamwoorden = pronounsIN,
                 Groepsgrote = aantalIN,
                 Datum = datumIN,
-                Starttijd = tijdIN
+                Starttijd = tijdIN,
+                Prijs = 0.00
             });
 
             JsonData = JsonConvert.SerializeObject(ReserveringenList);
