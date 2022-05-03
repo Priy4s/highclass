@@ -6,12 +6,12 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v5.0": {
-      "HighClass/1.0.0": {
+      "highclass/1.0.0": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.1"
         },
         "runtime": {
-          "HighClass.dll": {}
+          "highclass.dll": {}
         }
       },
       "Newtonsoft.Json/13.0.1": {
@@ -25,7 +25,7 @@
     }
   },
   "libraries": {
-    "HighClass/1.0.0": {
+    "highclass/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
