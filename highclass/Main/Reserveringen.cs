@@ -56,7 +56,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
             Console.WriteLine("\n\nGroepsgrote: ");
             int aantalIN = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("\nDatum van reservering: ");
+            Console.WriteLine("\nDatum van reservering (vb. 04-05-2022): ");
             string datumIN = Console.ReadLine();
             Console.WriteLine("\nStarttijd van reservering: ");
             string tijdIN = Console.ReadLine();
@@ -70,9 +70,42 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 Starttijd = tijdIN,
                 Prijs = 0.00
             });
+            
+            Dictionary<string, int> dagen = new Dictionary<string, int>();
+            bool keyexists = dagen.ContainsKey(datumIN);
+            if (!keyexists)
+            {
+                dagen.Add(datumIN, 200 - aantalIN);
+                if (dagen[datumIN] > 200)
+                {
+                    Console.WriteLine("U kunt geen reservering voor meer dan 200 personen maken.\n");
+                    Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                }
+                else
+                {
+                    JsonData = JsonConvert.SerializeObject(ReserveringenList);
+                    System.IO.File.WriteAllText(ReserveringPath, JsonData);
+                    Console.WriteLine("\nUw reservering is succesvol opgeslagen.\n");
+                    Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                }
+            }
+            else
+            {
+                dagen[datumIN] = dagen[datumIN] - aantalIN;
+                if (dagen[datumIN] < 0)
+                {
+                    Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar op {datumIN} voor een reservering voor {aantalIN} personen.\n")
+                    Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                }
+                else
+                {
+                    JsonData = JsonConvert.SerializeObject(ReserveringenList);
+                    System.IO.File.WriteAllText(ReserveringPath, JsonData);
+                    Console.WriteLine("\nUw reservering is succesvol opgeslagen.\n");
+                    Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                }
+            }
 
-            JsonData = JsonConvert.SerializeObject(ReserveringenList);
-            System.IO.File.WriteAllText(ReserveringPath, JsonData);
             Console.WriteLine("\nUw reservering is succesvol opgeslagen.");
 
             Console.WriteLine("╘═════════════════════════════════════════════════════╛");
