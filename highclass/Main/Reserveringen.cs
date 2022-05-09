@@ -94,7 +94,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 dagen[datumIN] = dagen[datumIN] - aantalIN;
                 if (dagen[datumIN] < 0)
                 {
-                    Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar op {datumIN} voor een reservering voor {aantalIN} personen.\n")
+                    Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar op {datumIN} voor een reservering voor {aantalIN} personen.\n");
                     Console.WriteLine("╘═════════════════════════════════════════════════════╛");
                 }
                 else
