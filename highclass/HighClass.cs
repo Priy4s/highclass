@@ -93,6 +93,7 @@ namespace Main
                         Console.WriteLine("│                             │");
                         Console.WriteLine("│           [1] Ja            │");
                         Console.WriteLine("│           [2] Nee           │");
+                        Console.WriteLine("│           [0] terug         │");
                         Console.WriteLine("│                             │");
                         Console.WriteLine("╘═════════════════════════════╛");
                         ConsoleKeyInfo cvkey = Console.ReadKey();
@@ -123,6 +124,10 @@ namespace Main
                         else if (cvkey.Key == ConsoleKey.D2)
                         {
                             Reserveringen.AddReservering();
+                        }
+                        else if (cvkey.Key == ConsoleKey.D0)
+                        {
+                            Main();
                         }
                     }
                 }
@@ -155,6 +160,7 @@ namespace Main
                 Console.WriteLine("│                            │");
                 Console.WriteLine("│     |Contactgegevens|      │");
                 Console.WriteLine("│                            │");
+                Console.WriteLine("│        [0] terug           │");
                 Console.WriteLine("│                            │");
                 Console.WriteLine("│ Tel. : 0107940000          │");
                 Console.WriteLine("│ email: highclass@info.com  │");
@@ -163,6 +169,10 @@ namespace Main
                 if (done.Key == ConsoleKey.Enter)
                 {
                     break;
+                }
+                else if (done.Key == ConsoleKey.D0)
+                {
+                    Main();
                 }
             }
         }

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
+using static Main.Program;
 
 namespace Main
-
 {
     public class Personeelsleden
     {

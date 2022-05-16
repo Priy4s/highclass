@@ -40,9 +40,18 @@ namespace Main
             var JsonData = File.ReadAllText(medewerkerPath); // file can be found in the bin => just keep clicking until you find all extra files
             var MederwerkerList = JsonConvert.DeserializeObject<List<MedewerkerINFO>>(JsonData) ?? new List<MedewerkerINFO>();
 
-            Console.WriteLine("╒══════════════════════════════╕");
             Console.WriteLine("Wat is uw volledige naam?");
             string naamIN = Console.ReadLine();
+            for(int i=0; i<naamIN.Length; i++)
+            {
+                string newnaam = naamIN.ToLower();
+                if(newnaam[i] != 'a' && newnaam[i] != 'b' && newnaam[i] != 'c' && newnaam[i] != 'd' && newnaam[i] != 'e' && newnaam[i] != 'f' && newnaam[i] != 'g' && newnaam[i] != 'h' && newnaam[i] != 'i' && newnaam[i] != 'j' && newnaam[i] != 'k' && newnaam[i] != 'l' && newnaam[i] != 'm' && newnaam[i] != 'n' && newnaam[i] != 'o' && newnaam[i] != 'p' && newnaam[i] != 'q' && newnaam[i] != 'r' && newnaam[i] != 's' && newnaam[i] != 't' && newnaam[i] != 'u' && newnaam[i] != 'v' && newnaam[i] != 'w' && newnaam[i] != 'x' && newnaam[i] != 'y' && newnaam[i] != 'z')
+                {
+                    Console.WriteLine("Naam bestaat alleen uit letters. Probeer het opnieuw de volledige naam intevoeren!");
+                    Console.WriteLine("Wat is uw volledige naam?");
+                    naamIN = Console.ReadLine();
+                }
+            }
             Console.WriteLine("Wat zijn uw voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] hen/hun");
             ConsoleKeyInfo ckey = Console.ReadKey();
             Console.SetCursorPosition(0, Console.CursorTop);
@@ -60,10 +69,26 @@ namespace Main
             {
                 pronounsIN = "hen/hun";
             }
-            Console.WriteLine("Wat is uw telefoonnummber?");
+            Console.WriteLine("Wat is uw telefoonnummber?\n+31");
             string telefoonnummerIN = Console.ReadLine();
+            if(telefoonnummerIN.Length != 10)
+            {
+                Console.WriteLine("Telefoonnummer heeft niet het juist aantal cijfers. Probeer telefoonnummer opnieuw intevoeren");
+                Console.WriteLine("Wat is uw telefoonnummber?");
+                telefoonnummerIN = Console.ReadLine();
+            }
             Console.WriteLine("Wat is uw e-mail?");
             string eMailIN = Console.ReadLine();
+            string newemail = eMailIN.ToLower();
+            for (int i = 0; i < naamIN.Length; i++)
+            {
+                if (newemail[i] != 'a' && newemail[i] != 'b' && newemail[i] != 'c' && newemail[i] != 'd' && newemail[i] != 'e' && newemail[i] != 'f' && newemail[i] != 'g' && newemail[i] != 'h' && newemail[i] != 'i' && newemail[i] != 'j' && newemail[i] != 'k' && newemail[i] != 'l' && newemail[i] != 'm' && newemail[i] != 'n' && newemail[i] != 'o' && newemail[i] != 'p' && newemail[i] != 'q' && newemail[i] != 'r' && newemail[i] != 's' && newemail[i] != 't' && newemail[i] != 'u' && newemail[i] != 'v' && newemail[i] != 'w' && newemail[i] != 'x' && newemail[i] != 'y' && newemail[i] != 'z' && newemail[i] != '0' && newemail[i] != '1' && newemail[i] != '2' && newemail[i] != '3' && newemail[i] != '4' && newemail[i] != '5' && newemail[i] != '6' && newemail[i] != '7' && newemail[i] != '8' && newemail[i] != '9' && newemail[i] != '@' && newemail[i] != '.')
+                {
+                    Console.WriteLine("email bestaat alleen uit letters, cijfers, één @ en één '.'. Probeer het opnieuw een juiste email intevoeren!");
+                    Console.WriteLine("Wat is uw e-mail?");
+                    eMailIN = Console.ReadLine();
+                }
+            }
             Console.WriteLine("Wat is uw functie?\n\t[1]Admin\n\t[2]Mederwerker");
             ConsoleKeyInfo AKey = Console.ReadKey();
             ClearCurrentConsoleLine();
@@ -80,7 +105,6 @@ namespace Main
             string gebruikersnaamIN = Console.ReadLine();
             Console.WriteLine("Voer uw wachtwoord in:");
             string wachtwoordIN = Console.ReadLine();
-            Console.WriteLine("╘══════════════════════╛");
 
             MederwerkerList.Add(new MedewerkerINFO()
             {
@@ -95,6 +119,15 @@ namespace Main
 
             JsonData = JsonConvert.SerializeObject(MederwerkerList);
             System.IO.File.WriteAllText(medewerkerPath, JsonData);
+
+            Console.WriteLine($"{functieIN} is met succes toegevoegd aan database.\n[1] doorgaan");
+            ConsoleKeyInfo doorKey = Console.ReadKey();
+            ClearCurrentConsoleLine();
+            if(doorKey.Key == ConsoleKey.D1)
+            {
+                Admin.adminMain();
+            }
+            Console.WriteLine("╘══════════════════════╛");
         }
         public static void verwijderMedewerker()
         {
@@ -354,10 +387,16 @@ namespace Main
             Console.WriteLine(" ");
             Console.WriteLine("     |Inloggen|");
             Console.WriteLine(" ");
+            Console.WriteLine("     [0] terug ");
+            Console.WriteLine(" ");
             Console.WriteLine("Gebruikersnaam: ");
             string gebruikersnaamCheck = Console.ReadLine();
 
-            Console.WriteLine("Wachtwoord: ");
+            if (gebruikersnaamCheck == "0")
+            {
+                Program.Main();
+            }
+                Console.WriteLine("Wachtwoord: ");
             string wachtwoordCheck = Console.ReadLine();
 
             string medewerkerPath = Path.GetFullPath(@"Medewerker.json"); // find path to file

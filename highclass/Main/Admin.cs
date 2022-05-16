@@ -44,7 +44,7 @@ namespace Main
             }
             else
             {
-                Program.Main();
+                adminMain();
             }
         }
         public static void adminMedewerkers()
@@ -52,20 +52,28 @@ namespace Main
             Console.Clear();
 
             Console.WriteLine("╒══════════════════════════════╕");
-            Console.WriteLine("[1] medewerkers list zien\n[2] medewerker verwijderen\n[3] medewerker wijzigen");
+            Console.WriteLine("[1] medewerkers list zien\n[2] medewerker toevoegen\n[3] medewerker verwijderen\n[4] medewerker wijzigen\n[0] terug");
             ConsoleKeyInfo keuze = Console.ReadKey();
             if (keuze.Key == ConsoleKey.D1)
             {
                 Console.WriteLine("hier komen de medewerkers");
                 Console.WriteLine("╘══════════════════════════════╛");
             }
-            else if(keuze.Key == ConsoleKey.D2)
+            else if (keuze.Key == ConsoleKey.D2)
+            {
+                Medewerkers.AddMederwerker();
+            }
+            else if(keuze.Key == ConsoleKey.D3)
             {
                 Medewerkers.verwijderMedewerker();
             }
-            else if(keuze.Key== ConsoleKey.D3)
+            else if(keuze.Key== ConsoleKey.D4)
             {
                 Medewerkers.wijzigMedewerkers();
+            }
+            else if (keuze.Key == ConsoleKey.D0)
+            {
+                adminMain();
             }
         }
 
@@ -99,7 +107,7 @@ namespace Main
                 Console.WriteLine("│                         |Omzet|                          │");
                 Console.WriteLine("│                                                          │");
                 Console.WriteLine("│                   De huidige omzet is:                   │");
-                Console.WriteLine($"                         {omzetDecimalen} euro                        ");
+                Console.WriteLine($"                         {omzetDecimalen} euro        ");
                 Console.WriteLine("│                       [0] Terug                          │");
                 Console.WriteLine("╘══════════════════════════════════════════════════════════╛");
                 ConsoleKeyInfo done = Console.ReadKey();
