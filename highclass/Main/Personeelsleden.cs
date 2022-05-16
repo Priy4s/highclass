@@ -101,7 +101,7 @@ namespace Main
             {
                 bestellingenAanpassen();
             }
-            else if (ckey.Key == ConsoleKey.D2)
+            else if (ckey.Key == ConsoleKey.D3)
             {
                 bestellingenToevoegen();
             }

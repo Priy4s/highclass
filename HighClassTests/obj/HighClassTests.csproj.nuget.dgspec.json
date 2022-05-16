@@ -1,32 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\HighClass.csproj": {}
+    "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\HighClassTests\\HighClassTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\HighClass.csproj": {
+    "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\HighClassTests\\HighClassTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\HighClass.csproj",
-        "projectName": "HighClass",
-        "projectPath": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\HighClass.csproj",
+        "projectUniqueName": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\HighClassTests\\HighClassTests.csproj",
+        "projectName": "HighClassTests",
+        "projectPath": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\HighClassTests\\HighClassTests.csproj",
         "packagesPath": "C:\\Users\\priya\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\obj\\",
+        "outputPath": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\HighClassTests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\priya\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "net5.0"
+          "net6.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net5.0": {
-            "targetAlias": "net5.0",
+          "net6.0": {
+            "targetAlias": "net6.0",
             "projectReferences": {}
           }
         },
@@ -37,12 +37,24 @@
         }
       },
       "frameworks": {
-        "net5.0": {
-          "targetAlias": "net5.0",
+        "net6.0": {
+          "targetAlias": "net6.0",
           "dependencies": {
-            "Newtonsoft.Json": {
+            "MSTest.TestAdapter": {
               "target": "Package",
-              "version": "[13.0.1, )"
+              "version": "[2.2.7, )"
+            },
+            "MSTest.TestFramework": {
+              "target": "Package",
+              "version": "[2.2.7, )"
+            },
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[16.11.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[3.1.0, )"
             }
           },
           "imports": [
