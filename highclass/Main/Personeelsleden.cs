@@ -68,16 +68,17 @@ namespace Main
             {
                 Admin.adminMain();
             }
-            else if (ckey.Key == ConsoleKey.D1 && gebruiker == "personeel") {
-                getMenu.gettingMenu("personeel");
-            }
-            else if (ckey.Key == ConsoleKey.D2)
+            else if (ckey.Key == ConsoleKey.D1 && gebruiker == "personeel") 
             {
-                MenuAanpassen.mainAanpassen();
+                getMenu.gettingMenu("personeel");
             }
             else if (ckey.Key == ConsoleKey.D1 && gebruiker == "admin")
             {
                 getMenu.gettingMenu("admin");
+            }
+            else if (ckey.Key == ConsoleKey.D2)
+            {
+                MenuAanpassen.mainAanpassen();
             }
         }
         public static void bestellingenMain()

@@ -10,7 +10,17 @@
       "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
       "DisplayName": "Miscellaneous Files",
       "ColorIndex": -1
+    },
+    "00431e89-10e2-4e65-85ce-988ea2d8941d": {
+      "ProjectGuid": "00431e89-10e2-4e65-85ce-988ea2d8941d",
+      "DisplayName": "HighClassTests1",
+      "ColorIndex": 1
+    },
+    "43ace7c9-5f3b-439b-8f61-27819d45e4cd": {
+      "ProjectGuid": "43ace7c9-5f3b-439b-8f61-27819d45e4cd",
+      "DisplayName": "HighClassTests2",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 3
 }
