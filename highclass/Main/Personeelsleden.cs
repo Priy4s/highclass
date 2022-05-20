@@ -6,6 +6,11 @@ using static Main.Program;
 
 namespace Main
 {
+    public class OmzetDag
+    {
+        public string Datum { get; set; }
+        public double Omzet { get; set; }
+    }
     public class Personeelsleden
     {
         public static void personeelMain()
@@ -186,6 +191,15 @@ namespace Main
         public static void bestellingenToevoegen()
         {
             Console.Clear();
+            string omzetPath = Path.GetFullPath(@"Omzet.json"); // find path to file
+            bool fileExist1 = File.Exists(omzetPath); // checks if the file exists, if so does nothing, else creates it
+            if (!fileExist1)
+            {
+                using (File.Create(omzetPath)) ;
+            }
+            var JsonData1 = File.ReadAllText(omzetPath);
+            var OmzetList = JsonConvert.DeserializeObject<List<OmzetDag>>(JsonData1) ?? new List<OmzetDag>();
+
             string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
             bool fileExist = File.Exists(ReserveringPath);
             if (!fileExist)
@@ -195,13 +209,12 @@ namespace Main
             var JsonData = File.ReadAllText(ReserveringPath);
             var ReserveringenList = JsonConvert.DeserializeObject<List<Reserveringenjson>>(JsonData) ?? new List<Reserveringenjson>();
 
+
             Console.WriteLine("╒════════════════════════════════════════════════════════╕");
             Console.WriteLine(" HC\n");
             Console.WriteLine("Volledige naam: ");
             string zoekNaam = Console.ReadLine();
 
-            int len = ReserveringenList.Count;
-            int i = 0;
             string reserveringsNaam = "";
             foreach (Reserveringenjson reservering in ReserveringenList)
             {
@@ -225,37 +238,82 @@ namespace Main
                 }
             }
             double reserveringsPrijs = 0.00;
-            foreach (Reserveringenjson reservering in ReserveringenList)
-            {
-                if (reservering.Naam == zoekNaam)
-                {
-                    reserveringsPrijs = reservering.Prijs;
-                    Console.WriteLine("\nHuidige bedrag onder deze naam is: " + reserveringsPrijs + " euro");
-                }
-            }
+            Console.WriteLine("Voer de datum in: (DD-MM-YYYY)");
+            string inputDatum = Console.ReadLine();
             Console.WriteLine("Voer het bedrag in dat u wil toevoegen: ");
             double toevoegBedrag = Convert.ToDouble(Console.ReadLine());
             double nieuwBedrag = toevoegBedrag + reserveringsPrijs;
-            while (i < len)
+
+
+            int length = OmzetList.Count;
+            int y = 0;
+            string datum = "";
+            foreach (OmzetDag dagJson in OmzetList)
             {
-                if (ReserveringenList[i].Naam == zoekNaam)
+                if (dagJson.Datum == inputDatum)
                 {
-                    ReserveringenList[i].Prijs = nieuwBedrag;
-                    Console.WriteLine($"\n Het bedrag is aangepast naar " + nieuwBedrag + "euro");
-                    Console.WriteLine("[1] Doorgaan\n");
+                    datum = dagJson.Datum;
+                }
+            }
+            if (datum == "")
+            {
+                OmzetList.Add(new OmzetDag()
+                {
+                    Datum = inputDatum,
+                    Omzet = 0.00
+                });
+            }
+            while (y < length)
+            {
+                if (OmzetList[y].Datum == inputDatum)
+                {
+                    OmzetList[y].Omzet = nieuwBedrag;
+                    Console.WriteLine($"\n De omzet op " + inputDatum + " is verhoogd met " + nieuwBedrag + " euro");
+                    Console.WriteLine($"[1] Reservering van {zoekNaam} verwijderen\n[2] Doorgaan zonder verwijderen]");
                     Console.WriteLine("╘══════════════════════════════════════════════════════════════════════════════════════════════╛");
                     ConsoleKeyInfo keus = Console.ReadKey();
-                    if (keus.Key == ConsoleKey.D1)
+                    if (keus.Key == ConsoleKey.D2)
                     {
-                        JsonData = JsonConvert.SerializeObject(ReserveringenList);
-                        System.IO.File.WriteAllText(ReserveringPath, JsonData);
+                        JsonData = JsonConvert.SerializeObject(OmzetList);
+                        System.IO.File.WriteAllText(omzetPath, JsonData);
                         bestellingenMain();
                     }
-                    break;
+                    else if (keus.Key == ConsoleKey.D1)
+                    {
+                        int i = 0;
+                        int len = ReserveringenList.Count;
+                        while (i < len)
+                        {
+                            if (ReserveringenList[i].Naam == zoekNaam)
+                            {
+                                ReserveringenList.RemoveAt(i);
+                                Console.Clear();
+                                Console.WriteLine("╒════════════════════════════════════════════════════════════════════════════╕");
+                                Console.WriteLine(" HC\n");
+                                Console.WriteLine($"De reservering onder de naam, '{zoekNaam}', is verwijderd");
+                                JsonData = JsonConvert.SerializeObject(ReserveringenList);
+                                System.IO.File.WriteAllText(ReserveringPath, JsonData);
+
+                                Console.WriteLine("\n [1] Doorgaan");
+                                Console.WriteLine("╘════════════════════════════════════════════════════════════════════════════╛");
+                                ConsoleKeyInfo keus2 = Console.ReadKey();
+                                if (keus2.Key == ConsoleKey.D1)
+                                {
+                                    bestellingenMain();
+                                }
+
+                                break;
+                            }
+                            i++;
+
+                        }
+                    }
                 }
-                i++;
+                y++;
             }
         }
+
+
         public static void bestellingenWeergeven()
         {
             Console.Clear();

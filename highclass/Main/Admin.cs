@@ -86,28 +86,52 @@ namespace Main
             if (keuze.Key == ConsoleKey.D1)
             {
                 Console.Clear();
-                string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
-                bool fileExist = File.Exists(ReserveringPath);
+                string Omzetpath = Path.GetFullPath(@"Omzet.json");
+                bool fileExist = File.Exists(Omzetpath);
                 if (!fileExist)
                 {
-                    using (File.Create(ReserveringPath)) ;
+                    using (File.Create(Omzetpath)) ;
                 }
-                var JsonData = File.ReadAllText(ReserveringPath);
-                var ReserveringenList = JsonConvert.DeserializeObject<List<Reserveringenjson>>(JsonData) ?? new List<Reserveringenjson>();
-
-                double omzet = 0.0;
-                foreach (Reserveringenjson reservering in ReserveringenList)
+                var JsonData = File.ReadAllText(Omzetpath);
+                var OmzetList = JsonConvert.DeserializeObject<List<OmzetDag>>(JsonData) ?? new List<OmzetDag>();
+                Console.WriteLine("Datum: ");
+                string zoekDatum = Console.ReadLine();
+                string opslaanDatum = "";
+                foreach (OmzetDag omzetdag in OmzetList)
                 {
-                    omzet = omzet + reservering.Prijs;
+                    if (omzetdag.Datum == zoekDatum)
+                    {
+                        opslaanDatum = omzetdag.Datum;
+                    }
                 }
-                var omzetDecimalen = String.Format("{0:0.00}", omzet);
-
+                if (opslaanDatum == "")
+                {
+                    Console.WriteLine("Er is geen omzet beschikbaar voor deze datum. \n[1] Probeer opnieuw.\n[0] Terug\n");
+                    Console.WriteLine("╘════════════════════════════════════════════════════════╛");
+                    ConsoleKeyInfo rkey = Console.ReadKey();
+                    if (rkey.Key == ConsoleKey.D1)
+                    {
+                        adminOmzet();
+                    }
+                    else if (rkey.Key == ConsoleKey.D0)
+                    {
+                        adminMain();
+                    }
+                }
+                double omzet = 0.0;
+                foreach (OmzetDag omzetdag in OmzetList)
+                {
+                    if (omzetdag.Datum == zoekDatum)
+                    {
+                        omzet = omzetdag.Omzet;
+                    }
+                }
                 Console.WriteLine("╒══════════════════════════════════════════════════════════╕");
                 Console.WriteLine("│HC                                                        │");
                 Console.WriteLine("│                         |Omzet|                          │");
                 Console.WriteLine("│                                                          │");
-                Console.WriteLine("│                   De huidige omzet is:                   │");
-                Console.WriteLine($"                         {omzetDecimalen} euro        ");
+                Console.WriteLine($"│                   De omzet op {zoekDatum} is:             │");
+                Console.WriteLine($"                         {omzet} euro        ");
                 Console.WriteLine("│                       [0] Terug                          │");
                 Console.WriteLine("╘══════════════════════════════════════════════════════════╛");
                 ConsoleKeyInfo done = Console.ReadKey();
