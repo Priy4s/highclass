@@ -75,7 +75,7 @@ namespace Main
                         ConsoleKeyInfo cvjkey = Console.ReadKey();
                         if (cvjkey.Key == ConsoleKey.D1)
                         {
-                            Reserveringenoud.Plekken(); // Roept de method (achter de punt) van de file (voor de punt) op.
+                            Console.WriteLine("Functie komt z.s.m."); // Roept de method (achter de punt) van de file (voor de punt) op.
                         }
                         else if (cvjkey.Key == ConsoleKey.D2)
                         {

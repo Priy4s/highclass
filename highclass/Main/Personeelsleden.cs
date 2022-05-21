@@ -50,11 +50,18 @@ namespace Main
         {
             Console.Clear();
             Console.WriteLine("Reserveren menu - personeel");
-            Console.WriteLine("         [0] Terug            ");
+            Console.WriteLine("         [1] Reserveringen bekijken            ");
+            Console.WriteLine("         [2] Reserveringen wijzigen            ");
+            Console.WriteLine("         [3] Reserveringen annuleren            ");
+            Console.WriteLine("         [0] Terug           ");
             ConsoleKeyInfo ckey = Console.ReadKey();
             if (ckey.Key == ConsoleKey.D0)
             {
                 personeelMain();
+            }
+            if (ckey.Key == ConsoleKey.D2)
+            {
+                Reserveringen.WijzigReservering("ingelogd");
             }
         }
         public static void menuMain(string gebruiker = "personeel")
