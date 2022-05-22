@@ -56,8 +56,24 @@ namespace Main
             ConsoleKeyInfo keuze = Console.ReadKey();
             if (keuze.Key == ConsoleKey.D1)
             {
-                Console.WriteLine("hier komen de medewerkers");
+                Console.Clear();
+                string MedewerkerPath = Path.GetFullPath(@"Medewerker.json"); // find path to files
+
+                var JsonData = File.ReadAllText(MedewerkerPath);
+                var MedewerkersList = JsonConvert.DeserializeObject<List<MedewerkerINFO>>(JsonData) ?? new List<MedewerkerINFO>();
+
+                Console.WriteLine("╒══════════════════════════════╕");
+                foreach(MedewerkerINFO person in MedewerkersList)
+                {
+                    Console.WriteLine($"Name: {person.naam}\nVoornaamwoorden: {person.pronouns}\nTelefoonnummer: {person.telefoonnummer}\nE-Mail: {person.eMail}\nFunctie: {person.functie}\nGebruikersnaam: *****\nWachtwoord: ******\n\n");
+                }
+                Console.WriteLine("[1] doorgaan");
                 Console.WriteLine("╘══════════════════════════════╛");
+                ConsoleKeyInfo doorgaan = Console.ReadKey();
+                if(doorgaan.Key == ConsoleKey.D1)
+                {
+                    adminMedewerkers();
+                }
             }
             else if (keuze.Key == ConsoleKey.D2)
             {

@@ -427,16 +427,11 @@ namespace Main
             {
                 Console.WriteLine("Gebruikersnaam en of wachtwoord is verkeerd");
                 Console.WriteLine("[0] Terug");
-                Console.WriteLine("[1] Maak een account aan");
                 Console.WriteLine("╘══════════════════════════╛");
                 ConsoleKeyInfo begin = Console.ReadKey();
                 if (ConsoleKey.D0 == begin.Key)
                 {
                     Program.Main();
-                }
-                else if (ConsoleKey.D1 == begin.Key)
-                {
-                    Medewerkers.AddMederwerker();
                 }
             }
         }
@@ -458,25 +453,6 @@ namespace Main
                 }
             }
             return false; // Zet de boolean "ingelogd" op false, MAAR de accounts bestaand nog! 
-        }
-        public static void Account()
-        {
-            Console.Clear();
-            Console.WriteLine("╒══════════════╕");
-            Console.WriteLine("HC   ");
-            string doen = "[1] Inloggen\n[2] Aanmelden\n";
-            Console.WriteLine(doen);
-            Console.WriteLine("╘══════════════╛");
-            ConsoleKeyInfo cakey = Console.ReadKey();
-
-            if (cakey.Key == ConsoleKey.D1)
-            {
-                Inloggen();
-            }
-            else if (cakey.Key == ConsoleKey.D2)
-            {
-                AddMederwerker();
-            }
         }
     }
 }

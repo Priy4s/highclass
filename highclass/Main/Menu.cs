@@ -405,7 +405,7 @@ namespace Main
         public static void mainAanpassen()
         {
             Console.Clear();
-            Console.WriteLine("[1] Menu Item verwijderen \n[2] Menu Item toevoegen\n[3] Menu Item wijzigen[0] Terug");
+            Console.WriteLine("[1] Menu Item verwijderen \n[2] Menu Item toevoegen\n[3] Menu Item wijzigen\n[0] Terug");
             ConsoleKeyInfo readkey = Console.ReadKey();
             if (readkey.Key == ConsoleKey.D1)
             {
@@ -449,14 +449,12 @@ namespace Main
             ConsoleKeyInfo readkey = Console.ReadKey();
             if (readkey.Key == ConsoleKey.D1)
             {
-
-
                 while (i < len)
                 {
                     if (menuList[i].ID == zoekID)
                     {
                         menuList.RemoveAt(i);
-                        Console.WriteLine($"Menu Item met ID { zoekID} is verwijderd");
+                        Console.WriteLine($"Menu Item met ID {zoekID} is verwijderd");
 
                         count++;
                         break;
@@ -469,8 +467,6 @@ namespace Main
             {
                 mainAanpassen();
             }
-
-
             if (count == 0)
             {
                 Console.WriteLine("Menu Item ID bestaat niet. Probeer opnieuw.");
@@ -519,7 +515,38 @@ namespace Main
             Console.WriteLine("Wat is de prijs van het nieuwe Menu Item?");
             double PrijsIN = Convert.ToDouble(Console.ReadLine());
             Console.WriteLine("Welke allergenen komen er in het nieuwe Menu Item voor?");
-            string allorgieIN = Console.ReadLine();
+            Console.WriteLine("\t[V] - Vegan");
+            Console.WriteLine("\t[N] - Bevat noten");
+            Console.WriteLine("\t[L] - Lactose vrij");
+            Console.WriteLine("\t[G] - Gluten vrij");
+            Console.WriteLine("\t[A] - Bevat alocohol");
+            Console.WriteLine("\t[0] geen allergenen informatie ");
+            ConsoleKeyInfo allorgenenINFO = Console.ReadKey();
+            string allorgieIN = "";
+            if (allorgenenINFO.Key == ConsoleKey.V)
+            {
+                allorgieIN = "V";
+            }
+            else if (allorgenenINFO.Key == ConsoleKey.N)
+            {
+                allorgieIN = "N";
+            }
+            else if (allorgenenINFO.Key == ConsoleKey.L)
+            {
+                allorgieIN = "L";
+            }
+            else if (allorgenenINFO.Key == ConsoleKey.G)
+            {
+                allorgieIN = "G";
+            }
+            else if (allorgenenINFO.Key == ConsoleKey.A)
+            {
+                allorgieIN = "A";
+            }
+            else if (allorgenenINFO.Key == ConsoleKey.D0)
+            {
+                allorgieIN = "";
+            }
             Console.WriteLine("Wat wordt de nieuwe categorie van dit Menu Item?\n\t[1] Brunch\n\t[2] Lunch\n\t[3] LunchSoep\n\t[4] DinerVoorgerecht\n\t[5] DinerSoep\n\t[6] DinerHoofdgerecht\n\t[7] DinerSushi\n\t[8] DinerNagerecht\n\t[9] DrinkenWarm\n\t[10] DrinkenKoud\n\t[11] DrinkenBier\n\t[12] DrinkenWijn\n\t[13] DrinkenCocktail");
             int CategorieMenu = Convert.ToInt32(Console.ReadLine());
             string New_Categorie = "";
@@ -584,8 +611,17 @@ namespace Main
                 Categorie = New_Categorie,
                 ID = ID_IN,
             });
-            Console.WriteLine($"Het nieuwe Menu Item met de naam {NaamIN} is toegevoegd aan Menu?");
+            
+            JsonData = JsonConvert.SerializeObject(menuList);
+            System.IO.File.WriteAllText(menuPath, JsonData);
+
+            Console.WriteLine($"Het nieuwe Menu Item met de naam {NaamIN} is toegevoegd aan Menu?\n[1] doorgaan");
             Console.WriteLine("╘══════════════════════════════════════════════════════════════════╛");
+            ConsoleKeyInfo doorKey = Console.ReadKey();
+            if (doorKey.Key == ConsoleKey.D1)
+            {
+                Admin.adminMain();
+            }
         }
         public static void wijzigen()
         {
@@ -617,7 +653,7 @@ namespace Main
                     wijzigen();
                 }
             }
-            Console.WriteLine("Wat wilt u veranderen?\n\t[1] Naam Menu Item\n\t[2] Prijs Menu Item\n\t[3] Allergie Menu Item\n\t[4] Catogorie Menu Item\n\t[5] Menu ID");
+            Console.WriteLine("Wat wilt u veranderen?\n\t[1] Naam Menu Item\n\t[2] Prijs Menu Item\n\t[3] Allergie Menu Item\n\t[4] Catogorie Menu Item\n");
             ConsoleKeyInfo menukey = Console.ReadKey();
             if (menukey.Key == ConsoleKey.D1)
             {
@@ -761,10 +797,6 @@ namespace Main
                     }
                     i++;
                 }
-            }
-            else if(menukey.Key == ConsoleKey.D5)
-            {
-                Console.WriteLine("Wat wordt new menu item ID");
             }
             
             JsonData = JsonConvert.SerializeObject(menuList);

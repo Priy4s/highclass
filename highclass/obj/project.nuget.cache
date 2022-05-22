@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "bDnu8PBO8A3Rg1r8soVdlwU9L1JkZRJp3zr16NhQiqvP6DJALSvWa3OhAcRcpDpjmPzi3uWBSJgu1H01m0yNNQ==",
+  "dgSpecHash": "FFVf5DZ3GO31gNTa6W8a46LPtwTu6xWewj1iEB841unAfxL1A/OtBqKEtjzxWULSJZeyXiPe+di4CG5OWLP3PQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\highclass\\HighClass.csproj",
+  "projectFilePath": "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\highclass\\HighClass.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\shery\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+    "C:\\Users\\Yvonn\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\Yvonn\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\5.0.14\\microsoft.netcore.app.host.win-x64.5.0.14.nupkg.sha512"
   ],
   "logs": []
 }
