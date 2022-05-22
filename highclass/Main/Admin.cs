@@ -67,7 +67,7 @@ namespace Main
                 {
                     Console.WriteLine($"Name: {person.naam}\nVoornaamwoorden: {person.pronouns}\nTelefoonnummer: {person.telefoonnummer}\nE-Mail: {person.eMail}\nFunctie: {person.functie}\nGebruikersnaam: *****\nWachtwoord: ******\n\n");
                 }
-                Console.WriteLine("[1] doorgaan");
+                Console.WriteLine("Scroll voor meer\n[1] doorgaan");
                 Console.WriteLine("╘══════════════════════════════╛");
                 ConsoleKeyInfo doorgaan = Console.ReadKey();
                 if(doorgaan.Key == ConsoleKey.D1)

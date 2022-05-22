@@ -233,7 +233,6 @@ namespace Main
 
                 while (i < len)
                 {
-                    Console.WriteLine(MedewerkersList[i].naam);
                     if (MedewerkersList[i].naam == zoekNaam)
                     {
                         MedewerkersList[i].naam = new_naam;
@@ -363,7 +362,6 @@ namespace Main
             JsonData = JsonConvert.SerializeObject(MedewerkersList);
             System.IO.File.WriteAllText(MedewerkerPath, JsonData);
 
-            Console.WriteLine("Succesvol gewijzigd!");
             Console.WriteLine("[1] Doorgaan");
             Console.WriteLine("╘══════════════════════════════╛");
             ConsoleKeyInfo keus = Console.ReadKey();
