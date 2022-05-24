@@ -6204,25 +6204,11 @@
     ]
   },
   "packageFolders": {
-<<<<<<< Updated upstream
-    "C:\\Users\\shery\\.nuget\\packages\\": {}
-=======
     "C:\\Users\\priya\\.nuget\\packages\\": {}
->>>>>>> Stashed changes
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< Updated upstream
-      "projectUniqueName": "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\HighClassTests2\\HighClassTests2.csproj",
-      "projectName": "HighClassTests2",
-      "projectPath": "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\HighClassTests2\\HighClassTests2.csproj",
-      "packagesPath": "C:\\Users\\shery\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\HighClassTests2\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\shery\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
       "projectUniqueName": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\HighClassTests2\\HighClassTests2.csproj",
       "projectName": "HighClassTests2",
       "projectPath": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\HighClassTests2\\HighClassTests2.csproj",
@@ -6231,7 +6217,6 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\priya\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> Stashed changes
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6289,8 +6274,16 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\HighClassTests2\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

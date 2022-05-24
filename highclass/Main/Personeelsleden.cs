@@ -252,8 +252,6 @@ namespace Main
             double nieuwBedrag = toevoegBedrag + reserveringsPrijs;
 
 
-            int length = OmzetList.Count;
-            int y = 0;
             string datum = "";
             foreach (OmzetDag dagJson in OmzetList)
             {
@@ -268,21 +266,32 @@ namespace Main
                 {
                     Datum = inputDatum,
                     Omzet = 0.00
+
                 });
+                JsonData1 = JsonConvert.SerializeObject(OmzetList);
+                System.IO.File.WriteAllText(omzetPath, JsonData1);
             }
+            
+            var JsonData3 = File.ReadAllText(omzetPath);
+            var OmzetList2 = JsonConvert.DeserializeObject<List<OmzetDag>>(JsonData3) ?? new List<OmzetDag>();
+
+            int length = OmzetList2.Count;
+            int y = 0;
+
             while (y < length)
             {
-                if (OmzetList[y].Datum == inputDatum)
+                
+                if (OmzetList2[y].Datum == inputDatum)
                 {
-                    OmzetList[y].Omzet = OmzetList[y].Omzet + nieuwBedrag;
+                    OmzetList2[y].Omzet = OmzetList2[y].Omzet + nieuwBedrag;
                     Console.WriteLine($"\n De omzet op " + inputDatum + " is verhoogd met " + nieuwBedrag + " euro");
                     Console.WriteLine($"[1] Reservering van {zoekNaam} verwijderen\n[2] Doorgaan zonder te verwijderen");
                     Console.WriteLine("╘══════════════════════════════════════════════════════════════════════════════════════════════╛");
                     ConsoleKeyInfo keus = Console.ReadKey();
                     if (keus.Key == ConsoleKey.D2)
                     {
-                        JsonData = JsonConvert.SerializeObject(OmzetList);
-                        System.IO.File.WriteAllText(omzetPath, JsonData);
+                        JsonData3 = JsonConvert.SerializeObject(OmzetList2);
+                        System.IO.File.WriteAllText(omzetPath, JsonData3);
                         bestellingenMain();
                     }
                     else if (keus.Key == ConsoleKey.D1)
