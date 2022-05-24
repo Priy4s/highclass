@@ -245,7 +245,7 @@ namespace Main
                 }
             }
             double reserveringsPrijs = 0.00;
-            Console.WriteLine("Voer de datum in: (DD-MM-YYYY)");
+            Console.WriteLine("Voer de datum in: (DD-MM-JJJJ)");
             string inputDatum = Console.ReadLine();
             Console.WriteLine("Voer het bedrag in dat u wil toevoegen: ");
             double toevoegBedrag = Convert.ToDouble(Console.ReadLine());
