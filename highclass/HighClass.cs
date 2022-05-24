@@ -48,11 +48,6 @@ namespace Main
                 Console.WriteLine("│       [3] Inloggen           │");
                 Console.WriteLine("│       [4] Contact            │");
                 Console.WriteLine("│                              │");
-                Console.WriteLine("│                              │");
-                Console.WriteLine("│                              │");
-                Console.WriteLine("│ Wijnhaven 107                │");
-                Console.WriteLine("│ 3011 WN, Rotterdam           │");
-                Console.WriteLine("│ ma t/m zo - 11:00 tot 23:00  │");
                 Console.WriteLine("╘══════════════════════════════╛");
 
                 ConsoleKeyInfo ckey = Console.ReadKey(); // Deze variabele krijgt als input de toets die de gebruiker op het toetsenbord heeft aangeklikt.
@@ -155,16 +150,20 @@ namespace Main
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("╒════════════════════════════╕");
-                Console.WriteLine("│HC                          │");
-                Console.WriteLine("│                            │");
-                Console.WriteLine("│     |Contactgegevens|      │");
-                Console.WriteLine("│                            │");
-                Console.WriteLine("│        [0] terug           │");
-                Console.WriteLine("│                            │");
-                Console.WriteLine("│ Tel. : 0107940000          │");
-                Console.WriteLine("│ email: highclass@info.com  │");
-                Console.WriteLine("╘════════════════════════════╛");
+                Console.WriteLine("╒════════════════════════════════╕");
+                Console.WriteLine("│HC                              │");
+                Console.WriteLine("│                                │");
+                Console.WriteLine("│        |Contactgegevens|       │");
+                Console.WriteLine("│                                │");
+                Console.WriteLine("│           [0] Terug            │");
+                Console.WriteLine("│                                │");
+                Console.WriteLine("│ Tel. : 010 794 4000            │");
+                Console.WriteLine("│ E-mail: highclass@info.com     │");
+                Console.WriteLine("│ Straatnaam: Wijnhaven 107      │");
+                Console.WriteLine("│ Postcode: 3011 WN, Rotterdam   │");
+                Console.WriteLine("│ Openingstijden:                │");
+                Console.WriteLine("|     ma t/m zo - 11:00 tot 23:00|");
+                Console.WriteLine("╘════════════════════════════════╛");
                 ConsoleKeyInfo done = Console.ReadKey();
                 if (done.Key == ConsoleKey.Enter)
                 {
