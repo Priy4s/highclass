@@ -274,9 +274,9 @@ namespace Main
             {
                 if (OmzetList[y].Datum == inputDatum)
                 {
-                    OmzetList[y].Omzet = nieuwBedrag;
+                    OmzetList[y].Omzet = OmzetList[y].Omzet + nieuwBedrag;
                     Console.WriteLine($"\n De omzet op " + inputDatum + " is verhoogd met " + nieuwBedrag + " euro");
-                    Console.WriteLine($"[1] Reservering van {zoekNaam} verwijderen\n[2] Doorgaan zonder verwijderen]");
+                    Console.WriteLine($"[1] Reservering van {zoekNaam} verwijderen\n[2] Doorgaan zonder te verwijderen");
                     Console.WriteLine("╘══════════════════════════════════════════════════════════════════════════════════════════════╛");
                     ConsoleKeyInfo keus = Console.ReadKey();
                     if (keus.Key == ConsoleKey.D2)

@@ -5,7 +5,13 @@ VisualStudioVersion = 17.1.32210.238
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HighClass", "HighClass.csproj", "{4C99798A-D0E5-4649-8790-6439E346AF43}"
 EndProject
+<<<<<<< Updated upstream
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test Login", "..\Test Login\Test Login.csproj", "{8F70A38B-1D07-4666-994A-C5CC8EBC32F5}"
+=======
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HighClassTests2", "..\HighClassTests2\HighClassTests2.csproj", "{43ACE7C9-5F3B-439B-8F61-27819D45E4CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuItemToevoegen", "..\MenuItemToevoegen\MenuItemToevoegen.csproj", "{8B54698E-6C06-41D0-AC30-02B599E459D6}"
+>>>>>>> Stashed changes
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +23,21 @@ Global
 		{4C99798A-D0E5-4649-8790-6439E346AF43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C99798A-D0E5-4649-8790-6439E346AF43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C99798A-D0E5-4649-8790-6439E346AF43}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< Updated upstream
 		{8F70A38B-1D07-4666-994A-C5CC8EBC32F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8F70A38B-1D07-4666-994A-C5CC8EBC32F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F70A38B-1D07-4666-994A-C5CC8EBC32F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F70A38B-1D07-4666-994A-C5CC8EBC32F5}.Release|Any CPU.Build.0 = Release|Any CPU
+=======
+		{43ACE7C9-5F3B-439B-8F61-27819D45E4CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43ACE7C9-5F3B-439B-8F61-27819D45E4CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43ACE7C9-5F3B-439B-8F61-27819D45E4CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43ACE7C9-5F3B-439B-8F61-27819D45E4CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B54698E-6C06-41D0-AC30-02B599E459D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B54698E-6C06-41D0-AC30-02B599E459D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B54698E-6C06-41D0-AC30-02B599E459D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B54698E-6C06-41D0-AC30-02B599E459D6}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> Stashed changes
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
