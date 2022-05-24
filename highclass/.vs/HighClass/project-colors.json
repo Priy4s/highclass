@@ -20,7 +20,12 @@
       "ProjectGuid": "43ace7c9-5f3b-439b-8f61-27819d45e4cd",
       "DisplayName": "HighClassTests2",
       "ColorIndex": 2
+    },
+    "8b54698e-6c06-41d0-ac30-02b599e459d6": {
+      "ProjectGuid": "8b54698e-6c06-41d0-ac30-02b599e459d6",
+      "DisplayName": "MenuItemToevoegen",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 3
+  "NextColorIndex": 4
 }
