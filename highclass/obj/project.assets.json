@@ -48,19 +48,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\priya\\.nuget\\packages\\": {}
+    "C:\\Users\\shery\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\HighClass.csproj",
+      "projectUniqueName": "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\highclass\\HighClass.csproj",
       "projectName": "HighClass",
-      "projectPath": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\HighClass.csproj",
-      "packagesPath": "C:\\Users\\priya\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\obj\\",
+      "projectPath": "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\highclass\\HighClass.csproj",
+      "packagesPath": "C:\\Users\\shery\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\highclass\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\priya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\shery\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -106,16 +106,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\highclass\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

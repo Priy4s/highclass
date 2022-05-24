@@ -5978,11 +5978,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\Test Login\\Test Login.csproj",
-      "projectName": "Test Login",
-      "projectPath": "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\Test Login\\Test Login.csproj",
+      "projectUniqueName": "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\Test AddReservering\\Test AddReservering.csproj",
+      "projectName": "Test AddReservering",
+      "projectPath": "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\Test AddReservering\\Test AddReservering.csproj",
       "packagesPath": "C:\\Users\\shery\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\Test Login\\obj\\",
+      "outputPath": "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\Test AddReservering\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\shery\\AppData\\Roaming\\NuGet\\NuGet.Config",

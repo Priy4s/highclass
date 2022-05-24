@@ -13,7 +13,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
         public string Naam { get; set; }
         public string Voornaamwoorden { get; set; }
         public int Groepsgrote { get; set; }
-        public string Tijdslot  { get; set; }
+        public string Tijdslot { get; set; }
         public string Datum { get; set; }
         public string Eindtijd { get; set; }
         public double Prijs { get; set; }
@@ -35,7 +35,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
         public static void AddReservering()
         {
             string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
-            bool fileExist = File.Exists(ReserveringPath); 
+            bool fileExist = File.Exists(ReserveringPath);
             if (!fileExist)
             {
                 using (File.Create(ReserveringPath)) ;
@@ -77,9 +77,25 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
 
             Console.WriteLine("\n\nGroepsgrote: ");
             int aantalIN = Convert.ToInt32(Console.ReadLine());
+            if (aantalIN > 200)
+            {
+                Console.WriteLine("Niet mogelijk om een reservering te maken voor meer\ndan 200 personen.");
+                Console.WriteLine("[1] Doorgaan\n");
+                Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                ConsoleKeyInfo keuze = Console.ReadKey();
+                if (keuze.Key == ConsoleKey.D1)
+                {
+                    Program.Main();
+                }
+            }
 
-            Console.WriteLine("\nDatum van reservering (vb. 04-05-2022): ");
-            string datumIN = Console.ReadLine();
+            Console.WriteLine("\nDatum van reservering\nDag: ");
+            int dag = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Maand: ");
+            int maand = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Jaar: ");
+            int jaar = Convert.ToInt32(Console.ReadLine());
+            string datumIN = Convert.ToString(new DateTime(jaar, maand, dag));
 
             int i = 0;
             string check = "x";
@@ -101,14 +117,14 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                     Tijdslot1_Beschikbaarheid = 200,
                     Tijdslot2 = "15:00-19:00",
                     Tijdslot2_Beschikbaarheid = 200,
-                    Tijdslot3 = "19:00-21:00",
+                    Tijdslot3 = "19:00-22:00",
                     Tijdslot3_Beschikbaarheid = 200,
-                    Tijdslot4 = "21:00-23:00",
+                    Tijdslot4 = "22:00-23:00",
                     Tijdslot4_Beschikbaarheid = 200,
                 });
             }
 
-            Console.WriteLine($"\nKies een tijdslot:\n\t[1] 11:00-15:00\n\t[2] 15:00-19:00\n\t[3] 19:00-21:00\n\t[4] 21:00-23:00");
+            Console.WriteLine($"\nKies een tijdslot:\n\t[1] 11:00-15:00\n\t[2] 15:00-19:00\n\t[3] 19:00-22:00\n\t[4] 22:00-23:00");
             ConsoleKeyInfo ckey2 = Console.ReadKey();
             string tijdslotIN = "";
             if (ckey2.Key == ConsoleKey.D1)
@@ -181,7 +197,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
             else if (ckey2.Key == ConsoleKey.D3)
             {
-                tijdslotIN = "19:00-21:00";
+                tijdslotIN = "19:00-22:00";
                 int j = 0;
                 while (j < BeschikbaarheidList.Count)
                 {
@@ -215,7 +231,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
             else if (ckey2.Key == ConsoleKey.D4)
             {
-                tijdslotIN = "21:00-23:00";
+                tijdslotIN = "22:00-23:00";
                 int j = 0;
                 while (j < BeschikbaarheidList.Count)
                 {
@@ -259,11 +275,18 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 Prijs = 0.00
             });
 
-            
+            JsonData = JsonConvert.SerializeObject(ReserveringenList);
+            System.IO.File.WriteAllText(ReserveringPath, JsonData);
 
             Console.WriteLine("\nUw reservering is succesvol opgeslagen.");
-
+            Console.WriteLine("[1] Doorgaan\n");
             Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+            ConsoleKeyInfo keus = Console.ReadKey();
+            if (keus.Key == ConsoleKey.D1)
+            {
+                Program.Main();
+            }
+
 
         }
 
@@ -460,8 +483,8 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 Console.Clear();
                 Console.WriteLine("╒════════════════════════════════════════════════════════════════╕");
                 Console.WriteLine(" HC\n");
-  
-                Console.WriteLine("\nKies een tijdslot:\n\t[1] 11:00-15:00\n\t[2] 15:00-19:00\n\t[3] 19:00-21:00\n\t[4] 21:00-23:00");
+
+                Console.WriteLine("\nKies een tijdslot:\n\t[1] 11:00-15:00\n\t[2] 15:00-19:00\n\t[3] 19:00-22:00\n\t[4] 22:00-23:00");
                 ConsoleKeyInfo ckey = Console.ReadKey();
                 if (ckey.Key == ConsoleKey.D1)
                 {
@@ -511,7 +534,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 }
                 else if (ckey.Key == ConsoleKey.D3)
                 {
-                    string new_Tijdslot = "19:00-21:00";
+                    string new_Tijdslot = "19:00-22:00";
                     while (i < len)
                     {
                         if (ReserveringenList[i].Naam == zoekNaam)
@@ -534,7 +557,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 }
                 else if (ckey.Key == ConsoleKey.D4)
                 {
-                    string new_Tijdslot = "21:00-23:00";
+                    string new_Tijdslot = "22:00-23:00";
                     while (i < len)
                     {
                         if (ReserveringenList[i].Naam == zoekNaam)
@@ -585,7 +608,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                         }
                         i++;
                     }
-                } 
+                }
             }
         }
 
@@ -670,3 +693,4 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
         }
     }
 }
+
