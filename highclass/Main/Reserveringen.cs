@@ -89,14 +89,123 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 }
             }
 
-            Console.WriteLine("\nDatum van reservering\nDag: ");
+            Console.WriteLine("\nDatum van reservering\nDag (1 t/m 31): ");
             int dag = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Maand: ");
             int maand = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Jaar: ");
             int jaar = Convert.ToInt32(Console.ReadLine());
-            string datumIN = Convert.ToString(new DateTime(jaar, maand, dag));
 
+            int today = DateTime.Now.Day; // dag van vandaag (bijv. 7)
+            int days_in_month = DateTime.DaysInMonth(jaar, maand); // hoeveel maanden in aangegeven maand
+            int maxdag = today;
+            int maxdag2 = today;
+            int maxmaand = DateTime.Now.Month;
+            if (today + 14 > days_in_month)
+            {
+                for (int j = 14; j != 0; j--)
+                {
+                    if (maxdag == days_in_month + 1)
+                    {
+                        maxdag = 1;
+                        maxmaand += 1;
+                    }
+                    maxdag++;
+                    maxdag2++;
+                }
+            }
+            else
+            {
+                maxdag = today + 14;
+                maxdag2 = today + 14;
+                maxmaand = DateTime.Now.Month;
+            }
+
+            // checkt of datum wel toegestaan is/klopt.
+            if (maand == maxmaand && jaar == DateTime.Now.Year)
+            {
+                if (dag <= maxdag)
+                {
+                    AddReservering2(dag, maand, jaar, naamIN, pronounsIN, aantalIN);
+                }
+                else
+                {
+                    Console.WriteLine("\nU kunt helaas niet reserveren voor deze datum.\n" +
+                    "Deze datum bestaat niet of is langer dan twee weken\nverwijderd van vandaag.");
+                    Console.WriteLine("Wilt u opnieuw proberen een reservering aan te maken?\n\t[1] Ja\n\t[2] Nee");
+                    Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                    ConsoleKeyInfo ckey3 = Console.ReadKey();
+                    if (ckey3.Key == ConsoleKey.D1)
+                    {
+                        AddReservering();
+                    }
+                    else if (ckey3.Key == ConsoleKey.D2)
+                    {
+                        Program.Main();
+                    }
+                }
+            }
+            else if (maand == DateTime.Now.Month && jaar == DateTime.Now.Year)
+            {
+                if (dag <= days_in_month && dag >= DateTime.Now.Day)
+                {
+                    AddReservering2(dag, maand, jaar, naamIN, pronounsIN, aantalIN);
+                }
+                else
+                {
+                    Console.WriteLine("\nU kunt helaas niet reserveren voor deze datum.\n" +
+                    "Deze datum bestaat niet of is langer dan twee weken\nverwijderd van vandaag.");
+                    Console.WriteLine("Wilt u opnieuw proberen een reservering aan te maken?\n\t[1] Ja\n\t[2] Nee");
+                    Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                    ConsoleKeyInfo ckey3 = Console.ReadKey();
+                    if (ckey3.Key == ConsoleKey.D1)
+                    {
+                        AddReservering();
+                    }
+                    else if (ckey3.Key == ConsoleKey.D2)
+                    {
+                        Program.Main();
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nU kunt helaas niet reserveren voor deze datum.\n" +
+                    "Deze datum bestaat niet of is langer dan twee weken\nverwijderd van vandaag.");
+                Console.WriteLine("Wilt u opnieuw proberen een reservering aan te maken?\n\t[1] Ja\n\t[2] Nee");
+                Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                ConsoleKeyInfo ckey3 = Console.ReadKey();
+                if (ckey3.Key == ConsoleKey.D1)
+                {
+                    AddReservering();
+                }
+                else if (ckey3.Key == ConsoleKey.D2)
+                {
+                    Program.Main();
+                }
+            }
+        }
+        private static void AddReservering2(int dag, int maand, int jaar, string naamIN, string pronounsIN, int aantalIN)
+        {
+            string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
+            bool fileExist = File.Exists(ReserveringPath);
+            if (!fileExist)
+            {
+                using (File.Create(ReserveringPath)) ;
+            }
+            var JsonData = File.ReadAllText(ReserveringPath);
+            var ReserveringenList = JsonConvert.DeserializeObject<List<Reserveringenjson>>(JsonData) ?? new List<Reserveringenjson>();
+
+            string BeschikbaarheidPath = Path.GetFullPath(@"Beschikbaarheid.json");
+            bool fileExist2 = File.Exists(BeschikbaarheidPath);
+            if (!fileExist)
+            {
+                using (File.Create(ReserveringPath)) ;
+            }
+            var JsonData2 = File.ReadAllText(ReserveringPath);
+            var BeschikbaarheidList = JsonConvert.DeserializeObject<List<Beschikbaarheidjson>>(JsonData) ?? new List<Beschikbaarheidjson>();
+
+            string datumIN = $"{dag}-{maand}-{jaar}";
             int i = 0;
             string check = "x";
             while (i < BeschikbaarheidList.Count)
@@ -124,7 +233,8 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 });
             }
 
-            Console.WriteLine($"\nKies een tijdslot:\n\t[1] 11:00-15:00\n\t[2] 15:00-19:00\n\t[3] 19:00-22:00\n\t[4] 22:00-23:00");
+            Console.WriteLine($"\nKies een tijdslot:\n\t[1] 11:00-15:00\n\t[2] 15:00-19:00\n\t[3] 19:00-22:00\n\t[4] 22:00-23:00" +
+                $"\nLet op! Tijdslot 4 heeft een tijdsduur van een uur, ipv. 4 uur.");
             ConsoleKeyInfo ckey2 = Console.ReadKey();
             string tijdslotIN = "";
             if (ckey2.Key == ConsoleKey.D1)
@@ -144,14 +254,14 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                         else
                         {
                             Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {tijdslotIN} op {datumIN}.\n" +
-                                "Wilt u opnieuw proberen een reservering aanmaken?\n\t[1] Ja\n\t[2] Nee");
+                                "Wilt u opnieuw proberen een reservering aan te maken?\n\t[1] Ja\n\t[2] Nee");
                             Console.WriteLine("╘═════════════════════════════════════════════════════╛");
-                            ConsoleKeyInfo ckey3 = Console.ReadKey();
-                            if (ckey3.Key == ConsoleKey.D1)
+                            ConsoleKeyInfo ckey4 = Console.ReadKey();
+                            if (ckey4.Key == ConsoleKey.D1)
                             {
                                 AddReservering();
                             }
-                            else if (ckey3.Key == ConsoleKey.D2)
+                            else if (ckey4.Key == ConsoleKey.D2)
                             {
                                 Program.Main();
                             }
@@ -178,14 +288,14 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                         else
                         {
                             Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {tijdslotIN} op {datumIN}.\n" +
-                                "Wilt u opnieuw proberen een reservering aanmaken?\n\t[1] Ja\n\t[2] Nee");
+                                "Wilt u opnieuw proberen een reservering aan te maken?\n\t[1] Ja\n\t[2] Nee");
                             Console.WriteLine("╘═════════════════════════════════════════════════════╛");
-                            ConsoleKeyInfo ckey3 = Console.ReadKey();
-                            if (ckey3.Key == ConsoleKey.D1)
+                            ConsoleKeyInfo ckey5 = Console.ReadKey();
+                            if (ckey5.Key == ConsoleKey.D1)
                             {
                                 AddReservering();
                             }
-                            else if (ckey3.Key == ConsoleKey.D2)
+                            else if (ckey5.Key == ConsoleKey.D2)
                             {
                                 Program.Main();
                             }
@@ -212,14 +322,14 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                         else
                         {
                             Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {tijdslotIN} op {datumIN}.\n" +
-                                "Wilt u opnieuw proberen een reservering aanmaken?\n\t[1] Ja\n\t[2] Nee");
+                                "Wilt u opnieuw proberen een reservering aan te maken?\n\t[1] Ja\n\t[2] Nee");
                             Console.WriteLine("╘═════════════════════════════════════════════════════╛");
-                            ConsoleKeyInfo ckey3 = Console.ReadKey();
-                            if (ckey3.Key == ConsoleKey.D1)
+                            ConsoleKeyInfo ckey6 = Console.ReadKey();
+                            if (ckey6.Key == ConsoleKey.D1)
                             {
                                 AddReservering();
                             }
-                            else if (ckey3.Key == ConsoleKey.D2)
+                            else if (ckey6.Key == ConsoleKey.D2)
                             {
                                 Program.Main();
                             }
@@ -246,14 +356,14 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                         else
                         {
                             Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {tijdslotIN} op {datumIN}.\n" +
-                                "Wilt u opnieuw proberen een reservering aanmaken?\n\t[1] Ja\n\t[2] Nee");
+                                "Wilt u opnieuw proberen een reservering aan te maken?\n\t[1] Ja\n\t[2] Nee");
                             Console.WriteLine("╘═════════════════════════════════════════════════════╛");
-                            ConsoleKeyInfo ckey3 = Console.ReadKey();
-                            if (ckey3.Key == ConsoleKey.D1)
+                            ConsoleKeyInfo ckey7 = Console.ReadKey();
+                            if (ckey7.Key == ConsoleKey.D1)
                             {
                                 AddReservering();
                             }
-                            else if (ckey3.Key == ConsoleKey.D2)
+                            else if (ckey7.Key == ConsoleKey.D2)
                             {
                                 Program.Main();
                             }
@@ -286,8 +396,6 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             {
                 Program.Main();
             }
-
-
         }
 
         public static void WijzigReservering(string gebruiker = "niet ingelogd")
@@ -693,4 +801,3 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
         }
     }
 }
-
