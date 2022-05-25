@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\MenuItemToevoegen\\MenuItemToevoegen.csproj": {}
+    "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\MenuItemToevoegen\\MenuItemToevoegen.csproj": {}
   },
   "projects": {
-    "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\MenuItemToevoegen\\MenuItemToevoegen.csproj": {
+    "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\MenuItemToevoegen\\MenuItemToevoegen.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\MenuItemToevoegen\\MenuItemToevoegen.csproj",
+        "projectUniqueName": "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\MenuItemToevoegen\\MenuItemToevoegen.csproj",
         "projectName": "MenuItemToevoegen",
-        "projectPath": "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\MenuItemToevoegen\\MenuItemToevoegen.csproj",
-        "packagesPath": "C:\\Users\\shery\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\shery\\OneDrive\\Documenten\\GitHub\\highclass\\MenuItemToevoegen\\obj\\",
+        "projectPath": "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\MenuItemToevoegen\\MenuItemToevoegen.csproj",
+        "packagesPath": "C:\\Users\\Yvonn\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\MenuItemToevoegen\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\shery\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Yvonn\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -76,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

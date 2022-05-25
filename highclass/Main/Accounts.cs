@@ -40,40 +40,45 @@ namespace Main
             var JsonData = File.ReadAllText(medewerkerPath); // file can be found in the bin => just keep clicking until you find all extra files
             var MederwerkerList = JsonConvert.DeserializeObject<List<MedewerkerINFO>>(JsonData) ?? new List<MedewerkerINFO>();
 
-            Console.WriteLine("Wat is uw volledige naam?");
+            Console.WriteLine("Wat is uw voornaam naam?");
             string naamIN = Console.ReadLine();
-            for(int i=0; i<naamIN.Length; i++)
+            bool IsAlleenLetters = char.IsLetter(naamIN, naamIN.Length - 1);
+            while (!IsAlleenLetters)
             {
-                string newnaam = naamIN.ToLower();
-                if(newnaam[i] != 'a' && newnaam[i] != 'b' && newnaam[i] != 'c' && newnaam[i] != 'd' && newnaam[i] != 'e' && newnaam[i] != 'f' && newnaam[i] != 'g' && newnaam[i] != 'h' && newnaam[i] != 'i' && newnaam[i] != 'j' && newnaam[i] != 'k' && newnaam[i] != 'l' && newnaam[i] != 'm' && newnaam[i] != 'n' && newnaam[i] != 'o' && newnaam[i] != 'p' && newnaam[i] != 'q' && newnaam[i] != 'r' && newnaam[i] != 's' && newnaam[i] != 't' && newnaam[i] != 'u' && newnaam[i] != 'v' && newnaam[i] != 'w' && newnaam[i] != 'x' && newnaam[i] != 'y' && newnaam[i] != 'z')
-                {
-                    Console.WriteLine("Naam bestaat alleen uit letters. Probeer het opnieuw de volledige naam intevoeren!");
-                    Console.WriteLine("Wat is uw volledige naam?");
-                    naamIN = Console.ReadLine();
-                }
+                Console.WriteLine("Naam kan alleen uit letter bestaan probeer opnieuw.");
+                Console.WriteLine("Wat is uw voornaam naam?");
+                naamIN = Console.ReadLine();
+                IsAlleenLetters = char.IsLetter(naamIN, naamIN.Length - 1);
             }
+            //Console.WriteLine("Wat zijn uw voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] hen/hun");
+            //ConsoleKeyInfo ckey = Console.ReadKey();
+            string pronounsIN = "";
             Console.WriteLine("Wat zijn uw voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] hen/hun");
             ConsoleKeyInfo ckey = Console.ReadKey();
-            Console.SetCursorPosition(0, Console.CursorTop);
-            ClearCurrentConsoleLine();
-            string pronounsIN = "";
-            if (ckey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
+            while (pronounsIN == "")
             {
-                pronounsIN = "hij/hem";
-            }
-            else if (ckey.Key == ConsoleKey.D2)
-            {
-                pronounsIN = "zij/haar";
-            }
-            else if (ckey.Key == ConsoleKey.D3)
-            {
-                pronounsIN = "hen/hun";
+                Console.WriteLine("\nProbeer opnieuw");
+                Console.WriteLine("Wat zijn uw voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] hen/hun");
+                ckey = Console.ReadKey();
+                if (ckey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
+                {
+                    pronounsIN = "hij/hem";
+                }
+                else if (ckey.Key == ConsoleKey.D2)
+                {
+                    pronounsIN = "zij/haar";
+                }
+                else if (ckey.Key == ConsoleKey.D3)
+                {
+                    pronounsIN = "hen/hun";
+                }
             }
             Console.WriteLine("Wat is uw telefoonnummber?\n+31");
             string telefoonnummerIN = Console.ReadLine();
-            if(telefoonnummerIN.Length != 10)
+            bool isAlleenNummers = char.IsNumber(telefoonnummerIN, telefoonnummerIN.Length - 1);
+            while (telefoonnummerIN.Length != 10 && !isAlleenNummers)
             {
-                Console.WriteLine("Telefoonnummer heeft niet het juist aantal cijfers. Probeer telefoonnummer opnieuw intevoeren");
+                Console.WriteLine("Onjuist telefoonnummer. Probeer telefoonnummer opnieuw intevoeren");
                 Console.WriteLine("Wat is uw telefoonnummber?");
                 telefoonnummerIN = Console.ReadLine();
             }
@@ -91,15 +96,20 @@ namespace Main
             }
             Console.WriteLine("Wat is uw functie?\n\t[1]Admin\n\t[2]Mederwerker");
             ConsoleKeyInfo AKey = Console.ReadKey();
-            ClearCurrentConsoleLine();
             string functieIN = "";
-            if (AKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
+            while (functieIN == "")
             {
-                functieIN = "Admin";
-            }
-            else if (AKey.Key == ConsoleKey.D2)
-            {
-                functieIN = "Mederwerker";
+                Console.WriteLine("\nProbeer opnieuw");
+                Console.WriteLine("Wat is uw functie?\n\t[1]Admin\n\t[2]Mederwerker");
+                AKey = Console.ReadKey();
+                if (AKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
+                {
+                    functieIN = "Admin";
+                }
+                else if (AKey.Key == ConsoleKey.D2)
+                {
+                    functieIN = "Mederwerker";
+                }
             }
             Console.WriteLine("Voer uw gebruikersnaam in:");
             string gebruikersnaamIN = Console.ReadLine();
@@ -122,8 +132,7 @@ namespace Main
 
             Console.WriteLine($"{functieIN} is met succes toegevoegd aan database.\n[1] doorgaan");
             ConsoleKeyInfo doorKey = Console.ReadKey();
-            ClearCurrentConsoleLine();
-            if(doorKey.Key == ConsoleKey.D1)
+            if (doorKey.Key == ConsoleKey.D1)
             {
                 Admin.adminMain();
             }
@@ -154,10 +163,21 @@ namespace Main
             {
                 Console.WriteLine("Medewerker met die naam bestaat niet. \n[1] Probeer opnieuw.");
                 ConsoleKeyInfo rkey = Console.ReadKey();
-                if (rkey.Key == ConsoleKey.D1)
+                bool check = false;
+                if(rkey.Key == ConsoleKey.D1)
                 {
-                    verwijderMedewerker();
+                    check = true;
                 }
+                while (!check)
+                {
+                    Console.WriteLine("\nMedewerker met die naam bestaat niet. \n[1] Probeer opnieuw.");
+                    rkey = Console.ReadKey();
+                    if (rkey.Key == ConsoleKey.D1)
+                    {
+                        check = true;
+                    }
+                }
+                verwijderMedewerker();
             }
 
             Console.WriteLine("Weet je zeker dat je: " + medewerkerNaam + " wil verwijderen?");
@@ -370,13 +390,6 @@ namespace Main
                 Admin.adminMain();
             }
         }
-        private static void ClearCurrentConsoleLine()
-        {
-            int currentLineCursor = Console.CursorTop;
-            Console.SetCursorPosition(0, Console.CursorTop);
-            Console.Write(new string(' ', Console.WindowWidth));
-            Console.SetCursorPosition(0, currentLineCursor);
-        }
         public static void Inloggen()
         {
             Console.Clear();
@@ -394,7 +407,7 @@ namespace Main
             {
                 Program.Main();
             }
-                Console.WriteLine("Wachtwoord: ");
+            Console.WriteLine("Wachtwoord: ");
             string wachtwoordCheck = Console.ReadLine();
 
             string medewerkerPath = Path.GetFullPath(@"Medewerker.json"); // find path to file
@@ -424,12 +437,17 @@ namespace Main
             if (count == 0)
             {
                 Console.WriteLine("Gebruikersnaam en of wachtwoord is verkeerd");
-                Console.WriteLine("[0] Terug");
+                Console.WriteLine("[0] Terug"); 
+                Console.WriteLine("[1] Probeer opnieuw");
                 Console.WriteLine("╘══════════════════════════╛");
                 ConsoleKeyInfo begin = Console.ReadKey();
                 if (ConsoleKey.D0 == begin.Key)
                 {
                     Program.Main();
+                }
+                else if(ConsoleKey.D1 == begin.Key)
+                {
+                    Inloggen();
                 }
             }
         }
@@ -447,10 +465,9 @@ namespace Main
                 ConsoleKeyInfo done = Console.ReadKey();
                 if (done.Key == ConsoleKey.Enter)
                 {
-                    break;
+                    Program.Main();
                 }
-            }
-            return false; // Zet de boolean "ingelogd" op false, MAAR de accounts bestaand nog! 
+            } // Zet de boolean "ingelogd" op false, MAAR de accounts bestaand nog! 
         }
     }
 }
