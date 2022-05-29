@@ -59,6 +59,10 @@ namespace Main
             {
                 personeelMain();
             }
+            if (ckey.Key == ConsoleKey.D1)
+            {
+                Reserveringen.bekijkReservering();
+            }
             if (ckey.Key == ConsoleKey.D2)
             {
                 Reserveringen.WijzigReservering("ingelogd");

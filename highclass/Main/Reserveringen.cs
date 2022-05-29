@@ -799,5 +799,79 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 Personeelsleden.personeelMain();
             }
         }
+
+        public static void bekijkReservering()
+        {
+            Console.Clear();
+            string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
+            bool fileExist = File.Exists(ReserveringPath);
+            if (!fileExist)
+            {
+                using (File.Create(ReserveringPath)) ;
+            }
+
+            var JsonData = File.ReadAllText(ReserveringPath);
+            var ReserveringenList = JsonConvert.DeserializeObject<List<Reserveringenjson>>(JsonData) ?? new List<Reserveringenjson>();
+
+            string BeschikbaarheidPath = Path.GetFullPath(@"Beschikbaarheid.json");
+            bool fileExist2 = File.Exists(BeschikbaarheidPath);
+            if (!fileExist)
+            {
+                using (File.Create(ReserveringPath)) ;
+            }
+            var JsonData2 = File.ReadAllText(ReserveringPath);
+            var BeschikbaarheidList = JsonConvert.DeserializeObject<List<Beschikbaarheidjson>>(JsonData) ?? new List<Beschikbaarheidjson>();
+
+            Console.WriteLine("╒════════════════════════════════════════════════════════╕");
+            Console.WriteLine(" HC\n");
+            Console.WriteLine("Volledige naam: ");
+            string zoekNaam = Console.ReadLine();
+
+            int len = ReserveringenList.Count;
+            int i = 0;
+            string reserveringsNaam = "";
+            foreach (Reserveringenjson reservering in ReserveringenList)
+            {
+                if (reservering.Naam == zoekNaam)
+                {
+                    reserveringsNaam = reservering.Naam;
+                }
+            }
+            if (reserveringsNaam == "")
+            {
+                Console.WriteLine($"\nEen reservering onder de naam '{zoekNaam}' bestaat niet. \n[1] Probeer opnieuw.\n[2] Maak nieuwe reservering aan.\n");
+                Console.WriteLine("╘════════════════════════════════════════════════════════╛");
+                ConsoleKeyInfo rkey = Console.ReadKey();
+                if (rkey.Key == ConsoleKey.D1)
+                {
+                    WijzigReservering();
+                }
+                else if (rkey.Key == ConsoleKey.D2)
+                {
+                    AddReservering();
+                }
+            }
+            Console.WriteLine($"\nNaam: {zoekNaam} ");
+            foreach (Reserveringenjson reservering in ReserveringenList)
+            {
+                if (reservering.Naam == zoekNaam)
+                {
+                    Console.WriteLine($"Voornaamwoorden: {reservering.Voornaamwoorden}\nGroepsgrote: {reservering.Groepsgrote}\nTijdslot: {reservering.Tijdslot}\nDatum: {reservering.Datum}");
+                    Console.WriteLine("\n[1] Opnieuw een bedrag bekijken\n[0] Terug naar menu");
+                    Console.WriteLine("╘══════════════════════════════════════════════════════════════════════════════════════════════╛");
+                    ConsoleKeyInfo keus = Console.ReadKey();
+                    if (keus.Key == ConsoleKey.D1)
+                    {
+                        bekijkReservering();
+                    }
+                    else if (keus.Key == ConsoleKey.D0)
+                    {
+                        Personeelsleden.reserverenMain();
+                    }
+                }
+
+            }
+
+        }
     }
 }
