@@ -25,7 +25,12 @@
       "ProjectGuid": "8b54698e-6c06-41d0-ac30-02b599e459d6",
       "DisplayName": "MenuItemToevoegen",
       "ColorIndex": 3
+    },
+    "3175e01c-b28d-462a-bdfa-440ac535009f": {
+      "ProjectGuid": "3175e01c-b28d-462a-bdfa-440ac535009f",
+      "DisplayName": "Test AddReservering",
+      "ColorIndex": 4
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 5
 }

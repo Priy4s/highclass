@@ -857,7 +857,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 if (reservering.Naam == zoekNaam)
                 {
                     Console.WriteLine($"Voornaamwoorden: {reservering.Voornaamwoorden}\nGroepsgrote: {reservering.Groepsgrote}\nTijdslot: {reservering.Tijdslot}\nDatum: {reservering.Datum}");
-                    Console.WriteLine("\n[1] Opnieuw een bedrag bekijken\n[0] Terug naar menu");
+                    Console.WriteLine("\n[1] Opnieuw een reservering bekijken\n[0] Terug naar menu");
                     Console.WriteLine("╘══════════════════════════════════════════════════════════════════════════════════════════════╛");
                     ConsoleKeyInfo keus = Console.ReadKey();
                     if (keus.Key == ConsoleKey.D1)
