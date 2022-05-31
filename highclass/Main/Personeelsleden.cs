@@ -249,8 +249,10 @@ namespace Main
                 }
             }
             double reserveringsPrijs = 0.00;
-            Console.WriteLine("Voer de datum in: (DD-MM-JJJJ)");
-            string inputDatum = Console.ReadLine();
+            // Console.WriteLine("Voer de datum in: (D-M-JJJJ)");
+            // string inputDatum = Console.ReadLine();
+            DateTime thisDay = DateTime.Today;
+            string inputDatum = thisDay.ToString("d"); //hieruit krijg  je bijv. "5/3/2022"
             Console.WriteLine("Voer het bedrag in dat u wil toevoegen: ");
             double toevoegBedrag = Convert.ToDouble(Console.ReadLine());
             double nieuwBedrag = toevoegBedrag + reserveringsPrijs;
