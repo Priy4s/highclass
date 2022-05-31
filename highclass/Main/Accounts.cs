@@ -6,8 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using static Main.Admin;
-
-
+using System.Text.RegularExpressions;
 
 namespace Main
 {
@@ -50,11 +49,22 @@ namespace Main
                 naamIN = Console.ReadLine();
                 IsAlleenLetters = char.IsLetter(naamIN, naamIN.Length - 1);
             }
-            //Console.WriteLine("Wat zijn uw voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] hen/hun");
-            //ConsoleKeyInfo ckey = Console.ReadKey();
             string pronounsIN = "";
             Console.WriteLine("Wat zijn uw voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] hen/hun");
             ConsoleKeyInfo ckey = Console.ReadKey();
+            if (ckey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
+            {
+                pronounsIN = "hij/hem";
+            }
+            else if (ckey.Key == ConsoleKey.D2)
+            {
+                pronounsIN = "zij/haar";
+            }
+            else if (ckey.Key == ConsoleKey.D3)
+            {
+                pronounsIN = "hen/hun";
+            }
+
             while (pronounsIN == "")
             {
                 Console.WriteLine("\nProbeer opnieuw");
@@ -76,27 +86,42 @@ namespace Main
             Console.WriteLine("Wat is uw telefoonnummber?\n+31");
             string telefoonnummerIN = Console.ReadLine();
             bool isAlleenNummers = char.IsNumber(telefoonnummerIN, telefoonnummerIN.Length - 1);
-            while (telefoonnummerIN.Length != 10 && !isAlleenNummers)
+            bool isLengte10 = telefoonnummerIN.Length != 10 ? true : false;
+            while (isLengte10 || !isAlleenNummers)
             {
                 Console.WriteLine("Onjuist telefoonnummer. Probeer telefoonnummer opnieuw intevoeren");
                 Console.WriteLine("Wat is uw telefoonnummber?");
                 telefoonnummerIN = Console.ReadLine();
+
+                isAlleenNummers = char.IsNumber(telefoonnummerIN, telefoonnummerIN.Length - 1);
+                isLengte10 = telefoonnummerIN.Length != 10 ? true : false;
             }
             Console.WriteLine("Wat is uw e-mail?");
             string eMailIN = Console.ReadLine();
-            string newemail = eMailIN.ToLower();
-            for (int i = 0; i < naamIN.Length; i++)
+            Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.CultureInvariant | RegexOptions.Singleline);
+            bool isValedMail = regex.IsMatch(eMailIN);
+            while (!isValedMail)
             {
-                if (newemail[i] != 'a' && newemail[i] != 'b' && newemail[i] != 'c' && newemail[i] != 'd' && newemail[i] != 'e' && newemail[i] != 'f' && newemail[i] != 'g' && newemail[i] != 'h' && newemail[i] != 'i' && newemail[i] != 'j' && newemail[i] != 'k' && newemail[i] != 'l' && newemail[i] != 'm' && newemail[i] != 'n' && newemail[i] != 'o' && newemail[i] != 'p' && newemail[i] != 'q' && newemail[i] != 'r' && newemail[i] != 's' && newemail[i] != 't' && newemail[i] != 'u' && newemail[i] != 'v' && newemail[i] != 'w' && newemail[i] != 'x' && newemail[i] != 'y' && newemail[i] != 'z' && newemail[i] != '0' && newemail[i] != '1' && newemail[i] != '2' && newemail[i] != '3' && newemail[i] != '4' && newemail[i] != '5' && newemail[i] != '6' && newemail[i] != '7' && newemail[i] != '8' && newemail[i] != '9' && newemail[i] != '@' && newemail[i] != '.')
-                {
-                    Console.WriteLine("email bestaat alleen uit letters, cijfers, één @ en één '.'. Probeer het opnieuw een juiste email intevoeren!");
-                    Console.WriteLine("Wat is uw e-mail?");
-                    eMailIN = Console.ReadLine();
-                }
+                Console.WriteLine("Incoreccte email. Probeer opnieuw.");
+                Console.WriteLine("Wat is uw e-mail?");
+                eMailIN = Console.ReadLine();
+                regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.CultureInvariant | RegexOptions.Singleline);
+                isValedMail = regex.IsMatch(eMailIN);
             }
+
+
             Console.WriteLine("Wat is uw functie?\n\t[1]Admin\n\t[2]Mederwerker");
             ConsoleKeyInfo AKey = Console.ReadKey();
             string functieIN = "";
+            AKey = Console.ReadKey();
+            if (AKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
+            {
+                functieIN = "Admin";
+            }
+            else if (AKey.Key == ConsoleKey.D2)
+            {
+                functieIN = "Mederwerker";
+            }
             while (functieIN == "")
             {
                 Console.WriteLine("\nProbeer opnieuw");
@@ -111,6 +136,8 @@ namespace Main
                     functieIN = "Mederwerker";
                 }
             }
+
+
             Console.WriteLine("Voer uw gebruikersnaam in:");
             string gebruikersnaamIN = Console.ReadLine();
             Console.WriteLine("Voer uw wachtwoord in:");
@@ -164,7 +191,7 @@ namespace Main
                 Console.WriteLine("Medewerker met die naam bestaat niet. \n[1] Probeer opnieuw.");
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 bool check = false;
-                if(rkey.Key == ConsoleKey.D1)
+                if (rkey.Key == ConsoleKey.D1)
                 {
                     check = true;
                 }
@@ -437,7 +464,7 @@ namespace Main
             if (count == 0)
             {
                 Console.WriteLine("Gebruikersnaam en of wachtwoord is verkeerd");
-                Console.WriteLine("[0] Terug"); 
+                Console.WriteLine("[0] Terug");
                 Console.WriteLine("[1] Probeer opnieuw");
                 Console.WriteLine("╘══════════════════════════╛");
                 ConsoleKeyInfo begin = Console.ReadKey();
@@ -445,7 +472,7 @@ namespace Main
                 {
                     Program.Main();
                 }
-                else if(ConsoleKey.D1 == begin.Key)
+                else if (ConsoleKey.D1 == begin.Key)
                 {
                     Inloggen();
                 }

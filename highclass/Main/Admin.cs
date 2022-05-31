@@ -42,6 +42,10 @@ namespace Main
             {
                 adminOmzet();
             }
+            else if (ckey.Key == ConsoleKey.D5)
+            {
+                Medewerkers.Uitloggen();
+            }
             else
             {
                 adminMain();
