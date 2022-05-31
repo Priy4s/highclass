@@ -137,6 +137,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                     ConsoleKeyInfo ckey3 = Console.ReadKey();
                     if (ckey3.Key == ConsoleKey.D1)
                     {
+                        // in json
                         AddReservering();
                     }
                     else if (ckey3.Key == ConsoleKey.D2)
@@ -203,7 +204,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 using (File.Create(ReserveringPath)) ;
             }
             var JsonData2 = File.ReadAllText(ReserveringPath);
-            var BeschikbaarheidList = JsonConvert.DeserializeObject<List<Beschikbaarheidjson>>(JsonData) ?? new List<Beschikbaarheidjson>();
+            var BeschikbaarheidList = JsonConvert.DeserializeObject<List<Beschikbaarheidjson>>(JsonData2) ?? new List<Beschikbaarheidjson>();
 
             string datumIN = $"{dag}-{maand}-{jaar}";
             int i = 0;
@@ -232,6 +233,17 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                     Tijdslot4_Beschikbaarheid = 200,
                 });
             }
+            JsonData2 = JsonConvert.SerializeObject(BeschikbaarheidList);
+            System.IO.File.WriteAllText(BeschikbaarheidPath, JsonData2);
+
+            BeschikbaarheidPath = Path.GetFullPath(@"Beschikbaarheid.json");
+            fileExist2 = File.Exists(BeschikbaarheidPath);
+            if (!fileExist)
+            {
+                using (File.Create(ReserveringPath)) ;
+            }
+            JsonData2 = File.ReadAllText(ReserveringPath);
+            BeschikbaarheidList = JsonConvert.DeserializeObject<List<Beschikbaarheidjson>>(JsonData2) ?? new List<Beschikbaarheidjson>();
 
             Console.WriteLine($"\nKies een tijdslot:\n\t[1] 11:00-15:00\n\t[2] 15:00-19:00\n\t[3] 19:00-22:00\n\t[4] 22:00-23:00" +
                 $"\nLet op! Tijdslot 4 heeft een tijdsduur van een uur, ipv. 4 uur.");
@@ -245,6 +257,8 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 {
                     if (BeschikbaarheidList[j].Datum == datumIN)
                     {
+                        Console.WriteLine("in if statement");
+                        Console.ReadKey();
                         if (BeschikbaarheidList[j].Tijdslot1_Beschikbaarheid - aantalIN >= 0)
                         {
                             BeschikbaarheidList[j].Tijdslot1_Beschikbaarheid -= aantalIN;
@@ -268,7 +282,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                         }
                         break;
                     }
-                    i++;
+                    j++;
                 }
             }
             else if (ckey2.Key == ConsoleKey.D2)
@@ -302,7 +316,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                         }
                         break;
                     }
-                    i++;
+                    j++;
                 }
             }
             else if (ckey2.Key == ConsoleKey.D3)
@@ -336,7 +350,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                         }
                         break;
                     }
-                    i++;
+                    j++;
                 }
             }
             else if (ckey2.Key == ConsoleKey.D4)
@@ -370,7 +384,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                         }
                         break;
                     }
-                    i++;
+                    j++;
                 }
             }
 

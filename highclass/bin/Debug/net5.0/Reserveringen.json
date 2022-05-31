@@ -7,5 +7,23 @@
     "Datum": "22-05-2022",
     "Eindtijd": "",
     "Prijs": 0.0
+  },
+  {
+    "Naam": "Test",
+    "Voornaamwoorden": "hen/hun",
+    "Groepsgrote": 4,
+    "Tijdslot": "11:00-15:00",
+    "Datum": "1-6-2022",
+    "Eindtijd": "",
+    "Prijs": 0.0
+  },
+  {
+    "Naam": "testest",
+    "Voornaamwoorden": "hen/hun",
+    "Groepsgrote": 34,
+    "Tijdslot": "19:00-22:00",
+    "Datum": "7-6-2022",
+    "Eindtijd": "",
+    "Prijs": 0.0
   }
 ]
