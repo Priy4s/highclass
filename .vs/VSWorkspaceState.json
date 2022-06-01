@@ -1,14 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\highclass",
-    "\\highclass\\bin",
-    "\\highclass\\bin\\Debug",
-    "\\highclass\\bin\\Debug\\net5.0",
-    "\\highclass\\bin\\Debug\\net5.0\\ref",
-    "\\highclass\\Main",
-    "\\MenuItemToevoegen"
+    ""
   ],
-  "SelectedNode": "\\highclass\\HighClass.cs",
+  "SelectedNode": "\\HighClass.sln",
   "PreviewInSolutionExplorer": false
 }

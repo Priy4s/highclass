@@ -487,6 +487,10 @@ namespace Main
             {
                 Personeelsleden.menuMain();
             }
+            else
+            {
+                Personeelsleden.menuMain();
+            }
 
         }
         public static void toevoegen()
@@ -501,14 +505,31 @@ namespace Main
             Console.WriteLine("╒══════════════════════════════════════════════════════════════╕");
             Console.WriteLine("Welke ID heeft het nieuwe Menu Item?");
             string strID_IN = Console.ReadLine();
-
-            bool isIDAlleenNummers = char.IsNumber(strID_IN, strID_IN.Length - 1);
+            
+            bool isIDAlleenNummers = char.IsNumber(strID_IN, 0);
+            for (int i = 0; i < strID_IN.Length; i++)
+            {
+                isIDAlleenNummers = char.IsNumber(strID_IN, i);
+                if (isIDAlleenNummers == false)
+                {
+                    break;
+                }
+            }
+            
             while (!isIDAlleenNummers)
             {
-                Console.WriteLine("Menu Item ID bestaat alleen uit nummer.\n Probeer opnieuw.");
-                Console.WriteLine("Welke ID heeft het nieuwe Menu Item?");
+                Console.WriteLine("\nMenu Item ID bestaat alleen uit nummer.\nProbeer opnieuw.");
+                Console.WriteLine("\nWelke ID heeft het nieuwe Menu Item?");
                 strID_IN = Console.ReadLine();
-                isIDAlleenNummers = char.IsNumber(strID_IN, strID_IN.Length - 1);
+
+                for (int i = 0; i < strID_IN.Length; i++)
+                {
+                    isIDAlleenNummers = char.IsNumber(strID_IN, i);
+                    if (isIDAlleenNummers == false)
+                    {
+                        break;
+                    }
+                }
             }
 
             int ID_IN = Convert.ToInt32(strID_IN);
@@ -522,25 +543,78 @@ namespace Main
                     {
                         toevoegen();
                     }
+                    else
+                    {
+                        toevoegen();
+                    }
                 }
             }
 
             Console.WriteLine("Wat is de naam van het neiuwe Menu Item?");
             string NaamIN = Console.ReadLine();
+            
+            bool isNaamCijfers = char.IsNumber(NaamIN, 0);
+            bool isNaamLetters =  char.IsLetter(NaamIN, 0);
+            for (int i = 0; i < NaamIN.Length; i++)
+            {
+                isNaamCijfers = char.IsNumber(NaamIN, i);
+                if (isNaamCijfers == false)
+                {
+                    break;
+                }
+                if(isNaamLetters == false)
+                {
+                    break;
+                }
+            }
+
+            while (!isNaamCijfers && !isNaamLetters)
+            {
+                Console.WriteLine("\nNaam voldoet niet aan de eisen. Alleen letters en/of cijfers.\nProbeer opnieuw.");
+                Console.WriteLine("\nWat is de naam van het neiuwe Menu Item?");
+                NaamIN = Console.ReadLine();
+
+                for (int i = 0; i < NaamIN.Length; i++)
+                {
+                    isNaamCijfers = char.IsNumber(NaamIN, i);
+                    if (isNaamCijfers == false)
+                    {
+                        break;
+                    }
+                    if (isNaamLetters == false)
+                    {
+                        break;
+                    }
+                }
+            }
 
             Console.WriteLine("Wat is de prijs van het nieuwe Menu Item?");
             string strPrijsIN = Console.ReadLine();
 
-            //bool isPrijsAlleenNummers = true;
-            //isPrijsAlleenNummers = Double.Parse(strPrijsIN, num); 
-            bool isPrijsAlleenNummers = char.IsNumber(strPrijsIN, strPrijsIN.Length - 1);
-            Console.WriteLine(!isPrijsAlleenNummers);
+            bool isPrijsAlleenNummers = char.IsNumber(strPrijsIN, 0);
+            for (int i = 0; i < strPrijsIN.Length; i++)
+            {
+                isIDAlleenNummers = char.IsNumber(strPrijsIN, i);
+                if (isIDAlleenNummers == false)
+                {
+                    break;
+                }
+            }
+
             while (!isPrijsAlleenNummers)
             {
-                Console.WriteLine("Prijs bestaat alleen uit nummers. Probeer opnieuw.");
-                Console.WriteLine("Wat is de prijs van het nieuwe Menu Item?");
+                Console.WriteLine("\nPrijs bestaat alleen uit nummers. Probeer opnieuw.");
+                Console.WriteLine("\nWat is de prijs van het nieuwe Menu Item?");
                 strPrijsIN = Console.ReadLine();
-                isPrijsAlleenNummers = char.IsNumber(strPrijsIN, strPrijsIN.Length - 1);
+
+                for (int i = 0; i < strPrijsIN.Length; i++)
+                {
+                    isIDAlleenNummers = char.IsNumber(strPrijsIN, i);
+                    if (isIDAlleenNummers == false)
+                    {
+                        break;
+                    }
+                }
             }
             double PrijsIN = Convert.ToDouble(strPrijsIN);
 
@@ -622,7 +696,6 @@ namespace Main
             string New_Categorie = "";
 
             bool isCategorieAlleenNummers = char.IsNumber(strCategorieMenu, strCategorieMenu.Length - 1);
-            Console.WriteLine(!isCategorieAlleenNummers);
             while (!isCategorieAlleenNummers)
             {
                 Console.WriteLine("Geef nummer van bijbehordende Menu categorie. Probeer opnieuw.");

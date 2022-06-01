@@ -41,13 +41,29 @@ namespace Main
 
             Console.WriteLine("Wat is uw voornaam naam?");
             string naamIN = Console.ReadLine();
-            bool IsAlleenLetters = char.IsLetter(naamIN, naamIN.Length - 1);
+            bool IsAlleenLetters = char.IsLetter(naamIN, 0);
+            for (int i=0; i<naamIN.Length; i++)
+            {
+                IsAlleenLetters = char.IsLetter(naamIN, i);
+                if (IsAlleenLetters == false)
+                {
+                    break;
+                }
+            }
+           
             while (!IsAlleenLetters)
             {
                 Console.WriteLine("Naam kan alleen uit letter bestaan probeer opnieuw.");
-                Console.WriteLine("Wat is uw voornaam naam?");
+                Console.WriteLine("Wat is uw volledige naam?");
                 naamIN = Console.ReadLine();
-                IsAlleenLetters = char.IsLetter(naamIN, naamIN.Length - 1);
+                for (int i = 0; i < naamIN.Length; i++)
+                {
+                    IsAlleenLetters = char.IsLetter(naamIN, i);
+                    if (IsAlleenLetters == false)
+                    {
+                        break;
+                    }
+                }
             }
             string pronounsIN = "";
             Console.WriteLine("Wat zijn uw voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] hen/hun");
@@ -85,7 +101,17 @@ namespace Main
             }
             Console.WriteLine("Wat is uw telefoonnummber?\n+31");
             string telefoonnummerIN = Console.ReadLine();
-            bool isAlleenNummers = char.IsNumber(telefoonnummerIN, telefoonnummerIN.Length - 1);
+            
+            bool isAlleenNummers = char.IsNumber(telefoonnummerIN, 0);
+            for (int i = 0; i < telefoonnummerIN.Length; i++)
+            {
+                isAlleenNummers = char.IsNumber(telefoonnummerIN, 0);
+                if (isAlleenNummers == false)
+                {
+                    break;
+                }
+            }
+            
             bool isLengte10 = telefoonnummerIN.Length != 10 ? true : false;
             while (isLengte10 || !isAlleenNummers)
             {
@@ -93,7 +119,14 @@ namespace Main
                 Console.WriteLine("Wat is uw telefoonnummber?");
                 telefoonnummerIN = Console.ReadLine();
 
-                isAlleenNummers = char.IsNumber(telefoonnummerIN, telefoonnummerIN.Length - 1);
+                for (int i = 0; i < telefoonnummerIN.Length; i++)
+                {
+                    isAlleenNummers = char.IsNumber(telefoonnummerIN, 0);
+                    if (isAlleenNummers == false)
+                    {
+                        break;
+                    }
+                }
                 isLengte10 = telefoonnummerIN.Length != 10 ? true : false;
             }
             Console.WriteLine("Wat is uw e-mail?");
@@ -190,21 +223,14 @@ namespace Main
             {
                 Console.WriteLine("Medewerker met die naam bestaat niet. \n[1] Probeer opnieuw.");
                 ConsoleKeyInfo rkey = Console.ReadKey();
-                bool check = false;
                 if (rkey.Key == ConsoleKey.D1)
                 {
-                    check = true;
+                    verwijderMedewerker();
                 }
-                while (!check)
+                else
                 {
-                    Console.WriteLine("\nMedewerker met die naam bestaat niet. \n[1] Probeer opnieuw.");
-                    rkey = Console.ReadKey();
-                    if (rkey.Key == ConsoleKey.D1)
-                    {
-                        check = true;
-                    }
+                    verwijderMedewerker();
                 }
-                verwijderMedewerker();
             }
 
             Console.WriteLine("Weet je zeker dat je: " + medewerkerNaam + " wil verwijderen?");
@@ -267,6 +293,10 @@ namespace Main
                 Console.WriteLine("Medewerker met die naam bestaat niet. \n[1] Probeer opnieuw.");
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
+                {
+                    wijzigMedewerkers();
+                }
+                else
                 {
                     wijzigMedewerkers();
                 }
@@ -404,6 +434,17 @@ namespace Main
                         break;
                     }
                     i++;
+                }
+            }
+            else
+            {
+                Console.WriteLine("Verkeerde input. \nProbeer opnieuw.");
+                Console.WriteLine("[0] Opnieuw");
+                
+                ConsoleKeyInfo opnieuw = Console.ReadKey();
+                if(opnieuw.Key == ConsoleKey.D0)
+                {
+                    wijzigMedewerkers();
                 }
             }
             JsonData = JsonConvert.SerializeObject(MedewerkersList);
