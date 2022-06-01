@@ -18,7 +18,7 @@ namespace Main
 
     public class getMenu
     {
-        public static void gettingMenu(string gebruiker = "nietIngelogd") //default is niet ingelogd, bij oproepen parameter opgeven zoals "admin" of "personeel"
+        public static void gettingMenu(string gebruikerNaam, string gebruiker = "nietIngelogd") //default is niet ingelogd, bij oproepen parameter opgeven zoals "admin" of "personeel"
         {
 
             {
@@ -389,11 +389,11 @@ namespace Main
                     }
                     else if (mainMenu.Key == ConsoleKey.D0 && gebruiker == "personeel")
                     {
-                        Personeelsleden.menuMain("personeel");
+                        Personeelsleden.menuMain(gebruikerNaam,"personeel");
                     }
                     else if (mainMenu.Key == ConsoleKey.D0 && gebruiker == "admin")
                     {
-                        Personeelsleden.menuMain("admin");
+                        Personeelsleden.menuMain(gebruikerNaam, "admin");
                     }
                 }
 
@@ -402,7 +402,7 @@ namespace Main
     }
     public class MenuAanpassen
     {
-        public static void mainAanpassen()
+        public static void mainAanpassen(string gebruikerNaam)
         {
             Console.Clear();
             Console.WriteLine("╒══════════════════════════════╕");
@@ -412,7 +412,7 @@ namespace Main
 
             if (readkey.Key == ConsoleKey.D1)
             {
-                verwijderen();
+                verwijderen(gebruikerNaam);
             }
             if (readkey.Key == ConsoleKey.D2)
             {
@@ -426,7 +426,7 @@ namespace Main
 
             }
         }
-        public static void verwijderen()
+        public static void verwijderen(string gebruikerNaam)
         {
             Console.Clear();
             string menuPath = Path.GetFullPath(@"Menu.json"); // find path to files
@@ -468,12 +468,12 @@ namespace Main
             }
             else
             {
-                mainAanpassen();
+                mainAanpassen(gebruikerNaam);
             }
             if (count == 0)
             {
                 Console.WriteLine("Menu Item ID bestaat niet. Probeer opnieuw.");
-                verwijderen();
+                verwijderen(gebruikerNaam);
             }
 
             JsonData = JsonConvert.SerializeObject(menuList);
@@ -485,11 +485,11 @@ namespace Main
             ConsoleKeyInfo keus = Console.ReadKey();
             if (keus.Key == ConsoleKey.D1)
             {
-                Personeelsleden.menuMain();
+                Personeelsleden.menuMain(gebruikerNaam);
             }
             else
             {
-                Personeelsleden.menuMain();
+                Personeelsleden.menuMain(gebruikerNaam);
             }
 
         }

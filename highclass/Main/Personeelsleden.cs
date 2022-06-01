@@ -13,40 +13,45 @@ namespace Main
     }
     public class Personeelsleden
     {
-        public static void personeelMain()
+        public static void personeelMain(string gebruikerNaam)
         {
             Console.Clear(); 
 
             Console.WriteLine("╒══════════════════════════════╕");
             Console.WriteLine("│                              │");
-            Console.WriteLine("│       Welkom, personeel      │");
+            Console.WriteLine($"│       Welkom, {gebruikerNaam}      │");
             Console.WriteLine("│                              │");
             Console.WriteLine("│         |Hoofdmenu|          │");
             Console.WriteLine("│       [1] Reserveringen      │");
             Console.WriteLine("│       [2] Menu               │");
             Console.WriteLine("│       [3] Bestellingen       │");
-            Console.WriteLine("│       [4] Uitloggen          │");
+            Console.WriteLine("│       [4] Eigen gegevens     │");
+            Console.WriteLine("│       [5] Uitloggen          │");
             Console.WriteLine("│                              │");
             Console.WriteLine("╘══════════════════════════════╛");
             ConsoleKeyInfo ckey = Console.ReadKey();
             if (ckey.Key == ConsoleKey.D1)
             {
-                reserverenMain();
+                reserverenMain(gebruikerNaam);
             }
             else if (ckey.Key == ConsoleKey.D2)
             {
-                menuMain();
+                menuMain(gebruikerNaam);
             }
             else if (ckey.Key == ConsoleKey.D3)
             {
-                bestellingenMain();
+                bestellingenMain(gebruikerNaam);
             }
-            else if (ckey.Key == ConsoleKey.D4)
+            else if (ckey.Key == ConsoleKey.D5)
             {
                 Program.Main();
             }
+            else if (ckey.Key == ConsoleKey.D4)
+            {
+                persoonlijkeInfo(gebruikerNaam);
+            }
         }
-        public static void reserverenMain(string gebruiker = "personeel")
+        public static void reserverenMain(string gebruikerNaam, string gebruiker = "personeel")
         {
             Console.Clear();
             Console.WriteLine("Reserveren menu - personeel");
@@ -57,18 +62,45 @@ namespace Main
             ConsoleKeyInfo ckey = Console.ReadKey();
             if (ckey.Key == ConsoleKey.D0)
             {
-                personeelMain();
+                personeelMain(gebruikerNaam);
             }
             if (ckey.Key == ConsoleKey.D1)
             {
-                Reserveringen.bekijkReservering();
+                Reserveringen.bekijkReservering(gebruikerNaam);
             }
             if (ckey.Key == ConsoleKey.D2)
             {
                 Reserveringen.WijzigReservering("ingelogd");
             }
         }
-        public static void menuMain(string gebruiker = "personeel")
+        public static void persoonlijkeInfo(string gebruikerNaam)
+        {
+            Console.Clear();
+            Console.WriteLine("Persoonlijke gegevens\n");
+            string MedewerkerPath = Path.GetFullPath(@"Medewerker.json"); // find path to files
+
+            var JsonData = File.ReadAllText(MedewerkerPath);
+            var MedewerkersList = JsonConvert.DeserializeObject<List<MedewerkerINFO>>(JsonData) ?? new List<MedewerkerINFO>();
+            
+            Console.WriteLine("╒══════════════════════════════╕");
+            foreach (MedewerkerINFO person in MedewerkersList)
+            {
+                if (gebruikerNaam == person.naam)
+                Console.WriteLine($"Name: {person.naam}\nVoornaamwoorden: {person.pronouns}\nTelefoonnummer: {person.telefoonnummer}\nE-Mail: {person.eMail}\nFunctie: {person.functie}\nGebruikersnaam: {person.gebruikersnaam}\n\n");
+            }
+            Console.WriteLine("[1] Doorgaan");
+            Console.WriteLine("╘══════════════════════════════╛");
+            ConsoleKeyInfo doorgaan = Console.ReadKey();
+            if (doorgaan.Key == ConsoleKey.D1)
+            {
+                personeelMain(gebruikerNaam);
+            }
+
+
+
+        }
+
+        public static void menuMain(string gebruikerNaam, string gebruiker = "personeel")
         {
             Console.Clear();
             Console.WriteLine("       Menu menu - personeel");
@@ -78,7 +110,7 @@ namespace Main
             ConsoleKeyInfo ckey = Console.ReadKey();
             if (ckey.Key == ConsoleKey.D0 && gebruiker == "personeel")
             {
-                personeelMain();
+                personeelMain(gebruikerNaam);
             }
             else if (ckey.Key == ConsoleKey.D0 && gebruiker == "admin")
             {
@@ -86,18 +118,18 @@ namespace Main
             }
             else if (ckey.Key == ConsoleKey.D1 && gebruiker == "personeel") 
             {
-                getMenu.gettingMenu("personeel");
+                getMenu.gettingMenu(gebruikerNaam, "personeel");
             }
             else if (ckey.Key == ConsoleKey.D1 && gebruiker == "admin")
             {
-                getMenu.gettingMenu("admin");
+                getMenu.gettingMenu(gebruikerNaam,"admin");
             }
             else if (ckey.Key == ConsoleKey.D2)
             {
-                MenuAanpassen.mainAanpassen();
+                MenuAanpassen.mainAanpassen(gebruikerNaam);
             }
         }
-        public static void bestellingenMain()
+        public static void bestellingenMain(string gebruikerNaam)
         {
             Console.Clear();
             Console.WriteLine("       Bestellingen Main Menu       ");
@@ -108,23 +140,23 @@ namespace Main
             ConsoleKeyInfo ckey = Console.ReadKey();
             if (ckey.Key == ConsoleKey.D0)
             {
-                personeelMain();
+                personeelMain(gebruikerNaam);
             }
             else if (ckey.Key == ConsoleKey.D1)
             {
-                bestellingenWeergeven();
+                bestellingenWeergeven(gebruikerNaam);
             }
             else if (ckey.Key == ConsoleKey.D2)
             {
-                bestellingenAanpassen();
+                bestellingenAanpassen(gebruikerNaam);
             }
             else if (ckey.Key == ConsoleKey.D3)
             {
-                bestellingenToevoegen();
+                bestellingenToevoegen(gebruikerNaam);
             }
 
         }
-        public static void bestellingenAanpassen()
+        public static void bestellingenAanpassen(string gebruikerNaam)
         {
             Console.Clear();
             string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
@@ -158,11 +190,11 @@ namespace Main
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
                 {
-                    bestellingenAanpassen();
+                    bestellingenAanpassen(gebruikerNaam);
                 }
                 else if (rkey.Key == ConsoleKey.D0)
                 {
-                    bestellingenMain();
+                    bestellingenMain(gebruikerNaam);
                 }
             }
             double reserveringsPrijs = 0.00;
@@ -190,7 +222,7 @@ namespace Main
                     {
                         JsonData = JsonConvert.SerializeObject(ReserveringenList);
                         System.IO.File.WriteAllText(ReserveringPath, JsonData);
-                        bestellingenMain();
+                        bestellingenMain(gebruikerNaam);
                     }
                     break;
                 }
@@ -199,7 +231,7 @@ namespace Main
 
 
         }
-        public static void bestellingenToevoegen()
+        public static void bestellingenToevoegen(string gebruikerNaam)
         {
             Console.Clear();
             string omzetPath = Path.GetFullPath(@"Omzet.json"); // find path to file
@@ -241,11 +273,11 @@ namespace Main
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
                 {
-                    bestellingenToevoegen();
+                    bestellingenToevoegen(gebruikerNaam);
                 }
                 else if (rkey.Key == ConsoleKey.D0)
                 {
-                    bestellingenMain();
+                    bestellingenMain(gebruikerNaam);
                 }
             }
             double reserveringsPrijs = 0.00;
@@ -298,7 +330,7 @@ namespace Main
                     {
                         JsonData3 = JsonConvert.SerializeObject(OmzetList2);
                         System.IO.File.WriteAllText(omzetPath, JsonData3);
-                        bestellingenMain();
+                        bestellingenMain(gebruikerNaam);
                     }
                     else if (keus.Key == ConsoleKey.D1)
                     {
@@ -321,7 +353,7 @@ namespace Main
                                 ConsoleKeyInfo keus2 = Console.ReadKey();
                                 if (keus2.Key == ConsoleKey.D1)
                                 {
-                                    bestellingenMain();
+                                    bestellingenMain(gebruikerNaam);
                                 }
 
                                 break;
@@ -336,7 +368,7 @@ namespace Main
         }
 
 
-        public static void bestellingenWeergeven()
+        public static void bestellingenWeergeven(string gebruikerNaam)
         {
             Console.Clear();
             string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
@@ -370,11 +402,11 @@ namespace Main
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
                 {
-                    bestellingenWeergeven();
+                    bestellingenWeergeven(gebruikerNaam);
                 }
                 else if (rkey.Key == ConsoleKey.D0)
                 {
-                    bestellingenMain();
+                    bestellingenMain(gebruikerNaam);
                 }
             }
             double reserveringsPrijs = 0.00;
@@ -389,11 +421,11 @@ namespace Main
                     ConsoleKeyInfo keus = Console.ReadKey();
                     if (keus.Key == ConsoleKey.D1)
                     {
-                        bestellingenWeergeven();
+                        bestellingenWeergeven(gebruikerNaam);
                     }
                     else if (keus.Key == ConsoleKey.D0)
                     {
-                        bestellingenMain();
+                        bestellingenMain(gebruikerNaam);
                     }
                 }
             }

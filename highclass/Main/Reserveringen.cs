@@ -257,7 +257,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 {
                     if (BeschikbaarheidList[j].Datum == datumIN)
                     {
-                        Console.WriteLine("in if statement");
+                        Console.WriteLine(BeschikbaarheidList[j].Tijdslot1_Beschikbaarheid);
                         Console.ReadKey();
                         if (BeschikbaarheidList[j].Tijdslot1_Beschikbaarheid - aantalIN >= 0)
                         {
@@ -388,6 +388,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 }
             }
 
+
             ReserveringenList.Add(new Reserveringenjson()
             {
                 Naam = naamIN,
@@ -412,7 +413,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
         }
 
-        public static void WijzigReservering(string gebruiker = "niet ingelogd")
+        public static void WijzigReservering(string gebruiker = "niet ingelogd", string gebruikerNaam = "niet ingelogd")
         {
             Console.Clear();
             string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
@@ -724,7 +725,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             {
                                 JsonData = JsonConvert.SerializeObject(ReserveringenList);
                                 System.IO.File.WriteAllText(ReserveringPath, JsonData);
-                                Personeelsleden.personeelMain();
+                                Personeelsleden.personeelMain(gebruikerNaam);
                             }
                             break;
                         }
@@ -734,7 +735,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
         }
 
-        public static void verwijderReservering(string gebruiker = "niet ingelogd")
+        public static void verwijderReservering(string gebruikerNaam, string gebruiker = "niet ingelogd")
         {
             string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
             bool fileExist = File.Exists(ReserveringPath);
@@ -770,7 +771,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
                 {
-                    verwijderReservering();
+                    verwijderReservering(gebruikerNaam);
                 }
             }
 
@@ -810,11 +811,11 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
             else
             {
-                Personeelsleden.personeelMain();
+                Personeelsleden.personeelMain(gebruikerNaam);
             }
         }
 
-        public static void bekijkReservering()
+        public static void bekijkReservering(string gebruikerNaam)
         {
             Console.Clear();
             string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
@@ -876,11 +877,11 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                     ConsoleKeyInfo keus = Console.ReadKey();
                     if (keus.Key == ConsoleKey.D1)
                     {
-                        bekijkReservering();
+                        bekijkReservering(gebruikerNaam);
                     }
                     else if (keus.Key == ConsoleKey.D0)
                     {
-                        Personeelsleden.reserverenMain();
+                        Personeelsleden.reserverenMain(gebruikerNaam);
                     }
                 }
 

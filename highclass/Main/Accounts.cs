@@ -494,7 +494,7 @@ namespace Main
                     ConsoleKeyInfo terug = Console.ReadKey();
                     if (ConsoleKey.D1 == terug.Key && accountList.functie == "personeel")
                     {
-                        Personeelsleden.personeelMain();
+                        Personeelsleden.personeelMain(accountList.naam);
                     }
                     else if (ConsoleKey.D1 == terug.Key && accountList.functie == "admin")
                     {

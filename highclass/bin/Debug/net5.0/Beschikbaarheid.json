@@ -1,24 +1,46 @@
 [
   {
-    "Datum": "22-5-2022",
-    "Tijdslot1": "11:00-15:00",
-    "Tijdslot1_Beschikbaarheid": 200,
-    "Tijdslot2": "15:00-19:00",
-    "Tijdslot2_Beschikbaarheid": 200,
-    "Tijdslot3": "19:00-22:00",
-    "Tijdslot3_Beschikbaarheid": 197,
-    "Tijdslot4": "22:00-23:00",
-    "Tijdslot4_Beschikbaarheid": 200
+    "Datum": "22-05-2022",
+    "Tijdslot1": null,
+    "Tijdslot1_Beschikbaarheid": 0,
+    "Tijdslot2": null,
+    "Tijdslot2_Beschikbaarheid": 0,
+    "Tijdslot3": null,
+    "Tijdslot3_Beschikbaarheid": 0,
+    "Tijdslot4": null,
+    "Tijdslot4_Beschikbaarheid": 0
+  },
+  {
+    "Datum": "1-6-2022",
+    "Tijdslot1": null,
+    "Tijdslot1_Beschikbaarheid": 0,
+    "Tijdslot2": null,
+    "Tijdslot2_Beschikbaarheid": 0,
+    "Tijdslot3": null,
+    "Tijdslot3_Beschikbaarheid": 0,
+    "Tijdslot4": null,
+    "Tijdslot4_Beschikbaarheid": 0
   },
   {
     "Datum": "7-6-2022",
-    "Tijdslot1": "11:00-15:00",
-    "Tijdslot1_Beschikbaarheid": 200,
-    "Tijdslot2": "15:00-19:00",
-    "Tijdslot2_Beschikbaarheid": 200,
-    "Tijdslot3": "19:00-22:00",
-    "Tijdslot3_Beschikbaarheid": 166,
-    "Tijdslot4": "22:00-23:00",
-    "Tijdslot4_Beschikbaarheid": 200
+    "Tijdslot1": null,
+    "Tijdslot1_Beschikbaarheid": 0,
+    "Tijdslot2": null,
+    "Tijdslot2_Beschikbaarheid": 0,
+    "Tijdslot3": null,
+    "Tijdslot3_Beschikbaarheid": 0,
+    "Tijdslot4": null,
+    "Tijdslot4_Beschikbaarheid": 0
+  },
+  {
+    "Datum": "8-6-2022",
+    "Tijdslot1": null,
+    "Tijdslot1_Beschikbaarheid": 0,
+    "Tijdslot2": null,
+    "Tijdslot2_Beschikbaarheid": 0,
+    "Tijdslot3": null,
+    "Tijdslot3_Beschikbaarheid": 0,
+    "Tijdslot4": null,
+    "Tijdslot4_Beschikbaarheid": 0
   }
 ]

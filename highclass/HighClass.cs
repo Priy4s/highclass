@@ -108,11 +108,11 @@ namespace Main
                             ConsoleKeyInfo cv2key = Console.ReadKey();
                             if (cv2key.Key == ConsoleKey.D1)
                             {
-                                Reserveringen.WijzigReservering();
+                                Reserveringen.WijzigReservering("niet ingelogd");
                             }
                             else if (cv2key.Key == ConsoleKey.D2)
                             {
-                                Reserveringen.verwijderReservering();
+                                Reserveringen.verwijderReservering("niet ingelogd");
                             }
 
                         }
@@ -128,7 +128,7 @@ namespace Main
                 }
                 else if (ckey.Key == ConsoleKey.D2)
                 {
-                    getMenu.gettingMenu();
+                    getMenu.gettingMenu("niet ingelogd");
                 }
                 else if (ckey.Key == ConsoleKey.D3)
                 {
