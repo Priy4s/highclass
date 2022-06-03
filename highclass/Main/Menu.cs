@@ -991,33 +991,75 @@ namespace Main
                 else if (menukey.Key == ConsoleKey.D3)
                 {
                     menukeyCheck = true;
-                    Console.WriteLine("Welke allergeneninformatie heeft dit gerecht?");
-                    Console.WriteLine("\t[1] V - Vegan");
-                    Console.WriteLine("\t[2] N - Bevat noten");
-                    Console.WriteLine("\t[3] L - Lactose vrij");
-                    Console.WriteLine("\t[4] G - Gluten vrij");
-                    Console.WriteLine("\t[5] A - Bevat alocohol");
-                    ConsoleKeyInfo allergieKey = Console.ReadKey();
+                    Console.WriteLine("Welke allergenen komen er in het nieuwe Menu Item voor?");
+                    Console.WriteLine("\t[V] - Vegan");
+                    Console.WriteLine("\t[N] - Bevat noten");
+                    Console.WriteLine("\t[L] - Lactose vrij");
+                    Console.WriteLine("\t[G] - Gluten vrij");
+                    Console.WriteLine("\t[A] - Bevat alocohol");
+                    Console.WriteLine("\t[0] geen allergenen informatie ");
+                    ConsoleKeyInfo allorgenenINFO = Console.ReadKey();
                     string New_allergie = "";
-                    if (allergieKey.Key == ConsoleKey.D1)
+                    if (allorgenenINFO.Key == ConsoleKey.V)
                     {
                         New_allergie = "V";
                     }
-                    else if (allergieKey.Key == ConsoleKey.D2)
+                    else if (allorgenenINFO.Key == ConsoleKey.N)
                     {
                         New_allergie = "N";
                     }
-                    else if (allergieKey.Key == ConsoleKey.D3)
+                    else if (allorgenenINFO.Key == ConsoleKey.L)
                     {
                         New_allergie = "L";
                     }
-                    else if (allergieKey.Key == ConsoleKey.D4)
+                    else if (allorgenenINFO.Key == ConsoleKey.G)
                     {
                         New_allergie = "G";
                     }
-                    else if (allergieKey.Key == ConsoleKey.D5)
+                    else if (allorgenenINFO.Key == ConsoleKey.A)
                     {
                         New_allergie = "A";
+                    }
+                    else if (allorgenenINFO.Key == ConsoleKey.D0)
+                    {
+                        New_allergie = " ";
+                    }
+
+                    while (New_allergie == "")
+                    {
+                        Console.WriteLine("\nProbeer opnieuw");
+                        Console.WriteLine("Welke allergenen komen er in het nieuwe Menu Item voor?");
+                        Console.WriteLine("\t[V] - Vegan");
+                        Console.WriteLine("\t[N] - Bevat noten");
+                        Console.WriteLine("\t[L] - Lactose vrij");
+                        Console.WriteLine("\t[G] - Gluten vrij");
+                        Console.WriteLine("\t[A] - Bevat alocohol");
+                        Console.WriteLine("\t[0] geen allergenen informatie ");
+                        allorgenenINFO = Console.ReadKey();
+                        if (allorgenenINFO.Key == ConsoleKey.V)
+                        {
+                            New_allergie = "V";
+                        }
+                        else if (allorgenenINFO.Key == ConsoleKey.N)
+                        {
+                            New_allergie = "N";
+                        }
+                        else if (allorgenenINFO.Key == ConsoleKey.L)
+                        {
+                            New_allergie = "L";
+                        }
+                        else if (allorgenenINFO.Key == ConsoleKey.G)
+                        {
+                            New_allergie = "G";
+                        }
+                        else if (allorgenenINFO.Key == ConsoleKey.A)
+                        {
+                            New_allergie = "A";
+                        }
+                        else if (allorgenenINFO.Key == ConsoleKey.D0)
+                        {
+                            New_allergie = " ";
+                        }
                     }
 
                     while (i < len)
