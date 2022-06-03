@@ -19,7 +19,7 @@ namespace Main
 
             Console.WriteLine("╒══════════════════════════════╕");
             Console.WriteLine("│                              │");
-            Console.WriteLine($"│       Welkom, {gebruikerNaam}      │");
+            Console.WriteLine($"│       Welkom, {gebruikerNaam}  │");
             Console.WriteLine("│                              │");
             Console.WriteLine("│         |Hoofdmenu|          │");
             Console.WriteLine("│       [1] Reserveringen      │");

@@ -42,16 +42,21 @@ namespace Main
             Console.WriteLine("Wat is uw voornaam naam?");
             string naamIN = Console.ReadLine();
             bool IsAlleenLetters = char.IsLetter(naamIN, 0);
-            for (int i=0; i<naamIN.Length; i++)
+            bool isSpace = char.IsWhiteSpace(naamIN, 0);
+            for (int i = 0; i < naamIN.Length; i++)
             {
                 IsAlleenLetters = char.IsLetter(naamIN, i);
                 if (IsAlleenLetters == false)
                 {
-                    break;
+                    isSpace = char.IsWhiteSpace(naamIN, i);
+                    if (isSpace == false)
+                    {
+                        break;
+                    }
                 }
             }
-           
-            while (!IsAlleenLetters)
+
+            while (!IsAlleenLetters || !isSpace)
             {
                 Console.WriteLine("Naam kan alleen uit letter bestaan probeer opnieuw.");
                 Console.WriteLine("Wat is uw volledige naam?");
@@ -61,12 +66,16 @@ namespace Main
                     IsAlleenLetters = char.IsLetter(naamIN, i);
                     if (IsAlleenLetters == false)
                     {
-                        break;
+                        isSpace = char.IsWhiteSpace(naamIN, i);
+                        if (isSpace == false)
+                        {
+                            break;
+                        }
                     }
                 }
             }
             string pronounsIN = "";
-            Console.WriteLine("Wat zijn uw voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] hen/hun");
+            Console.WriteLine("Wat zijn uw voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] die/hen");
             ConsoleKeyInfo ckey = Console.ReadKey();
             if (ckey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
             {
@@ -78,13 +87,13 @@ namespace Main
             }
             else if (ckey.Key == ConsoleKey.D3)
             {
-                pronounsIN = "hen/hun";
+                pronounsIN = "die/hen";
             }
 
             while (pronounsIN == "")
             {
                 Console.WriteLine("\nProbeer opnieuw");
-                Console.WriteLine("Wat zijn uw voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] hen/hun");
+                Console.WriteLine("Wat zijn uw voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] die/hen");
                 ckey = Console.ReadKey();
                 if (ckey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
                 {
@@ -96,7 +105,7 @@ namespace Main
                 }
                 else if (ckey.Key == ConsoleKey.D3)
                 {
-                    pronounsIN = "hen/hun";
+                    pronounsIN = "die/hen";
                 }
             }
             Console.WriteLine("Wat is uw telefoonnummber?\n+31");
@@ -105,7 +114,7 @@ namespace Main
             bool isAlleenNummers = char.IsNumber(telefoonnummerIN, 0);
             for (int i = 0; i < telefoonnummerIN.Length; i++)
             {
-                isAlleenNummers = char.IsNumber(telefoonnummerIN, 0);
+                isAlleenNummers = char.IsNumber(telefoonnummerIN, i);
                 if (isAlleenNummers == false)
                 {
                     break;
@@ -121,7 +130,7 @@ namespace Main
 
                 for (int i = 0; i < telefoonnummerIN.Length; i++)
                 {
-                    isAlleenNummers = char.IsNumber(telefoonnummerIN, 0);
+                    isAlleenNummers = char.IsNumber(telefoonnummerIN, i);
                     if (isAlleenNummers == false)
                     {
                         break;
@@ -236,6 +245,13 @@ namespace Main
             Console.WriteLine("Weet je zeker dat je: " + medewerkerNaam + " wil verwijderen?");
             Console.WriteLine("[1] Ja\n[2] Nee");
             ConsoleKeyInfo readkey = Console.ReadKey();
+            while (readkey.Key != ConsoleKey.D1 && readkey.Key != ConsoleKey.D2)
+            {
+
+                Console.WriteLine("Weet je zeker dat je: " + medewerkerNaam + " wil verwijderen?");
+                Console.WriteLine("\t[1] Ja\n\t[2] Nee");
+                readkey = Console.ReadKey();
+            }
             if (readkey.Key == ConsoleKey.D1)
             {
                 while (i < len)
@@ -250,9 +266,9 @@ namespace Main
                 }
 
             }
-            else
+            else if (readkey.Key == ConsoleKey.D2)
             {
-                Admin.adminMain();
+                Admin.adminMedewerkers();
             }
 
             JsonData = JsonConvert.SerializeObject(MedewerkersList);
@@ -301,12 +317,46 @@ namespace Main
                     wijzigMedewerkers();
                 }
             }
-            Console.WriteLine("Wat wil je wijzigen? \n\t[1] Naam\n\t[2] pronouns\n\t[3] telefoonnummer\n\t[4] eMail\n\t[5] functie\n\t[6] gebruikersnaam\n\t[7] wachtwoord\n");
+            Console.WriteLine("Wat wil je wijzigen? \n\t[1] Naam\n\t[2] voornaamwoorden\n\t[3] telefoonnummer\n\t[4] eMail\n\t[5] functie\n\t[6] gebruikersnaam\n\t[7] wachtwoord\n");
             ConsoleKeyInfo readkey = Console.ReadKey();
             if (readkey.Key == ConsoleKey.D1)
             {
                 Console.WriteLine("\nWat wordt medewerkers nieuwe naam?");
                 string new_naam = Console.ReadLine();
+
+                bool IsAlleenLetters = char.IsLetter(new_naam, 0);
+                bool isSpace = char.IsWhiteSpace(new_naam, 0);
+                for (int ii = 0; ii < new_naam.Length; ii++)
+                {
+                    IsAlleenLetters = char.IsLetter(new_naam, ii);
+                    if (IsAlleenLetters == false)
+                    {
+                        isSpace = char.IsWhiteSpace(new_naam, ii);
+                        if (isSpace == false)
+                        {
+                            break;
+                        }
+                    }
+                }
+
+                while (!IsAlleenLetters || !isSpace)
+                {
+                    Console.WriteLine("Naam kan alleen uit letter bestaan probeer opnieuw.");
+                    Console.WriteLine("Wat is uw volledige naam?");
+                    new_naam = Console.ReadLine();
+                    for (int ii = 0; ii < new_naam.Length; ii++)
+                    {
+                        IsAlleenLetters = char.IsLetter(new_naam, ii);
+                        if (IsAlleenLetters == false)
+                        {
+                            isSpace = char.IsWhiteSpace(new_naam, ii);
+                            if (isSpace == false)
+                            {
+                                break;
+                            }
+                        }
+                    }
+                }
 
                 while (i < len)
                 {
@@ -321,7 +371,7 @@ namespace Main
             }
             else if (readkey.Key == ConsoleKey.D2)
             {
-                Console.WriteLine("Wat zijn uw voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] hen/hun");
+                Console.WriteLine("Wat zijn uw voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] die/hen");
                 ConsoleKeyInfo AKey = Console.ReadKey();
                 string pronounsIN = "";
                 if (AKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
@@ -334,7 +384,26 @@ namespace Main
                 }
                 else if (AKey.Key == ConsoleKey.D3)
                 {
-                    pronounsIN = "hen/hun";
+                    pronounsIN = "die/hen";
+                }
+
+                while (pronounsIN == "")
+                {
+                    Console.WriteLine("\nProbeer opnieuw");
+                    Console.WriteLine("Wat zijn uw voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] die/hen");
+                    AKey = Console.ReadKey();
+                    if (AKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
+                    {
+                        pronounsIN = "hij/hem";
+                    }
+                    else if (AKey.Key == ConsoleKey.D2)
+                    {
+                        pronounsIN = "zij/haar";
+                    }
+                    else if (AKey.Key == ConsoleKey.D3)
+                    {
+                        pronounsIN = "die/hen";
+                    }
                 }
 
                 while (i < len)
@@ -353,6 +422,34 @@ namespace Main
                 Console.WriteLine("\nWat wordt medewerkers nieuwe telefoonnummer?");
                 string new_telefoonnummer = Console.ReadLine();
 
+                bool isAlleenNummers = char.IsNumber(new_telefoonnummer, 0);
+                for (int k = 0; k < new_telefoonnummer.Length; k++)
+                {
+                    isAlleenNummers = char.IsNumber(new_telefoonnummer, k);
+                    if (isAlleenNummers == false)
+                    {
+                        break;
+                    }
+                }
+
+                bool isLengte10 = new_telefoonnummer.Length != 10 ? true : false;
+                while (isLengte10 || !isAlleenNummers)
+                {
+                    Console.WriteLine("Onjuist telefoonnummer. Probeer telefoonnummer opnieuw intevoeren");
+                    Console.WriteLine("Wat is uw telefoonnummber?");
+                    new_telefoonnummer = Console.ReadLine();
+
+                    for (int k = 0; k < new_telefoonnummer.Length; k++)
+                    {
+                        isAlleenNummers = char.IsNumber(new_telefoonnummer, k);
+                        if (isAlleenNummers == false)
+                        {
+                            break;
+                        }
+                    }
+                    isLengte10 = new_telefoonnummer.Length != 10 ? true : false;
+                }
+
                 while (i < len)
                 {
                     if (MedewerkersList[i].naam == zoekNaam)
@@ -368,6 +465,17 @@ namespace Main
             {
                 Console.WriteLine("\nWat wordt medewerkers nieuwe eMail?");
                 string new_eMail = Console.ReadLine();
+
+                Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.CultureInvariant | RegexOptions.Singleline);
+                bool isValedMail = regex.IsMatch(new_eMail);
+                while (!isValedMail)
+                {
+                    Console.WriteLine("Incoreccte email. Probeer opnieuw.");
+                    Console.WriteLine("Wat is uw e-mail?");
+                    new_eMail = Console.ReadLine();
+                    regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.CultureInvariant | RegexOptions.Singleline);
+                    isValedMail = regex.IsMatch(new_eMail);
+                }
 
                 while (i < len)
                 {
@@ -393,6 +501,22 @@ namespace Main
                 {
                     new_functie = "Mederwerker";
                 }
+
+                while (new_functie == "")
+                {
+                    Console.WriteLine("\nProbeer opnieuw");
+                    Console.WriteLine("Wat is uw functie?\n\t[1]Admin\n\t[2]Mederwerker");
+                    AKey = Console.ReadKey();
+                    if (AKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
+                    {
+                        new_functie = "Admin";
+                    }
+                    else if (AKey.Key == ConsoleKey.D2)
+                    {
+                        new_functie = "Mederwerker";
+                    }
+                }
+
                 while (i < len)
                 {
                     if (MedewerkersList[i].naam == zoekNaam)

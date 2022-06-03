@@ -436,7 +436,34 @@ namespace Main
 
             Console.WriteLine("╒══════════════════════════════╕");
             Console.WriteLine("Wat is Menu Item ID?");
-            int zoekID = Convert.ToInt32(Console.ReadLine());
+            string strzoekID = Console.ReadLine();
+
+            bool isIDAlleenNummers = char.IsNumber(strzoekID, 0);
+            for (int j = 0; j < strzoekID.Length; j++)
+            {
+                isIDAlleenNummers = char.IsNumber(strzoekID, j);
+                if (isIDAlleenNummers == false)
+                {
+                    break;
+                }
+            }
+
+            while (!isIDAlleenNummers)
+            {
+                Console.WriteLine("\nMenu Item ID bestaat alleen uit nummer.\nProbeer opnieuw.");
+                Console.WriteLine("Wat is Menu Item ID?");
+                strzoekID = Console.ReadLine();
+
+                for (int j = 0; j < strzoekID.Length; j++)
+                {
+                    isIDAlleenNummers = char.IsNumber(strzoekID, j);
+                    if (isIDAlleenNummers == false)
+                    {
+                        break;
+                    }
+                }
+            }
+            int zoekID = Convert.ToInt32(strzoekID);
 
             int len = menuList.Count;
             int i = 0;
@@ -465,15 +492,24 @@ namespace Main
                     i++;
                 }
 
+                if (count == 0)
+                {
+                    Console.WriteLine("Menu Item ID bestaat niet. Probeer opnieuw.");
+                    Console.WriteLine("[1] Opnieuw proberen\n[0] Terug");
+                    ConsoleKeyInfo keuzekey = Console.ReadKey();
+                    if(keuzekey.Key == ConsoleKey.D1)
+                    {
+                        verwijderen(gebruikerNaam);
+                    }
+                    else
+                    {
+                        mainAanpassen(gebruikerNaam);
+                    }
+                }
             }
             else
             {
                 mainAanpassen(gebruikerNaam);
-            }
-            if (count == 0)
-            {
-                Console.WriteLine("Menu Item ID bestaat niet. Probeer opnieuw.");
-                verwijderen(gebruikerNaam);
             }
 
             JsonData = JsonConvert.SerializeObject(menuList);
@@ -860,8 +896,35 @@ namespace Main
             var menuList = JsonConvert.DeserializeObject<List<Menu>>(JsonData) ?? new List<Menu>();
 
             Console.WriteLine("Welke ID heeft het nieuwe Menu Item?");
-            int MenuID = Convert.ToInt32(Console.ReadLine());
-            
+            string strzoekID = Console.ReadLine();
+
+            bool isIDAlleenNummers = char.IsNumber(strzoekID, 0);
+            for (int j = 0; j < strzoekID.Length; j++)
+            {
+                isIDAlleenNummers = char.IsNumber(strzoekID, j);
+                if (isIDAlleenNummers == false)
+                {
+                    break;
+                }
+            }
+
+            while (!isIDAlleenNummers)
+            {
+                Console.WriteLine("\nMenu Item ID bestaat alleen uit nummer.\nProbeer opnieuw.");
+                Console.WriteLine("Wat is Menu Item ID?");
+                strzoekID = Console.ReadLine();
+
+                for (int j = 0; j < strzoekID.Length; j++)
+                {
+                    isIDAlleenNummers = char.IsNumber(strzoekID, j);
+                    if (isIDAlleenNummers == false)
+                    {
+                        break;
+                    }
+                }
+            }
+            int MenuID = Convert.ToInt32(strzoekID);
+
             int len = menuList.Count;
             int i = 0;
             string MenuItem = "";
@@ -880,153 +943,166 @@ namespace Main
                 {
                     wijzigen();
                 }
-            }
-            Console.WriteLine("Wat wilt u veranderen?\n\t[1] Naam Menu Item\n\t[2] Prijs Menu Item\n\t[3] Allergie Menu Item\n\t[4] Catogorie Menu Item\n");
-            ConsoleKeyInfo menukey = Console.ReadKey();
-            if (menukey.Key == ConsoleKey.D1)
-            {
-                Console.WriteLine("Wat wordt de nieuwe naam van dit Menu Item?");
-                string New_Naam = Console.ReadLine();
-                        
-                while (i < len)
+                else
                 {
-                    if (menuList[i].ID == MenuID)
-                    {
-                        menuList[i].Naam = New_Naam;
-                        Console.WriteLine($"Menu items naam is gewijzigd naar {New_Naam}");
-                        break;
-                    }
-                    i++;
+                    wijzigen();
                 }
             }
-            else if(menukey.Key == ConsoleKey.D2)
-            {
-                Console.WriteLine("Wat wordt de nieuwe prijs van dit Menu Item?");
-                double New_Prijs = Convert.ToDouble(Console.ReadLine());
 
-                while (i < len)
-                {
-                    if (menuList[i].ID == MenuID)
-                    {
-                        menuList[i].Prijs = New_Prijs;
-                        Console.WriteLine($"Menu items naam is gewijzigd naar {New_Prijs}");
-                        break;
-                    }
-                    i++;
-                }
-            }
-            else if(menukey.Key == ConsoleKey.D3)
+            bool menukeyCheck = false;
+            while (menukeyCheck == false)
             {
-                Console.WriteLine("Welke allergeneninformatie heeft dit gerecht?");
-                Console.WriteLine("\t[1] V - Vegan");
-                Console.WriteLine("\t[2] N - Bevat noten");
-                Console.WriteLine("\t[3] L - Lactose vrij");
-                Console.WriteLine("\t[4] G - Gluten vrij");
-                Console.WriteLine("\t[5] A - Bevat alocohol");
-                ConsoleKeyInfo allergieKey = Console.ReadKey();
-                string New_allergie = "";
-                if(allergieKey.Key == ConsoleKey.D1)
+                Console.WriteLine("\nWat wilt u veranderen?\n\t[1] Naam Menu Item\n\t[2] Prijs Menu Item\n\t[3] Allergie Menu Item\n\t[4] Catogorie Menu Item");
+                ConsoleKeyInfo menukey = Console.ReadKey();
+                if (menukey.Key == ConsoleKey.D1)
                 {
-                    New_allergie = "V";
-                }
-                else if(allergieKey.Key == ConsoleKey.D2)
-                {
-                    New_allergie = "N";
-                }
-                else if(allergieKey.Key == ConsoleKey.D3)
-                {
-                    New_allergie = "L";
-                }
-                else if (allergieKey.Key == ConsoleKey.D4)
-                {
-                    New_allergie = "G";
-                }
-                else if (allergieKey.Key == ConsoleKey.D5)
-                {
-                    New_allergie = "A";
-                }
+                    menukeyCheck = true;
+                    Console.WriteLine("Wat wordt de nieuwe naam van dit Menu Item?");
+                    string New_Naam = Console.ReadLine();
 
-                while (i < len)
-                {
-                    if (menuList[i].ID == MenuID)
+                    while (i < len)
                     {
-                        menuList[i].Allergie = New_allergie;
-                        Console.WriteLine($"Menu items naam is gewijzigd naar {New_allergie}");
-                        break;
+                        if (menuList[i].ID == MenuID)
+                        {
+                            menuList[i].Naam = New_Naam;
+                            Console.WriteLine($"Menu items naam is gewijzigd naar {New_Naam}");
+                            break;
+                        }
+                        i++;
                     }
-                    i++;
+                }
+                else if (menukey.Key == ConsoleKey.D2)
+                {
+                    menukeyCheck = true;
+                    Console.WriteLine("Wat wordt de nieuwe prijs van dit Menu Item?");
+                    double New_Prijs = Convert.ToDouble(Console.ReadLine());
+
+                    while (i < len)
+                    {
+                        if (menuList[i].ID == MenuID)
+                        {
+                            menuList[i].Prijs = New_Prijs;
+                            Console.WriteLine($"Menu items naam is gewijzigd naar {New_Prijs}");
+                            break;
+                        }
+                        i++;
+                    }
+                }
+                else if (menukey.Key == ConsoleKey.D3)
+                {
+                    menukeyCheck = true;
+                    Console.WriteLine("Welke allergeneninformatie heeft dit gerecht?");
+                    Console.WriteLine("\t[1] V - Vegan");
+                    Console.WriteLine("\t[2] N - Bevat noten");
+                    Console.WriteLine("\t[3] L - Lactose vrij");
+                    Console.WriteLine("\t[4] G - Gluten vrij");
+                    Console.WriteLine("\t[5] A - Bevat alocohol");
+                    ConsoleKeyInfo allergieKey = Console.ReadKey();
+                    string New_allergie = "";
+                    if (allergieKey.Key == ConsoleKey.D1)
+                    {
+                        New_allergie = "V";
+                    }
+                    else if (allergieKey.Key == ConsoleKey.D2)
+                    {
+                        New_allergie = "N";
+                    }
+                    else if (allergieKey.Key == ConsoleKey.D3)
+                    {
+                        New_allergie = "L";
+                    }
+                    else if (allergieKey.Key == ConsoleKey.D4)
+                    {
+                        New_allergie = "G";
+                    }
+                    else if (allergieKey.Key == ConsoleKey.D5)
+                    {
+                        New_allergie = "A";
+                    }
+
+                    while (i < len)
+                    {
+                        if (menuList[i].ID == MenuID)
+                        {
+                            menuList[i].Allergie = New_allergie;
+                            Console.WriteLine($"Menu items naam is gewijzigd naar {New_allergie}");
+                            break;
+                        }
+                        i++;
+                    }
+                }
+                else if (menukey.Key == ConsoleKey.D4)
+                {
+                    menukeyCheck = true;
+                    Console.WriteLine("Wat wordt de nieuwe categorie van dit Menu Item?\n\t[1] Brunch\n\t[2] Lunch\n\t[3] LunchSoep\n\t[4] DinerVoorgerecht\n\t[5] DinerSoep\n\t[6] DinerHoofdgerecht\n\t[7] DinerSushi\n\t[8] DinerNagerecht\n\t[9] DrinkenWarm\n\t[10] DrinkenKoud\n\t[11] DrinkenBier\n\t[12] DrinkenWijn\n\t[13] DrinkenCocktail");
+                    int CategorieMenu = Convert.ToInt32(Console.ReadLine());
+                    string New_Categorie = "";
+                    if (CategorieMenu == 1)
+                    {
+                        New_Categorie = "Brunch";
+                    }
+                    else if (CategorieMenu == 2)
+                    {
+                        New_Categorie = "Lunch";
+                    }
+                    else if (CategorieMenu == 3)
+                    {
+                        New_Categorie = "LunchSoep";
+                    }
+                    else if (CategorieMenu == 4)
+                    {
+                        New_Categorie = "DinerVoorgerecht";
+                    }
+                    else if (CategorieMenu == 5)
+                    {
+                        New_Categorie = "DinerSoep";
+                    }
+                    else if (CategorieMenu == 6)
+                    {
+                        New_Categorie = "DinerHoofdgerecht";
+                    }
+                    else if (CategorieMenu == 7)
+                    {
+                        New_Categorie = "DinerSushi";
+                    }
+                    else if (CategorieMenu == 8)
+                    {
+                        New_Categorie = "DinerNagerecht";
+                    }
+                    else if (CategorieMenu == 9)
+                    {
+                        New_Categorie = "DrinkenWarm";
+                    }
+                    else if (CategorieMenu == 10)
+                    {
+                        New_Categorie = "DrinkenKoud";
+                    }
+                    else if (CategorieMenu == 11)
+                    {
+                        New_Categorie = "DrinkenBier";
+                    }
+                    else if (CategorieMenu == 12)
+                    {
+                        New_Categorie = "DrinkenWijn";
+                    }
+                    else if (CategorieMenu == 13)
+                    {
+                        New_Categorie = "DrinkenCoktail";
+                    }
+
+                    while (i < len)
+                    {
+                        if (menuList[i].ID == MenuID)
+                        {
+                            menuList[i].Categorie = New_Categorie;
+                            Console.WriteLine($"Menu items naam is gewijzigd naar {New_Categorie}");
+                            break;
+                        }
+                        i++;
+                    }
                 }
             }
-            else if(menukey.Key == ConsoleKey.D4)
-            {
-                Console.WriteLine("Wat wordt de nieuwe categorie van dit Menu Item?\n\t[1] Brunch\n\t[2] Lunch\n\t[3] LunchSoep\n\t[4] DinerVoorgerecht\n\t[5] DinerSoep\n\t[6] DinerHoofdgerecht\n\t[7] DinerSushi\n\t[8] DinerNagerecht\n\t[9] DrinkenWarm\n\t[10] DrinkenKoud\n\t[11] DrinkenBier\n\t[12] DrinkenWijn\n\t[13] DrinkenCocktail");
-                int CategorieMenu = Convert.ToInt32(Console.ReadLine());
-                string New_Categorie = "";
-                if(CategorieMenu == 1)
-                {
-                    New_Categorie = "Brunch";
-                }
-                else if (CategorieMenu == 2)
-                {
-                    New_Categorie = "Lunch";
-                }
-                else if(CategorieMenu == 3)
-                {
-                    New_Categorie = "LunchSoep";
-                }
-                else if(CategorieMenu == 4)
-                {
-                    New_Categorie = "DinerVoorgerecht";
-                }
-                else if (CategorieMenu == 5)
-                {
-                    New_Categorie = "DinerSoep";
-                }
-                else if (CategorieMenu == 6)
-                {
-                    New_Categorie = "DinerHoofdgerecht";
-                }
-                else if (CategorieMenu == 7)
-                {
-                    New_Categorie = "DinerSushi";
-                }
-                else if (CategorieMenu == 8)
-                {
-                    New_Categorie = "DinerNagerecht"; 
-                }
-                else if (CategorieMenu == 9)
-                {
-                    New_Categorie = "DrinkenWarm";
-                }
-                else if (CategorieMenu == 10)
-                {
-                    New_Categorie = "DrinkenKoud";
-                }
-                else if (CategorieMenu == 11)
-                {
-                    New_Categorie = "DrinkenBier";
-                }
-                else if (CategorieMenu == 12)
-                {
-                    New_Categorie = "DrinkenWijn";
-                }
-                else if (CategorieMenu == 13)
-                {
-                    New_Categorie = "DrinkenCoktail";
-                }
 
-                while (i < len)
-                {
-                    if (menuList[i].ID == MenuID)
-                    {
-                        menuList[i].Categorie = New_Categorie;
-                        Console.WriteLine($"Menu items naam is gewijzigd naar {New_Categorie}");
-                        break;
-                    }
-                    i++;
-                }
-            }
-            
             JsonData = JsonConvert.SerializeObject(menuList);
             System.IO.File.WriteAllText(menuPath, JsonData);
 
