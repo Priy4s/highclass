@@ -206,33 +206,108 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             var JsonData2 = File.ReadAllText(ReserveringPath);
             var BeschikbaarheidList = JsonConvert.DeserializeObject<List<Beschikbaarheidjson>>(JsonData2) ?? new List<Beschikbaarheidjson>();
 
+
+            Console.WriteLine($"\nKies een tijdslot:\n\t[1] 11:00-15:00\n\t[2] 15:00-19:00\n\t[3] 19:00-22:00\n\t[4] 22:00-23:00" +
+                $"\nLet op! Tijdslot 4 heeft een tijdsduur van een uur, ipv. 4 uur.");
+            ConsoleKeyInfo ckey2 = Console.ReadKey();
+            string tijdslotIN = "";
+            if (ckey2.Key == ConsoleKey.D1)
+            {
+                tijdslotIN = "11:00-15:00";
+            }
+            else if (ckey2.Key == ConsoleKey.D2)
+            {
+                tijdslotIN = "15:00 - 19:00";
+            }
+            else if (ckey2.Key == ConsoleKey.D3)
+            {
+                tijdslotIN = "19:00 - 22:00";
+            }
+            else if (ckey2.Key == ConsoleKey.D4)
+            {
+                tijdslotIN = "22:00-23:00";
+            }
             string datumIN = $"{dag}-{maand}-{jaar}";
-            int i = 0;
-            string check = "x";
-            while (i < BeschikbaarheidList.Count)
+
+            int plekken = 0;
+            for (int i = 0; i < ReserveringenList.Count; i++)
             {
-                if (BeschikbaarheidList[i].Datum == datumIN)
+                if (ReserveringenList[i].Datum == datumIN)
                 {
-                    check = "v";
-                    break;
+                    if (ReserveringenList[i].Tijdslot == tijdslotIN)
+                    {
+                        plekken += ReserveringenList[i].Groepsgrote;
+                    }
                 }
-                i++;
             }
-            if (check == "x")
+            Console.WriteLine("\n bezette plekken:" + plekken + "\n");
+            if (plekken + aantalIN <= 200)
             {
-                BeschikbaarheidList.Add(new Beschikbaarheidjson()
+                ReserveringenList.Add(new Reserveringenjson()
                 {
+                    Naam = naamIN,
+                    Voornaamwoorden = pronounsIN,
+                    Groepsgrote = aantalIN,
                     Datum = datumIN,
-                    Tijdslot1 = "11:00-15:00",
-                    Tijdslot1_Beschikbaarheid = 200,
-                    Tijdslot2 = "15:00-19:00",
-                    Tijdslot2_Beschikbaarheid = 200,
-                    Tijdslot3 = "19:00-22:00",
-                    Tijdslot3_Beschikbaarheid = 200,
-                    Tijdslot4 = "22:00-23:00",
-                    Tijdslot4_Beschikbaarheid = 200,
+                    Tijdslot = tijdslotIN,
+                    Eindtijd = "",
+                    Prijs = 0.00
                 });
+                JsonData = JsonConvert.SerializeObject(ReserveringenList);
+                System.IO.File.WriteAllText(ReserveringPath, JsonData);
+
+                Console.WriteLine("\nUw reservering is succesvol opgeslagen.");
+                Console.WriteLine("[1] Doorgaan\n");
+                Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                ConsoleKeyInfo keus = Console.ReadKey();
+                if (keus.Key == ConsoleKey.D1)
+                {
+                    Program.Main();
+                }
             }
+            else
+            {
+                Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {tijdslotIN} op {datumIN}.\n" +
+                                "Wilt u opnieuw proberen een reservering aan te maken?\n\t[1] Ja\n\t[2] Nee");
+                Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                ConsoleKeyInfo ckey4 = Console.ReadKey();
+                if (ckey4.Key == ConsoleKey.D1)
+                {
+                    AddReservering();
+                }
+                else if (ckey4.Key == ConsoleKey.D2)
+                {
+                    Program.Main();
+                }
+            }
+        }
+
+        /*
+        int i = 0;
+        string check = "x";
+        while (i < BeschikbaarheidList.Count)
+        {
+            if (BeschikbaarheidList[i].Datum == datumIN)
+            {
+                check = "v";
+                break;
+            }
+            i++;
+        }
+        if (check == "x")
+        {
+            BeschikbaarheidList.Add(new Beschikbaarheidjson()
+            {
+                Datum = datumIN,
+                Tijdslot1 = "11:00-15:00",
+                Tijdslot1_Beschikbaarheid = 200,
+                Tijdslot2 = "15:00-19:00",
+                Tijdslot2_Beschikbaarheid = 200,
+                Tijdslot3 = "19:00-22:00",
+                Tijdslot3_Beschikbaarheid = 200,
+                Tijdslot4 = "22:00-23:00",
+                Tijdslot4_Beschikbaarheid = 200,
+            });
             JsonData2 = JsonConvert.SerializeObject(BeschikbaarheidList);
             System.IO.File.WriteAllText(BeschikbaarheidPath, JsonData2);
 
@@ -244,176 +319,177 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
             JsonData2 = File.ReadAllText(ReserveringPath);
             BeschikbaarheidList = JsonConvert.DeserializeObject<List<Beschikbaarheidjson>>(JsonData2) ?? new List<Beschikbaarheidjson>();
+        }
 
-            Console.WriteLine($"\nKies een tijdslot:\n\t[1] 11:00-15:00\n\t[2] 15:00-19:00\n\t[3] 19:00-22:00\n\t[4] 22:00-23:00" +
-                $"\nLet op! Tijdslot 4 heeft een tijdsduur van een uur, ipv. 4 uur.");
-            ConsoleKeyInfo ckey2 = Console.ReadKey();
-            string tijdslotIN = "";
-            if (ckey2.Key == ConsoleKey.D1)
+
+        Console.WriteLine($"\nKies een tijdslot:\n\t[1] 11:00-15:00\n\t[2] 15:00-19:00\n\t[3] 19:00-22:00\n\t[4] 22:00-23:00" +
+            $"\nLet op! Tijdslot 4 heeft een tijdsduur van een uur, ipv. 4 uur.");
+        ConsoleKeyInfo ckey2 = Console.ReadKey();
+        string tijdslotIN = "";
+        if (ckey2.Key == ConsoleKey.D1)
+        {
+            tijdslotIN = "11:00-15:00";
+            int j = 0;
+            while (j < BeschikbaarheidList.Count)
             {
-                tijdslotIN = "11:00-15:00";
-                int j = 0;
-                while (j < BeschikbaarheidList.Count)
+                if (BeschikbaarheidList[j].Datum == datumIN)
                 {
-                    if (BeschikbaarheidList[j].Datum == datumIN)
+                    Console.WriteLine("in if statement");
+                    Console.ReadKey();
+                    if (BeschikbaarheidList[j].Tijdslot1_Beschikbaarheid - aantalIN >= 0)
                     {
-                        Console.WriteLine(BeschikbaarheidList[j].Tijdslot1_Beschikbaarheid);
-                        Console.ReadKey();
-                        if (BeschikbaarheidList[j].Tijdslot1_Beschikbaarheid - aantalIN >= 0)
-                        {
-                            BeschikbaarheidList[j].Tijdslot1_Beschikbaarheid -= aantalIN;
-                            JsonData2 = JsonConvert.SerializeObject(BeschikbaarheidList);
-                            System.IO.File.WriteAllText(BeschikbaarheidPath, JsonData2);
-                        }
-                        else
-                        {
-                            Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {tijdslotIN} op {datumIN}.\n" +
-                                "Wilt u opnieuw proberen een reservering aan te maken?\n\t[1] Ja\n\t[2] Nee");
-                            Console.WriteLine("╘═════════════════════════════════════════════════════╛");
-                            ConsoleKeyInfo ckey4 = Console.ReadKey();
-                            if (ckey4.Key == ConsoleKey.D1)
-                            {
-                                AddReservering();
-                            }
-                            else if (ckey4.Key == ConsoleKey.D2)
-                            {
-                                Program.Main();
-                            }
-                        }
-                        break;
+                        BeschikbaarheidList[j].Tijdslot1_Beschikbaarheid -= aantalIN;
+                        JsonData2 = JsonConvert.SerializeObject(BeschikbaarheidList);
+                        System.IO.File.WriteAllText(BeschikbaarheidPath, JsonData2);
                     }
-                    j++;
+                    else
+                    {
+                        Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {tijdslotIN} op {datumIN}.\n" +
+                            "Wilt u opnieuw proberen een reservering aan te maken?\n\t[1] Ja\n\t[2] Nee");
+                        Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                        ConsoleKeyInfo ckey4 = Console.ReadKey();
+                        if (ckey4.Key == ConsoleKey.D1)
+                        {
+                            AddReservering();
+                        }
+                        else if (ckey4.Key == ConsoleKey.D2)
+                        {
+                            Program.Main();
+                        }
+                    }
+                    break;
                 }
+                j++;
             }
-            else if (ckey2.Key == ConsoleKey.D2)
+        }
+        else if (ckey2.Key == ConsoleKey.D2)
+        {
+            tijdslotIN = "15:00-19:00";
+            int j = 0;
+            while (j < BeschikbaarheidList.Count)
             {
-                tijdslotIN = "15:00-19:00";
-                int j = 0;
-                while (j < BeschikbaarheidList.Count)
+                if (BeschikbaarheidList[j].Datum == datumIN)
                 {
-                    if (BeschikbaarheidList[j].Datum == datumIN)
+                    if (BeschikbaarheidList[j].Tijdslot2_Beschikbaarheid - aantalIN >= 0)
                     {
-                        if (BeschikbaarheidList[j].Tijdslot2_Beschikbaarheid - aantalIN >= 0)
-                        {
-                            BeschikbaarheidList[j].Tijdslot2_Beschikbaarheid -= aantalIN;
-                            JsonData2 = JsonConvert.SerializeObject(BeschikbaarheidList);
-                            System.IO.File.WriteAllText(BeschikbaarheidPath, JsonData2);
-                        }
-                        else
-                        {
-                            Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {tijdslotIN} op {datumIN}.\n" +
-                                "Wilt u opnieuw proberen een reservering aan te maken?\n\t[1] Ja\n\t[2] Nee");
-                            Console.WriteLine("╘═════════════════════════════════════════════════════╛");
-                            ConsoleKeyInfo ckey5 = Console.ReadKey();
-                            if (ckey5.Key == ConsoleKey.D1)
-                            {
-                                AddReservering();
-                            }
-                            else if (ckey5.Key == ConsoleKey.D2)
-                            {
-                                Program.Main();
-                            }
-                        }
-                        break;
+                        BeschikbaarheidList[j].Tijdslot2_Beschikbaarheid -= aantalIN;
+                        JsonData2 = JsonConvert.SerializeObject(BeschikbaarheidList);
+                        System.IO.File.WriteAllText(BeschikbaarheidPath, JsonData2);
                     }
-                    j++;
+                    else
+                    {
+                        Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {tijdslotIN} op {datumIN}.\n" +
+                            "Wilt u opnieuw proberen een reservering aan te maken?\n\t[1] Ja\n\t[2] Nee");
+                        Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                        ConsoleKeyInfo ckey5 = Console.ReadKey();
+                        if (ckey5.Key == ConsoleKey.D1)
+                        {
+                            AddReservering();
+                        }
+                        else if (ckey5.Key == ConsoleKey.D2)
+                        {
+                            Program.Main();
+                        }
+                    }
+                    break;
                 }
+                j++;
             }
-            else if (ckey2.Key == ConsoleKey.D3)
+        }
+        else if (ckey2.Key == ConsoleKey.D3)
+        {
+            tijdslotIN = "19:00-22:00";
+            int j = 0;
+            while (j < BeschikbaarheidList.Count)
             {
-                tijdslotIN = "19:00-22:00";
-                int j = 0;
-                while (j < BeschikbaarheidList.Count)
+                if (BeschikbaarheidList[j].Datum == datumIN)
                 {
-                    if (BeschikbaarheidList[j].Datum == datumIN)
+                    if (BeschikbaarheidList[j].Tijdslot3_Beschikbaarheid - aantalIN >= 0)
                     {
-                        if (BeschikbaarheidList[j].Tijdslot3_Beschikbaarheid - aantalIN >= 0)
-                        {
-                            BeschikbaarheidList[j].Tijdslot3_Beschikbaarheid -= aantalIN;
-                            JsonData2 = JsonConvert.SerializeObject(BeschikbaarheidList);
-                            System.IO.File.WriteAllText(BeschikbaarheidPath, JsonData2);
-                        }
-                        else
-                        {
-                            Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {tijdslotIN} op {datumIN}.\n" +
-                                "Wilt u opnieuw proberen een reservering aan te maken?\n\t[1] Ja\n\t[2] Nee");
-                            Console.WriteLine("╘═════════════════════════════════════════════════════╛");
-                            ConsoleKeyInfo ckey6 = Console.ReadKey();
-                            if (ckey6.Key == ConsoleKey.D1)
-                            {
-                                AddReservering();
-                            }
-                            else if (ckey6.Key == ConsoleKey.D2)
-                            {
-                                Program.Main();
-                            }
-                        }
-                        break;
+                        BeschikbaarheidList[j].Tijdslot3_Beschikbaarheid -= aantalIN;
+                        JsonData2 = JsonConvert.SerializeObject(BeschikbaarheidList);
+                        System.IO.File.WriteAllText(BeschikbaarheidPath, JsonData2);
                     }
-                    j++;
+                    else
+                    {
+                        Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {tijdslotIN} op {datumIN}.\n" +
+                            "Wilt u opnieuw proberen een reservering aan te maken?\n\t[1] Ja\n\t[2] Nee");
+                        Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                        ConsoleKeyInfo ckey6 = Console.ReadKey();
+                        if (ckey6.Key == ConsoleKey.D1)
+                        {
+                            AddReservering();
+                        }
+                        else if (ckey6.Key == ConsoleKey.D2)
+                        {
+                            Program.Main();
+                        }
+                    }
+                    break;
                 }
+                j++;
             }
-            else if (ckey2.Key == ConsoleKey.D4)
+        }
+        else if (ckey2.Key == ConsoleKey.D4)
+        {
+            tijdslotIN = "22:00-23:00";
+            int j = 0;
+            while (j < BeschikbaarheidList.Count)
             {
-                tijdslotIN = "22:00-23:00";
-                int j = 0;
-                while (j < BeschikbaarheidList.Count)
+                if (BeschikbaarheidList[j].Datum == datumIN)
                 {
-                    if (BeschikbaarheidList[j].Datum == datumIN)
+                    if (BeschikbaarheidList[j].Tijdslot4_Beschikbaarheid - aantalIN >= 0)
                     {
-                        if (BeschikbaarheidList[j].Tijdslot4_Beschikbaarheid - aantalIN >= 0)
-                        {
-                            BeschikbaarheidList[j].Tijdslot4_Beschikbaarheid -= aantalIN;
-                            JsonData2 = JsonConvert.SerializeObject(BeschikbaarheidList);
-                            System.IO.File.WriteAllText(BeschikbaarheidPath, JsonData2);
-                        }
-                        else
-                        {
-                            Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {tijdslotIN} op {datumIN}.\n" +
-                                "Wilt u opnieuw proberen een reservering aan te maken?\n\t[1] Ja\n\t[2] Nee");
-                            Console.WriteLine("╘═════════════════════════════════════════════════════╛");
-                            ConsoleKeyInfo ckey7 = Console.ReadKey();
-                            if (ckey7.Key == ConsoleKey.D1)
-                            {
-                                AddReservering();
-                            }
-                            else if (ckey7.Key == ConsoleKey.D2)
-                            {
-                                Program.Main();
-                            }
-                        }
-                        break;
+                        BeschikbaarheidList[j].Tijdslot4_Beschikbaarheid -= aantalIN;
+                        JsonData2 = JsonConvert.SerializeObject(BeschikbaarheidList);
+                        System.IO.File.WriteAllText(BeschikbaarheidPath, JsonData2);
                     }
-                    j++;
+                    else
+                    {
+                        Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {tijdslotIN} op {datumIN}.\n" +
+                            "Wilt u opnieuw proberen een reservering aan te maken?\n\t[1] Ja\n\t[2] Nee");
+                        Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                        ConsoleKeyInfo ckey7 = Console.ReadKey();
+                        if (ckey7.Key == ConsoleKey.D1)
+                        {
+                            AddReservering();
+                        }
+                        else if (ckey7.Key == ConsoleKey.D2)
+                        {
+                            Program.Main();
+                        }
+                    }
+                    break;
                 }
-            }
-
-
-            ReserveringenList.Add(new Reserveringenjson()
-            {
-                Naam = naamIN,
-                Voornaamwoorden = pronounsIN,
-                Groepsgrote = aantalIN,
-                Datum = datumIN,
-                Tijdslot = tijdslotIN,
-                Eindtijd = "",
-                Prijs = 0.00
-            });
-
-            JsonData = JsonConvert.SerializeObject(ReserveringenList);
-            System.IO.File.WriteAllText(ReserveringPath, JsonData);
-
-            Console.WriteLine("\nUw reservering is succesvol opgeslagen.");
-            Console.WriteLine("[1] Doorgaan\n");
-            Console.WriteLine("╘═════════════════════════════════════════════════════╛");
-            ConsoleKeyInfo keus = Console.ReadKey();
-            if (keus.Key == ConsoleKey.D1)
-            {
-                Program.Main();
+                j++;
             }
         }
 
-        public static void WijzigReservering(string gebruiker = "niet ingelogd", string gebruikerNaam = "niet ingelogd")
+        ReserveringenList.Add(new Reserveringenjson()
+        {
+            Naam = naamIN,
+            Voornaamwoorden = pronounsIN,
+            Groepsgrote = aantalIN,
+            Datum = datumIN,
+            Tijdslot = tijdslotIN,
+            Eindtijd = "",
+            Prijs = 0.00
+        });
+
+        JsonData = JsonConvert.SerializeObject(ReserveringenList);
+        System.IO.File.WriteAllText(ReserveringPath, JsonData);
+
+        Console.WriteLine("\nUw reservering is succesvol opgeslagen.");
+        Console.WriteLine("[1] Doorgaan\n");
+        Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+        ConsoleKeyInfo keus = Console.ReadKey();
+        if (keus.Key == ConsoleKey.D1)
+        {
+            Program.Main();
+        }
+    }*/
+
+        public static void WijzigReservering(string gebruiker = "niet ingelogd")
         {
             Console.Clear();
             string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
@@ -466,12 +542,12 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
             if (gebruiker == "ingelogd")
             {
-                Console.WriteLine("\nWat wilt u wijzigen? \n\t[1] Naam\n\t[2] Persoonlijk voornaamwoorden\n\t[3] Groepsgrote\n\t[4] Datum\n\t[5] Starttijd\n[6] Eindtijd  ");
+                Console.WriteLine("\nWat wilt u wijzigen? \n\t[1] Naam\n\t[2] Persoonlijk voornaamwoorden\n\t[3] Groepsgrote\n\t[4] Datum\n\t[5] Tijdslot\n[6] Eindtijd  ");
                 Console.WriteLine("╘════════════════════════════════════════════════════════╛");
             }
             else
             {
-                Console.WriteLine("\nWat wilt u wijzigen? \n\t[1] Naam\n\t[2] Persoonlijk voornaamwoorden\n\t[3] Groepsgrote\n\t[4] Datum\n\t[5] Starttijd\n");
+                Console.WriteLine("\nWat wilt u wijzigen? \n\t[1] Naam\n\t[2] Persoonlijk voornaamwoorden\n\t[3] Groepsgrote\n\t[4] Datum\n\t[5] Tijdslot\n");
                 Console.WriteLine("╘════════════════════════════════════════════════════════╛");
             }
 
@@ -557,18 +633,47 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 {
                     if (ReserveringenList[i].Naam == zoekNaam)
                     {
-                        ReserveringenList[i].Groepsgrote = new_groepsgrote;
-                        Console.WriteLine($"\n\nDe groepsgrote van uw reservering is gewijzigd naar: {new_groepsgrote}\n");
-                        Console.WriteLine("[1] Doorgaan\n");
-                        Console.WriteLine("╘══════════════════════════════════════════════════════════════╛");
-                        ConsoleKeyInfo keus = Console.ReadKey();
-                        if (keus.Key == ConsoleKey.D1)
+                        int plekken = 0;
+                        for (int j = 0; j < ReserveringenList.Count; j++)
                         {
-                            JsonData = JsonConvert.SerializeObject(ReserveringenList);
-                            System.IO.File.WriteAllText(ReserveringPath, JsonData);
-                            Program.Main();
+                            if (ReserveringenList[j].Datum == ReserveringenList[i].Datum)
+                            {
+                                if (ReserveringenList[j].Tijdslot == ReserveringenList[i].Tijdslot)
+                                {
+                                    plekken += ReserveringenList[j].Groepsgrote;
+                                }
+                            }
                         }
-                        break;
+                        if (plekken + ReserveringenList[i].Groepsgrote <= 200)
+                        {
+                            ReserveringenList[i].Groepsgrote = new_groepsgrote;
+                            Console.WriteLine($"\n\nDe groepsgrote van uw reservering is gewijzigd naar: {new_groepsgrote}\n");
+                            Console.WriteLine("[1] Doorgaan\n");
+                            Console.WriteLine("╘══════════════════════════════════════════════════════════════╛");
+                            ConsoleKeyInfo keus = Console.ReadKey();
+                            if (keus.Key == ConsoleKey.D1)
+                            {
+                                JsonData = JsonConvert.SerializeObject(ReserveringenList);
+                                System.IO.File.WriteAllText(ReserveringPath, JsonData);
+                                Program.Main();
+                            }
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {ReserveringenList[i].Tijdslot} op {ReserveringenList[i].Datum}.\n" +
+                                        "Wilt u opnieuw proberen een uw reservering te wijzigen?\n\t[1] Ja\n\t[2] Nee");
+                            Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                            ConsoleKeyInfo ckey4 = Console.ReadKey();
+                            if (ckey4.Key == ConsoleKey.D1)
+                            {
+                                WijzigReservering();
+                            }
+                            else if (ckey4.Key == ConsoleKey.D2)
+                            {
+                                Program.Main();
+                            }
+                        }
                     }
                     i++;
                 }
@@ -578,27 +683,185 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 Console.Clear();
                 Console.WriteLine("╒════════════════════════════════════════════════════════════════╕");
                 Console.WriteLine(" HC\n");
-                Console.WriteLine("Nieuwe datum: ");
-                string new_Datum = Console.ReadLine();
+                Console.WriteLine("\nNieuwe reserveringsdatum\nDag (1 t/m 31): ");
+                int newdag = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Maand: ");
+                int newmaand = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Jaar: ");
+                int newjaar = Convert.ToInt32(Console.ReadLine());
+                string new_Datum = $"{newdag}-{newmaand}-{newjaar}";
 
                 while (i < len)
                 {
                     if (ReserveringenList[i].Naam == zoekNaam)
                     {
-                        ReserveringenList[i].Datum = new_Datum;
-                        Console.WriteLine($"De datum van uw reservering is gewijzigd naar: {new_Datum}\n");
-                        Console.WriteLine("[1] Doorgaan\n");
-                        Console.WriteLine("╘════════════════════════════════════════════════════════════════╛");
-                        ConsoleKeyInfo keus = Console.ReadKey();
-                        if (keus.Key == ConsoleKey.D1)
+                        int today = DateTime.Now.Day; // dag van vandaag (bijv. 7)
+                        int days_in_month = DateTime.DaysInMonth(newjaar, newmaand); // hoeveel maanden in aangegeven maand
+                        int maxdag = today;
+                        int maxdag2 = today;
+                        int maxmaand = DateTime.Now.Month;
+                        if (today + 14 > days_in_month)
                         {
-                            JsonData = JsonConvert.SerializeObject(ReserveringenList);
-                            System.IO.File.WriteAllText(ReserveringPath, JsonData);
-                            Program.Main();
+                            for (int j = 14; j != 0; j--)
+                            {
+                                if (maxdag == days_in_month + 1)
+                                {
+                                    maxdag = 1;
+                                    maxmaand += 1;
+                                }
+                                maxdag++;
+                                maxdag2++;
+                            }
                         }
-                        break;
+                        else
+                        {
+                            maxdag = today + 14;
+                            maxdag2 = today + 14;
+                            maxmaand = DateTime.Now.Month;
+                        }
+
+                        if (newmaand == maxmaand && newjaar == DateTime.Now.Year)
+                        {
+                            if (newdag <= maxdag)
+                            {
+                                int plekken = 0;
+                                for (int j = 0; j < ReserveringenList.Count; j++)
+                                {
+                                    if (ReserveringenList[j].Datum == new_Datum)
+                                    {
+                                        if (ReserveringenList[j].Tijdslot == ReserveringenList[i].Tijdslot)
+                                        {
+                                            plekken += ReserveringenList[j].Groepsgrote;
+                                        }
+                                    }
+                                }
+                                if (plekken + ReserveringenList[i].Groepsgrote <= 200)
+                                {
+                                    ReserveringenList[i].Datum = new_Datum;
+                                    Console.WriteLine($"De datum van uw reservering is gewijzigd naar: {new_Datum}\n");
+                                    Console.WriteLine("[1] Doorgaan\n");
+                                    Console.WriteLine("╘════════════════════════════════════════════════════════════════╛");
+                                    ConsoleKeyInfo keus = Console.ReadKey();
+                                    if (keus.Key == ConsoleKey.D1)
+                                    {
+                                        JsonData = JsonConvert.SerializeObject(ReserveringenList);
+                                        System.IO.File.WriteAllText(ReserveringPath, JsonData);
+                                        Program.Main();
+                                    }
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {ReserveringenList[i].Tijdslot} op {new_Datum}.\n" +
+                                        "Wilt u opnieuw proberen een uw reservering te wijzigen?\n\t[1] Ja\n\t[2] Nee");
+                                    Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                                    ConsoleKeyInfo ckey4 = Console.ReadKey();
+                                    if (ckey4.Key == ConsoleKey.D1)
+                                    {
+                                        WijzigReservering();
+                                    }
+                                    else if (ckey4.Key == ConsoleKey.D2)
+                                    {
+                                        Program.Main();
+                                    }
+                                }
+                                i++;
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {ReserveringenList[i].Tijdslot} op {new_Datum}.\n" +
+                                    "Wilt u opnieuw proberen een uw reservering te wijzigen?\n\t[1] Ja\n\t[2] Nee");
+                                Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                                ConsoleKeyInfo ckey4 = Console.ReadKey();
+                                if (ckey4.Key == ConsoleKey.D1)
+                                {
+                                    WijzigReservering();
+                                }
+                                else if (ckey4.Key == ConsoleKey.D2)
+                                {
+                                    Program.Main();
+                                }
+                            }
+                        }
+                        else if (newmaand == DateTime.Now.Month && newjaar == DateTime.Now.Year)
+                        {
+                            if (newdag <= days_in_month && newdag >= DateTime.Now.Day)
+                            {
+                                int plekken = 0;
+                                for (int j = 0; j < ReserveringenList.Count; j++)
+                                {
+                                    if (ReserveringenList[j].Datum == new_Datum)
+                                    {
+                                        if (ReserveringenList[j].Tijdslot == ReserveringenList[i].Tijdslot)
+                                        {
+                                            plekken += ReserveringenList[j].Groepsgrote;
+                                        }
+                                    }
+                                }
+                                if (plekken + ReserveringenList[i].Groepsgrote <= 200)
+                                {
+                                    ReserveringenList[i].Datum = new_Datum;
+                                    Console.WriteLine($"De datum van uw reservering is gewijzigd naar: {new_Datum}\n");
+                                    Console.WriteLine("[1] Doorgaan\n");
+                                    Console.WriteLine("╘════════════════════════════════════════════════════════════════╛");
+                                    ConsoleKeyInfo keus = Console.ReadKey();
+                                    if (keus.Key == ConsoleKey.D1)
+                                    {
+                                        JsonData = JsonConvert.SerializeObject(ReserveringenList);
+                                        System.IO.File.WriteAllText(ReserveringPath, JsonData);
+                                        Program.Main();
+                                    }
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {ReserveringenList[i].Tijdslot} op {new_Datum}.\n" +
+                                        "Wilt u opnieuw proberen een uw reservering te wijzigen?\n\t[1] Ja\n\t[2] Nee");
+                                    Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                                    ConsoleKeyInfo ckey4 = Console.ReadKey();
+                                    if (ckey4.Key == ConsoleKey.D1)
+                                    {
+                                        WijzigReservering();
+                                    }
+                                    else if (ckey4.Key == ConsoleKey.D2)
+                                    {
+                                        Program.Main();
+                                    }
+                                }
+                                i++;
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {ReserveringenList[i].Tijdslot} op {new_Datum}.\n" +
+                                    "Wilt u opnieuw proberen een uw reservering te wijzigen?\n\t[1] Ja\n\t[2] Nee");
+                                Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                                ConsoleKeyInfo ckey4 = Console.ReadKey();
+                                if (ckey4.Key == ConsoleKey.D1)
+                                {
+                                    WijzigReservering();
+                                }
+                                else if (ckey4.Key == ConsoleKey.D2)
+                                {
+                                    Program.Main();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {ReserveringenList[i].Tijdslot} op {new_Datum}.\n" +
+                                        "Wilt u opnieuw proberen een uw reservering te wijzigen?\n\t[1] Ja\n\t[2] Nee");
+                            Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                            ConsoleKeyInfo ckey4 = Console.ReadKey();
+                            if (ckey4.Key == ConsoleKey.D1)
+                            {
+                                WijzigReservering();
+                            }
+                            else if (ckey4.Key == ConsoleKey.D2)
+                            {
+                                Program.Main();
+                            }
+                        }
                     }
-                    i++;
                 }
             }
             else if (readkey.Key == ConsoleKey.D5)
@@ -609,96 +872,43 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
 
                 Console.WriteLine("\nKies een tijdslot:\n\t[1] 11:00-15:00\n\t[2] 15:00-19:00\n\t[3] 19:00-22:00\n\t[4] 22:00-23:00");
                 ConsoleKeyInfo ckey = Console.ReadKey();
+                string new_Tijdslot = "";
                 if (ckey.Key == ConsoleKey.D1)
                 {
-                    string new_Tijdslot = "11:00-15:00";
-                    while (i < len)
-                    {
-                        if (ReserveringenList[i].Naam == zoekNaam)
-                        {
-                            ReserveringenList[i].Tijdslot = new_Tijdslot;
-                            Console.WriteLine($"Het tijdslot van uw reservering is gewijzigd naar: {new_Tijdslot}\n");
-                            Console.WriteLine("[1] Doorgaan\n");
-                            Console.WriteLine("╘════════════════════════════════════════════════════════════════╛");
-                            ConsoleKeyInfo keus = Console.ReadKey();
-                            if (keus.Key == ConsoleKey.D1)
-                            {
-                                JsonData = JsonConvert.SerializeObject(ReserveringenList);
-                                System.IO.File.WriteAllText(ReserveringPath, JsonData);
-                                Program.Main();
-                            }
-                            break;
-                        }
-                        i++;
-                    }
+                    new_Tijdslot = "11:00-15:00";
                 }
                 else if (ckey.Key == ConsoleKey.D2)
                 {
-                    string new_Tijdslot = "15:00-19:00";
-                    while (i < len)
-                    {
-                        if (ReserveringenList[i].Naam == zoekNaam)
-                        {
-                            ReserveringenList[i].Tijdslot = new_Tijdslot;
-                            Console.WriteLine($"Het tijdslot van uw reservering is gewijzigd naar: {new_Tijdslot}\n");
-                            Console.WriteLine("[1] Doorgaan\n");
-                            Console.WriteLine("╘════════════════════════════════════════════════════════════════╛");
-                            ConsoleKeyInfo keus = Console.ReadKey();
-                            if (keus.Key == ConsoleKey.D1)
-                            {
-                                JsonData = JsonConvert.SerializeObject(ReserveringenList);
-                                System.IO.File.WriteAllText(ReserveringPath, JsonData);
-                                Program.Main();
-                            }
-                            break;
-                        }
-                        i++;
-                    }
+                    new_Tijdslot = "15:00-19:00";
                 }
                 else if (ckey.Key == ConsoleKey.D3)
                 {
-                    string new_Tijdslot = "19:00-22:00";
-                    while (i < len)
-                    {
-                        if (ReserveringenList[i].Naam == zoekNaam)
-                        {
-                            ReserveringenList[i].Tijdslot = new_Tijdslot;
-                            Console.WriteLine($"Het tijdslot van uw reservering is gewijzigd naar: {new_Tijdslot}\n");
-                            Console.WriteLine("[1] Doorgaan\n");
-                            Console.WriteLine("╘════════════════════════════════════════════════════════════════╛");
-                            ConsoleKeyInfo keus = Console.ReadKey();
-                            if (keus.Key == ConsoleKey.D1)
-                            {
-                                JsonData = JsonConvert.SerializeObject(ReserveringenList);
-                                System.IO.File.WriteAllText(ReserveringPath, JsonData);
-                                Program.Main();
-                            }
-                            break;
-                        }
-                        i++;
-                    }
+                    new_Tijdslot = "19:00-22:00";
                 }
                 else if (ckey.Key == ConsoleKey.D4)
                 {
-                    string new_Tijdslot = "22:00-23:00";
-                    while (i < len)
+                    new_Tijdslot = "22:00-23:00";
+                }
+
+                while (i < len)
+                {
+                    if (ReserveringenList[i].Naam == zoekNaam)
                     {
-                        if (ReserveringenList[i].Naam == zoekNaam)
+                        int plekken = 0;
+                        for (int j = 0; j < ReserveringenList.Count; j++)
+                        {
+                            if (ReserveringenList[j].Datum == ReserveringenList[i].Datum)
+                            {
+                                if (ReserveringenList[j].Tijdslot == new_Tijdslot)
+                                {
+                                    plekken += ReserveringenList[j].Groepsgrote;
+                                }
+                            }
+                        }
+                        if (plekken + ReserveringenList[i].Groepsgrote <= 200)
                         {
                             ReserveringenList[i].Tijdslot = new_Tijdslot;
-                            Console.WriteLine($"Het tijdslot van uw reservering is gewijzigd naar: {new_Tijdslot}\n");
-                            Console.WriteLine("[1] Doorgaan\n");
-                            Console.WriteLine("╘════════════════════════════════════════════════════════════════╛");
-                            ConsoleKeyInfo keus = Console.ReadKey();
-                            if (keus.Key == ConsoleKey.D1)
-                            {
-                                JsonData = JsonConvert.SerializeObject(ReserveringenList);
-                                System.IO.File.WriteAllText(ReserveringPath, JsonData);
-                                Program.Main();
-                            }
-                            break;
                         }
-                        i++;
                     }
                 }
             }
@@ -725,7 +935,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             {
                                 JsonData = JsonConvert.SerializeObject(ReserveringenList);
                                 System.IO.File.WriteAllText(ReserveringPath, JsonData);
-                                Personeelsleden.personeelMain(gebruikerNaam);
+                                Personeelsleden.personeelMain();
                             }
                             break;
                         }
@@ -735,7 +945,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
         }
 
-        public static void verwijderReservering(string gebruikerNaam, string gebruiker = "niet ingelogd")
+        public static void verwijderReservering(string gebruiker = "niet ingelogd")
         {
             string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
             bool fileExist = File.Exists(ReserveringPath);
@@ -771,7 +981,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
                 {
-                    verwijderReservering(gebruikerNaam);
+                    verwijderReservering();
                 }
             }
 
@@ -811,11 +1021,11 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
             else
             {
-                Personeelsleden.personeelMain(gebruikerNaam);
+                Personeelsleden.personeelMain();
             }
         }
 
-        public static void bekijkReservering(string gebruikerNaam)
+        public static void bekijkReservering()
         {
             Console.Clear();
             string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
@@ -877,11 +1087,11 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                     ConsoleKeyInfo keus = Console.ReadKey();
                     if (keus.Key == ConsoleKey.D1)
                     {
-                        bekijkReservering(gebruikerNaam);
+                        bekijkReservering();
                     }
                     else if (keus.Key == ConsoleKey.D0)
                     {
-                        Personeelsleden.reserverenMain(gebruikerNaam);
+                        Personeelsleden.reserverenMain();
                     }
                 }
 
