@@ -489,7 +489,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
         }
     }*/
 
-        public static void WijzigReservering(string gebruiker = "niet ingelogd")
+        public static void WijzigReservering(string gebruikerNaam, string gebruiker = "niet ingelogd")
         {
             Console.Clear();
             string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
@@ -533,7 +533,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
                 {
-                    WijzigReservering();
+                    WijzigReservering(gebruikerNaam);
                 }
                 else if (rkey.Key == ConsoleKey.D2)
                 {
@@ -667,7 +667,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             ConsoleKeyInfo ckey4 = Console.ReadKey();
                             if (ckey4.Key == ConsoleKey.D1)
                             {
-                                WijzigReservering();
+                                WijzigReservering(gebruikerNaam);
                             }
                             else if (ckey4.Key == ConsoleKey.D2)
                             {
@@ -758,7 +758,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                     ConsoleKeyInfo ckey4 = Console.ReadKey();
                                     if (ckey4.Key == ConsoleKey.D1)
                                     {
-                                        WijzigReservering();
+                                        WijzigReservering(gebruikerNaam);
                                     }
                                     else if (ckey4.Key == ConsoleKey.D2)
                                     {
@@ -775,7 +775,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                 ConsoleKeyInfo ckey4 = Console.ReadKey();
                                 if (ckey4.Key == ConsoleKey.D1)
                                 {
-                                    WijzigReservering();
+                                    WijzigReservering(gebruikerNaam);
                                 }
                                 else if (ckey4.Key == ConsoleKey.D2)
                                 {
@@ -821,7 +821,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                     ConsoleKeyInfo ckey4 = Console.ReadKey();
                                     if (ckey4.Key == ConsoleKey.D1)
                                     {
-                                        WijzigReservering();
+                                        WijzigReservering(gebruikerNaam);
                                     }
                                     else if (ckey4.Key == ConsoleKey.D2)
                                     {
@@ -838,7 +838,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                 ConsoleKeyInfo ckey4 = Console.ReadKey();
                                 if (ckey4.Key == ConsoleKey.D1)
                                 {
-                                    WijzigReservering();
+                                    WijzigReservering(gebruikerNaam);
                                 }
                                 else if (ckey4.Key == ConsoleKey.D2)
                                 {
@@ -854,7 +854,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             ConsoleKeyInfo ckey4 = Console.ReadKey();
                             if (ckey4.Key == ConsoleKey.D1)
                             {
-                                WijzigReservering();
+                                WijzigReservering(gebruikerNaam);
                             }
                             else if (ckey4.Key == ConsoleKey.D2)
                             {
@@ -935,7 +935,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             {
                                 JsonData = JsonConvert.SerializeObject(ReserveringenList);
                                 System.IO.File.WriteAllText(ReserveringPath, JsonData);
-                                Personeelsleden.personeelMain();
+                                Personeelsleden.personeelMain(gebruikerNaam);
                             }
                             break;
                         }
@@ -945,7 +945,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
         }
 
-        public static void verwijderReservering(string gebruiker = "niet ingelogd")
+        public static void verwijderReservering(string gebruikerNaam,string gebruiker = "niet ingelogd")
         {
             string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
             bool fileExist = File.Exists(ReserveringPath);
@@ -981,7 +981,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
                 {
-                    verwijderReservering();
+                    verwijderReservering(gebruikerNaam);
                 }
             }
 
@@ -1021,11 +1021,11 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
             else
             {
-                Personeelsleden.personeelMain();
+                Personeelsleden.personeelMain(gebruikerNaam);
             }
         }
 
-        public static void bekijkReservering()
+        public static void bekijkReservering(string gebruikerNaam)
         {
             Console.Clear();
             string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
@@ -1069,7 +1069,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
                 {
-                    WijzigReservering();
+                    WijzigReservering(gebruikerNaam);
                 }
                 else if (rkey.Key == ConsoleKey.D2)
                 {
@@ -1087,11 +1087,11 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                     ConsoleKeyInfo keus = Console.ReadKey();
                     if (keus.Key == ConsoleKey.D1)
                     {
-                        bekijkReservering();
+                        bekijkReservering(gebruikerNaam);
                     }
                     else if (keus.Key == ConsoleKey.D0)
                     {
-                        Personeelsleden.reserverenMain();
+                        Personeelsleden.reserverenMain(gebruikerNaam);
                     }
                 }
 

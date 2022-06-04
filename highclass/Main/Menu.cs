@@ -586,7 +586,7 @@ namespace Main
                 }
             }
 
-            Console.WriteLine("Wat is de naam van het neiuwe Menu Item?");
+            Console.WriteLine("Wat is de naam van het nieuwe Menu Item?");
             string NaamIN = Console.ReadLine();
             
             bool isNaamCijfers = char.IsNumber(NaamIN, 0);
