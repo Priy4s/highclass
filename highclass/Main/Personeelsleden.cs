@@ -70,7 +70,7 @@ namespace Main
             }
             if (ckey.Key == ConsoleKey.D2)
             {
-                Reserveringen.WijzigReservering(gebruikerNaam, "personeel");
+                Reserveringen.WijzigReservering(gebruikerNaam = "personeel");
             }
             else if (ckey.Key == ConsoleKey.D3)
             {
@@ -116,6 +116,9 @@ namespace Main
             {
                 personeelMain(gebruikerNaam);
             }
+
+
+
             else if (ckey.Key == ConsoleKey.D0 && gebruiker == "admin")
             {
                 Admin.adminMain();
@@ -128,9 +131,13 @@ namespace Main
             {
                 getMenu.gettingMenu(gebruikerNaam,"admin");
             }
-            else if (ckey.Key == ConsoleKey.D2)
+            else if (ckey.Key == ConsoleKey.D2 && gebruiker == "personeel")
             {
-                MenuAanpassen.mainAanpassen(gebruikerNaam);
+                MenuAanpassen.mainAanpassen(gebruikerNaam, "personeel");
+            }
+            else if (ckey.Key == ConsoleKey.D2 && gebruiker == "admin")
+            {
+                MenuAanpassen.mainAanpassen(gebruikerNaam, "admin");
             }
         }
         public static void bestellingenMain(string gebruikerNaam)

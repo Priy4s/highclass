@@ -402,7 +402,7 @@ namespace Main
     }
     public class MenuAanpassen
     {
-        public static void mainAanpassen(string gebruikerNaam)
+        public static void mainAanpassen(string gebruikerNaam, string gebruiker = "personeel")
         {
             Console.Clear();
             Console.WriteLine("╒══════════════════════════════╕");
@@ -412,21 +412,21 @@ namespace Main
 
             if (readkey.Key == ConsoleKey.D1)
             {
-                verwijderen(gebruikerNaam);
+                verwijderen(gebruikerNaam,gebruiker);
             }
             if (readkey.Key == ConsoleKey.D2)
             {
-                toevoegen();
+                toevoegen(gebruikerNaam, gebruiker);
             }
             if (readkey.Key == ConsoleKey.D3)
             {
-                wijzigen();
+                wijzigen(gebruikerNaam, gebruiker);
             }
             if (readkey.Key == ConsoleKey.D4){
 
             }
         }
-        public static void verwijderen(string gebruikerNaam)
+        public static void verwijderen(string gebruikerNaam, string gebruiker = "personeel")
         {
             Console.Clear();
             string menuPath = Path.GetFullPath(@"Menu.json"); // find path to files
@@ -519,17 +519,17 @@ namespace Main
             Console.WriteLine("[1] Doorgaan");
             Console.WriteLine("╘══════════════════════════════╛");
             ConsoleKeyInfo keus = Console.ReadKey();
-            if (keus.Key == ConsoleKey.D1)
+            if (keus.Key == ConsoleKey.D1 && gebruiker == "personeel")
             {
                 Personeelsleden.menuMain(gebruikerNaam);
             }
-            else
+            else if(keus.Key == ConsoleKey.D1 && gebruiker == "admin")
             {
-                Personeelsleden.menuMain(gebruikerNaam);
+                Admin.adminMain();
             }
 
         }
-        public static void toevoegen()
+        public static void toevoegen(string gebruikerNaam, string gebruiker = "personeel")
         {
             Console.Clear();
             string menuPath = Path.GetFullPath(@"Menu.json"); // find path to files
@@ -577,11 +577,11 @@ namespace Main
                     ConsoleKeyInfo readkey = Console.ReadKey();
                     if (readkey.Key == ConsoleKey.D0)
                     {
-                        toevoegen();
+                        toevoegen(gebruiker);
                     }
                     else
                     {
-                        toevoegen();
+                        toevoegen(gebruiker);
                     }
                 }
             }
@@ -877,17 +877,17 @@ namespace Main
             Console.WriteLine($"Het nieuwe Menu Item met de naam {NaamIN} is toegevoegd aan Menu?\n[1] doorgaan");
             Console.WriteLine("╘══════════════════════════════════════════════════════════════════╛");
             ConsoleKeyInfo doorKey = Console.ReadKey();
-            if (doorKey.Key == ConsoleKey.D1)
+            if (doorKey.Key == ConsoleKey.D1 && gebruiker == "admin")
             {
                 Admin.adminMain();
             }
-            else
+            else if (doorKey.Key == ConsoleKey.D1 && gebruiker == "personeel")
             {
-                Admin.adminMain();
+                Personeelsleden.personeelMain(gebruikerNaam);
             }
         }
 
-        public static void wijzigen()
+        public static void wijzigen(string gebruikerNaam, string gebruiker = "ingelogd")
         {
             Console.Clear();
             string menuPath = Path.GetFullPath(@"Menu.json"); // find path to files
@@ -941,11 +941,11 @@ namespace Main
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
                 {
-                    wijzigen();
+                    wijzigen(gebruikerNaam, gebruiker);
                 }
                 else
                 {
-                    wijzigen();
+                    wijzigen(gebruikerNaam, gebruiker);
                 }
             }
 
@@ -1152,9 +1152,13 @@ namespace Main
             Console.WriteLine("[1] Doorgaan");
             Console.WriteLine("╘══════════════════════════════╛");
             ConsoleKeyInfo keus = Console.ReadKey();
-            if (keus.Key == ConsoleKey.D1)
+            if (keus.Key == ConsoleKey.D1 && gebruiker == "admin")
             {
                 Admin.adminMain();
+            }
+            else if (keus.Key == ConsoleKey.D1 && gebruiker == "personeel")
+            {
+                Personeelsleden.personeelMain(gebruikerNaam);
             }
         }
     }
