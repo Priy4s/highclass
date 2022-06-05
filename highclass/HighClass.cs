@@ -103,6 +103,7 @@ namespace Main
                             Console.WriteLine("│                                    │");
                             Console.WriteLine("│            [1] Wijzigen            │");
                             Console.WriteLine("│            [2] Annuleren           │");
+                            Console.WriteLine("│            [0] Terug               │");
                             Console.WriteLine("│                                    │");
                             Console.WriteLine("╘════════════════════════════════════╛");
                             ConsoleKeyInfo cv2key = Console.ReadKey();
@@ -113,6 +114,10 @@ namespace Main
                             else if (cv2key.Key == ConsoleKey.D2)
                             {
                                 Reserveringen.verwijderReservering("niet ingelogd");
+                            }
+                            else if (cv2key.Key == ConsoleKey.D0)
+                            {
+                                Program.Main();
                             }
 
                         }

@@ -57,22 +57,32 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             Console.WriteLine(" HC\n");
             Console.WriteLine("Volledige naam: ");
             string naamIN = Console.ReadLine();
-            Console.WriteLine("\nWat zijn uw persoonlijke voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] hen/hun");
-            ConsoleKeyInfo ckey = Console.ReadKey();
-            // Console.SetCursorPosition(0, Console.CursorTop);
-            // ClearCurrentConsoleLine();
             string pronounsIN = "";
-            if (ckey.Key == ConsoleKey.D1)
+            string check = "o";
+            while (check == "o")
             {
-                pronounsIN = "hij/hem";
-            }
-            else if (ckey.Key == ConsoleKey.D2)
-            {
-                pronounsIN = "zij/haar";
-            }
-            else if (ckey.Key == ConsoleKey.D3)
-            {
-                pronounsIN = "hen/hun";
+                Console.WriteLine("\nWat zijn uw persoonlijke voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] hen/hun");
+                ConsoleKeyInfo ckey = Console.ReadKey();
+            
+                if (ckey.Key == ConsoleKey.D1)
+                {
+                    pronounsIN = "hij/hem";
+                    check = "x";
+                }
+                else if (ckey.Key == ConsoleKey.D2)
+                {
+                    pronounsIN = "zij/haar";
+                    check = "x";
+                }
+                else if (ckey.Key == ConsoleKey.D3)
+                {
+                    pronounsIN = "hen/hun";
+                    check = "x";
+                }
+                else
+                {
+                    Console.WriteLine("Vul een cijfer tussen de 1 en 3 in.\n");
+                }
             }
 
             Console.WriteLine("\n\nGroepsgrote: ");
