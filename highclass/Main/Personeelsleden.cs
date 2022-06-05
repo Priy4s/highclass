@@ -70,7 +70,11 @@ namespace Main
             }
             if (ckey.Key == ConsoleKey.D2)
             {
-                Reserveringen.WijzigReservering("ingelogd");
+                Reserveringen.WijzigReservering(gebruikerNaam, "personeel");
+            }
+            else if (ckey.Key == ConsoleKey.D3)
+            {
+                Reserveringen.verwijderReservering(gebruikerNaam, "personeel");
             }
         }
         public static void persoonlijkeInfo(string gebruikerNaam)

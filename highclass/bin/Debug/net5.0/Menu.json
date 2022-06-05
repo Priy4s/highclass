@@ -1,1 +1,401 @@
-[{"Naam":"Rugelach recept met jam","Prijs":6.95,"Allergie":"G","Categorie":"Brunch","ID":101},{"Naam":"Kaasfondue voor twee met knoflook","Prijs":7.95,"Allergie":"","Categorie":"Brunch","ID":102},{"Naam":"Appel kaneel wraps met citroen en bruine suiker","Prijs":5.0,"Allergie":"G","Categorie":"Brunch","ID":103},{"Naam":"Franse frietjes uit de oven met verse kruiden","Prijs":4.5,"Allergie":"V","Categorie":"Lunch","ID":104},{"Naam":"Champignonsalade met spinazie","Prijs":4.95,"Allergie":"V, G","Categorie":"Lunch","ID":105},{"Naam":"Walnoot-krulandijvie salade","Prijs":5.0,"Allergie":"V , G","Categorie":"Lunch","ID":106},{"Naam":"Haricots verts met spek","Prijs":5.95,"Allergie":"","Categorie":"Lunch","ID":107},{"Naam":"Gele tomaat paprika soep","Prijs":4.5,"Allergie":"V","Categorie":"LunchSoep","ID":108},{"Naam":"Tomatensoep met pijnboompitten","Prijs":3.75,"Allergie":"","Categorie":"LunchSoep","ID":109},{"Naam":"Soep van lente ui rucola en knoflook","Prijs":3.5,"Allergie":"","Categorie":"LunchSoep","ID":110},{"Naam":"Tomaat pastinaak soep","Prijs":3.95,"Allergie":"","Categorie":"LunchSoep","ID":111},{"Naam":"Caesar salade met kip en bacon","Prijs":8.95,"Allergie":"","Categorie":"DinerVoorgerecht","ID":112},{"Naam":"Gebakken uien dip","Prijs":5.95,"Allergie":"","Categorie":"DinerVoorgerecht","ID":113},{"Naam":"Ragout met knolselderij","Prijs":7.95,"Allergie":"","Categorie":"DinerVoorgerecht","ID":114},{"Naam":"Hollandse garnalen op toast","Prijs":5.95,"Allergie":"","Categorie":"DinerVoorgerecht","ID":115},{"Naam":"Pittige tomaten-uiensoep","Prijs":5.9,"Allergie":"L","Categorie":"DinerSoep","ID":116},{"Naam":"Franse uiensoep","Prijs":4.95,"Allergie":"","Categorie":"DinerSoep","ID":117},{"Naam":"Beurre Blanc","Prijs":5.95,"Allergie":"","Categorie":"DinerSoep","ID":118},{"Naam":"Chinese tomatensoep","Prijs":5.5,"Allergie":"L","Categorie":"DinerSoep","ID":119},{"Naam":"Ramen soep met spek en ei","Prijs":11.75,"Allergie":"","Categorie":"DinerHoofdgerecht","ID":121},{"Naam":"Vegan ramen met kipstukjes","Prijs":12.5,"Allergie":"V","Categorie":"DinerHoofdgerecht","ID":122},{"Naam":"Vegan nacho schotel met pulled chicken","Prijs":9.95,"Allergie":"V","Categorie":"DinerHoofdgerecht","ID":123},{"Naam":"Snelle burger met sla","Prijs":7.5,"Allergie":"","Categorie":"DinerHoofdgerecht","ID":124},{"Naam":"Chili con carne","Prijs":5.95,"Allergie":"","Categorie":"DinerHoofdgerecht","ID":125},{"Naam":"Kipnuggets","Prijs":5.95,"Allergie":"","Categorie":"DinerHoofdgerecht","ID":126},{"Naam":"Sushi garnaal","Prijs":12.5,"Allergie":"","Categorie":"DinerSushi","ID":127},{"Naam":"California roll","Prijs":13.5,"Allergie":"","Categorie":"DinerSushi","ID":128},{"Naam":"Tuna roll","Prijs":15.0,"Allergie":"","Categorie":"DinerSushi","ID":129},{"Naam":"Vega roll","Prijs":11.75,"Allergie":"V","Categorie":"DinerSushi","ID":130},{"Naam":"Pavlova met rode sinaasappel","Prijs":5.95,"Allergie":"","Categorie":"DinerNagerecht","ID":131},{"Naam":"Dame Blanche klassiek","Prijs":6.5,"Allergie":"","Categorie":"DinerNagerecht","ID":132},{"Naam":"Vegan tiramisu recept","Prijs":6.95,"Allergie":"V","Categorie":"DinerNagerecht","ID":133},{"Naam":"Tiramisu met rood fruit","Prijs":6.5,"Allergie":"N","Categorie":"DinerNagerecht","ID":134},{"Naam":"Panna cotta met witte chocolade","Prijs":6.95,"Allergie":"","Categorie":"DinerNagerecht","ID":135},{"Naam":"Vijgen uit de oven met crumble","Prijs":7.5,"Allergie":"N","Categorie":"DinerNagerecht","ID":136},{"Naam":"Tarte tatin met wilde perzik","Prijs":6.95,"Allergie":"","Categorie":"DinerNagerecht","ID":137},{"Naam":"Zwarte koffie","Prijs":3.5,"Allergie":"","Categorie":"DrinkenWarm","ID":138},{"Naam":"Cappuccino","Prijs":3.7,"Allergie":"","Categorie":"DrinkenWarm","ID":139},{"Naam":"Koffie verkeerd","Prijs":3.5,"Allergie":"","Categorie":"DrinkenWarm","ID":140},{"Naam":"Munt thee","Prijs":3.0,"Allergie":"","Categorie":"DrinkenWarm","ID":141},{"Naam":"Gember thee","Prijs":3.1,"Allergie":"","Categorie":"DrinkenWarm","ID":142},{"Naam":"Coca Cola (regular/light/zero)","Prijs":2.9,"Allergie":"","Categorie":"DrinkenKoud","ID":143},{"Naam":"Fanta/Sprite","Prijs":2.9,"Allergie":"","Categorie":"DrinkenKoud","ID":144},{"Naam":"Water (plat/bruisend)","Prijs":2.7,"Allergie":"","Categorie":"DrinkenKoud","ID":145},{"Naam":"Lipton Ice Tea Sparkling of Green","Prijs":2.75,"Allergie":"","Categorie":"DrinkenKoud","ID":146},{"Naam":"Verse Jus d'Orange","Prijs":3.15,"Allergie":"","Categorie":"DrinkenKoud","ID":147},{"Naam":"Jupiler","Prijs":2.6,"Allergie":"A","Categorie":"DrinkenBier","ID":148},{"Naam":"Heineken","Prijs":3.25,"Allergie":"A","Categorie":"DrinkenBier","ID":149},{"Naam":"Hertog Jan","Prijs":3.1,"Allergie":"A","Categorie":"DrinkenBier","ID":150},{"Naam":"Rose/zoete witte wijn","Prijs":3.5,"Allergie":"A","Categorie":"DrinkenWijn","ID":151},{"Naam":"Merlot wijn","Prijs":3.6,"Allergie":"A","Categorie":"DrinkenWijn","ID":152},{"Naam":"Rode wijn","Prijs":3.1,"Allergie":"A","Categorie":"DrinkenWijn","ID":153},{"Naam":"Passion Energy","Prijs":9.75,"Allergie":"A","Categorie":"DrinkenCocktail","ID":154},{"Naam":"Red ginger","Prijs":9.7,"Allergie":"A","Categorie":"DrinkenCocktail","ID":155},{"Naam":"Mojito (regular/strawberry mojito)","Prijs":9.7,"Allergie":"A","Categorie":"DrinkenCocktail","ID":156},{"Naam":"Salade met komkommer, brie en paprika","Prijs":5.65,"Allergie":"V","Categorie":"Lunch","ID":245},{"Naam":"# aarbijen","Prijs":5.55,"Allergie":"L","Categorie":"Lunch","ID":555}]
+[
+  {
+    "Naam": "Rugelach recept met jam",
+    "Prijs": 6.95,
+    "Allergie": "G",
+    "Categorie": "Brunch",
+    "ID": 101
+  },
+  {
+    "Naam": "Kaasfondue voor twee met knoflook",
+    "Prijs": 7.95,
+    "Allergie": "",
+    "Categorie": "Brunch",
+    "ID": 102
+  },
+  {
+    "Naam": "Appel kaneel wraps met citroen en bruine suiker",
+    "Prijs": 5.0,
+    "Allergie": "G",
+    "Categorie": "Brunch",
+    "ID": 103
+  },
+  {
+    "Naam": "Franse frietjes uit de oven met verse kruiden",
+    "Prijs": 4.5,
+    "Allergie": "V",
+    "Categorie": "Lunch",
+    "ID": 104
+  },
+  {
+    "Naam": "Champignonsalade met spinazie",
+    "Prijs": 4.95,
+    "Allergie": "V, G",
+    "Categorie": "Lunch",
+    "ID": 105
+  },
+  {
+    "Naam": "Walnoot-krulandijvie salade",
+    "Prijs": 5.0,
+    "Allergie": "V , G",
+    "Categorie": "Lunch",
+    "ID": 106
+  },
+  {
+    "Naam": "Haricots verts met spek",
+    "Prijs": 5.95,
+    "Allergie": "",
+    "Categorie": "Lunch",
+    "ID": 107
+  },
+  {
+    "Naam": "Gele tomaat paprika soep",
+    "Prijs": 4.5,
+    "Allergie": "V",
+    "Categorie": "LunchSoep",
+    "ID": 108
+  },
+  {
+    "Naam": "Tomatensoep met pijnboompitten",
+    "Prijs": 3.75,
+    "Allergie": "",
+    "Categorie": "LunchSoep",
+    "ID": 109
+  },
+  {
+    "Naam": "Soep van lente ui rucola en knoflook",
+    "Prijs": 3.5,
+    "Allergie": "",
+    "Categorie": "LunchSoep",
+    "ID": 110
+  },
+  {
+    "Naam": "Tomaat pastinaak soep",
+    "Prijs": 3.95,
+    "Allergie": "",
+    "Categorie": "LunchSoep",
+    "ID": 111
+  },
+  {
+    "Naam": "Caesar salade met kip en bacon",
+    "Prijs": 8.95,
+    "Allergie": "",
+    "Categorie": "DinerVoorgerecht",
+    "ID": 112
+  },
+  {
+    "Naam": "Gebakken uien dip",
+    "Prijs": 5.95,
+    "Allergie": "",
+    "Categorie": "DinerVoorgerecht",
+    "ID": 113
+  },
+  {
+    "Naam": "Ragout met knolselderij",
+    "Prijs": 7.95,
+    "Allergie": "",
+    "Categorie": "DinerVoorgerecht",
+    "ID": 114
+  },
+  {
+    "Naam": "Hollandse garnalen op toast",
+    "Prijs": 5.95,
+    "Allergie": "",
+    "Categorie": "DinerVoorgerecht",
+    "ID": 115
+  },
+  {
+    "Naam": "Pittige tomaten-uiensoep",
+    "Prijs": 5.9,
+    "Allergie": "L",
+    "Categorie": "DinerSoep",
+    "ID": 116
+  },
+  {
+    "Naam": "Franse uiensoep",
+    "Prijs": 4.95,
+    "Allergie": "",
+    "Categorie": "DinerSoep",
+    "ID": 117
+  },
+  {
+    "Naam": "Beurre Blanc",
+    "Prijs": 5.95,
+    "Allergie": "",
+    "Categorie": "DinerSoep",
+    "ID": 118
+  },
+  {
+    "Naam": "Chinese tomatensoep",
+    "Prijs": 5.5,
+    "Allergie": "L",
+    "Categorie": "DinerSoep",
+    "ID": 119
+  },
+  {
+    "Naam": "Ramen soep met spek en ei",
+    "Prijs": 11.75,
+    "Allergie": "",
+    "Categorie": "DinerHoofdgerecht",
+    "ID": 121
+  },
+  {
+    "Naam": "Vegan ramen met kipstukjes",
+    "Prijs": 12.5,
+    "Allergie": "V",
+    "Categorie": "DinerHoofdgerecht",
+    "ID": 122
+  },
+  {
+    "Naam": "Vegan nacho schotel met pulled chicken",
+    "Prijs": 9.95,
+    "Allergie": "V",
+    "Categorie": "DinerHoofdgerecht",
+    "ID": 123
+  },
+  {
+    "Naam": "Snelle burger met sla",
+    "Prijs": 7.5,
+    "Allergie": "",
+    "Categorie": "DinerHoofdgerecht",
+    "ID": 124
+  },
+  {
+    "Naam": "Chili con carne",
+    "Prijs": 5.95,
+    "Allergie": "",
+    "Categorie": "DinerHoofdgerecht",
+    "ID": 125
+  },
+  {
+    "Naam": "Kipnuggets",
+    "Prijs": 5.95,
+    "Allergie": "",
+    "Categorie": "DinerHoofdgerecht",
+    "ID": 126
+  },
+  {
+    "Naam": "Sushi garnaal",
+    "Prijs": 12.5,
+    "Allergie": "",
+    "Categorie": "DinerSushi",
+    "ID": 127
+  },
+  {
+    "Naam": "California roll",
+    "Prijs": 13.5,
+    "Allergie": "",
+    "Categorie": "DinerSushi",
+    "ID": 128
+  },
+  {
+    "Naam": "Tuna roll",
+    "Prijs": 15.0,
+    "Allergie": "",
+    "Categorie": "DinerSushi",
+    "ID": 129
+  },
+  {
+    "Naam": "Vega roll",
+    "Prijs": 11.75,
+    "Allergie": "V",
+    "Categorie": "DinerSushi",
+    "ID": 130
+  },
+  {
+    "Naam": "Pavlova met rode sinaasappel",
+    "Prijs": 5.95,
+    "Allergie": "",
+    "Categorie": "DinerNagerecht",
+    "ID": 131
+  },
+  {
+    "Naam": "Dame Blanche klassiek",
+    "Prijs": 6.5,
+    "Allergie": "",
+    "Categorie": "DinerNagerecht",
+    "ID": 132
+  },
+  {
+    "Naam": "Vegan tiramisu recept",
+    "Prijs": 6.95,
+    "Allergie": "V",
+    "Categorie": "DinerNagerecht",
+    "ID": 133
+  },
+  {
+    "Naam": "Tiramisu met rood fruit",
+    "Prijs": 6.5,
+    "Allergie": "N",
+    "Categorie": "DinerNagerecht",
+    "ID": 134
+  },
+  {
+    "Naam": "Panna cotta met witte chocolade",
+    "Prijs": 6.95,
+    "Allergie": "",
+    "Categorie": "DinerNagerecht",
+    "ID": 135
+  },
+  {
+    "Naam": "Vijgen uit de oven met crumble",
+    "Prijs": 7.5,
+    "Allergie": "N",
+    "Categorie": "DinerNagerecht",
+    "ID": 136
+  },
+  {
+    "Naam": "Tarte tatin met wilde perzik",
+    "Prijs": 6.95,
+    "Allergie": "",
+    "Categorie": "DinerNagerecht",
+    "ID": 137
+  },
+  {
+    "Naam": "Zwarte koffie",
+    "Prijs": 3.5,
+    "Allergie": "",
+    "Categorie": "DrinkenWarm",
+    "ID": 138
+  },
+  {
+    "Naam": "Cappuccino",
+    "Prijs": 3.7,
+    "Allergie": "",
+    "Categorie": "DrinkenWarm",
+    "ID": 139
+  },
+  {
+    "Naam": "Koffie verkeerd",
+    "Prijs": 3.5,
+    "Allergie": "",
+    "Categorie": "DrinkenWarm",
+    "ID": 140
+  },
+  {
+    "Naam": "Munt thee",
+    "Prijs": 3.0,
+    "Allergie": "",
+    "Categorie": "DrinkenWarm",
+    "ID": 141
+  },
+  {
+    "Naam": "Gember thee",
+    "Prijs": 3.1,
+    "Allergie": "",
+    "Categorie": "DrinkenWarm",
+    "ID": 142
+  },
+  {
+    "Naam": "Coca Cola (regular/light/zero)",
+    "Prijs": 2.9,
+    "Allergie": "",
+    "Categorie": "DrinkenKoud",
+    "ID": 143
+  },
+  {
+    "Naam": "Fanta/Sprite",
+    "Prijs": 2.9,
+    "Allergie": "",
+    "Categorie": "DrinkenKoud",
+    "ID": 144
+  },
+  {
+    "Naam": "Water (plat/bruisend)",
+    "Prijs": 2.7,
+    "Allergie": "",
+    "Categorie": "DrinkenKoud",
+    "ID": 145
+  },
+  {
+    "Naam": "Lipton Ice Tea Sparkling of Green",
+    "Prijs": 2.75,
+    "Allergie": "",
+    "Categorie": "DrinkenKoud",
+    "ID": 146
+  },
+  {
+    "Naam": "Verse Jus d'Orange",
+    "Prijs": 3.15,
+    "Allergie": "",
+    "Categorie": "DrinkenKoud",
+    "ID": 147
+  },
+  {
+    "Naam": "Jupiler",
+    "Prijs": 2.6,
+    "Allergie": "A",
+    "Categorie": "DrinkenBier",
+    "ID": 148
+  },
+  {
+    "Naam": "Heineken",
+    "Prijs": 3.25,
+    "Allergie": "A",
+    "Categorie": "DrinkenBier",
+    "ID": 149
+  },
+  {
+    "Naam": "Hertog Jan",
+    "Prijs": 3.1,
+    "Allergie": "A",
+    "Categorie": "DrinkenBier",
+    "ID": 150
+  },
+  {
+    "Naam": "Rose/zoete witte wijn",
+    "Prijs": 3.5,
+    "Allergie": "A",
+    "Categorie": "DrinkenWijn",
+    "ID": 151
+  },
+  {
+    "Naam": "Merlot wijn",
+    "Prijs": 3.6,
+    "Allergie": "A",
+    "Categorie": "DrinkenWijn",
+    "ID": 152
+  },
+  {
+    "Naam": "Rode wijn",
+    "Prijs": 3.1,
+    "Allergie": "A",
+    "Categorie": "DrinkenWijn",
+    "ID": 153
+  },
+  {
+    "Naam": "Passion Energy",
+    "Prijs": 9.75,
+    "Allergie": "A",
+    "Categorie": "DrinkenCocktail",
+    "ID": 154
+  },
+  {
+    "Naam": "Red ginger",
+    "Prijs": 9.7,
+    "Allergie": "A",
+    "Categorie": "DrinkenCocktail",
+    "ID": 155
+  },
+  {
+    "Naam": "Mojito (regular/strawberry mojito)",
+    "Prijs": 9.7,
+    "Allergie": "A",
+    "Categorie": "DrinkenCocktail",
+    "ID": 156
+  },
+  {
+    "Naam": "Salade met komkommer, brie en paprika",
+    "Prijs": 5.65,
+    "Allergie": "V",
+    "Categorie": "Lunch",
+    "ID": 245
+  },
+  {
+    "Naam": "# aarbijen",
+    "Prijs": 5.55,
+    "Allergie": "L",
+    "Categorie": "Lunch",
+    "ID": 555
+  }
+]
