@@ -18,16 +18,16 @@ namespace Main
             Console.Clear(); 
 
             Console.WriteLine("╒══════════════════════════════╕");
-            Console.WriteLine("│                              │");
-            Console.WriteLine($"│       Welkom, {gebruikerNaam}  │");
-            Console.WriteLine("│                              │");
-            Console.WriteLine("│         |Hoofdmenu|          │");
-            Console.WriteLine("│       [1] Reserveringen      │");
-            Console.WriteLine("│       [2] Menu               │");
-            Console.WriteLine("│       [3] Bestellingen       │");
-            Console.WriteLine("│       [4] Eigen gegevens     │");
-            Console.WriteLine("│       [5] Uitloggen          │");
-            Console.WriteLine("│                              │");
+            Console.WriteLine("                              ");
+            Console.WriteLine($"       Welkom, {gebruikerNaam}  ");
+            Console.WriteLine("                              ");
+            Console.WriteLine("         |Hoofdmenu|          ");
+            Console.WriteLine("       [1] Reserveringen      ");
+            Console.WriteLine("       [2] Menu               ");
+            Console.WriteLine("       [3] Bestellingen       ");
+            Console.WriteLine("       [4] Eigen gegevens     ");
+            Console.WriteLine("       [5] Uitloggen          ");
+            Console.WriteLine("                              ");
             Console.WriteLine("╘══════════════════════════════╛");
             ConsoleKeyInfo ckey = Console.ReadKey();
             if (ckey.Key == ConsoleKey.D1)
@@ -57,7 +57,7 @@ namespace Main
             Console.WriteLine("Reserveren menu - personeel");
             Console.WriteLine("         [1] Reserveringen bekijken            ");
             Console.WriteLine("         [2] Reserveringen wijzigen            ");
-            Console.WriteLine("         [3] Reserveringen annuleren            ");
+            Console.WriteLine("         [3] Reserveringen annuleren\n            ");
             Console.WriteLine("         [0] Terug           ");
             ConsoleKeyInfo ckey = Console.ReadKey();
             if (ckey.Key == ConsoleKey.D0)
@@ -158,7 +158,7 @@ namespace Main
             Console.WriteLine("       Bestellingen Main Menu       ");
             Console.WriteLine("   [1] Bestelling bedrag weergeven         ");
             Console.WriteLine("   [2] Totaal bedrag aanpassen          ");
-            Console.WriteLine("   [3] Bestelling toevoegen          ");
+            Console.WriteLine("   [3] Bestelling toevoegen \n         ");
             Console.WriteLine("   [0] Terug            ");
             ConsoleKeyInfo ckey = Console.ReadKey();
             if (ckey.Key == ConsoleKey.D0)

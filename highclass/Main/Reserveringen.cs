@@ -527,7 +527,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
             if (reserveringsNaam == "")
             {
-                Console.WriteLine($"\nEen reservering onder de naam '{zoekNaam}' bestaat niet. \n[1] Probeer opnieuw.\n[2] Maak nieuwe reservering aan.\n\t[0] Terug");
+                Console.WriteLine($"\nEen reservering onder de naam '{zoekNaam}' bestaat niet. \n[1] Probeer opnieuw.\n[2] Maak nieuwe reservering aan.\n\t\n[0] Terug");
                 Console.WriteLine("╘════════════════════════════════════════════════════════╛");
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
@@ -552,7 +552,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
             if (gebruiker == "admin" || gebruiker == "personeel")
             {
-                Console.WriteLine("\nWat wilt u wijzigen? \n\t[1] Naam\n\t[2] Persoonlijk voornaamwoorden\n\t[3] Groepsgrote\n\t[4] Datum\n\t[5] Tijdslot\n[6] Eindtijd  ");
+                Console.WriteLine("\nWat wilt u wijzigen? \n\t[1] Naam\n\t[2] Persoonlijk voornaamwoorden\n\t[3] Groepsgrote\n\t[4] Datum\n\t[5] Tijdslot\n\t[6] Eindtijd  ");
                 Console.WriteLine("╘════════════════════════════════════════════════════════╛");
             }
             else
@@ -1061,7 +1061,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             else
                             {
                                 Console.WriteLine($"Ingevulde tijd is geen echte tijd of valt buiten deze persoon's\ngereserveerde tijdslot");
-                                Console.WriteLine("\n\t[1] Opnieuw proberen\n\t[0] Terug");
+                                Console.WriteLine("\n\t[1] Opnieuw proberen\n\t\n[0] Terug");
                                 Console.WriteLine("╘════════════════════════════════════════════════════════════════╛");
                                 ConsoleKeyInfo keus = Console.ReadKey();
                                 if (keus.Key == ConsoleKey.D1)
@@ -1111,7 +1111,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
             if (reserveringNaam == "")
             {
-                Console.WriteLine("\nEen reservering onder de gegeven naam bestaat niet. \n\t[1] Probeer opnieuw\n\t[0] Terug\n");
+                Console.WriteLine("\nEen reservering onder de gegeven naam bestaat niet. \n\t[1] Probeer opnieuw\n\n\t[0] Terug\n");
                 Console.WriteLine("╘════════════════════════════════════════════════════════════════════════════════════════╛");
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
@@ -1221,7 +1221,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 if (reservering.Naam == zoekNaam)
                 {
                     Console.WriteLine($"Voornaamwoorden: {reservering.Voornaamwoorden}\nGroepsgrote: {reservering.Groepsgrote}\nTijdslot: {reservering.Tijdslot}\nDatum: {reservering.Datum}");
-                    Console.WriteLine("\n[1] Opnieuw een reservering bekijken\n[0] Terug naar menu");
+                    Console.WriteLine("\n[1] Opnieuw een reservering bekijken\n\n[0] Terug naar menu");
                     Console.WriteLine("╘══════════════════════════════════════════════════════════════════════════════════════════════╛");
                     ConsoleKeyInfo keus = Console.ReadKey();
                     if (keus.Key == ConsoleKey.D1)

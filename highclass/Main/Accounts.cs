@@ -590,7 +590,7 @@ namespace Main
             Console.WriteLine(" ");
             Console.WriteLine("     |Inloggen|");
             Console.WriteLine(" ");
-            Console.WriteLine("     [0] terug ");
+            Console.WriteLine("     [0] Terug ");
             Console.WriteLine(" ");
             Console.WriteLine("Gebruikersnaam: ");
             string gebruikersnaamCheck = Console.ReadLine();

@@ -36,7 +36,7 @@ namespace Main
                     Console.WriteLine("[2] Lunch");
                     Console.WriteLine("[3] Diner");
                     Console.WriteLine("[4] Drinken");
-                    Console.WriteLine("[5] Allergieën informatie");
+                    Console.WriteLine("[5] Allergieën informatie\n");
                     Console.WriteLine("[0] Terug");
                     Console.WriteLine("╘═══════════════════════════╛");
                     ConsoleKeyInfo mainMenu = Console.ReadKey();
@@ -125,7 +125,7 @@ namespace Main
                             Console.WriteLine(" Diner");
                             Console.WriteLine(" [1] Voorgerechten");
                             Console.WriteLine(" [2] Hoofdgerechten");
-                            Console.WriteLine(" [3] Nagerechten");
+                            Console.WriteLine(" [3] Nagerechten\n");
                             Console.WriteLine(" [0] Terug");
                             Console.WriteLine("╘════════════════════╛");
                             ConsoleKeyInfo dinerkey = Console.ReadKey();
@@ -257,7 +257,7 @@ namespace Main
                             Console.WriteLine("╒════════════════════════════════╕");
                             Console.WriteLine("\n Drinken\n");
                             Console.WriteLine(" [1] Non alcoholische dranken");
-                            Console.WriteLine(" [2] Alcoholische dranken (A)");
+                            Console.WriteLine(" [2] Alcoholische dranken (A)\n");
                             Console.WriteLine(" [0] Terug");
                             Console.WriteLine("╘════════════════════════════════╛");
                             ConsoleKeyInfo drankkeus = Console.ReadKey();
