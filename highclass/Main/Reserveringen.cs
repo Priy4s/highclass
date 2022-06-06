@@ -488,7 +488,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
         }
     }*/
 
-        public static void WijzigReservering(string gebruikerNaam, string gebruiker = "niet ingelogd")
+        public static void WijzigReservering(string gebruikerNaam)
         {
             Console.Clear();
             string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
@@ -527,7 +527,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
             if (reserveringsNaam == "")
             {
-                Console.WriteLine($"\nEen reservering onder de naam '{zoekNaam}' bestaat niet. \n[1] Probeer opnieuw.\n[2] Maak nieuwe reservering aan.\n\t\n[0] Terug");
+                Console.WriteLine($"\nEen reservering onder de naam '{zoekNaam}' bestaat niet. \n[1] Probeer opnieuw.\n[2] Maak nieuwe reservering aan.\n\t[0] Terug");
                 Console.WriteLine("╘════════════════════════════════════════════════════════╛");
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
@@ -540,7 +540,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 }
                 else if (rkey.Key == ConsoleKey.D0)
                 {
-                    if (gebruiker == "admin" || gebruiker == "personeel")
+                    if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
                     {
                         Personeelsleden.personeelMain(gebruikerNaam);
                     }
@@ -550,9 +550,9 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                     }
                 }
             }
-            if (gebruiker == "admin" || gebruiker == "personeel")
+            if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
             {
-                Console.WriteLine("\nWat wilt u wijzigen? \n\t[1] Naam\n\t[2] Persoonlijk voornaamwoorden\n\t[3] Groepsgrote\n\t[4] Datum\n\t[5] Tijdslot\n\t[6] Eindtijd  ");
+                Console.WriteLine("\nWat wilt u wijzigen? \n\t[1] Naam\n\t[2] Persoonlijk voornaamwoorden\n\t[3] Groepsgrote\n\t[4] Datum\n\t[5] Tijdslot\n[6] Eindtijd  ");
                 Console.WriteLine("╘════════════════════════════════════════════════════════╛");
             }
             else
@@ -583,9 +583,9 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                         {
                             JsonData = JsonConvert.SerializeObject(ReserveringenList);
                             System.IO.File.WriteAllText(ReserveringPath, JsonData);
-                            if (gebruiker == "admin" || gebruiker == "personeel")
+                            if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
                             {
-                                if (gebruiker == "admin" || gebruiker == "personeel")
+                                if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
                                 {
                                     Personeelsleden.personeelMain(gebruikerNaam);
                                 }
@@ -634,7 +634,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                         {
                             JsonData = JsonConvert.SerializeObject(ReserveringenList);
                             System.IO.File.WriteAllText(ReserveringPath, JsonData);
-                            if (gebruiker == "admin" || gebruiker == "personeel")
+                            if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
                             {
                                 Personeelsleden.personeelMain(gebruikerNaam);
                             }
@@ -682,7 +682,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             {
                                 JsonData = JsonConvert.SerializeObject(ReserveringenList);
                                 System.IO.File.WriteAllText(ReserveringPath, JsonData);
-                                if (gebruiker == "admin" || gebruiker == "personeel")
+                                if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
                                 {
                                     Personeelsleden.personeelMain(gebruikerNaam);
                                 }
@@ -705,7 +705,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             }
                             else if (ckey4.Key == ConsoleKey.D2)
                             {
-                                if (gebruiker == "admin" || gebruiker == "personeel")
+                                if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
                                 {
                                     Personeelsleden.personeelMain(gebruikerNaam);
                                 }
@@ -787,7 +787,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                     {
                                         JsonData = JsonConvert.SerializeObject(ReserveringenList);
                                         System.IO.File.WriteAllText(ReserveringPath, JsonData);
-                                        if (gebruiker == "admin" || gebruiker == "personeel")
+                                        if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
                                         {
                                             Personeelsleden.personeelMain(gebruikerNaam);
                                         }
@@ -810,7 +810,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                     }
                                     else if (ckey4.Key == ConsoleKey.D2)
                                     {
-                                        if (gebruiker == "admin" || gebruiker == "personeel")
+                                        if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
                                         {
                                             Personeelsleden.personeelMain(gebruikerNaam);
                                         }
@@ -834,7 +834,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                 }
                                 else if (ckey4.Key == ConsoleKey.D2)
                                 {
-                                    if (gebruiker == "admin" || gebruiker == "personeel")
+                                    if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
                                     {
                                         Personeelsleden.personeelMain(gebruikerNaam);
                                     }
@@ -871,7 +871,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                     {
                                         JsonData = JsonConvert.SerializeObject(ReserveringenList);
                                         System.IO.File.WriteAllText(ReserveringPath, JsonData);
-                                        if (gebruiker == "admin" || gebruiker == "personeel")
+                                        if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
                                         {
                                             Personeelsleden.personeelMain(gebruikerNaam);
                                         }
@@ -894,7 +894,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                     }
                                     else if (ckey4.Key == ConsoleKey.D2)
                                     {
-                                        if (gebruiker == "admin" || gebruiker == "personeel")
+                                        if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
                                         {
                                             Personeelsleden.personeelMain(gebruikerNaam);
                                         }
@@ -918,7 +918,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                 }
                                 else if (ckey4.Key == ConsoleKey.D2)
                                 {
-                                    if (gebruiker == "admin" || gebruiker == "personeel")
+                                    if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
                                     {
                                         Personeelsleden.personeelMain(gebruikerNaam);
                                     }
@@ -941,7 +941,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             }
                             else if (ckey4.Key == ConsoleKey.D2)
                             {
-                                if (gebruiker == "admin" || gebruiker == "personeel")
+                                if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
                                 {
                                     Personeelsleden.personeelMain(gebruikerNaam);
                                 }
@@ -1007,7 +1007,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             {
                                 JsonData = JsonConvert.SerializeObject(ReserveringenList);
                                 System.IO.File.WriteAllText(ReserveringPath, JsonData);
-                                if (gebruiker == "admin" || gebruiker == "personeel")
+                                if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
                                 {
                                     Personeelsleden.personeelMain(gebruikerNaam);
                                 }
@@ -1025,14 +1025,14 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             else if (readkey.Key == ConsoleKey.D6)
             {
                 Console.Clear();
-                if (gebruiker == "admin" || gebruiker == "personeel")
+                if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
                 {
                     Console.WriteLine("╒════════════════════════════════════════════════════════════════╕");
                     Console.WriteLine(" HC\n");
                     Console.WriteLine($"Eindtijd {reserveringsNaam}: ");
                     string new_EindTijd = Console.ReadLine();
 
-                    
+
 
                     while (i < len)
                     {
@@ -1061,7 +1061,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             else
                             {
                                 Console.WriteLine($"Ingevulde tijd is geen echte tijd of valt buiten deze persoon's\ngereserveerde tijdslot");
-                                Console.WriteLine("\n\t[1] Opnieuw proberen\n\t\n[0] Terug");
+                                Console.WriteLine("\n\t[1] Opnieuw proberen\n\t[0] Terug");
                                 Console.WriteLine("╘════════════════════════════════════════════════════════════════╛");
                                 ConsoleKeyInfo keus = Console.ReadKey();
                                 if (keus.Key == ConsoleKey.D1)
@@ -1111,7 +1111,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
             if (reserveringNaam == "")
             {
-                Console.WriteLine("\nEen reservering onder de gegeven naam bestaat niet. \n\t[1] Probeer opnieuw\n\n\t[0] Terug\n");
+                Console.WriteLine("\nEen reservering onder de gegeven naam bestaat niet. \n\t[1] Probeer opnieuw\n\t[0] Terug\n");
                 Console.WriteLine("╘════════════════════════════════════════════════════════════════════════════════════════╛");
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
@@ -1208,7 +1208,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
                 {
-                    WijzigReservering(gebruikerNaam);
+                    bekijkReservering(gebruikerNaam);
                 }
                 else if (rkey.Key == ConsoleKey.D2)
                 {
@@ -1221,7 +1221,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 if (reservering.Naam == zoekNaam)
                 {
                     Console.WriteLine($"Voornaamwoorden: {reservering.Voornaamwoorden}\nGroepsgrote: {reservering.Groepsgrote}\nTijdslot: {reservering.Tijdslot}\nDatum: {reservering.Datum}");
-                    Console.WriteLine("\n[1] Opnieuw een reservering bekijken\n\n[0] Terug naar menu");
+                    Console.WriteLine("\n[1] Opnieuw een reservering bekijken\n[0] Terug naar menu");
                     Console.WriteLine("╘══════════════════════════════════════════════════════════════════════════════════════════════╛");
                     ConsoleKeyInfo keus = Console.ReadKey();
                     if (keus.Key == ConsoleKey.D1)

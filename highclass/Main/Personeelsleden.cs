@@ -74,11 +74,11 @@ namespace Main
             }
             if (ckey.Key == ConsoleKey.D2 && gebruiker == "personeel")
             {
-                Reserveringen.WijzigReservering(gebruikerNaam,  "personeel");
+                Reserveringen.WijzigReservering("personeel");
             }
             if (ckey.Key == ConsoleKey.D2 && gebruiker == "admin")
             {
-                Reserveringen.WijzigReservering(gebruikerNaam, "admin");
+                Reserveringen.WijzigReservering("admin");
             }
             else if (ckey.Key == ConsoleKey.D3 && gebruiker == "personeel")
             {
