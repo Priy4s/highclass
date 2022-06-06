@@ -32,7 +32,7 @@ namespace Main
             }
             else if (ckey.Key == ConsoleKey.D2)
             {
-                Personeelsleden.menuMain("admin");
+                Personeelsleden.menuMain("admin", "admin");
             }
             else if (ckey.Key == ConsoleKey.D3)
             {

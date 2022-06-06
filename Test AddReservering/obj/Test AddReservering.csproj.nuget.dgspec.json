@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\Test AddReservering\\Test AddReservering.csproj": {}
+    "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\Test AddReservering\\Test AddReservering.csproj": {}
   },
   "projects": {
-    "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\Test AddReservering\\Test AddReservering.csproj": {
+    "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\Test AddReservering\\Test AddReservering.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\Test AddReservering\\Test AddReservering.csproj",
+        "projectUniqueName": "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\Test AddReservering\\Test AddReservering.csproj",
         "projectName": "Test AddReservering",
-        "projectPath": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\Test AddReservering\\Test AddReservering.csproj",
-        "packagesPath": "C:\\Users\\priya\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\Test AddReservering\\obj\\",
+        "projectPath": "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\Test AddReservering\\Test AddReservering.csproj",
+        "packagesPath": "C:\\Users\\Yvonn\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\Test AddReservering\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\priya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Yvonn\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

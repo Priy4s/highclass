@@ -414,16 +414,21 @@ namespace Main
             {
                 verwijderen(gebruikerNaam,gebruiker);
             }
-            if (readkey.Key == ConsoleKey.D2)
+            else if (readkey.Key == ConsoleKey.D2)
             {
                 toevoegen(gebruikerNaam, gebruiker);
             }
-            if (readkey.Key == ConsoleKey.D3)
+            else if (readkey.Key == ConsoleKey.D3)
             {
                 wijzigen(gebruikerNaam, gebruiker);
             }
-            if (readkey.Key == ConsoleKey.D4){
-
+            else if(readkey.Key == ConsoleKey.D0)
+            {
+                Personeelsleden.menuMain(gebruikerNaam, gebruiker);
+            }
+            else
+            {
+                mainAanpassen(gebruikerNaam, gebruiker);
             }
         }
         public static void verwijderen(string gebruikerNaam, string gebruiker = "personeel")
@@ -521,7 +526,7 @@ namespace Main
             ConsoleKeyInfo keus = Console.ReadKey();
             if (keus.Key == ConsoleKey.D1 && gebruiker == "personeel")
             {
-                Personeelsleden.menuMain(gebruikerNaam);
+                Personeelsleden.menuMain(gebruikerNaam, gebruiker);
             }
             else if(keus.Key == ConsoleKey.D1 && gebruiker == "admin")
             {
@@ -624,33 +629,18 @@ namespace Main
                 }
             }
 
-            Console.WriteLine("Wat is de prijs van het nieuwe Menu Item?");
+            Console.WriteLine("Wat is de prijs van het nieuwe menu item?");
             string strPrijsIN = Console.ReadLine();
 
-            bool isPrijsAlleenNummers = char.IsNumber(strPrijsIN, 0);
-            for (int i = 0; i < strPrijsIN.Length; i++)
+            double doubletest;
+            double.TryParse(strPrijsIN, out doubletest);
+            while(doubletest == 0)
             {
-                isIDAlleenNummers = char.IsNumber(strPrijsIN, i);
-                if (isIDAlleenNummers == false)
-                {
-                    break;
-                }
-            }
-
-            while (!isPrijsAlleenNummers)
-            {
-                Console.WriteLine("\nPrijs bestaat alleen uit nummers. Probeer opnieuw.");
-                Console.WriteLine("\nWat is de prijs van het nieuwe Menu Item?");
+                Console.WriteLine("Onjuist prijs. Probeer prijs opnieuw intevoeren");
+                Console.WriteLine("Wat is de prijs van het nieuwe menu item?");
                 strPrijsIN = Console.ReadLine();
 
-                for (int i = 0; i < strPrijsIN.Length; i++)
-                {
-                    isIDAlleenNummers = char.IsNumber(strPrijsIN, i);
-                    if (isIDAlleenNummers == false)
-                    {
-                        break;
-                    }
-                }
+                double.TryParse(strPrijsIN, out doubletest);
             }
             double PrijsIN = Convert.ToDouble(strPrijsIN);
 

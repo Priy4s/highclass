@@ -36,7 +36,7 @@ namespace Main
             }
             else if (ckey.Key == ConsoleKey.D2)
             {
-                menuMain(gebruikerNaam);
+                menuMain(gebruikerNaam, "personeel");
             }
             else if (ckey.Key == ConsoleKey.D3)
             {
@@ -116,23 +116,27 @@ namespace Main
 
         }
 
-        public static void menuMain(string gebruikerNaam, string gebruiker = "personeel")
+        public static void menuMain(string gebruikerNaam, string gebruiker)
         {
             Console.Clear();
-            Console.WriteLine("       Menu menu - personeel");
+            Console.WriteLine($"       Menu menu - {gebruiker}");
             Console.WriteLine("         [1] Bekijk menu           ");
             Console.WriteLine("         [2] Aanpassen menu           ");
             Console.WriteLine("         [0] Terug            ");
             ConsoleKeyInfo ckey = Console.ReadKey();
             if (ckey.Key == ConsoleKey.D0 && gebruiker == "personeel")
             {
+                Console.WriteLine("personeel");
+                Console.ReadKey();
+
                 personeelMain(gebruikerNaam);
             }
 
-
-
             else if (ckey.Key == ConsoleKey.D0 && gebruiker == "admin")
             {
+                Console.WriteLine("Admin");
+                Console.ReadKey();
+
                 Admin.adminMain();
             }
             else if (ckey.Key == ConsoleKey.D1 && gebruiker == "personeel") 

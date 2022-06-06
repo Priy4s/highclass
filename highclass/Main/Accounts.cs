@@ -110,17 +110,19 @@ namespace Main
             }
             Console.WriteLine("Wat is uw telefoonnummber?\n+31");
             string telefoonnummerIN = Console.ReadLine();
-            
+
             bool isAlleenNummers = char.IsNumber(telefoonnummerIN, 0);
             for (int i = 0; i < telefoonnummerIN.Length; i++)
             {
                 isAlleenNummers = char.IsNumber(telefoonnummerIN, i);
+                Console.WriteLine(isAlleenNummers);
+                Console.ReadKey();
                 if (isAlleenNummers == false)
                 {
                     break;
                 }
             }
-            
+
             bool isLengte10 = telefoonnummerIN.Length != 10 ? true : false;
             while (isLengte10 || !isAlleenNummers)
             {
@@ -131,6 +133,8 @@ namespace Main
                 for (int i = 0; i < telefoonnummerIN.Length; i++)
                 {
                     isAlleenNummers = char.IsNumber(telefoonnummerIN, i);
+                    Console.WriteLine(isAlleenNummers);
+                    Console.ReadKey();
                     if (isAlleenNummers == false)
                     {
                         break;
@@ -153,29 +157,32 @@ namespace Main
 
 
             Console.WriteLine("Wat is uw functie?\n\t[1]Admin\n\t[2]Mederwerker");
-            ConsoleKeyInfo AKey = Console.ReadKey();
+            ConsoleKeyInfo ABCKey = Console.ReadKey();
             string functieIN = "";
-            AKey = Console.ReadKey();
-            if (AKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
+            ABCKey = Console.ReadKey();
+            if (ABCKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
             {
                 functieIN = "Admin";
             }
-            else if (AKey.Key == ConsoleKey.D2)
+            else if (ABCKey.Key == ConsoleKey.D2)
             {
                 functieIN = "Mederwerker";
             }
-            while (functieIN == "")
+            else
             {
-                Console.WriteLine("\nProbeer opnieuw");
-                Console.WriteLine("Wat is uw functie?\n\t[1]Admin\n\t[2]Mederwerker");
-                AKey = Console.ReadKey();
-                if (AKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
+                while (functieIN == "")
                 {
-                    functieIN = "Admin";
-                }
-                else if (AKey.Key == ConsoleKey.D2)
-                {
-                    functieIN = "Mederwerker";
+                    Console.WriteLine("\nProbeer opnieuw");
+                    Console.WriteLine("Wat is uw functie?\n\t[1]Admin\n\t[2]Mederwerker");
+                    ABCKey = Console.ReadKey();
+                    if (ABCKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
+                    {
+                        functieIN = "Admin";
+                    }
+                    else if (ABCKey.Key == ConsoleKey.D2)
+                    {
+                        functieIN = "Mederwerker";
+                    }
                 }
             }
 
@@ -230,7 +237,7 @@ namespace Main
             }
             if (medewerkerNaam == "")
             {
-                Console.WriteLine("Medewerker met die naam bestaat niet. \n[1] Probeer opnieuw.");
+                Console.WriteLine("Medewerker met die naam bestaat niet. \n[1] Probeer opnieuw.\n[0] Terug");
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
                 {
@@ -238,7 +245,7 @@ namespace Main
                 }
                 else
                 {
-                    verwijderMedewerker();
+                    Admin.adminMedewerkers();
                 }
             }
 
@@ -425,6 +432,7 @@ namespace Main
                 bool isAlleenNummers = char.IsNumber(new_telefoonnummer, 0);
                 for (int k = 0; k < new_telefoonnummer.Length; k++)
                 {
+                    
                     isAlleenNummers = char.IsNumber(new_telefoonnummer, k);
                     if (isAlleenNummers == false)
                     {
@@ -491,13 +499,13 @@ namespace Main
             else if (readkey.Key == ConsoleKey.D5)
             {
                 Console.WriteLine("Wat is uw functie?\n\t[1]Admin\n\t[2]Mederwerker");
-                ConsoleKeyInfo AKey = Console.ReadKey();
+                ConsoleKeyInfo BKey = Console.ReadKey();
                 string new_functie = "";
-                if (AKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
+                if (BKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
                 {
                     new_functie = "Admin";
                 }
-                else if (AKey.Key == ConsoleKey.D2)
+                else if (BKey.Key == ConsoleKey.D2)
                 {
                     new_functie = "Mederwerker";
                 }
@@ -506,12 +514,12 @@ namespace Main
                 {
                     Console.WriteLine("\nProbeer opnieuw");
                     Console.WriteLine("Wat is uw functie?\n\t[1]Admin\n\t[2]Mederwerker");
-                    AKey = Console.ReadKey();
-                    if (AKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
+                    BKey = Console.ReadKey();
+                    if (BKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
                     {
                         new_functie = "Admin";
                     }
-                    else if (AKey.Key == ConsoleKey.D2)
+                    else if (BKey.Key == ConsoleKey.D2)
                     {
                         new_functie = "Mederwerker";
                     }
@@ -564,9 +572,9 @@ namespace Main
             {
                 Console.WriteLine("Verkeerde input. \nProbeer opnieuw.");
                 Console.WriteLine("[0] Opnieuw");
-                
+
                 ConsoleKeyInfo opnieuw = Console.ReadKey();
-                if(opnieuw.Key == ConsoleKey.D0)
+                if (opnieuw.Key == ConsoleKey.D0)
                 {
                     wijzigMedewerkers();
                 }
