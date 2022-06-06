@@ -64,17 +64,29 @@ namespace Main
             {
                 personeelMain(gebruikerNaam);
             }
-            if (ckey.Key == ConsoleKey.D1)
+            if (ckey.Key == ConsoleKey.D1 && gebruiker == "personeel")
             {
                 Reserveringen.bekijkReservering(gebruikerNaam);
             }
-            if (ckey.Key == ConsoleKey.D2)
+            else if (ckey.Key == ConsoleKey.D1 && gebruiker == "admin")
             {
-                Reserveringen.WijzigReservering(gebruikerNaam = "personeel");
+                Reserveringen.bekijkReservering("admin");
             }
-            else if (ckey.Key == ConsoleKey.D3)
+            if (ckey.Key == ConsoleKey.D2 && gebruiker == "personeel")
+            {
+                Reserveringen.WijzigReservering(gebruikerNaam,  "personeel");
+            }
+            if (ckey.Key == ConsoleKey.D2 && gebruiker == "admin")
+            {
+                Reserveringen.WijzigReservering(gebruikerNaam, "admin");
+            }
+            else if (ckey.Key == ConsoleKey.D3 && gebruiker == "personeel")
             {
                 Reserveringen.verwijderReservering(gebruikerNaam, "personeel");
+            }
+            else if (ckey.Key == ConsoleKey.D3 && gebruiker == "admin")
+            {
+                Reserveringen.verwijderReservering(gebruikerNaam, "admin");
             }
         }
         public static void persoonlijkeInfo(string gebruikerNaam)
