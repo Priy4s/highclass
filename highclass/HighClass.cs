@@ -37,26 +37,25 @@ namespace Main
                 // Console.BackgroundColor = ConsoleColor.White; verandert de gehele console kleur op tekst na
                 Console.ForegroundColor = ConsoleColor.DarkYellow; // verandert alle tekst naar donkerrood
                 Console.Clear(); // Maakt de console leeg, zodat het lijkt alsof er een nieuw scherm is geopend.
-                Console.WriteLine("            ┌──────────────────────────────────────────────────────────┐");
-                Console.WriteLine("            │  $    $  $  $$$$$  $   $ $$$$$ $     $$$$$$  $$$$  $$$$  │");
-                Console.WriteLine("            │  $    $  $  $      $   $ $     $     $    $  $     $     │");
-                Console.WriteLine("            │  $    $  $  $      $   $ $     $     $    $  $     $     │");
-                Console.WriteLine("            │  $$$$$$  $  $ $$$  $$$$$ $     $     $$$$$$  $$$$  $$$$  │");
-                Console.WriteLine("            │  $    $  $  $   $  $   $ $     $     $    $     $     $  │");
-                Console.WriteLine("            │  $    $  $  $   $  $   $ $     $     $    $     $     $  │");
-                Console.WriteLine("            │  $    $  $  $$$$$  $   $ $$$$$ $$$$$ $    $  $$$$  $$$$  │");
-                Console.WriteLine("            └──────────────────────────────────────────────────────────┘");
-                Console.WriteLine("                           ╒══════════════════════════════╕");
-                Console.WriteLine("                                                         ");
-                Console.WriteLine("                                Welkom bij HighClass     ");
-                Console.WriteLine("                                                         ");
-                Console.WriteLine("                                    |Hoofdmenu|          ");
-                Console.WriteLine("                                  [1] Reserveren         ");
-                Console.WriteLine("                                  [2] Menu               ");
-                Console.WriteLine("                                  [3] Inloggen           ");
-                Console.WriteLine("                                  [4] Contact            ");
-                Console.WriteLine("                                                         ");
-                Console.WriteLine("                           ╘══════════════════════════════╛");
+                Console.WriteLine("                            ┌──────────────────────────────────────────────────────────┐");
+                Console.WriteLine("                            │  $    $  $  $$$$$  $   $ $$$$$ $     $$$$$$  $$$$  $$$$  │");
+                Console.WriteLine("                            │  $    $  $  $      $   $ $     $     $    $  $     $     │");
+                Console.WriteLine("                            │  $    $  $  $      $   $ $     $     $    $  $     $     │");
+                Console.WriteLine("                            │  $$$$$$  $  $ $$$  $$$$$ $     $     $$$$$$  $$$$  $$$$  │");
+                Console.WriteLine("                            │  $    $  $  $   $  $   $ $     $     $    $     $     $  │");
+                Console.WriteLine("                            │  $    $  $  $   $  $   $ $     $     $    $     $     $  │");
+                Console.WriteLine("                            │  $    $  $  $$$$$  $   $ $$$$$ $$$$$ $    $  $$$$  $$$$  │");
+                Console.WriteLine("                            └──────────────────────────────────────────────────────────┘");
+                Console.WriteLine("                            ╒══════════════════════════════════════════════════════════╕");
+                Console.WriteLine("                                                            ");
+                Console.WriteLine("                                                Welkom bij HighClass     ");
+                Console.WriteLine("                                                                         ");
+                Console.WriteLine("                                                    |Hoofdmenu|          ");
+                Console.WriteLine("                                                  [1] Reserveren         ");
+                Console.WriteLine("                                                  [2] Menu               ");
+                Console.WriteLine("                                                  [3] Inloggen           ");
+                Console.WriteLine("                                                  [4] Contact            ");
+                Console.WriteLine("                                                            ");
 
                 ConsoleKeyInfo ckey = Console.ReadKey(); // Deze variabele krijgt als input de toets die de gebruiker op het toetsenbord heeft aangeklikt.
                 if (ckey.Key == ConsoleKey.D1) // Checkt of de aangeklikte toets overeenkomt met het cijfer die aan de knop is gekoppeld (D1, D2, etc zijn de cijfers).
@@ -66,7 +65,7 @@ namespace Main
                     {
                         Console.Clear();
                         Console.WriteLine("╒═════════════════════════════════════════╕"); // Zorgt voor de omlijning
-                        Console.WriteLine("HC                                       ");
+                        Console.WriteLine("                                         ");
                         Console.WriteLine("              |Reserveren|               ");
                         Console.WriteLine("                                         ");
                         Console.WriteLine(" Wilt u de beschikbare plekken wijzigen? ");
@@ -88,18 +87,24 @@ namespace Main
                     else if (Globals.ingelogd == false || no == false)
                     {
                         Console.Clear();
-                        Console.WriteLine("╒═════════════════════════════╕");
-                        Console.WriteLine("HC                           ");
-                        Console.WriteLine("         |Reserveren|        ");
+                        Console.WriteLine("                                               ┌─────────────┐            ");
+                        Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+                        Console.WriteLine("                                               │ $   $ $     │            ");
+                        Console.WriteLine("                                               │ $$$$$ $     │            ");
+                        Console.WriteLine("                                               │ $   $ $     │            ");
+                        Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+                        Console.WriteLine("                                               └─────────────┘            ");
                         Console.WriteLine("                             ");
-                        Console.WriteLine(" Heeft u al een reservering? ");
+                        Console.WriteLine("                                                |Reserveren|        ");
                         Console.WriteLine("                             ");
-                        Console.WriteLine("           [1] Ja            ");
-                        Console.WriteLine("           [2] Nee           ");
+                        Console.WriteLine("                                         Heeft u al een reservering? ");
                         Console.WriteLine("                             ");
-                        Console.WriteLine("           [0] Terug         ");
+                        Console.WriteLine("                                                  [1] Ja            ");
+                        Console.WriteLine("                                                  [2] Nee           ");
                         Console.WriteLine("                             ");
-                        Console.WriteLine("╘═════════════════════════════╛");
+                        Console.WriteLine("                                                  [0] Terug         ");
+                        Console.WriteLine("                             ");
+                        Console.CursorLeft = Console.WindowWidth / 2;
                         ConsoleKeyInfo cvkey = Console.ReadKey();
                         if (cvkey.Key == ConsoleKey.D1)
                         {
@@ -168,17 +173,17 @@ namespace Main
                 Console.WriteLine("╒════════════════════════════════╕");
                 Console.WriteLine("HC                              ");
                 Console.WriteLine("                                ");
-                Console.WriteLine("        |Contactgegevens|       ");
+                Console.WriteLine("           |Contactgegevens|       ");
                 Console.WriteLine("                                ");
                 Console.WriteLine("                                ");
-                Console.WriteLine(" Tel. : 010 794 4000            ");
-                Console.WriteLine(" E-mail: highclass@info.com     ");
-                Console.WriteLine(" Straatnaam: Wijnhaven 107      ");
-                Console.WriteLine(" Postcode: 3011 WN, Rotterdam   ");
-                Console.WriteLine(" Openingstijden:                ");
-                Console.WriteLine("     ma t/m zo - 11:00 tot 23:00");
+                Console.WriteLine("      Tel. : 010 794 4000            ");
+                Console.WriteLine("      E-mail: highclass@info.com     ");
+                Console.WriteLine("      Straatnaam: Wijnhaven 107      ");
+                Console.WriteLine("      Postcode: 3011 WN, Rotterdam   ");
+                Console.WriteLine("      Openingstijden:                ");
+                Console.WriteLine("               ma t/m zo - 11:00 tot 23:00");
                 Console.WriteLine("                                ");
-                Console.WriteLine("           [0] Terug            ");
+                Console.WriteLine("                [0] Terug            ");
                 Console.WriteLine("╘════════════════════════════════╛");
                 ConsoleKeyInfo done = Console.ReadKey();
                 if (done.Key == ConsoleKey.Enter)
