@@ -17,14 +17,16 @@ namespace Main
         {
             Console.Clear();
 
-
-            Console.WriteLine("                                               ┌─────────────┐            ");
-            Console.WriteLine("                                               │ $   $ $$$$$ │            ");
-            Console.WriteLine("                                               │ $   $ $     │            ");
-            Console.WriteLine("                                               │ $$$$$ $     │            ");
-            Console.WriteLine("                                               │ $   $ $     │            ");
-            Console.WriteLine("                                               │ $   $ $$$$$ │            ");
-            Console.WriteLine("                                               └─────────────┘            \n");
+            Console.WriteLine("                            ┌──────────────────────────────────────────────────────────┐");
+            Console.WriteLine("                            │  $    $  $  $$$$$  $   $ $$$$$ $     $$$$$$  $$$$  $$$$  │");
+            Console.WriteLine("                            │  $    $  $  $      $   $ $     $     $    $  $     $     │");
+            Console.WriteLine("                            │  $    $  $  $      $   $ $     $     $    $  $     $     │");
+            Console.WriteLine("                            │  $$$$$$  $  $ $$$  $$$$$ $     $     $$$$$$  $$$$  $$$$  │");
+            Console.WriteLine("                            │  $    $  $  $   $  $   $ $     $     $    $     $     $  │");
+            Console.WriteLine("                            │  $    $  $  $   $  $   $ $     $     $    $     $     $  │");
+            Console.WriteLine("                            │  $    $  $  $$$$$  $   $ $$$$$ $$$$$ $    $  $$$$  $$$$  │");
+            Console.WriteLine("                            └──────────────────────────────────────────────────────────┘");
+            Console.WriteLine("                                                            ");
             Console.WriteLine($"                                              Welkom, {gebruikerNaam}  ");
             Console.WriteLine("                              ");
             Console.WriteLine("                                                 |Hoofdmenu|          ");

@@ -278,7 +278,7 @@ namespace Main
                 }
                 JsonData = JsonConvert.SerializeObject(OmzetList);
                 System.IO.File.WriteAllText(Omzetpath, JsonData);
-                Console.WriteLine("                                             Omzet is succesvol gewijzigd\n                                                     [1] Doorgaan");
+                Console.WriteLine("                                              Omzet is succesvol gewijzigd\n                                                     [1] Doorgaan");
                 Console.CursorLeft = (Console.WindowWidth / 2) - 4; 
                 ConsoleKeyInfo rrkey = Console.ReadKey();
                 if (rrkey.Key == ConsoleKey.D1)
@@ -287,11 +287,6 @@ namespace Main
                 }
                 
             }
-
-
-
-
-
             else
             {
                 adminMain();
