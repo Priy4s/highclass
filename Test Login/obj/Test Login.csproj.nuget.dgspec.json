@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\Test Login\\Test Login.csproj": {}
+    "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\Test Login\\Test Login.csproj": {}
   },
   "projects": {
-    "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\Test Login\\Test Login.csproj": {
+    "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\Test Login\\Test Login.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\Test Login\\Test Login.csproj",
+        "projectUniqueName": "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\Test Login\\Test Login.csproj",
         "projectName": "Test Login",
-        "projectPath": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\Test Login\\Test Login.csproj",
-        "packagesPath": "C:\\Users\\priya\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\Test Login\\obj\\",
+        "projectPath": "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\Test Login\\Test Login.csproj",
+        "packagesPath": "C:\\Users\\Yvonn\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\Test Login\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\priya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Yvonn\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

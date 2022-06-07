@@ -25,10 +25,15 @@ namespace Main
         public static void AddMederwerker()
         {
             Console.Clear();
-            Console.WriteLine("╒══════════════════════╕");
-            Console.WriteLine("HC   ");
+            Console.WriteLine("                                                    ┌─────────────┐            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $$$$$ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    └─────────────┘            ");
             Console.WriteLine(" ");
-            Console.WriteLine("    |Aanmelden|");
+            Console.WriteLine("                                                      |Aanmelden|");
             Console.WriteLine(" ");
             string medewerkerPath = Path.GetFullPath(@"Medewerker.json"); // find path to file
             bool fileExist = File.Exists(medewerkerPath); // checks if the file exists, if so does nothing, else creates it
@@ -39,7 +44,8 @@ namespace Main
             var JsonData = File.ReadAllText(medewerkerPath); // file can be found in the bin => just keep clicking until you find all extra files
             var MederwerkerList = JsonConvert.DeserializeObject<List<MedewerkerINFO>>(JsonData) ?? new List<MedewerkerINFO>();
 
-            Console.WriteLine("Wat is uw voornaam naam?");
+            Console.WriteLine("                                                Wat is uw voornaam naam?");
+            Console.CursorLeft = Console.WindowWidth / 2;
             string naamIN = Console.ReadLine();
             bool IsAlleenLetters = char.IsLetter(naamIN, 0);
             bool isSpace = char.IsWhiteSpace(naamIN, 0);
@@ -58,8 +64,9 @@ namespace Main
 
             while (!IsAlleenLetters || !isSpace)
             {
-                Console.WriteLine("Naam kan alleen uit letter bestaan probeer opnieuw.");
-                Console.WriteLine("Wat is uw volledige naam?");
+                Console.WriteLine("                                     Naam kan alleen uit letter bestaan probeer opnieuw.");
+                Console.WriteLine("                                                Wat is uw voornaam naam?");
+                Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                 naamIN = Console.ReadLine();
                 for (int i = 0; i < naamIN.Length; i++)
                 {
@@ -75,7 +82,11 @@ namespace Main
                 }
             }
             string pronounsIN = "";
-            Console.WriteLine("Wat zijn uw voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] die/hen");
+            Console.WriteLine("                                               Wat zijn uw voornaamwoorden?");
+            Console.WriteLine("                                                       [1] hij/hem");
+            Console.WriteLine("                                                       [2] zij/haar");
+            Console.WriteLine("                                                       [3] die/hen");
+            Console.CursorLeft = (Console.WindowWidth / 2) - 4;
             ConsoleKeyInfo ckey = Console.ReadKey();
             if (ckey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
             {
@@ -92,8 +103,12 @@ namespace Main
 
             while (pronounsIN == "")
             {
-                Console.WriteLine("\nProbeer opnieuw");
-                Console.WriteLine("Wat zijn uw voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] die/hen");
+                Console.WriteLine("\n                                                          Probeer opnieuw.");
+                Console.WriteLine("                                                  Wat zijn uw voornaamwoorden?");
+                Console.WriteLine("                                                       [1] hij/hem");
+                Console.WriteLine("                                                       [2] zij/haar");
+                Console.WriteLine("                                                       [3] die/hen");
+                Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                 ckey = Console.ReadKey();
                 if (ckey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
                 {
@@ -108,15 +123,15 @@ namespace Main
                     pronounsIN = "die/hen";
                 }
             }
-            Console.WriteLine("Wat is uw telefoonnummber?\n+31");
+            Console.WriteLine("\n                                                Wat is uw telefoonnummber?\n                                                     +31");
+            Console.CursorLeft = (Console.WindowWidth / 2) - 4;
             string telefoonnummerIN = Console.ReadLine();
 
-            bool isAlleenNummers = char.IsNumber(telefoonnummerIN, 0);
+            bool isAlleenNummers = char.IsDigit(telefoonnummerIN, 0);
             for (int i = 0; i < telefoonnummerIN.Length; i++)
             {
-                isAlleenNummers = char.IsNumber(telefoonnummerIN, i);
-                Console.WriteLine(isAlleenNummers);
-                Console.ReadKey();
+                isAlleenNummers = char.IsDigit(telefoonnummerIN, i);
+                Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                 if (isAlleenNummers == false)
                 {
                     break;
@@ -126,15 +141,15 @@ namespace Main
             bool isLengte10 = telefoonnummerIN.Length != 10 ? true : false;
             while (isLengte10 || !isAlleenNummers)
             {
-                Console.WriteLine("Onjuist telefoonnummer. Probeer telefoonnummer opnieuw intevoeren");
-                Console.WriteLine("Wat is uw telefoonnummber?");
+                Console.WriteLine("\n                                        Onjuist telefoonnummer. Probeer telefoonnummer opnieuw intevoeren");
+                Console.WriteLine("\n                                                     Wat is uw telefoonnummber?");
+                Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                 telefoonnummerIN = Console.ReadLine();
 
                 for (int i = 0; i < telefoonnummerIN.Length; i++)
                 {
-                    isAlleenNummers = char.IsNumber(telefoonnummerIN, i);
-                    Console.WriteLine(isAlleenNummers);
-                    Console.ReadKey();
+                    isAlleenNummers = char.IsDigit(telefoonnummerIN, i);
+                    Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                     if (isAlleenNummers == false)
                     {
                         break;
@@ -142,24 +157,29 @@ namespace Main
                 }
                 isLengte10 = telefoonnummerIN.Length != 10 ? true : false;
             }
-            Console.WriteLine("Wat is uw e-mail?");
+            Console.WriteLine("\n                                                     Wat is uw e-mail?");
+            Console.CursorLeft = (Console.WindowWidth / 2) - 4;
             string eMailIN = Console.ReadLine();
             Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.CultureInvariant | RegexOptions.Singleline);
             bool isValedMail = regex.IsMatch(eMailIN);
             while (!isValedMail)
             {
-                Console.WriteLine("Incoreccte email. Probeer opnieuw.");
-                Console.WriteLine("Wat is uw e-mail?");
+                Console.WriteLine("\n                                            Incoreccte email. Probeer opnieuw.");
+                Console.WriteLine("\n                                                 Wat is uw e-mail?");
+                Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                 eMailIN = Console.ReadLine();
                 regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.CultureInvariant | RegexOptions.Singleline);
                 isValedMail = regex.IsMatch(eMailIN);
             }
 
 
-            Console.WriteLine("Wat is uw functie?\n\t[1]Admin\n\t[2]Mederwerker");
+            Console.WriteLine("                                                     Wat is uw functie?");
+            Console.WriteLine("                                                         [1]Admin");
+            Console.WriteLine("                                                         [2]Mederwerker");
+            Console.CursorLeft = (Console.WindowWidth / 2) - 4;
             ConsoleKeyInfo ABCKey = Console.ReadKey();
             string functieIN = "";
-            ABCKey = Console.ReadKey();
+            Console.CursorLeft = (Console.WindowWidth / 2) - 4;
             if (ABCKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
             {
                 functieIN = "Admin";
@@ -172,8 +192,11 @@ namespace Main
             {
                 while (functieIN == "")
                 {
-                    Console.WriteLine("\nProbeer opnieuw");
-                    Console.WriteLine("Wat is uw functie?\n\t[1]Admin\n\t[2]Mederwerker");
+                    Console.WriteLine("\n                                                     Probeer opnieuw");
+                    Console.WriteLine("                                                     Wat is uw functie?");
+                    Console.WriteLine("                                                         [1]Admin");
+                    Console.WriteLine("                                                         [2]Mederwerker");
+                    Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                     ABCKey = Console.ReadKey();
                     if (ABCKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
                     {
@@ -187,9 +210,11 @@ namespace Main
             }
 
 
-            Console.WriteLine("Voer uw gebruikersnaam in:");
+            Console.WriteLine("\n                                                      Voer uw gebruikersnaam in:");
+            Console.CursorLeft = (Console.WindowWidth / 2) - 4;
             string gebruikersnaamIN = Console.ReadLine();
-            Console.WriteLine("Voer uw wachtwoord in:");
+            Console.WriteLine("                                                        Voer uw wachtwoord in:");
+            Console.CursorLeft = (Console.WindowWidth / 2) - 4;
             string wachtwoordIN = Console.ReadLine();
 
             MederwerkerList.Add(new MedewerkerINFO()
@@ -206,13 +231,14 @@ namespace Main
             JsonData = JsonConvert.SerializeObject(MederwerkerList);
             System.IO.File.WriteAllText(medewerkerPath, JsonData);
 
-            Console.WriteLine($"{functieIN} is met succes toegevoegd aan database.\n[1] doorgaan");
+            Console.WriteLine($"                                             {functieIN} is met succes toegevoegd aan database.");
+            Console.WriteLine("                                                         [1] doorgaan");
+            Console.CursorLeft = (Console.WindowWidth / 2) - 4;
             ConsoleKeyInfo doorKey = Console.ReadKey();
             if (doorKey.Key == ConsoleKey.D1)
             {
                 Admin.adminMain();
             }
-            Console.WriteLine("╘══════════════════════╛");
         }
         public static void verwijderMedewerker()
         {
@@ -222,7 +248,18 @@ namespace Main
             var JsonData = File.ReadAllText(MedewerkerPath);
             var MedewerkersList = JsonConvert.DeserializeObject<List<MedewerkerINFO>>(JsonData) ?? new List<MedewerkerINFO>();
 
-            Console.WriteLine("Wat is naam van de medewerker?");
+            Console.WriteLine("                                                    ┌─────────────┐            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $$$$$ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    └─────────────┘            ");
+            Console.WriteLine(" ");
+            Console.WriteLine("                                                     |Verwijderen|          ");
+            Console.WriteLine("                                                                         ");
+            Console.WriteLine("                                            Wat is naam van de medewerker?      ");
+            Console.CursorLeft = (Console.WindowWidth / 2) - 4;
             string zoekNaam = Console.ReadLine();
 
             int len = MedewerkersList.Count;
@@ -237,7 +274,10 @@ namespace Main
             }
             if (medewerkerNaam == "")
             {
-                Console.WriteLine("Medewerker met die naam bestaat niet. \n[1] Probeer opnieuw.\n[0] Terug");
+                Console.WriteLine("                                        Medewerker met die naam bestaat niet.");
+                Console.WriteLine("                                                     [1] Probeer opnieuw.");
+                Console.WriteLine("                                                     [0] Terug");
+                Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
                 {
@@ -249,14 +289,16 @@ namespace Main
                 }
             }
 
-            Console.WriteLine("Weet je zeker dat je: " + medewerkerNaam + " wil verwijderen?");
-            Console.WriteLine("[1] Ja\n[2] Nee");
+            Console.WriteLine("\n                                      Weet je zeker dat je: " + medewerkerNaam + " wil verwijderen?");
+            Console.WriteLine("                                                       [1] Ja\n                                                       [2] Nee");
+            Console.CursorLeft = (Console.WindowWidth / 2) - 4;
             ConsoleKeyInfo readkey = Console.ReadKey();
             while (readkey.Key != ConsoleKey.D1 && readkey.Key != ConsoleKey.D2)
             {
 
-                Console.WriteLine("Weet je zeker dat je: " + medewerkerNaam + " wil verwijderen?");
-                Console.WriteLine("\t[1] Ja\n\t[2] Nee");
+                Console.WriteLine("\n                                      Weet je zeker dat je: " + medewerkerNaam + " wil verwijderen?");
+                Console.WriteLine("                                                       [1] Ja\n                                                       [2] Nee");
+                Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                 readkey = Console.ReadKey();
             }
             if (readkey.Key == ConsoleKey.D1)
@@ -266,7 +308,7 @@ namespace Main
                     if (MedewerkersList[i].naam == zoekNaam)
                     {
                         MedewerkersList.RemoveAt(i);
-                        Console.WriteLine($"Medewerker met naam: {zoekNaam} is verwijderd");
+                        Console.WriteLine($"\n                                       Medewerker met naam: {zoekNaam} is verwijderd");
                         break;
                     }
                     i++;
@@ -281,9 +323,9 @@ namespace Main
             JsonData = JsonConvert.SerializeObject(MedewerkersList);
             System.IO.File.WriteAllText(MedewerkerPath, JsonData);
 
-            Console.WriteLine("Succesvol verwijderd!");
-            Console.WriteLine("[1] Doorgaan");
-            Console.WriteLine("╘══════════════════════════════╛");
+            Console.WriteLine("n                                                 Succesvol verwijderd!");
+            Console.WriteLine("                                                       [1] Doorgaan");
+            Console.CursorLeft = (Console.WindowWidth / 2) - 4;
             ConsoleKeyInfo keus = Console.ReadKey();
             if (keus.Key == ConsoleKey.D1)
             {
@@ -298,7 +340,18 @@ namespace Main
             var JsonData = File.ReadAllText(MedewerkerPath);
             var MedewerkersList = JsonConvert.DeserializeObject<List<MedewerkerINFO>>(JsonData) ?? new List<MedewerkerINFO>();
 
-            Console.WriteLine("Wat is naam van de medewerker?");
+            Console.WriteLine("                                                    ┌─────────────┐            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $$$$$ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    └─────────────┘            ");
+            Console.WriteLine(" ");
+            Console.WriteLine("                                                      |Wijzigen|          ");
+            Console.WriteLine("                                                                         ");
+            Console.WriteLine("                                            Wat is naam van de medewerker?");
+            Console.CursorLeft = (Console.WindowWidth / 2) - 4;
             string zoekNaam = Console.ReadLine();
 
             int len = MedewerkersList.Count;
@@ -313,7 +366,8 @@ namespace Main
             }
             if (medewerkerNaam == "")
             {
-                Console.WriteLine("Medewerker met die naam bestaat niet. \n[1] Probeer opnieuw.");
+                Console.WriteLine("                                            Medewerker met die naam bestaat niet. \n                                                 [1] Probeer opnieuw.");
+                Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
                 {
@@ -324,11 +378,13 @@ namespace Main
                     wijzigMedewerkers();
                 }
             }
-            Console.WriteLine("Wat wil je wijzigen? \n\t[1] Naam\n\t[2] voornaamwoorden\n\t[3] telefoonnummer\n\t[4] eMail\n\t[5] functie\n\t[6] gebruikersnaam\n\t[7] wachtwoord\n");
+            Console.WriteLine("                                                 Wat wil je wijzigen? \n                                                 [1] Naam\n                                                 [2] voornaamwoorden\n                                                 [3] telefoonnummer\n                                                 [4] eMail\n                                                 [5] functie\n                                                 [6] gebruikersnaam\n                                                 [7] wachtwoord\n");
+            Console.CursorLeft = (Console.WindowWidth / 2) - 4;
             ConsoleKeyInfo readkey = Console.ReadKey();
             if (readkey.Key == ConsoleKey.D1)
             {
-                Console.WriteLine("\nWat wordt medewerkers nieuwe naam?");
+                Console.WriteLine("\n                                         Wat wordt medewerkers nieuwe naam?");
+                Console.CursorLeft = (Console.WindowWidth / 2) - 4; 
                 string new_naam = Console.ReadLine();
 
                 bool IsAlleenLetters = char.IsLetter(new_naam, 0);
@@ -348,8 +404,9 @@ namespace Main
 
                 while (!IsAlleenLetters || !isSpace)
                 {
-                    Console.WriteLine("Naam kan alleen uit letter bestaan probeer opnieuw.");
-                    Console.WriteLine("Wat is uw volledige naam?");
+                    Console.WriteLine("                                Naam kan alleen uit letter bestaan probeer opnieuw.");
+                    Console.WriteLine("                                            Wat is uw volledige naam?");
+                    Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                     new_naam = Console.ReadLine();
                     for (int ii = 0; ii < new_naam.Length; ii++)
                     {
@@ -370,7 +427,7 @@ namespace Main
                     if (MedewerkersList[i].naam == zoekNaam)
                     {
                         MedewerkersList[i].naam = new_naam;
-                        Console.WriteLine($"Medewerkers naam is gewijzigd naar {new_naam}");
+                        Console.WriteLine($"                                   Medewerkers naam is gewijzigd naar {new_naam}");
                         break;
                     }
                     i++;
@@ -378,7 +435,8 @@ namespace Main
             }
             else if (readkey.Key == ConsoleKey.D2)
             {
-                Console.WriteLine("Wat zijn uw voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] die/hen");
+                Console.WriteLine("\n                                                 Wat zijn uw voornaamwoorden?\n                                                 [1] hij/hem\n                                                 [2] zij/haar\n                                                 [3] die/hen");
+                Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                 ConsoleKeyInfo AKey = Console.ReadKey();
                 string pronounsIN = "";
                 if (AKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
@@ -396,8 +454,9 @@ namespace Main
 
                 while (pronounsIN == "")
                 {
-                    Console.WriteLine("\nProbeer opnieuw");
-                    Console.WriteLine("Wat zijn uw voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] die/hen");
+                    Console.WriteLine("\n                                                 Probeer opnieuw");
+                    Console.WriteLine("                                                 Wat zijn uw voornaamwoorden?\n                                                 [1] hij/hem\n                                                 [2] zij/haar\n                                                 [3] die/hen");
+                    Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                     AKey = Console.ReadKey();
                     if (AKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
                     {
@@ -418,7 +477,7 @@ namespace Main
                     if (MedewerkersList[i].naam == zoekNaam)
                     {
                         MedewerkersList[i].pronouns = pronounsIN;
-                        Console.WriteLine($"Medewerkers naam is gewijzigd naar {pronounsIN}");
+                        Console.WriteLine($"\n                                   Medewerkers naam is gewijzigd naar {pronounsIN}");
                         break;
                     }
                     i++;
@@ -426,13 +485,14 @@ namespace Main
             }
             else if (readkey.Key == ConsoleKey.D3)
             {
-                Console.WriteLine("\nWat wordt medewerkers nieuwe telefoonnummer?");
+                Console.WriteLine("\n                                   Wat wordt medewerkers nieuwe telefoonnummer?");
+                Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                 string new_telefoonnummer = Console.ReadLine();
 
                 bool isAlleenNummers = char.IsNumber(new_telefoonnummer, 0);
                 for (int k = 0; k < new_telefoonnummer.Length; k++)
                 {
-                    
+
                     isAlleenNummers = char.IsNumber(new_telefoonnummer, k);
                     if (isAlleenNummers == false)
                     {
@@ -443,8 +503,9 @@ namespace Main
                 bool isLengte10 = new_telefoonnummer.Length != 10 ? true : false;
                 while (isLengte10 || !isAlleenNummers)
                 {
-                    Console.WriteLine("Onjuist telefoonnummer. Probeer telefoonnummer opnieuw intevoeren");
-                    Console.WriteLine("Wat is uw telefoonnummber?");
+                    Console.WriteLine("                       Onjuist telefoonnummer. Probeer telefoonnummer opnieuw intevoeren");
+                    Console.WriteLine("                                             Wat is uw telefoonnummber?");
+                    Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                     new_telefoonnummer = Console.ReadLine();
 
                     for (int k = 0; k < new_telefoonnummer.Length; k++)
@@ -463,7 +524,7 @@ namespace Main
                     if (MedewerkersList[i].naam == zoekNaam)
                     {
                         MedewerkersList[i].telefoonnummer = new_telefoonnummer;
-                        Console.WriteLine($"Medewerkers naam is gewijzigd naar {new_telefoonnummer}");
+                        Console.WriteLine($"                              Medewerkers telefoonnummer is gewijzigd naar {new_telefoonnummer}");
                         break;
                     }
                     i++;
@@ -471,15 +532,17 @@ namespace Main
             }
             else if (readkey.Key == ConsoleKey.D4)
             {
-                Console.WriteLine("\nWat wordt medewerkers nieuwe eMail?");
+                Console.WriteLine("\n                                        Wat wordt medewerkers nieuwe eMail?");
+                Console.CursorLeft = (Console.WindowWidth / 2) - 8;
                 string new_eMail = Console.ReadLine();
 
                 Regex regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.CultureInvariant | RegexOptions.Singleline);
                 bool isValedMail = regex.IsMatch(new_eMail);
                 while (!isValedMail)
                 {
-                    Console.WriteLine("Incoreccte email. Probeer opnieuw.");
-                    Console.WriteLine("Wat is uw e-mail?");
+                    Console.WriteLine("                                         Incoreccte email. Probeer opnieuw.");
+                    Console.WriteLine("                                                Wat is uw e-mail?");
+                    Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                     new_eMail = Console.ReadLine();
                     regex = new Regex(@"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$", RegexOptions.CultureInvariant | RegexOptions.Singleline);
                     isValedMail = regex.IsMatch(new_eMail);
@@ -490,7 +553,7 @@ namespace Main
                     if (MedewerkersList[i].naam == zoekNaam)
                     {
                         MedewerkersList[i].eMail = new_eMail;
-                        Console.WriteLine($"Medewerkers naam is gewijzigd naar {new_eMail}");
+                        Console.WriteLine($"                                   Medewerkers e-mail is gewijzigd naar {new_eMail}");
                         break;
                     }
                     i++;
@@ -498,7 +561,8 @@ namespace Main
             }
             else if (readkey.Key == ConsoleKey.D5)
             {
-                Console.WriteLine("Wat is uw functie?\n\t[1]Admin\n\t[2]Mederwerker");
+                Console.WriteLine("\n                                                 Wat is uw functie?\n                                                 [1]Admin\n                                                 [2]Mederwerker");
+                Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                 ConsoleKeyInfo BKey = Console.ReadKey();
                 string new_functie = "";
                 if (BKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
@@ -512,8 +576,9 @@ namespace Main
 
                 while (new_functie == "")
                 {
-                    Console.WriteLine("\nProbeer opnieuw");
-                    Console.WriteLine("Wat is uw functie?\n\t[1]Admin\n\t[2]Mederwerker");
+                    Console.WriteLine("\n                                                 Probeer opnieuw");
+                    Console.WriteLine("                                                 Wat is uw functie?\n                                                 [1]Admin\n                                                 [2]Mederwerker");
+                    Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                     BKey = Console.ReadKey();
                     if (BKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
                     {
@@ -530,7 +595,7 @@ namespace Main
                     if (MedewerkersList[i].naam == zoekNaam)
                     {
                         MedewerkersList[i].functie = new_functie;
-                        Console.WriteLine($"Medewerkers naam is gewijzigd naar {new_functie}");
+                        Console.WriteLine($"\n                                   Medewerkers functie is gewijzigd naar {new_functie}");
                         break;
                     }
                     i++;
@@ -538,7 +603,8 @@ namespace Main
             }
             else if (readkey.Key == ConsoleKey.D6)
             {
-                Console.WriteLine("\nWat wordt medewerkers nieuwe gebruikersnaam?");
+                Console.WriteLine("\n                                    Wat wordt medewerkers nieuwe gebruikersnaam?");
+                Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                 string new_gebruikersnaam = Console.ReadLine();
 
                 while (i < len)
@@ -546,7 +612,7 @@ namespace Main
                     if (MedewerkersList[i].naam == zoekNaam)
                     {
                         MedewerkersList[i].gebruikersnaam = new_gebruikersnaam;
-                        Console.WriteLine($"Medewerkers naam is gewijzigd naar {new_gebruikersnaam}");
+                        Console.WriteLine($"                                   Medewerkers gebruikersnaam is gewijzigd naar {new_gebruikersnaam}");
                         break;
                     }
                     i++;
@@ -554,7 +620,8 @@ namespace Main
             }
             else if (readkey.Key == ConsoleKey.D7)
             {
-                Console.WriteLine("\nWat wordt medewerkers nieuwe wachtwoord?");
+                Console.WriteLine("\n                                       Wat wordt medewerkers nieuwe wachtwoord?");
+                Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                 string new_wachtword = Console.ReadLine();
 
                 while (i < len)
@@ -562,7 +629,7 @@ namespace Main
                     if (MedewerkersList[i].naam == zoekNaam)
                     {
                         MedewerkersList[i].wachtwoord = new_wachtword;
-                        Console.WriteLine($"Medewerkers naam is gewijzigd naar {new_wachtword}");
+                        Console.WriteLine($"                                   Medewerkers wachtwoord is gewijzigd naar {new_wachtword}");
                         break;
                     }
                     i++;
@@ -570,9 +637,10 @@ namespace Main
             }
             else
             {
-                Console.WriteLine("Verkeerde input. \nProbeer opnieuw.");
-                Console.WriteLine("[0] Opnieuw");
+                Console.WriteLine("\n                                                 Verkeerde input. \n                                                 Probeer opnieuw.");
+                Console.WriteLine("                                                 [0] Opnieuw");
 
+                Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                 ConsoleKeyInfo opnieuw = Console.ReadKey();
                 if (opnieuw.Key == ConsoleKey.D0)
                 {
@@ -582,8 +650,8 @@ namespace Main
             JsonData = JsonConvert.SerializeObject(MedewerkersList);
             System.IO.File.WriteAllText(MedewerkerPath, JsonData);
 
-            Console.WriteLine("[1] Doorgaan");
-            Console.WriteLine("╘══════════════════════════════╛");
+            Console.WriteLine("                                                 [1] Doorgaan");
+            Console.CursorLeft = (Console.WindowWidth / 2) - 4;
             ConsoleKeyInfo keus = Console.ReadKey();
             if (keus.Key == ConsoleKey.D1)
             {
@@ -593,21 +661,28 @@ namespace Main
         public static void Inloggen()
         {
             Console.Clear();
-            Console.WriteLine("╒══════════════════════════╕");
-            Console.WriteLine("HC   ");
+            Console.WriteLine("                                                    ┌─────────────┐            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $$$$$ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    └─────────────┘            ");
             Console.WriteLine(" ");
-            Console.WriteLine("     |Inloggen|");
+            Console.WriteLine("                                                      |Inloggen|             ");
             Console.WriteLine(" ");
-            Console.WriteLine("     [0] Terug ");
+            Console.WriteLine("                                                      [0] Terug       ");
             Console.WriteLine(" ");
-            Console.WriteLine("Gebruikersnaam: ");
+            Console.WriteLine("                                                   Gebruikersnaam: ");
+            Console.CursorLeft = (Console.WindowWidth / 2) - 4;
             string gebruikersnaamCheck = Console.ReadLine();
 
             if (gebruikersnaamCheck == "0")
             {
                 Program.Main();
             }
-            Console.WriteLine("Wachtwoord: ");
+            Console.WriteLine("                                                    Wachtwoord: ");
+            Console.CursorLeft = (Console.WindowWidth / 2) - 5;
             string wachtwoordCheck = Console.ReadLine();
 
             string medewerkerPath = Path.GetFullPath(@"Medewerker.json"); // find path to file
@@ -619,9 +694,8 @@ namespace Main
                 if (gebruikersnaamCheck == accountList.gebruikersnaam && wachtwoordCheck == accountList.wachtwoord)
                 {
                     Console.WriteLine(" ");
-                    Console.WriteLine("    Ingelogd");
-                    Console.WriteLine("[1] Doorgaan");
-                    Console.WriteLine("╘══════════════════════════╛");
+                    Console.WriteLine("                                                      Ingelogd");
+                    Console.WriteLine("                                                    [1] Doorgaan");
                     count++;
                     ConsoleKeyInfo terug = Console.ReadKey();
                     if (ConsoleKey.D1 == terug.Key && accountList.functie == "personeel")
@@ -636,10 +710,11 @@ namespace Main
             }
             if (count == 0)
             {
-                Console.WriteLine("Gebruikersnaam en of wachtwoord is verkeerd");
-                Console.WriteLine("[0] Terug");
-                Console.WriteLine("[1] Probeer opnieuw");
-                Console.WriteLine("╘══════════════════════════╛");
+                Console.WriteLine("                                ");
+                Console.WriteLine("                                       Gebruikersnaam en of wachtwoord is verkeerd");
+                Console.WriteLine("                                                   [1] Probeer opnieuw");
+                Console.WriteLine("                                ");
+                Console.WriteLine("                                                        [0] Terug            ");
                 ConsoleKeyInfo begin = Console.ReadKey();
                 if (ConsoleKey.D0 == begin.Key)
                 {
@@ -657,11 +732,18 @@ namespace Main
             {
                 Console.Clear();
 
-                Console.WriteLine("╒════════════════════════════════════════════════════════╕");
-                Console.WriteLine("HC   ");
-                Console.WriteLine("U bent succesvol uitgelogd.");
-                Console.WriteLine("\nKlik op 'Enter' om verder te gaan naar het hoofdmenu.");
-                Console.WriteLine("╘════════════════════════════════════════════════════════╛");
+                Console.WriteLine("                                               ┌─────────────┐            ");
+                Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+                Console.WriteLine("                                               │ $   $ $     │            ");
+                Console.WriteLine("                                               │ $$$$$ $     │            ");
+                Console.WriteLine("                                               │ $   $ $     │            ");
+                Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+                Console.WriteLine("                                               └─────────────┘            ");
+                Console.WriteLine(" ");
+                Console.WriteLine("                                                 |Uitloggen|             ");
+                Console.WriteLine(" ");
+                Console.WriteLine("                                       U bent succesvol uitgelogd.");
+                Console.WriteLine("\n                          Klik op 'Enter' om verder te gaan naar het hoofdmenu.");
                 ConsoleKeyInfo done = Console.ReadKey();
                 if (done.Key == ConsoleKey.Enter)
                 {
