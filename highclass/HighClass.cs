@@ -46,7 +46,6 @@ namespace Main
                 Console.WriteLine("                            │  $    $  $  $   $  $   $ $     $     $    $     $     $  │");
                 Console.WriteLine("                            │  $    $  $  $$$$$  $   $ $$$$$ $$$$$ $    $  $$$$  $$$$  │");
                 Console.WriteLine("                            └──────────────────────────────────────────────────────────┘");
-                Console.WriteLine("                            ╒══════════════════════════════════════════════════════════╕");
                 Console.WriteLine("                                                            ");
                 Console.WriteLine("                                                Welkom bij HighClass     ");
                 Console.WriteLine("                                                                         ");
@@ -64,16 +63,20 @@ namespace Main
                     if (Globals.ingelogd) // Checkt of een medewerker is ingelogd, om een functie uit te voeren.
                     {
                         Console.Clear();
-                        Console.WriteLine("╒═════════════════════════════════════════╕"); // Zorgt voor de omlijning
+                        Console.WriteLine("                                               ┌─────────────┐            ");
+                        Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+                        Console.WriteLine("                                               │ $   $ $     │            ");
+                        Console.WriteLine("                                               │ $$$$$ $     │            ");
+                        Console.WriteLine("                                               │ $   $ $     │            ");
+                        Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+                        Console.WriteLine("                                               └─────────────┘            ");
                         Console.WriteLine("                                         ");
-                        Console.WriteLine("              |Reserveren|               ");
+                        Console.WriteLine("                                                |Reserveren|               ");
                         Console.WriteLine("                                         ");
-                        Console.WriteLine(" Wilt u de beschikbare plekken wijzigen? ");
+                        Console.WriteLine("                                   Wilt u de beschikbare plekken wijzigen? ");
                         Console.WriteLine("                                         ");
-                        Console.WriteLine("                [1] Ja                   ");
-                        Console.WriteLine("                [2] Nee                  ");
-                        Console.WriteLine("                                         ");
-                        Console.WriteLine("╘═════════════════════════════════════════╛");
+                        Console.WriteLine("                                                  [1] Ja                   ");
+                        Console.WriteLine("                                                  [2] Nee                  ");
                         ConsoleKeyInfo cvjkey = Console.ReadKey();
                         if (cvjkey.Key == ConsoleKey.D1)
                         {
@@ -109,18 +112,22 @@ namespace Main
                         if (cvkey.Key == ConsoleKey.D1)
                         {
                             Console.Clear();
-                            Console.WriteLine("╒════════════════════════════════════╕");
-                            Console.WriteLine("HC                                  ");
-                            Console.WriteLine("            |Reserveren|            ");
+                            Console.WriteLine("                                               ┌─────────────┐            ");
+                            Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+                            Console.WriteLine("                                               │ $   $ $     │            ");
+                            Console.WriteLine("                                               │ $$$$$ $     │            ");
+                            Console.WriteLine("                                               │ $   $ $     │            ");
+                            Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+                            Console.WriteLine("                                               └─────────────┘            ");
+                            Console.WriteLine(" ");
+                            Console.WriteLine("                                                |Reserveren|            ");
                             Console.WriteLine("                                    ");
-                            Console.WriteLine(" Wilt u deze wijzigen of annuleren? ");
+                            Console.WriteLine("                                     Wilt u deze wijzigen of annuleren? ");
                             Console.WriteLine("                                    ");
-                            Console.WriteLine("            [1] Wijzigen            ");
-                            Console.WriteLine("            [2] Annuleren           ");
+                            Console.WriteLine("                                                 [1] Wijzigen            ");
+                            Console.WriteLine("                                                 [2] Annuleren           ");
                             Console.WriteLine("                                    ");
-                            Console.WriteLine("            [0] Terug               ");
-                            Console.WriteLine("                                    ");
-                            Console.WriteLine("╘════════════════════════════════════╛");
+                            Console.WriteLine("                                                 [0] Terug               ");
                             ConsoleKeyInfo cv2key = Console.ReadKey();
                             if (cv2key.Key == ConsoleKey.D1)
                             {
@@ -170,21 +177,25 @@ namespace Main
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("╒════════════════════════════════╕");
-                Console.WriteLine("HC                              ");
+                Console.WriteLine("                                               ┌─────────────┐            ");
+                Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+                Console.WriteLine("                                               │ $   $ $     │            ");
+                Console.WriteLine("                                               │ $$$$$ $     │            ");
+                Console.WriteLine("                                               │ $   $ $     │            ");
+                Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+                Console.WriteLine("                                               └─────────────┘            ");
                 Console.WriteLine("                                ");
-                Console.WriteLine("           |Contactgegevens|       ");
+                Console.WriteLine("                                              |Contactgegevens|       ");
                 Console.WriteLine("                                ");
                 Console.WriteLine("                                ");
-                Console.WriteLine("      Tel. : 010 794 4000            ");
-                Console.WriteLine("      E-mail: highclass@info.com     ");
-                Console.WriteLine("      Straatnaam: Wijnhaven 107      ");
-                Console.WriteLine("      Postcode: 3011 WN, Rotterdam   ");
-                Console.WriteLine("      Openingstijden:                ");
-                Console.WriteLine("               ma t/m zo - 11:00 tot 23:00");
+                Console.WriteLine("                                            Tel. : 010 794 4000            ");
+                Console.WriteLine("                                            E-mail: highclass@info.com     ");
+                Console.WriteLine("                                            Straatnaam: Wijnhaven 107      ");
+                Console.WriteLine("                                            Postcode: 3011 WN, Rotterdam   ");
+                Console.WriteLine("                                            Openingstijden:                ");
+                Console.WriteLine("                                                   ma t/m zo - 11:00 tot 23:00");
                 Console.WriteLine("                                ");
-                Console.WriteLine("                [0] Terug            ");
-                Console.WriteLine("╘════════════════════════════════╛");
+                Console.WriteLine("                                                 [0] Terug            ");
                 ConsoleKeyInfo done = Console.ReadKey();
                 if (done.Key == ConsoleKey.Enter)
                 {
