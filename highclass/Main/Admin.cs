@@ -101,7 +101,7 @@ namespace Main
         {
             Console.Clear();
             Console.WriteLine("Omzet");
-            Console.WriteLine(" [1] Omzet bekijken\n [0] Terug");
+            Console.WriteLine(" [1] Omzet bekijken\n [2] Omzet aanpassen \n[0] Terug");
             ConsoleKeyInfo keuze = Console.ReadKey();
             if (keuze.Key == ConsoleKey.D1)
             {
@@ -160,6 +160,76 @@ namespace Main
                     adminOmzet();
                 }
             }
+            else if (keuze.Key == ConsoleKey.D2)
+            {
+                Console.Clear();
+                string Omzetpath = Path.GetFullPath(@"Omzet.json");
+                bool fileExist = File.Exists(Omzetpath);
+                if (!fileExist)
+                {
+                    using (File.Create(Omzetpath)) ;
+                }
+                var JsonData = File.ReadAllText(Omzetpath);
+                var OmzetList = JsonConvert.DeserializeObject<List<OmzetDag>>(JsonData) ?? new List<OmzetDag>();
+                Console.WriteLine("Datum waarvan omzet aangepast moet worden: ");
+                string zoekDatum = Console.ReadLine();
+                string opslaanDatum = "";
+                foreach (OmzetDag omzetdag in OmzetList)
+                {
+                    if (omzetdag.Datum == zoekDatum)
+                    {
+                        opslaanDatum = omzetdag.Datum;
+                    }
+                }
+                if (opslaanDatum == "")
+                {
+                    Console.WriteLine("Er is geen omzet beschikbaar voor deze datum. \n[1] Probeer opnieuw.\n[0] Terug\n");
+                    Console.WriteLine("╘════════════════════════════════════════════════════════╛");
+                    ConsoleKeyInfo rkey = Console.ReadKey();
+                    if (rkey.Key == ConsoleKey.D1)
+                    {
+                        adminOmzet();
+                    }
+                    else if (rkey.Key == ConsoleKey.D0)
+                    {
+                        adminMain();
+                    }
+                }
+               
+                double omzet = 0.0;
+                foreach (OmzetDag omzetdag in OmzetList)
+                {
+                    if (omzetdag.Datum == zoekDatum)
+                    {
+                        omzet = omzetdag.Omzet;
+                    }
+                }
+                Console.WriteLine($"De huidige omzet = {omzet}");
+                Console.WriteLine("Vul het nieuwe omzet bedrag in: ");
+                double nieuwBedrag = Convert.ToDouble(Console.ReadLine());
+                foreach (OmzetDag omzetdag in OmzetList)
+                {
+                    if (omzetdag.Datum == zoekDatum)
+                    {
+                        omzetdag.Omzet = nieuwBedrag;
+                    }
+
+                }
+                JsonData = JsonConvert.SerializeObject(OmzetList);
+                System.IO.File.WriteAllText(Omzetpath, JsonData);
+                Console.WriteLine("Omzet is succesvol gewijzigd\n [1] Doorgaan");
+                ConsoleKeyInfo rrkey = Console.ReadKey();
+                if (rrkey.Key == ConsoleKey.D1)
+                {
+                    adminMain();
+                }
+                
+            }
+
+
+
+
+
             else
             {
                 adminMain();
