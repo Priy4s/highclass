@@ -15,20 +15,26 @@ namespace Main
     {
         public static void personeelMain(string gebruikerNaam)
         {
-            Console.Clear(); 
+            Console.Clear();
 
-            Console.WriteLine("╒══════════════════════════════╕");
+
+            Console.WriteLine("                                               ┌─────────────┐            ");
+            Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                               │ $   $ $     │            ");
+            Console.WriteLine("                                               │ $$$$$ $     │            ");
+            Console.WriteLine("                                               │ $   $ $     │            ");
+            Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                               └─────────────┘            \n");
+            Console.WriteLine($"                                              Welkom, {gebruikerNaam}  ");
             Console.WriteLine("                              ");
-            Console.WriteLine($"       Welkom, {gebruikerNaam}  ");
+            Console.WriteLine("                                                 |Hoofdmenu|          ");
+            Console.WriteLine("                                               [1] Reserveringen      ");
+            Console.WriteLine("                                               [2] Menu               ");
+            Console.WriteLine("                                               [3] Bestellingen       ");
+            Console.WriteLine("                                               [4] Eigen gegevens     ");
+            Console.WriteLine("                                               [5] Uitloggen          ");
             Console.WriteLine("                              ");
-            Console.WriteLine("         |Hoofdmenu|          ");
-            Console.WriteLine("       [1] Reserveringen      ");
-            Console.WriteLine("       [2] Menu               ");
-            Console.WriteLine("       [3] Bestellingen       ");
-            Console.WriteLine("       [4] Eigen gegevens     ");
-            Console.WriteLine("       [5] Uitloggen          ");
-            Console.WriteLine("                              ");
-            Console.WriteLine("╘══════════════════════════════╛");
+            Console.CursorLeft = Console.WindowWidth / 2;
             ConsoleKeyInfo ckey = Console.ReadKey();
             if (ckey.Key == ConsoleKey.D1)
             {
@@ -54,12 +60,28 @@ namespace Main
         public static void reserverenMain(string gebruikerNaam, string gebruiker = "personeel")
         {
             Console.Clear();
-            Console.WriteLine("Reserveren menu - personeel");
-            Console.WriteLine("         [1] Reserveringen bekijken            ");
-            Console.WriteLine("         [2] Reserveringen wijzigen            ");
-            Console.WriteLine("         [3] Reserveringen annuleren\n            ");
-            Console.WriteLine("         [0] Terug           ");
+            Console.WriteLine("                                               ┌─────────────┐            ");
+            Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                               │ $   $ $     │            ");
+            Console.WriteLine("                                               │ $$$$$ $     │            ");
+            Console.WriteLine("                                               │ $   $ $     │            ");
+            Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                               └─────────────┘            \n");
+            Console.WriteLine("                                                 |Reserveren|");
+            Console.WriteLine("                                               [1] Reserveringen bekijken            ");
+            Console.WriteLine("                                               [2] Reserveringen wijzigen            ");
+            Console.WriteLine("                                               [3] Reserveringen annuleren\n            ");
+            Console.WriteLine("                                               [0] Terug           ");
+            Console.CursorLeft = Console.WindowWidth / 2;
             ConsoleKeyInfo ckey = Console.ReadKey();
+            if (ckey.Key == ConsoleKey.D0 && gebruiker == "personeel")
+            {
+                personeelMain(gebruikerNaam);
+            }
+            if (ckey.Key == ConsoleKey.D0 && gebruiker == "admin")
+            {
+                Admin.adminMain();
+            }
             if (ckey.Key == ConsoleKey.D0)
             {
                 personeelMain(gebruikerNaam);
@@ -92,20 +114,29 @@ namespace Main
         public static void persoonlijkeInfo(string gebruikerNaam)
         {
             Console.Clear();
-            Console.WriteLine("Persoonlijke gegevens\n");
+            Console.Clear();
+            Console.WriteLine("                                               ┌─────────────┐            ");
+            Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                               │ $   $ $     │            ");
+            Console.WriteLine("                                               │ $$$$$ $     │            ");
+            Console.WriteLine("                                               │ $   $ $     │            ");
+            Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                               └─────────────┘            \n");
+            Console.WriteLine($"                                           |Persoonlijke gegevens| \n");
+
             string MedewerkerPath = Path.GetFullPath(@"Medewerker.json"); // find path to files
 
             var JsonData = File.ReadAllText(MedewerkerPath);
             var MedewerkersList = JsonConvert.DeserializeObject<List<MedewerkerINFO>>(JsonData) ?? new List<MedewerkerINFO>();
-            
-            Console.WriteLine("╒══════════════════════════════╕");
+
+
             foreach (MedewerkerINFO person in MedewerkersList)
             {
                 if (gebruikerNaam == person.naam)
-                Console.WriteLine($"Name: {person.naam}\nVoornaamwoorden: {person.pronouns}\nTelefoonnummer: {person.telefoonnummer}\nE-Mail: {person.eMail}\nFunctie: {person.functie}\nGebruikersnaam: {person.gebruikersnaam}\n\n");
+                    Console.WriteLine($"                                             Name: {person.naam}\n                                             Voornaamwoorden: {person.pronouns}\n                                             Telefoonnummer: {person.telefoonnummer}\n                                             E-Mail: {person.eMail}\n                                             Functie: {person.functie}\n                                             Gebruikersnaam: {person.gebruikersnaam}\n\n");
             }
-            Console.WriteLine("[1] Doorgaan");
-            Console.WriteLine("╘══════════════════════════════╛");
+            Console.WriteLine("                                             [1] Doorgaan");
+            Console.CursorLeft = Console.WindowWidth / 2;
             ConsoleKeyInfo doorgaan = Console.ReadKey();
             if (doorgaan.Key == ConsoleKey.D1)
             {
@@ -119,33 +150,37 @@ namespace Main
         public static void menuMain(string gebruikerNaam, string gebruiker)
         {
             Console.Clear();
-            Console.WriteLine($"       Menu menu - {gebruiker}");
-            Console.WriteLine("         [1] Bekijk menu           ");
-            Console.WriteLine("         [2] Aanpassen menu           ");
-            Console.WriteLine("         [0] Terug            ");
+            Console.WriteLine("                                               ┌─────────────┐            ");
+            Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                               │ $   $ $     │            ");
+            Console.WriteLine("                                               │ $$$$$ $     │            ");
+            Console.WriteLine("                                               │ $   $ $     │            ");
+            Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                               └─────────────┘            \n");
+            Console.WriteLine($"                                                |Menu menu| ");
+            Console.WriteLine("                                               [1] Bekijk menu           ");
+            Console.WriteLine("                                               [2] Aanpassen menu           ");
+            Console.WriteLine("                                               [0] Terug            ");
+            Console.CursorLeft = Console.WindowWidth / 2;
             ConsoleKeyInfo ckey = Console.ReadKey();
             if (ckey.Key == ConsoleKey.D0 && gebruiker == "personeel")
             {
-                Console.WriteLine("personeel");
-                Console.ReadKey();
 
                 personeelMain(gebruikerNaam);
             }
 
             else if (ckey.Key == ConsoleKey.D0 && gebruiker == "admin")
             {
-                Console.WriteLine("Admin");
-                Console.ReadKey();
 
                 Admin.adminMain();
             }
-            else if (ckey.Key == ConsoleKey.D1 && gebruiker == "personeel") 
+            else if (ckey.Key == ConsoleKey.D1 && gebruiker == "personeel")
             {
                 getMenu.gettingMenu(gebruikerNaam, "personeel");
             }
             else if (ckey.Key == ConsoleKey.D1 && gebruiker == "admin")
             {
-                getMenu.gettingMenu(gebruikerNaam,"admin");
+                getMenu.gettingMenu(gebruikerNaam, "admin");
             }
             else if (ckey.Key == ConsoleKey.D2 && gebruiker == "personeel")
             {
@@ -159,11 +194,19 @@ namespace Main
         public static void bestellingenMain(string gebruikerNaam)
         {
             Console.Clear();
-            Console.WriteLine("       Bestellingen Main Menu       ");
-            Console.WriteLine("   [1] Bestelling bedrag weergeven         ");
-            Console.WriteLine("   [2] Totaal bedrag aanpassen          ");
-            Console.WriteLine("   [3] Bestelling toevoegen \n         ");
-            Console.WriteLine("   [0] Terug            ");
+            Console.WriteLine("                                               ┌─────────────┐            ");
+            Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                               │ $   $ $     │            ");
+            Console.WriteLine("                                               │ $$$$$ $     │            ");
+            Console.WriteLine("                                               │ $   $ $     │            ");
+            Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                               └─────────────┘            \n");
+            Console.WriteLine($"                                                |Bestellingen| \n");
+            Console.WriteLine("                                               [1] Bestelling bedrag weergeven        ");
+            Console.WriteLine("                                               [2] Totaal Bestelling bedrag aanpassen        ");
+            Console.WriteLine("                                               [3] Bestelling toevoegen \n         ");
+            Console.WriteLine("                                               [0] Terug            ");
+            Console.CursorLeft = Console.WindowWidth / 2;
             ConsoleKeyInfo ckey = Console.ReadKey();
             if (ckey.Key == ConsoleKey.D0)
             {
@@ -195,9 +238,16 @@ namespace Main
             var JsonData = File.ReadAllText(ReserveringPath);
             var ReserveringenList = JsonConvert.DeserializeObject<List<Reserveringenjson>>(JsonData) ?? new List<Reserveringenjson>();
 
-            Console.WriteLine("╒════════════════════════════════════════════════════════╕");
-            Console.WriteLine(" HC\n");
-            Console.WriteLine("Volledige naam: ");
+            Console.WriteLine("                                               ┌─────────────┐            ");
+            Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                               │ $   $ $     │            ");
+            Console.WriteLine("                                               │ $$$$$ $     │            ");
+            Console.WriteLine("                                               │ $   $ $     │            ");
+            Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                               └─────────────┘            \n");
+            Console.WriteLine($"                                          |Bestelling aanpassen| \n");
+            Console.WriteLine("                                          Volledige naam: ");
+            Console.CursorLeft = Console.WindowWidth / 2;
             string zoekNaam = Console.ReadLine();
 
             int len = ReserveringenList.Count;
@@ -212,8 +262,9 @@ namespace Main
             }
             if (reserveringsNaam == "")
             {
-                Console.WriteLine($"\nEen reservering onder de naam '{zoekNaam}' bestaat niet. \n[1] Probeer opnieuw.\n[0] Terug\n");
-                Console.WriteLine("╘════════════════════════════════════════════════════════╛");
+                Console.WriteLine($"\n                                          Een reservering onder de naam '{zoekNaam}' bestaat niet. \n[1] Probeer opnieuw.\n[0] Terug\n");
+
+                Console.CursorLeft = Console.WindowWidth / 2;
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
                 {
@@ -230,10 +281,11 @@ namespace Main
                 if (reservering.Naam == zoekNaam)
                 {
                     reserveringsPrijs = reservering.Prijs;
-                    Console.WriteLine("\nHuidige bedrag onder deze naam is: " + reserveringsPrijs + " euro");
+                    Console.WriteLine("\n                                          Huidige bedrag onder deze naam is: " + reserveringsPrijs + " euro");
                 }
             }
-            Console.WriteLine("Voer het nieuwe bedrag in: ");
+            Console.WriteLine("                                          Voer het nieuwe bedrag in: ");
+            Console.CursorLeft = Console.WindowWidth / 2;
             double nieuwBedrag = Convert.ToDouble(Console.ReadLine());
 
             while (i < len)
@@ -241,9 +293,9 @@ namespace Main
                 if (ReserveringenList[i].Naam == zoekNaam)
                 {
                     ReserveringenList[i].Prijs = nieuwBedrag;
-                    Console.WriteLine($"\nHet bedrag is aangepast naar " + nieuwBedrag + " euro");
-                    Console.WriteLine("[1] Doorgaan\n");
-                    Console.WriteLine("╘══════════════════════════════════════════════════════════════════════════════════════════════╛");
+                    Console.WriteLine($"\n                                          Het bedrag is aangepast naar " + nieuwBedrag + " euro");
+                    Console.WriteLine("                                          [1] Doorgaan\n");
+                    Console.CursorLeft = Console.WindowWidth / 2;
                     ConsoleKeyInfo keus = Console.ReadKey();
                     if (keus.Key == ConsoleKey.D1)
                     {
@@ -280,9 +332,17 @@ namespace Main
             var ReserveringenList = JsonConvert.DeserializeObject<List<Reserveringenjson>>(JsonData) ?? new List<Reserveringenjson>();
 
 
-            Console.WriteLine("╒════════════════════════════════════════════════════════╕");
-            Console.WriteLine(" HC\n");
-            Console.WriteLine("Volledige naam: ");
+            Console.WriteLine("                                               ┌─────────────┐            ");
+            Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                               │ $   $ $     │            ");
+            Console.WriteLine("                                               │ $$$$$ $     │            ");
+            Console.WriteLine("                                               │ $   $ $     │            ");
+            Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                               └─────────────┘            \n");
+            Console.WriteLine($"                                          |Bestelling Toevoegen| \n");
+
+            Console.WriteLine("                                          Volledige naam: ");
+            Console.CursorLeft = Console.WindowWidth / 2;
             string zoekNaam = Console.ReadLine();
 
             string reserveringsNaam = "";
@@ -295,8 +355,8 @@ namespace Main
             }
             if (reserveringsNaam == "")
             {
-                Console.WriteLine($"\nEen reservering onder de naam '{zoekNaam}' bestaat niet. \n[1] Probeer opnieuw.\n[0] Terug\n");
-                Console.WriteLine("╘════════════════════════════════════════════════════════╛");
+                Console.WriteLine($"\n                                          Een reservering onder de naam '{zoekNaam}' bestaat niet. \n[1] Probeer opnieuw.\n[0] Terug\n");
+                Console.CursorLeft = Console.WindowWidth / 2;
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
                 {
@@ -312,9 +372,20 @@ namespace Main
             // string inputDatum = Console.ReadLine();
             DateTime thisDay = DateTime.Today;
             string inputDatum = thisDay.ToString("d"); //hieruit krijg  je bijv. "5/3/2022"
-            Console.WriteLine("Voer het bedrag in dat u wil toevoegen: ");
+            Console.WriteLine("                                          Voer het bedrag in dat u wil toevoegen: ");
+            Console.CursorLeft = Console.WindowWidth / 2;
             double toevoegBedrag = Convert.ToDouble(Console.ReadLine());
             double nieuwBedrag = toevoegBedrag + reserveringsPrijs;
+
+            foreach (Reserveringenjson reservering in ReserveringenList)
+            {
+                if (reservering.Naam == zoekNaam)
+                {
+                    reservering.Prijs = reservering.Prijs + nieuwBedrag;
+                }
+            }
+            JsonData = JsonConvert.SerializeObject(ReserveringenList);
+            System.IO.File.WriteAllText(ReserveringPath, JsonData);
 
 
             string datum = "";
@@ -336,22 +407,24 @@ namespace Main
                 JsonData1 = JsonConvert.SerializeObject(OmzetList);
                 System.IO.File.WriteAllText(omzetPath, JsonData1);
             }
-            
+
             var JsonData3 = File.ReadAllText(omzetPath);
             var OmzetList2 = JsonConvert.DeserializeObject<List<OmzetDag>>(JsonData3) ?? new List<OmzetDag>();
 
             int length = OmzetList2.Count;
             int y = 0;
 
+
+
             while (y < length)
             {
-                
+
                 if (OmzetList2[y].Datum == inputDatum)
                 {
                     OmzetList2[y].Omzet = OmzetList2[y].Omzet + nieuwBedrag;
-                    Console.WriteLine($"\n De omzet op " + inputDatum + " is verhoogd met " + nieuwBedrag + " euro");
-                    Console.WriteLine($"[1] Reservering van {zoekNaam} verwijderen\n[2] Doorgaan zonder te verwijderen");
-                    Console.WriteLine("╘══════════════════════════════════════════════════════════════════════════════════════════════╛");
+                    Console.WriteLine($"\n                                          De omzet op " + inputDatum + " is verhoogd met " + nieuwBedrag + " euro");
+                    Console.WriteLine($"                                          [1] Reservering van {zoekNaam} verwijderen\n                                          [2] Doorgaan zonder te verwijderen");
+                    Console.CursorLeft = Console.WindowWidth / 2;
                     ConsoleKeyInfo keus = Console.ReadKey();
                     if (keus.Key == ConsoleKey.D2)
                     {
@@ -369,14 +442,13 @@ namespace Main
                             {
                                 ReserveringenList.RemoveAt(i);
                                 Console.Clear();
-                                Console.WriteLine("╒════════════════════════════════════════════════════════════════════════════╕");
-                                Console.WriteLine(" HC\n");
-                                Console.WriteLine($"De reservering onder de naam, '{zoekNaam}', is verwijderd");
+
+                                Console.WriteLine($"                                          De reservering onder de naam, '{zoekNaam}', is verwijderd");
                                 JsonData = JsonConvert.SerializeObject(ReserveringenList);
                                 System.IO.File.WriteAllText(ReserveringPath, JsonData);
 
-                                Console.WriteLine("\n [1] Doorgaan");
-                                Console.WriteLine("╘════════════════════════════════════════════════════════════════════════════╛");
+                                Console.WriteLine("\n                                          [1] Doorgaan");
+                                Console.CursorLeft = Console.WindowWidth / 2;
                                 ConsoleKeyInfo keus2 = Console.ReadKey();
                                 if (keus2.Key == ConsoleKey.D1)
                                 {
@@ -407,9 +479,16 @@ namespace Main
             var JsonData = File.ReadAllText(ReserveringPath);
             var ReserveringenList = JsonConvert.DeserializeObject<List<Reserveringenjson>>(JsonData) ?? new List<Reserveringenjson>();
 
-            Console.WriteLine("╒════════════════════════════════════════════════════════╕");
-            Console.WriteLine(" HC\n");
-            Console.WriteLine("Volledige naam: ");
+            Console.WriteLine("                                               ┌─────────────┐            ");
+            Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                               │ $   $ $     │            ");
+            Console.WriteLine("                                               │ $$$$$ $     │            ");
+            Console.WriteLine("                                               │ $   $ $     │            ");
+            Console.WriteLine("                                               │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                               └─────────────┘            \n");
+            Console.WriteLine($"                                          |Bestelling weergeven| \n");
+            Console.WriteLine("                                          Volledige naam: ");
+            Console.CursorLeft = Console.WindowWidth / 2;
             string zoekNaam = Console.ReadLine();
 
             int len = ReserveringenList.Count;
@@ -424,8 +503,8 @@ namespace Main
             }
             if (reserveringsNaam == "")
             {
-                Console.WriteLine($"\nEen reservering onder de naam '{zoekNaam}' bestaat niet. \n[1] Probeer opnieuw.\n[0] Terug\n");
-                Console.WriteLine("╘════════════════════════════════════════════════════════╛");
+                Console.WriteLine($"\n                                          Een reservering onder de naam '{zoekNaam}' bestaat niet. \n[1] Probeer opnieuw.\n[0] Terug\n");
+                Console.CursorLeft = Console.WindowWidth / 2;
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
                 {
@@ -442,9 +521,9 @@ namespace Main
                 if (reservering.Naam == zoekNaam)
                 {
                     reserveringsPrijs = reservering.Prijs;
-                    Console.WriteLine("\nHuidige bedrag onder deze naam is: " + reserveringsPrijs + " euro");
-                    Console.WriteLine("\n[1] Opnieuw een bedrag bekijken\n[0] Terug naar menu");
-                    Console.WriteLine("╘══════════════════════════════════════════════════════════════════════════════════════════════╛");
+                    Console.WriteLine("\n                                          Huidige bedrag onder deze naam is: " + reserveringsPrijs + " euro");
+                    Console.WriteLine("\n                                          [1] Opnieuw een bedrag bekijken\n                                          [0] Terug naar menu");
+                    Console.CursorLeft = Console.WindowWidth / 2;
                     ConsoleKeyInfo keus = Console.ReadKey();
                     if (keus.Key == ConsoleKey.D1)
                     {

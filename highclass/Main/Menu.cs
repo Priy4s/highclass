@@ -30,15 +30,21 @@ namespace Main
                 while (menurunnen)
                 {
                     Console.Clear();
-                    Console.WriteLine("╒══════════════════════════╕");
-                    Console.WriteLine("\n Menukaart\n");
-                    Console.WriteLine("[1] Brunch");
-                    Console.WriteLine("[2] Lunch");
-                    Console.WriteLine("[3] Diner");
-                    Console.WriteLine("[4] Drinken");
-                    Console.WriteLine("[5] Allergieën informatie\n");
-                    Console.WriteLine("[0] Terug");
-                    Console.WriteLine("╘═══════════════════════════╛");
+                    Console.WriteLine("                                                    ┌─────────────┐            ");
+                    Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                    Console.WriteLine("                                                    │ $   $ $     │            ");
+                    Console.WriteLine("                                                    │ $$$$$ $     │            ");
+                    Console.WriteLine("                                                    │ $   $ $     │            ");
+                    Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                    Console.WriteLine("                                                    └─────────────┘            \n");
+                    Console.WriteLine("                                                      |Menukaart| \n");
+                    Console.WriteLine("                                                     [1] Brunch");
+                    Console.WriteLine("                                                     [2] Lunch");
+                    Console.WriteLine("                                                     [3] Diner");
+                    Console.WriteLine("                                                     [4] Drinken");
+                    Console.WriteLine("                                                     [5] Allergieën informatie\n");
+                    Console.WriteLine("                                                     [0] Terug");
+                    Console.CursorLeft = Console.WindowWidth / 2;
                     ConsoleKeyInfo mainMenu = Console.ReadKey();
 
                     if (mainMenu.Key == ConsoleKey.D1)
@@ -47,23 +53,29 @@ namespace Main
                         while (brunch)
                         {
                             Console.Clear();
-                            Console.WriteLine("╒═════════════════════════════════════════════════════╕");
-                            Console.WriteLine(" Brunch\n");
+                            Console.WriteLine("                                                    ┌─────────────┐            ");
+                            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                            Console.WriteLine("                                                    │ $   $ $     │            ");
+                            Console.WriteLine("                                                    │ $$$$$ $     │            ");
+                            Console.WriteLine("                                                    │ $   $ $     │            ");
+                            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                            Console.WriteLine("                                                    └─────────────┘           \n");
+                            Console.WriteLine("                                                       |Brunch|\n");
 
                             foreach (Menu menuItem in menuList)
                             {
                                 if (menuItem.Categorie == "Brunch")
 
-                                    Console.WriteLine($" {menuItem.Naam} : {menuItem.Prijs} {menuItem.Allergie} ");
+                                    Console.WriteLine($"                                          {menuItem.Naam} : {menuItem.Prijs} {menuItem.Allergie} ");
                                 if (gebruiker == "personeel" && menuItem.Categorie == "Brunch" || gebruiker == "admin" && menuItem.Categorie == "Brunch")
                                 {
-                                    Console.WriteLine($" {menuItem.ID}");
+                                    Console.WriteLine($"                                          {menuItem.ID}");
                                 }
 
                             }
 
-                            Console.WriteLine("\n [0] Terug");
-                            Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                            Console.WriteLine("\n                                                     [0] Terug");
+                            Console.CursorLeft = Console.WindowWidth / 2;
                             ConsoleKeyInfo terugBrunch = Console.ReadKey();
 
                             if (terugBrunch.Key == ConsoleKey.D0)
@@ -79,33 +91,37 @@ namespace Main
                         while (lunch)
                         {
                             Console.Clear();
-                            Console.WriteLine("╒════════════════════════════════════════════════════════╕");
-                            Console.WriteLine(" Lunch\n");
-
-
+                            Console.WriteLine("                                                    ┌─────────────┐            ");
+                            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                            Console.WriteLine("                                                    │ $   $ $     │            ");
+                            Console.WriteLine("                                                    │ $$$$$ $     │            ");
+                            Console.WriteLine("                                                    │ $   $ $     │            ");
+                            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                            Console.WriteLine("                                                    └─────────────┘           \n");
+                            Console.WriteLine("                                                        |Lunch|\n");
                             foreach (Menu menuItem in menuList)
                             {
                                 if (menuItem.Categorie == "Lunch")
-                                    Console.WriteLine($" {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                    Console.WriteLine($"                                          {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
                                 if (gebruiker == "personeel" && menuItem.Categorie == "Lunch" || gebruiker == "admin" && menuItem.Categorie == "Lunch")
                                 {
-                                    Console.WriteLine($" {menuItem.ID}");
+                                    Console.WriteLine($"                                          {menuItem.ID}");
                                 }
                             }
-                            Console.WriteLine("\n Soepen: ");
+                            Console.WriteLine("\n                                          Soepen: ");
 
                             foreach (Menu menuItem in menuList)
                             {
                                 if (menuItem.Categorie == "LunchSoep")
-                                    Console.WriteLine($" {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                    Console.WriteLine($"                                          {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
                                 if (gebruiker == "personeel" && menuItem.Categorie == "LunchSoep" || gebruiker == "admin" && menuItem.Categorie == "LunchSoep")
                                 {
-                                    Console.WriteLine($" {menuItem.ID}");
+                                    Console.WriteLine($"                                          {menuItem.ID}");
                                 }
                             }
-                            Console.WriteLine("\n [0] Terug");
-                            Console.WriteLine("╘════════════════════════════════════════════════════════╛");
+                            Console.WriteLine("\n                                                     [0] Terug");
 
+                            Console.CursorLeft = Console.WindowWidth / 2;
                             ConsoleKeyInfo lunchkey = Console.ReadKey();
 
                             if (lunchkey.Key == ConsoleKey.D0)
@@ -121,13 +137,20 @@ namespace Main
                         while (dinerMenu)
                         {
                             Console.Clear();
-                            Console.WriteLine("╒════════════════════╕");
-                            Console.WriteLine(" Diner");
-                            Console.WriteLine(" [1] Voorgerechten");
-                            Console.WriteLine(" [2] Hoofdgerechten");
-                            Console.WriteLine(" [3] Nagerechten\n");
-                            Console.WriteLine(" [0] Terug");
-                            Console.WriteLine("╘════════════════════╛");
+                            Console.WriteLine("                                                    ┌─────────────┐            ");
+                            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                            Console.WriteLine("                                                    │ $   $ $     │            ");
+                            Console.WriteLine("                                                    │ $$$$$ $     │            ");
+                            Console.WriteLine("                                                    │ $   $ $     │            ");
+                            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                            Console.WriteLine("                                                    └─────────────┘           \n");
+                            Console.WriteLine("                                                        |Diner|\n");
+
+                            Console.WriteLine("                                                     [1] Voorgerechten");
+                            Console.WriteLine("                                                     [2] Hoofdgerechten");
+                            Console.WriteLine("                                                     [3] Nagerechten");
+                            Console.WriteLine("\n                                                     [0] Terug");
+                            Console.CursorLeft = Console.WindowWidth / 2;
                             ConsoleKeyInfo dinerkey = Console.ReadKey();
 
                             if (dinerkey.Key == ConsoleKey.D0)
@@ -141,32 +164,39 @@ namespace Main
                                 while (voorgerecht)
                                 {
                                     Console.Clear();
-                                    Console.WriteLine("╒══════════════════════════════════════════╕");
-                                    Console.WriteLine(" Voorgerechten\n");
+                                    Console.WriteLine("                                                    ┌─────────────┐            ");
+                                    Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                                    Console.WriteLine("                                                    │ $   $ $     │            ");
+                                    Console.WriteLine("                                                    │ $$$$$ $     │            ");
+                                    Console.WriteLine("                                                    │ $   $ $     │            ");
+                                    Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                                    Console.WriteLine("                                                    └─────────────┘           \n");
+                                    Console.WriteLine("                                                    |Voorgerechten|\n");
+
 
                                     foreach (Menu menuItem in menuList)
                                     {
                                         if (menuItem.Categorie == "DinerVoorgerecht")
-                                            Console.WriteLine($" {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                            Console.WriteLine($"                                          {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
                                         if (gebruiker == "personeel" && menuItem.Categorie == "DinerVoorgerecht" || gebruiker == "admin" && menuItem.Categorie == "DinerVoorgerecht")
                                         {
-                                            Console.WriteLine($" {menuItem.ID}");
+                                            Console.WriteLine($"                                          {menuItem.ID}");
                                         }
                                     }
-                                    Console.WriteLine("\n Soepen: ");
+                                    Console.WriteLine("\n                                          Soepen: ");
 
                                     foreach (Menu menuItem in menuList)
                                     {
                                         if (menuItem.Categorie == "DinerSoep")
-                                            Console.WriteLine($" {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                            Console.WriteLine($"                                          {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
                                         if (gebruiker == "personeel" && menuItem.Categorie == "DinerSoep" || gebruiker == "admin" && menuItem.Categorie == "DinerSoep")
                                         {
-                                            Console.WriteLine($" {menuItem.ID}");
+                                            Console.WriteLine($"                                          {menuItem.ID}");
                                         }
                                     }
-                                    Console.WriteLine("\n [0] Terug");
-                                    Console.WriteLine("╘══════════════════════════════════════════╛");
+                                    Console.WriteLine("\n                                                     [0] Terug");
 
+                                    Console.CursorLeft = Console.WindowWidth / 2;
                                     ConsoleKeyInfo voorgerechtterug = Console.ReadKey();
 
                                     if (voorgerechtterug.Key == ConsoleKey.D0)
@@ -181,31 +211,38 @@ namespace Main
                                 while (hoofgerecht)
                                 {
                                     Console.Clear();
-                                    Console.WriteLine("╒══════════════════════════════════════════╕");
-                                    Console.WriteLine(" Hoofdgerechten\n");
+                                    Console.WriteLine("                                                    ┌─────────────┐            ");
+                                    Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                                    Console.WriteLine("                                                    │ $   $ $     │            ");
+                                    Console.WriteLine("                                                    │ $$$$$ $     │            ");
+                                    Console.WriteLine("                                                    │ $   $ $     │            ");
+                                    Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                                    Console.WriteLine("                                                    └─────────────┘           \n");
+                                    Console.WriteLine("                                                    |Hoofdgerechten|\n");
+
 
                                     foreach (Menu menuItem in menuList)
                                     {
                                         if (menuItem.Categorie == "DinerHoofdgerecht")
-                                            Console.WriteLine($" {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                            Console.WriteLine($"                                          {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
                                         if (gebruiker == "personeel" && menuItem.Categorie == "DinerHoofdgerecht" || gebruiker == "admin" && menuItem.Categorie == "DinerHoofdgerecht")
                                         {
-                                            Console.WriteLine($" {menuItem.ID}");
+                                            Console.WriteLine($"                                          {menuItem.ID}");
                                         }
                                     }
-                                    Console.WriteLine("\n Sushi: ");
+                                    Console.WriteLine("\n                                          Sushi: ");
 
                                     foreach (Menu menuItem in menuList)
                                     {
                                         if (menuItem.Categorie == "DinerSushi")
-                                            Console.WriteLine($" {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                            Console.WriteLine($"                                          {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
                                         if (gebruiker == "personeel" && menuItem.Categorie == "DinerSushi" || gebruiker == "admin" && menuItem.Categorie == "DinerSushi")
                                         {
-                                            Console.WriteLine($" {menuItem.ID}");
+                                            Console.WriteLine($"                                          {menuItem.ID}");
                                         }
                                     }
-                                    Console.WriteLine("\n [0] Terug");
-                                    Console.WriteLine("╘══════════════════════════════════════════╛");
+                                    Console.WriteLine("\n                                                     [0] Terug");
+                                    Console.CursorLeft = Console.WindowWidth / 2;
                                     ConsoleKeyInfo hoofdterug = Console.ReadKey();
 
 
@@ -222,20 +259,27 @@ namespace Main
                                 while (nagerecht)
                                 {
                                     Console.Clear();
-                                    Console.WriteLine("╒══════════════════════════════════════════╕");
-                                    Console.WriteLine(" Nagerechten\n");
+                                    Console.WriteLine("                                                    ┌─────────────┐            ");
+                                    Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                                    Console.WriteLine("                                                    │ $   $ $     │            ");
+                                    Console.WriteLine("                                                    │ $$$$$ $     │            ");
+                                    Console.WriteLine("                                                    │ $   $ $     │            ");
+                                    Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                                    Console.WriteLine("                                                    └─────────────┘           \n");
+                                    Console.WriteLine("                                                     |Nagerechten|\n");
+
 
                                     foreach (Menu menuItem in menuList)
                                     {
                                         if (menuItem.Categorie == "DinerNagerecht")
-                                            Console.WriteLine($" {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                            Console.WriteLine($"                                          {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
                                         if (gebruiker == "personeel" && menuItem.Categorie == "DinerNagerecht" || gebruiker == "admin" && menuItem.Categorie == "DinerNagerecht")
                                         {
-                                            Console.WriteLine($" {menuItem.ID}");
+                                            Console.WriteLine($"                                          {menuItem.ID}");
                                         }
                                     }
-                                    Console.WriteLine("\n [0] Terug");
-                                    Console.WriteLine("╘══════════════════════════════════════════╛");
+                                    Console.WriteLine("\n                                                     [0] Terug");
+                                    Console.CursorLeft = Console.WindowWidth / 2;
                                     ConsoleKeyInfo nagerechtterug = Console.ReadKey();
 
 
@@ -254,12 +298,20 @@ namespace Main
                         bool drinken = true;
                         while (drinken)
                         {
-                            Console.WriteLine("╒════════════════════════════════╕");
-                            Console.WriteLine("\n Drinken\n");
-                            Console.WriteLine(" [1] Non alcoholische dranken");
-                            Console.WriteLine(" [2] Alcoholische dranken (A)\n");
-                            Console.WriteLine(" [0] Terug");
-                            Console.WriteLine("╘════════════════════════════════╛");
+
+                            Console.WriteLine("                                                    ┌─────────────┐            ");
+                            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                            Console.WriteLine("                                                    │ $   $ $     │            ");
+                            Console.WriteLine("                                                    │ $$$$$ $     │            ");
+                            Console.WriteLine("                                                    │ $   $ $     │            ");
+                            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                            Console.WriteLine("                                                    └─────────────┘           \n");
+                            Console.WriteLine("                                                       |Drinken|\n");
+
+                            Console.WriteLine("                                                   [1] Non alcoholische dranken");
+                            Console.WriteLine("                                                   [2] Alcoholische dranken (A)\n");
+                            Console.WriteLine("                                                   [0] Terug");
+                            Console.CursorLeft = Console.WindowWidth / 2;
                             ConsoleKeyInfo drankkeus = Console.ReadKey();
                             //Warme dranken
                             if (drankkeus.Key == ConsoleKey.D0)
@@ -272,30 +324,37 @@ namespace Main
                                 while (noAlcohol)
                                 {
                                     Console.Clear();
-                                    Console.WriteLine("╒══════════════════════════════════════════╕");
-                                    Console.WriteLine(" Warme drankjes: ");
+                                    Console.WriteLine("                                                    ┌─────────────┐            ");
+                                    Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                                    Console.WriteLine("                                                    │ $   $ $     │            ");
+                                    Console.WriteLine("                                                    │ $$$$$ $     │            ");
+                                    Console.WriteLine("                                                    │ $   $ $     │            ");
+                                    Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                                    Console.WriteLine("                                                    └─────────────┘           \n");
+                                    Console.WriteLine("                                              |Non alcoholische dranken|\n");
+                                    Console.WriteLine("                                          Warme drankjes: ");
                                     foreach (Menu menuItem in menuList)
                                     {
                                         if (menuItem.Categorie == "DrinkenWarm")
-                                            Console.WriteLine($" {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                            Console.WriteLine($"                                          {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
                                         if (gebruiker == "personeel" && menuItem.Categorie == "DrinkenWarm" || gebruiker == "admin" && menuItem.Categorie == "DrinkenWarm")
                                         {
-                                            Console.WriteLine($" {menuItem.ID}");
+                                            Console.WriteLine($"                                          {menuItem.ID}");
                                         }
                                     }
-                                    Console.WriteLine("\n Koude drankjes: ");
+                                    Console.WriteLine("\n                                          Koude drankjes: ");
 
                                     foreach (Menu menuItem in menuList)
                                     {
                                         if (menuItem.Categorie == "DrinkenKoud")
-                                            Console.WriteLine($" {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                            Console.WriteLine($"                                          {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
                                         if (gebruiker == "personeel" && menuItem.Categorie == "DrinkenKoud" || gebruiker == "admin" && menuItem.Categorie == "DrinkenKoud")
                                         {
-                                            Console.WriteLine($" {menuItem.ID}");
+                                            Console.WriteLine($"                                          {menuItem.ID}");
                                         }
                                     }
-                                    Console.WriteLine("\n [0] Terug");
-                                    Console.WriteLine("╘══════════════════════════════════════════╛");
+                                    Console.WriteLine("\n                                                   [0] Terug");
+                                    Console.CursorLeft = Console.WindowWidth / 2;
                                     ConsoleKeyInfo noalcoholterug = Console.ReadKey();
 
                                     if (noalcoholterug.Key == ConsoleKey.D0)
@@ -313,41 +372,48 @@ namespace Main
                                 while (alcohol)
                                 {
                                     Console.Clear();
-                                    Console.WriteLine("╒══════════════════════════════════════════╕");
-                                    Console.WriteLine(" Alcoholische drankjes");
-                                    Console.WriteLine(" Bier:\n");
+                                    Console.WriteLine("                                                    ┌─────────────┐            ");
+                                    Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                                    Console.WriteLine("                                                    │ $   $ $     │            ");
+                                    Console.WriteLine("                                                    │ $$$$$ $     │            ");
+                                    Console.WriteLine("                                                    │ $   $ $     │            ");
+                                    Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                                    Console.WriteLine("                                                    └─────────────┘           \n");
+                                    Console.WriteLine("                                                |Alcoholische dranken|\n");
+
+                                    Console.WriteLine("                                          Bier:\n");
                                     foreach (Menu menuItem in menuList)
                                     {
                                         if (menuItem.Categorie == "DrinkenBier")
-                                            Console.WriteLine($" {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                            Console.WriteLine($"                                          {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
                                         if (gebruiker == "personeel" && menuItem.Categorie == "DrinkenBier" || gebruiker == "admin" && menuItem.Categorie == "DrinkenBier")
                                         {
-                                            Console.WriteLine($" {menuItem.ID}");
+                                            Console.WriteLine($"                                          {menuItem.ID}");
                                         }
                                     }
-                                    Console.WriteLine(" Wijn:\n");
+                                    Console.WriteLine("                                          Wijn:\n");
                                     foreach (Menu menuItem in menuList)
                                     {
                                         if (menuItem.Categorie == "DrinkenWijn")
-                                            Console.WriteLine($" {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                            Console.WriteLine($"                                          {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
                                         if (gebruiker == "personeel" && menuItem.Categorie == "DrinkenWijn" || gebruiker == "admin" && menuItem.Categorie == "DrinkenWijn")
                                         {
-                                            Console.WriteLine($" {menuItem.ID}");
+                                            Console.WriteLine($"                                          {menuItem.ID}");
                                         }
                                     }
-                                    Console.WriteLine(" Cocktail:\n");
+                                    Console.WriteLine("                                          Cocktail:\n");
                                     foreach (Menu menuItem in menuList)
                                     {
                                         if (menuItem.Categorie == "DrinkenCocktail")
-                                            Console.WriteLine($" {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
+                                            Console.WriteLine($"                                          {menuItem.Naam} : {menuItem.Prijs}  {menuItem.Allergie}");
                                         if (gebruiker == "personeel" && menuItem.Categorie == "DrinkenCocktail")
                                         {
-                                            Console.WriteLine($" {menuItem.ID}");
+                                            Console.WriteLine($"                                          {menuItem.ID}");
                                         }
                                     }
 
-                                    Console.WriteLine("\n [0] Terug");
-                                    Console.WriteLine("╘══════════════════════════════════════════╛");
+                                    Console.WriteLine("\n                                                   [0] Terug");
+                                    Console.CursorLeft = Console.WindowWidth / 2;
                                     ConsoleKeyInfo alcoholterug = Console.ReadKey();
                                     if (alcoholterug.Key == ConsoleKey.D0)
                                     {
@@ -366,15 +432,21 @@ namespace Main
                         {
 
                             Console.Clear();
-                            Console.WriteLine("╒═════════════════════════════════╕");
-                            Console.WriteLine("   Allergieën informatie\n");
-                            Console.WriteLine("         V - Vegan");
-                            Console.WriteLine("         N - Bevat noten");
-                            Console.WriteLine("         L - Lactose vrij");
-                            Console.WriteLine("         G - Gluten vrij");
-                            Console.WriteLine("         A - Bevat alocohol");
-                            Console.WriteLine("\n         [0] Terug");
-                            Console.WriteLine("╘════════════════════════════════╛");
+                            Console.WriteLine("                                                    ┌─────────────┐            ");
+                            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                            Console.WriteLine("                                                    │ $   $ $     │            ");
+                            Console.WriteLine("                                                    │ $$$$$ $     │            ");
+                            Console.WriteLine("                                                    │ $   $ $     │            ");
+                            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                            Console.WriteLine("                                                    └─────────────┘           \n");
+                            Console.WriteLine("                                                |Allergieën informatie|\n");
+                            Console.WriteLine("                                                     V - Vegan");
+                            Console.WriteLine("                                                     N - Bevat noten");
+                            Console.WriteLine("                                                     L - Lactose vrij");
+                            Console.WriteLine("                                                     G - Gluten vrij");
+                            Console.WriteLine("                                                     A - Bevat alocohol\n");
+                            Console.WriteLine("                                                     [0] Terug");
+                            Console.CursorLeft = Console.WindowWidth / 2;
                             ConsoleKeyInfo allergieterug = Console.ReadKey();
                             if (allergieterug.Key == ConsoleKey.D0)
                             {
@@ -389,7 +461,7 @@ namespace Main
                     }
                     else if (mainMenu.Key == ConsoleKey.D0 && gebruiker == "personeel")
                     {
-                        Personeelsleden.menuMain(gebruikerNaam,"personeel");
+                        Personeelsleden.menuMain(gebruikerNaam, "personeel");
                     }
                     else if (mainMenu.Key == ConsoleKey.D0 && gebruiker == "admin")
                     {
@@ -405,14 +477,22 @@ namespace Main
         public static void mainAanpassen(string gebruikerNaam, string gebruiker = "personeel")
         {
             Console.Clear();
-            Console.WriteLine("╒══════════════════════════════╕");
-            Console.WriteLine("[1] Menu Item verwijderen \n[2] Menu Item toevoegen\n[3] Menu Item wijzigen\n[0] Terug");
-            Console.WriteLine("╘══════════════════════════════╛");
+            Console.WriteLine("                                                    ┌─────────────┐            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $$$$$ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    └─────────────┘           \n");
+            Console.WriteLine("                                                  |Menu item aanpassen|\n");
+
+            Console.WriteLine("                                                   [1] Menu Item verwijderen \n                                                   [2] Menu Item toevoegen\n                                                   [3] Menu Item wijzigen\n                                                   [0] Terug");
+            Console.CursorLeft = Console.WindowWidth / 2;
             ConsoleKeyInfo readkey = Console.ReadKey();
 
             if (readkey.Key == ConsoleKey.D1)
             {
-                verwijderen(gebruikerNaam,gebruiker);
+                verwijderen(gebruikerNaam, gebruiker);
             }
             else if (readkey.Key == ConsoleKey.D2)
             {
@@ -422,7 +502,7 @@ namespace Main
             {
                 wijzigen(gebruikerNaam, gebruiker);
             }
-            else if(readkey.Key == ConsoleKey.D0)
+            else if (readkey.Key == ConsoleKey.D0)
             {
                 Personeelsleden.menuMain(gebruikerNaam, gebruiker);
             }
@@ -434,13 +514,22 @@ namespace Main
         public static void verwijderen(string gebruikerNaam, string gebruiker = "personeel")
         {
             Console.Clear();
+            Console.WriteLine("                                                    ┌─────────────┐            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $$$$$ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    └─────────────┘           \n");
+            Console.WriteLine("                                                 |Menu item verwijderen|\n");
             string menuPath = Path.GetFullPath(@"Menu.json"); // find path to files
 
             var JsonData = File.ReadAllText(menuPath);
             var menuList = JsonConvert.DeserializeObject<List<Menu>>(JsonData) ?? new List<Menu>();
 
-            Console.WriteLine("╒══════════════════════════════╕");
-            Console.WriteLine("Wat is Menu Item ID?");
+
+            Console.WriteLine("                                                   Wat is Menu Item ID?");
+            Console.CursorLeft = Console.WindowWidth / 2;
             string strzoekID = Console.ReadLine();
 
             bool isIDAlleenNummers = char.IsNumber(strzoekID, 0);
@@ -455,8 +544,9 @@ namespace Main
 
             while (!isIDAlleenNummers)
             {
-                Console.WriteLine("\nMenu Item ID bestaat alleen uit nummer.\nProbeer opnieuw.");
-                Console.WriteLine("Wat is Menu Item ID?");
+                Console.WriteLine("\n                                                   Menu Item ID bestaat alleen uit nummer.\n                                                   Probeer opnieuw.");
+                Console.WriteLine("                                                   Wat is Menu Item ID?");
+                Console.CursorLeft = Console.WindowWidth / 2;
                 strzoekID = Console.ReadLine();
 
                 for (int j = 0; j < strzoekID.Length; j++)
@@ -479,8 +569,9 @@ namespace Main
                 if (menuItem.ID == zoekID)
                     naamGerecht = menuItem.Naam;
             }
-            Console.WriteLine("Weet je zeker dat je: " + naamGerecht +  " wil verwijderen?");
-            Console.WriteLine("[1] Ja\n[2] Nee");
+            Console.WriteLine("\n                                                   Weet je zeker dat je:\n                                                   " + naamGerecht + "\n                                                   wil verwijderen?\n");
+            Console.WriteLine("                                                   [1] Ja\n                                                   [2] Nee\n");
+            Console.CursorLeft = Console.WindowWidth / 2;
             ConsoleKeyInfo readkey = Console.ReadKey();
             if (readkey.Key == ConsoleKey.D1)
             {
@@ -489,7 +580,7 @@ namespace Main
                     if (menuList[i].ID == zoekID)
                     {
                         menuList.RemoveAt(i);
-                        Console.WriteLine($"Menu Item met ID {zoekID} is verwijderd");
+                        Console.WriteLine($"                                                  Menu Item met ID {zoekID} is verwijderd\n");
 
                         count++;
                         break;
@@ -499,10 +590,11 @@ namespace Main
 
                 if (count == 0)
                 {
-                    Console.WriteLine("Menu Item ID bestaat niet. Probeer opnieuw.");
-                    Console.WriteLine("[1] Opnieuw proberen\n[0] Terug");
+                    Console.WriteLine("                                                   Menu Item ID bestaat niet. Probeer opnieuw.");
+                    Console.WriteLine("                                                   [1] Opnieuw proberen\n                                                   [0] Terug");
+                    Console.CursorLeft = Console.WindowWidth / 2;
                     ConsoleKeyInfo keuzekey = Console.ReadKey();
-                    if(keuzekey.Key == ConsoleKey.D1)
+                    if (keuzekey.Key == ConsoleKey.D1)
                     {
                         verwijderen(gebruikerNaam);
                     }
@@ -520,15 +612,15 @@ namespace Main
             JsonData = JsonConvert.SerializeObject(menuList);
             System.IO.File.WriteAllText(menuPath, JsonData);
 
-            Console.WriteLine("Succesvol verwijderd!");
-            Console.WriteLine("[1] Doorgaan");
-            Console.WriteLine("╘══════════════════════════════╛");
+            Console.WriteLine("                                                   Succesvol verwijderd!");
+            Console.WriteLine("                                                   [1] Doorgaan");
+            Console.CursorLeft = Console.WindowWidth / 2;
             ConsoleKeyInfo keus = Console.ReadKey();
             if (keus.Key == ConsoleKey.D1 && gebruiker == "personeel")
             {
                 Personeelsleden.menuMain(gebruikerNaam, gebruiker);
             }
-            else if(keus.Key == ConsoleKey.D1 && gebruiker == "admin")
+            else if (keus.Key == ConsoleKey.D1 && gebruiker == "admin")
             {
                 Admin.adminMain();
             }
@@ -536,17 +628,27 @@ namespace Main
         }
         public static void toevoegen(string gebruikerNaam, string gebruiker = "personeel")
         {
+
             Console.Clear();
+            Console.WriteLine("                                                    ┌─────────────┐            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $$$$$ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    └─────────────┘           \n");
+            Console.WriteLine("                                                 |Menu item toevoegen|\n");
             string menuPath = Path.GetFullPath(@"Menu.json"); // find path to files
 
             var JsonData = File.ReadAllText(menuPath);
             var menuList = JsonConvert.DeserializeObject<List<Menu>>(JsonData) ?? new List<Menu>();
 
 
-            Console.WriteLine("╒══════════════════════════════════════════════════════════════╕");
-            Console.WriteLine("Welke ID heeft het nieuwe Menu Item?");
+
+            Console.WriteLine("                                           Welke ID heeft het nieuwe Menu Item?");
+            Console.CursorLeft = Console.WindowWidth / 2;
             string strID_IN = Console.ReadLine();
-            
+
             bool isIDAlleenNummers = char.IsNumber(strID_IN, 0);
             for (int i = 0; i < strID_IN.Length; i++)
             {
@@ -556,11 +658,14 @@ namespace Main
                     break;
                 }
             }
-            
+
             while (!isIDAlleenNummers)
             {
-                Console.WriteLine("\nMenu Item ID bestaat alleen uit nummer.\nProbeer opnieuw.");
-                Console.WriteLine("\nWelke ID heeft het nieuwe Menu Item?");
+
+                Console.WriteLine("\n                                           Menu Item ID bestaat alleen uit nummer.\n                                           Probeer opnieuw.");
+                Console.WriteLine("\n                                           Welke ID heeft het nieuwe Menu Item?");
+
+                Console.CursorLeft = Console.WindowWidth / 2;
                 strID_IN = Console.ReadLine();
 
                 for (int i = 0; i < strID_IN.Length; i++)
@@ -578,8 +683,9 @@ namespace Main
             {
                 if (menuItem.ID == ID_IN)
                 {
-                    Console.WriteLine($"Menu Item met ID {ID_IN} bestaat al probeer opnieuw druk op [0]");
+                    Console.WriteLine($"                                           Menu Item met ID {ID_IN} bestaat al probeer opnieuw druk op [0]");
                     ConsoleKeyInfo readkey = Console.ReadKey();
+                    Console.CursorLeft = Console.WindowWidth / 2;
                     if (readkey.Key == ConsoleKey.D0)
                     {
                         toevoegen(gebruiker);
@@ -591,11 +697,12 @@ namespace Main
                 }
             }
 
-            Console.WriteLine("Wat is de naam van het nieuwe Menu Item?");
+            Console.WriteLine("                                           Wat is de naam van het nieuwe Menu Item?");
+            Console.CursorLeft = Console.WindowWidth / 2;
             string NaamIN = Console.ReadLine();
-            
+
             bool isNaamCijfers = char.IsNumber(NaamIN, 0);
-            bool isNaamLetters =  char.IsLetter(NaamIN, 0);
+            bool isNaamLetters = char.IsLetter(NaamIN, 0);
             for (int i = 0; i < NaamIN.Length; i++)
             {
                 isNaamCijfers = char.IsNumber(NaamIN, i);
@@ -603,7 +710,7 @@ namespace Main
                 {
                     break;
                 }
-                if(isNaamLetters == false)
+                if (isNaamLetters == false)
                 {
                     break;
                 }
@@ -611,8 +718,9 @@ namespace Main
 
             while (!isNaamCijfers && !isNaamLetters)
             {
-                Console.WriteLine("\nNaam voldoet niet aan de eisen. Alleen letters en/of cijfers.\nProbeer opnieuw.");
-                Console.WriteLine("\nWat is de naam van het neiuwe Menu Item?");
+                Console.WriteLine("\n                                           Naam voldoet niet aan de eisen. Alleen letters en/of cijfers.\n                                                   Probeer opnieuw.");
+                Console.WriteLine("\n                                           Wat is de naam van het nieuwe Menu Item?");
+                Console.CursorLeft = Console.WindowWidth / 2;
                 NaamIN = Console.ReadLine();
 
                 for (int i = 0; i < NaamIN.Length; i++)
@@ -629,15 +737,17 @@ namespace Main
                 }
             }
 
-            Console.WriteLine("Wat is de prijs van het nieuwe menu item?");
+            Console.WriteLine("                                           Wat is de prijs van het nieuwe menu item?");
+            Console.CursorLeft = Console.WindowWidth / 2;
             string strPrijsIN = Console.ReadLine();
 
             double doubletest;
             double.TryParse(strPrijsIN, out doubletest);
-            while(doubletest == 0)
+            while (doubletest == 0)
             {
-                Console.WriteLine("Onjuist prijs. Probeer prijs opnieuw intevoeren");
-                Console.WriteLine("Wat is de prijs van het nieuwe menu item?");
+                Console.WriteLine("                                           Onjuist prijs. Probeer prijs opnieuw intevoeren");
+                Console.WriteLine("                                           Wat is de prijs van het nieuwe menu item?");
+                Console.CursorLeft = Console.WindowWidth / 2;
                 strPrijsIN = Console.ReadLine();
 
                 double.TryParse(strPrijsIN, out doubletest);
@@ -645,14 +755,16 @@ namespace Main
             double PrijsIN = Convert.ToDouble(strPrijsIN);
 
 
-            Console.WriteLine("Welke allergenen komen er in het nieuwe Menu Item voor?");
-            Console.WriteLine("\t[V] - Vegan");
-            Console.WriteLine("\t[N] - Bevat noten");
-            Console.WriteLine("\t[L] - Lactose vrij");
-            Console.WriteLine("\t[G] - Gluten vrij");
-            Console.WriteLine("\t[A] - Bevat alocohol");
-            Console.WriteLine("\t[0] geen allergenen informatie ");
+            Console.WriteLine("                                           Welke allergenen komen er in het nieuwe Menu Item voor?");
+            Console.WriteLine("\t                                               [V] - Vegan");
+            Console.WriteLine("\t                                               [N] - Bevat noten");
+            Console.WriteLine("\t                                               [L] - Lactose vrij");
+            Console.WriteLine("\t                                               [G] - Gluten vrij");
+            Console.WriteLine("\t                                               [A] - Bevat alocohol");
+            Console.WriteLine("\t                                               [0] geen allergenen informatie ");
+            Console.CursorLeft = Console.WindowWidth / 2;
             ConsoleKeyInfo allorgenenINFO = Console.ReadKey();
+
             string allorgieIN = "";
             if (allorgenenINFO.Key == ConsoleKey.V)
             {
@@ -681,14 +793,15 @@ namespace Main
 
             while (allorgieIN == "")
             {
-                Console.WriteLine("\nProbeer opnieuw");
-                Console.WriteLine("Welke allergenen komen er in het nieuwe Menu Item voor?");
-                Console.WriteLine("\t[V] - Vegan");
-                Console.WriteLine("\t[N] - Bevat noten");
-                Console.WriteLine("\t[L] - Lactose vrij");
-                Console.WriteLine("\t[G] - Gluten vrij");
-                Console.WriteLine("\t[A] - Bevat alocohol");
-                Console.WriteLine("\t[0] geen allergenen informatie ");
+                Console.WriteLine("\n                                           Probeer opnieuw");
+                Console.WriteLine("                                           Welke allergenen komen er in het nieuwe Menu Item voor?");
+                Console.WriteLine("\t                                               [V] - Vegan");
+                Console.WriteLine("\t                                               [N] - Bevat noten");
+                Console.WriteLine("\t                                               [L] - Lactose vrij");
+                Console.WriteLine("\t                                               [G] - Gluten vrij");
+                Console.WriteLine("\t                                               [A] - Bevat alocohol");
+                Console.WriteLine("\t                                               [0] geen allergenen informatie ");
+                Console.CursorLeft = Console.WindowWidth / 2;
                 allorgenenINFO = Console.ReadKey();
                 if (allorgenenINFO.Key == ConsoleKey.V)
                 {
@@ -717,15 +830,16 @@ namespace Main
             }
 
 
-            Console.WriteLine("Wat wordt de nieuwe categorie van dit Menu Item?\n\t[1] Brunch\n\t[2] Lunch\n\t[3] LunchSoep\n\t[4] DinerVoorgerecht\n\t[5] DinerSoep\n\t[6] DinerHoofdgerecht\n\t[7] DinerSushi\n\t[8] DinerNagerecht\n\t[9] DrinkenWarm\n\t[10] DrinkenKoud\n\t[11] DrinkenBier\n\t[12] DrinkenWijn\n\t[13] DrinkenCocktail");
+            Console.WriteLine("\n                                           Wat wordt de nieuwe categorie van dit Menu Item?\n\t                                               [1] Brunch\n\t                                               [2] Lunch\n\t                                               [3] LunchSoep\n\t                                               [4] DinerVoorgerecht\n\t                                               [5] DinerSoep\n\t                                               [6] DinerHoofdgerecht\n\t                                               [7] DinerSushi\n\t                                               [8] DinerNagerecht\n\t                                               [9] DrinkenWarm\n\t                                               [10] DrinkenKoud\n\t                                               [11] DrinkenBier\n\t                                               [12] DrinkenWijn\n\t                                               [13] DrinkenCocktail");
+            Console.CursorLeft = Console.WindowWidth / 2;
             string strCategorieMenu = Console.ReadLine();
             string New_Categorie = "";
 
             bool isCategorieAlleenNummers = char.IsNumber(strCategorieMenu, strCategorieMenu.Length - 1);
             while (!isCategorieAlleenNummers)
             {
-                Console.WriteLine("Geef nummer van bijbehordende Menu categorie. Probeer opnieuw.");
-                Console.WriteLine("Wat wordt de nieuwe categorie van dit Menu Item?\n\t[1] Brunch\n\t[2] Lunch\n\t[3] LunchSoep\n\t[4] DinerVoorgerecht\n\t[5] DinerSoep\n\t[6] DinerHoofdgerecht\n\t[7] DinerSushi\n\t[8] DinerNagerecht\n\t[9] DrinkenWarm\n\t[10] DrinkenKoud\n\t[11] DrinkenBier\n\t[12] DrinkenWijn\n\t[13] DrinkenCocktail");
+                Console.WriteLine("\n                                           Geef nummer van bijbehordende Menu categorie. Probeer opnieuw.");
+                Console.WriteLine("                                           Wat wordt de nieuwe categorie van dit Menu Item?\n\t                                               [1] Brunch\n\t                                               [2] Lunch\n\t                                               [3] LunchSoep\n\t                                               [4] DinerVoorgerecht\n\t                                               [5] DinerSoep\n\t                                               [6] DinerHoofdgerecht\n\t                                               [7] DinerSushi\n\t                                               [8] DinerNagerecht\n\t                                               [9] DrinkenWarm\n\t                                               [10] DrinkenKoud\n\t                                               [11] DrinkenBier\n\t                                               [12] DrinkenWijn\n\t                                               [13] DrinkenCocktail");
                 strCategorieMenu = Console.ReadLine();
                 isCategorieAlleenNummers = char.IsNumber(strCategorieMenu, strCategorieMenu.Length - 1);
             }
@@ -791,8 +905,9 @@ namespace Main
 
             while (New_Categorie == "")
             {
-                Console.WriteLine("Geef nummer van bijbehordende Menu categorie. Probeer opnieuw");
-                Console.WriteLine("Wat wordt de nieuwe categorie van dit Menu Item?\n\t[1] Brunch\n\t[2] Lunch\n\t[3] LunchSoep\n\t[4] DinerVoorgerecht\n\t[5] DinerSoep\n\t[6] DinerHoofdgerecht\n\t[7] DinerSushi\n\t[8] DinerNagerecht\n\t[9] DrinkenWarm\n\t[10] DrinkenKoud\n\t[11] DrinkenBier\n\t[12] DrinkenWijn\n\t[13] DrinkenCocktail");
+                Console.WriteLine("\n                                           Geef nummer van bijbehordende Menu categorie. Probeer opnieuw.");
+                Console.WriteLine("                                           Wat wordt de nieuwe categorie van dit Menu Item?\n\t                                               [1] Brunch\n\t                                               [2] Lunch\n\t                                               [3] LunchSoep\n\t                                               [4] DinerVoorgerecht\n\t                                               [5] DinerSoep\n\t                                               [6] DinerHoofdgerecht\n\t                                               [7] DinerSushi\n\t                                               [8] DinerNagerecht\n\t                                               [9] DrinkenWarm\n\t                                               [10] DrinkenKoud\n\t                                               [11] DrinkenBier\n\t                                               [12] DrinkenWijn\n\t                                               [13] DrinkenCocktail");
+                Console.CursorLeft = Console.WindowWidth / 2;
                 CategorieMenu = Convert.ToInt32(Console.ReadLine());
                 if (CategorieMenu == 1)
                 {
@@ -864,8 +979,8 @@ namespace Main
             JsonData = JsonConvert.SerializeObject(menuList);
             System.IO.File.WriteAllText(menuPath, JsonData);
 
-            Console.WriteLine($"Het nieuwe Menu Item met de naam {NaamIN} is toegevoegd aan Menu?\n[1] doorgaan");
-            Console.WriteLine("╘══════════════════════════════════════════════════════════════════╛");
+            Console.WriteLine($"                                           Het nieuwe Menu Item met de naam '{NaamIN}' is toegevoegd aan Menu\n                                                   [1] Doorgaan");
+            Console.CursorLeft = Console.WindowWidth / 2;
             ConsoleKeyInfo doorKey = Console.ReadKey();
             if (doorKey.Key == ConsoleKey.D1 && gebruiker == "admin")
             {
@@ -880,12 +995,21 @@ namespace Main
         public static void wijzigen(string gebruikerNaam, string gebruiker = "ingelogd")
         {
             Console.Clear();
+            Console.WriteLine("                                                    ┌─────────────┐            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $$$$$ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    └─────────────┘           \n");
+            Console.WriteLine("                                                 |Menu item wijzigen|\n");
             string menuPath = Path.GetFullPath(@"Menu.json"); // find path to files
 
             var JsonData = File.ReadAllText(menuPath);
             var menuList = JsonConvert.DeserializeObject<List<Menu>>(JsonData) ?? new List<Menu>();
 
-            Console.WriteLine("Welke ID heeft het nieuwe Menu Item?");
+            Console.WriteLine("                                           Welke ID heeft het nieuwe Menu Item?");
+            Console.CursorLeft = Console.WindowWidth / 2;
             string strzoekID = Console.ReadLine();
 
             bool isIDAlleenNummers = char.IsNumber(strzoekID, 0);
@@ -900,8 +1024,9 @@ namespace Main
 
             while (!isIDAlleenNummers)
             {
-                Console.WriteLine("\nMenu Item ID bestaat alleen uit nummer.\nProbeer opnieuw.");
-                Console.WriteLine("Wat is Menu Item ID?");
+                Console.WriteLine("\n                                           Menu Item ID bestaat alleen uit nummer.\n                                           Probeer opnieuw.");
+                Console.WriteLine("                                           Wat is Menu Item ID?");
+                Console.CursorLeft = Console.WindowWidth / 2;
                 strzoekID = Console.ReadLine();
 
                 for (int j = 0; j < strzoekID.Length; j++)
@@ -927,7 +1052,8 @@ namespace Main
             }
             if (MenuItem == "")
             {
-                Console.WriteLine($"Menu item met {MenuID} bestaat niet. \n[1] Probeer opnieuw.");
+                Console.WriteLine($"                                           Menu item met {MenuID} bestaat niet. \n                                           [1] Probeer opnieuw.");
+                Console.CursorLeft = Console.WindowWidth / 2;
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
                 {
@@ -942,12 +1068,14 @@ namespace Main
             bool menukeyCheck = false;
             while (menukeyCheck == false)
             {
-                Console.WriteLine("\nWat wilt u veranderen?\n\t[1] Naam Menu Item\n\t[2] Prijs Menu Item\n\t[3] Allergie Menu Item\n\t[4] Catogorie Menu Item");
+                Console.WriteLine("\n                                           Wat wilt u veranderen?\n\t                                           [1] Naam Menu Item\n\t                                           [2] Prijs Menu Item\n\t                                           [3] Allergie Menu Item\n\t                                           [4] Catogorie Menu Item");
+                Console.CursorLeft = Console.WindowWidth / 2;
                 ConsoleKeyInfo menukey = Console.ReadKey();
                 if (menukey.Key == ConsoleKey.D1)
                 {
                     menukeyCheck = true;
-                    Console.WriteLine("Wat wordt de nieuwe naam van dit Menu Item?");
+                    Console.WriteLine("\n                                           Wat wordt de nieuwe naam van dit Menu Item?");
+                    Console.CursorLeft = Console.WindowWidth / 2;
                     string New_Naam = Console.ReadLine();
 
                     while (i < len)
@@ -955,7 +1083,7 @@ namespace Main
                         if (menuList[i].ID == MenuID)
                         {
                             menuList[i].Naam = New_Naam;
-                            Console.WriteLine($"Menu items naam is gewijzigd naar {New_Naam}");
+                            Console.WriteLine($"                                           Menu items naam is gewijzigd naar {New_Naam}");
                             break;
                         }
                         i++;
@@ -964,7 +1092,8 @@ namespace Main
                 else if (menukey.Key == ConsoleKey.D2)
                 {
                     menukeyCheck = true;
-                    Console.WriteLine("Wat wordt de nieuwe prijs van dit Menu Item?");
+                    Console.WriteLine("\n                                           Wat wordt de nieuwe prijs van dit Menu Item?");
+                    Console.CursorLeft = Console.WindowWidth / 2;
                     double New_Prijs = Convert.ToDouble(Console.ReadLine());
 
                     while (i < len)
@@ -972,7 +1101,7 @@ namespace Main
                         if (menuList[i].ID == MenuID)
                         {
                             menuList[i].Prijs = New_Prijs;
-                            Console.WriteLine($"Menu items naam is gewijzigd naar {New_Prijs}");
+                            Console.WriteLine($"                                           Menu items naam is gewijzigd naar {New_Prijs}");
                             break;
                         }
                         i++;
@@ -981,13 +1110,14 @@ namespace Main
                 else if (menukey.Key == ConsoleKey.D3)
                 {
                     menukeyCheck = true;
-                    Console.WriteLine("Welke allergenen komen er in het nieuwe Menu Item voor?");
-                    Console.WriteLine("\t[V] - Vegan");
-                    Console.WriteLine("\t[N] - Bevat noten");
-                    Console.WriteLine("\t[L] - Lactose vrij");
-                    Console.WriteLine("\t[G] - Gluten vrij");
-                    Console.WriteLine("\t[A] - Bevat alocohol");
-                    Console.WriteLine("\t[0] geen allergenen informatie ");
+                    Console.WriteLine("\n                                           Welke allergenen komen er in het nieuwe Menu Item voor?");
+                    Console.WriteLine("\t                                               [V] - Vegan");
+                    Console.WriteLine("\t                                               [N] - Bevat noten");
+                    Console.WriteLine("\t                                               [L] - Lactose vrij");
+                    Console.WriteLine("\t                                               [G] - Gluten vrij");
+                    Console.WriteLine("\t                                               [A] - Bevat alocohol");
+                    Console.WriteLine("\t                                               [0] geen allergenen informatie ");
+                    Console.CursorLeft = Console.WindowWidth / 2;
                     ConsoleKeyInfo allorgenenINFO = Console.ReadKey();
                     string New_allergie = "";
                     if (allorgenenINFO.Key == ConsoleKey.V)
@@ -1017,14 +1147,16 @@ namespace Main
 
                     while (New_allergie == "")
                     {
-                        Console.WriteLine("\nProbeer opnieuw");
-                        Console.WriteLine("Welke allergenen komen er in het nieuwe Menu Item voor?");
-                        Console.WriteLine("\t[V] - Vegan");
-                        Console.WriteLine("\t[N] - Bevat noten");
-                        Console.WriteLine("\t[L] - Lactose vrij");
-                        Console.WriteLine("\t[G] - Gluten vrij");
-                        Console.WriteLine("\t[A] - Bevat alocohol");
-                        Console.WriteLine("\t[0] geen allergenen informatie ");
+                        Console.WriteLine("\n                                           Probeer opnieuw");
+                        Console.WriteLine("                                           Welke allergenen komen er in het nieuwe Menu Item voor?");
+                        Console.WriteLine("\t                                               [V] - Vegan");
+                        Console.WriteLine("\t                                               [N] - Bevat noten");
+                        Console.WriteLine("\t                                               [L] - Lactose vrij");
+                        Console.WriteLine("\t                                               [G] - Gluten vrij");
+                        Console.WriteLine("\t                                               [A] - Bevat alocohol");
+                        Console.WriteLine("\t                                               [0] Geen allergenen informatie ");
+
+                        Console.CursorLeft = Console.WindowWidth / 2;
                         allorgenenINFO = Console.ReadKey();
                         if (allorgenenINFO.Key == ConsoleKey.V)
                         {
@@ -1057,7 +1189,7 @@ namespace Main
                         if (menuList[i].ID == MenuID)
                         {
                             menuList[i].Allergie = New_allergie;
-                            Console.WriteLine($"Menu items naam is gewijzigd naar {New_allergie}");
+                            Console.WriteLine($"\n                                           De allergie van het menu item is aangepast naar {New_allergie}");
                             break;
                         }
                         i++;
@@ -1066,7 +1198,8 @@ namespace Main
                 else if (menukey.Key == ConsoleKey.D4)
                 {
                     menukeyCheck = true;
-                    Console.WriteLine("Wat wordt de nieuwe categorie van dit Menu Item?\n\t[1] Brunch\n\t[2] Lunch\n\t[3] LunchSoep\n\t[4] DinerVoorgerecht\n\t[5] DinerSoep\n\t[6] DinerHoofdgerecht\n\t[7] DinerSushi\n\t[8] DinerNagerecht\n\t[9] DrinkenWarm\n\t[10] DrinkenKoud\n\t[11] DrinkenBier\n\t[12] DrinkenWijn\n\t[13] DrinkenCocktail");
+                    Console.WriteLine("\n                                           Wat wordt de nieuwe categorie van dit Menu Item?\n\t                                               [1] Brunch\n\t                                               [2] Lunch\n\t                                               [3] LunchSoep\n\t                                               [4] DinerVoorgerecht\n\t                                               [5] DinerSoep\n\t                                               [6] DinerHoofdgerecht\n\t                                               [7] DinerSushi\n\t                                               [8] DinerNagerecht\n\t                                               [9] DrinkenWarm\n\t                                               [10] DrinkenKoud\n\t                                               [11] DrinkenBier\n\t                                               [12] DrinkenWijn\n\t                                               [13] DrinkenCocktail");
+                    Console.CursorLeft = Console.WindowWidth / 2;
                     int CategorieMenu = Convert.ToInt32(Console.ReadLine());
                     string New_Categorie = "";
                     if (CategorieMenu == 1)
@@ -1127,7 +1260,7 @@ namespace Main
                         if (menuList[i].ID == MenuID)
                         {
                             menuList[i].Categorie = New_Categorie;
-                            Console.WriteLine($"Menu items naam is gewijzigd naar {New_Categorie}");
+                            Console.WriteLine($"                                           Menu items naam is gewijzigd naar {New_Categorie}");
                             break;
                         }
                         i++;
@@ -1138,9 +1271,9 @@ namespace Main
             JsonData = JsonConvert.SerializeObject(menuList);
             System.IO.File.WriteAllText(menuPath, JsonData);
 
-            Console.WriteLine("Succesvol gewijzigd!");
-            Console.WriteLine("[1] Doorgaan");
-            Console.WriteLine("╘══════════════════════════════╛");
+            Console.WriteLine("\n                                           Succesvol gewijzigd!");
+            Console.WriteLine("                                                   [1] Doorgaan");
+            Console.CursorLeft = Console.WindowWidth / 2;
             ConsoleKeyInfo keus = Console.ReadKey();
             if (keus.Key == ConsoleKey.D1 && gebruiker == "admin")
             {
