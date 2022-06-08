@@ -264,7 +264,7 @@ namespace Main
             }
             if (reserveringsNaam == "")
             {
-                Console.WriteLine($"\n                                          Een reservering onder de naam '{zoekNaam}' bestaat niet. \n[1] Probeer opnieuw.\n[0] Terug\n");
+                Console.WriteLine($"\n                                          Een reservering onder de naam '{zoekNaam}' bestaat niet. \n                                          [1] Probeer opnieuw.\n                                          [0] Terug\n");
 
                 Console.CursorLeft = Console.WindowWidth / 2;
                 ConsoleKeyInfo rkey = Console.ReadKey();
