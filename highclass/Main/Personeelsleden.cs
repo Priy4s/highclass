@@ -288,7 +288,24 @@ namespace Main
             }
             Console.WriteLine("                                          Voer het nieuwe bedrag in: ");
             Console.CursorLeft = Console.WindowWidth / 2;
-            double nieuwBedrag = Convert.ToDouble(Console.ReadLine());
+            
+
+           
+            string strPrijsIN = Console.ReadLine();
+
+            double doubletest;
+            double.TryParse(strPrijsIN, out doubletest);
+            while (doubletest == 0)
+            {
+                Console.WriteLine("                                           Onjuist prijs. Probeer prijs opnieuw intevoeren");
+                Console.CursorLeft = Console.WindowWidth / 2;
+                strPrijsIN = Console.ReadLine();
+
+                double.TryParse(strPrijsIN, out doubletest);
+            }
+            double nieuwBedrag = Convert.ToDouble(strPrijsIN);
+
+
 
             while (i < len)
             {
@@ -376,8 +393,23 @@ namespace Main
             string inputDatum = thisDay.ToString("d"); //hieruit krijg  je bijv. "5/3/2022"
             Console.WriteLine("                                          Voer het bedrag in dat u wil toevoegen: ");
             Console.CursorLeft = Console.WindowWidth / 2;
-            double toevoegBedrag = Convert.ToDouble(Console.ReadLine());
-            double nieuwBedrag = toevoegBedrag + reserveringsPrijs;
+            
+
+            string strPrijsIN = Console.ReadLine();
+
+            double doubletest;
+            double.TryParse(strPrijsIN, out doubletest);
+            while (doubletest == 0)
+            {
+                Console.WriteLine("                                           Onjuist prijs. Probeer prijs opnieuw intevoeren");
+                Console.CursorLeft = Console.WindowWidth / 2;
+                strPrijsIN = Console.ReadLine();
+
+                double.TryParse(strPrijsIN, out doubletest);
+            }
+            double nieuwBedrag = Convert.ToDouble(strPrijsIN);
+
+
 
             foreach (Reserveringenjson reservering in ReserveringenList)
             {

@@ -6204,19 +6204,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Yvonn\\.nuget\\packages\\": {}
+    "C:\\Users\\priya\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\HighClassTests2\\HighClassTests2.csproj",
+      "projectUniqueName": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\HighClassTests2\\HighClassTests2.csproj",
       "projectName": "HighClassTests2",
-      "projectPath": "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\HighClassTests2\\HighClassTests2.csproj",
-      "packagesPath": "C:\\Users\\Yvonn\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\HighClassTests2\\obj\\",
+      "projectPath": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\HighClassTests2\\HighClassTests2.csproj",
+      "packagesPath": "C:\\Users\\priya\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\HighClassTests2\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Yvonn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\priya\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

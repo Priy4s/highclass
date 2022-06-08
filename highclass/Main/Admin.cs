@@ -142,7 +142,7 @@ namespace Main
             Console.WriteLine("                                                    └─────────────┘            ");
             Console.WriteLine(" ");
             Console.WriteLine("                                                        |Omzet|    ");
-            Console.WriteLine("                                                   [1] Omzet bekijken\n                                                   [2] Omzet aanpassen \n                                                       [0] Terug");
+            Console.WriteLine("                                                   [1] Omzet bekijken\n                                                   [2] Omzet aanpassen \n\n                                                       [0] Terug");
             Console.CursorLeft = (Console.WindowWidth / 2); 
             ConsoleKeyInfo keuze = Console.ReadKey();
             if (keuze.Key == ConsoleKey.D1)
@@ -156,7 +156,7 @@ namespace Main
                 Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
                 Console.WriteLine("                                                    └─────────────┘            ");
                 Console.WriteLine(" ");
-                Console.WriteLine("                                                        |Omzet|    ");
+                Console.WriteLine("                                                        |Omzet|    \n");
                 string Omzetpath = Path.GetFullPath(@"Omzet.json");
                 bool fileExist = File.Exists(Omzetpath);
                 if (!fileExist)
@@ -165,7 +165,7 @@ namespace Main
                 }
                 var JsonData = File.ReadAllText(Omzetpath);
                 var OmzetList = JsonConvert.DeserializeObject<List<OmzetDag>>(JsonData) ?? new List<OmzetDag>();
-                Console.WriteLine("                                                         Datum: ");
+                Console.WriteLine("                                                         Datum(DD-MM-JJJ): ");
                 Console.CursorLeft = (Console.WindowWidth / 2)-5;
                 string zoekDatum = Console.ReadLine();
                 string opslaanDatum = "";
