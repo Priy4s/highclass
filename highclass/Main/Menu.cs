@@ -580,7 +580,7 @@ namespace Main
                     if (menuList[i].ID == zoekID)
                     {
                         menuList.RemoveAt(i);
-                        Console.WriteLine($"                                                  Menu Item met ID {zoekID} is verwijderd\n");
+                        Console.WriteLine($"\n                                                  Menu Item met ID {zoekID} is verwijderd\n");
 
                         count++;
                         break;
@@ -590,7 +590,7 @@ namespace Main
 
                 if (count == 0)
                 {
-                    Console.WriteLine("                                                   Menu Item ID bestaat niet. Probeer opnieuw.");
+                    Console.WriteLine("\n                                                   Menu Item ID bestaat niet. Probeer opnieuw.");
                     Console.WriteLine("                                                   [1] Opnieuw proberen\n                                                   [0] Terug");
                     Console.CursorLeft = Console.WindowWidth / 2;
                     ConsoleKeyInfo keuzekey = Console.ReadKey();
@@ -1094,7 +1094,20 @@ namespace Main
                     menukeyCheck = true;
                     Console.WriteLine("\n                                           Wat wordt de nieuwe prijs van dit Menu Item?");
                     Console.CursorLeft = Console.WindowWidth / 2;
-                    double New_Prijs = Convert.ToDouble(Console.ReadLine());
+                    string strNew_Prijs = Console.ReadLine();
+
+                    double doubletest;
+                    double.TryParse(strNew_Prijs, out doubletest);
+                    while (doubletest == 0)
+                    {
+                        Console.WriteLine("                                           Onjuist prijs. Probeer prijs opnieuw intevoeren");
+                        Console.WriteLine("                                           Wat is de prijs van het nieuwe menu item?");
+                        Console.CursorLeft = Console.WindowWidth / 2;
+                        strNew_Prijs = Console.ReadLine();
+
+                        double.TryParse(strNew_Prijs, out doubletest);
+                    }
+                    double New_Prijs = Convert.ToDouble(strNew_Prijs);
 
                     while (i < len)
                     {
@@ -1199,9 +1212,21 @@ namespace Main
                 {
                     menukeyCheck = true;
                     Console.WriteLine("\n                                           Wat wordt de nieuwe categorie van dit Menu Item?\n\t                                               [1] Brunch\n\t                                               [2] Lunch\n\t                                               [3] LunchSoep\n\t                                               [4] DinerVoorgerecht\n\t                                               [5] DinerSoep\n\t                                               [6] DinerHoofdgerecht\n\t                                               [7] DinerSushi\n\t                                               [8] DinerNagerecht\n\t                                               [9] DrinkenWarm\n\t                                               [10] DrinkenKoud\n\t                                               [11] DrinkenBier\n\t                                               [12] DrinkenWijn\n\t                                               [13] DrinkenCocktail");
-                    Console.CursorLeft = Console.WindowWidth / 2;
-                    int CategorieMenu = Convert.ToInt32(Console.ReadLine());
+                    Console.CursorLeft = Console.WindowWidth / 2; 
+                    string strCategorieMenu = Console.ReadLine();
                     string New_Categorie = "";
+
+                    bool isCategorieAlleenNummers = char.IsNumber(strCategorieMenu, strCategorieMenu.Length - 1);
+                    while (!isCategorieAlleenNummers)
+                    {
+                        Console.WriteLine("\n                                           Geef nummer van bijbehordende Menu categorie. Probeer opnieuw.");
+                        Console.WriteLine("                                           Wat wordt de nieuwe categorie van dit Menu Item?\n\t                                               [1] Brunch\n\t                                               [2] Lunch\n\t                                               [3] LunchSoep\n\t                                               [4] DinerVoorgerecht\n\t                                               [5] DinerSoep\n\t                                               [6] DinerHoofdgerecht\n\t                                               [7] DinerSushi\n\t                                               [8] DinerNagerecht\n\t                                               [9] DrinkenWarm\n\t                                               [10] DrinkenKoud\n\t                                               [11] DrinkenBier\n\t                                               [12] DrinkenWijn\n\t                                               [13] DrinkenCocktail");
+                        Console.CursorLeft = Console.WindowWidth / 2; 
+                        strCategorieMenu = Console.ReadLine();
+                        isCategorieAlleenNummers = char.IsNumber(strCategorieMenu, strCategorieMenu.Length - 1);
+                    }
+                    int CategorieMenu = Convert.ToInt32(strCategorieMenu);
+
                     if (CategorieMenu == 1)
                     {
                         New_Categorie = "Brunch";
@@ -1254,6 +1279,71 @@ namespace Main
                     {
                         New_Categorie = "DrinkenCoktail";
                     }
+
+                    while (New_Categorie == "")
+                    {
+                        Console.WriteLine("\n                                           Geef nummer van bijbehordende Menu categorie. Probeer opnieuw.");
+                        Console.WriteLine("                                           Wat wordt de nieuwe categorie van dit Menu Item?\n\t                                               [1] Brunch\n\t                                               [2] Lunch\n\t                                               [3] LunchSoep\n\t                                               [4] DinerVoorgerecht\n\t                                               [5] DinerSoep\n\t                                               [6] DinerHoofdgerecht\n\t                                               [7] DinerSushi\n\t                                               [8] DinerNagerecht\n\t                                               [9] DrinkenWarm\n\t                                               [10] DrinkenKoud\n\t                                               [11] DrinkenBier\n\t                                               [12] DrinkenWijn\n\t                                               [13] DrinkenCocktail");
+                        Console.CursorLeft = Console.WindowWidth / 2;
+                        CategorieMenu = Convert.ToInt32(Console.ReadLine());
+                        if (CategorieMenu == 1)
+                        {
+                            New_Categorie = "Brunch";
+                        }
+                        else if (CategorieMenu == 2)
+                        {
+                            New_Categorie = "Lunch";
+                        }
+                        else if (CategorieMenu == 3)
+                        {
+                            New_Categorie = "LunchSoep";
+                        }
+                        else if (CategorieMenu == 4)
+                        {
+                            New_Categorie = "DinerVoorgerecht";
+                        }
+                        else if (CategorieMenu == 5)
+                        {
+                            New_Categorie = "DinerSoep";
+                        }
+                        else if (CategorieMenu == 6)
+                        {
+                            New_Categorie = "DinerHoofdgerecht";
+                        }
+                        else if (CategorieMenu == 7)
+                        {
+                            New_Categorie = "DinerSushi";
+                        }
+                        else if (CategorieMenu == 8)
+                        {
+                            New_Categorie = "DinerNagerecht";
+                        }
+                        else if (CategorieMenu == 9)
+                        {
+                            New_Categorie = "DrinkenWarm";
+                        }
+                        else if (CategorieMenu == 10)
+                        {
+                            New_Categorie = "DrinkenKoud";
+                        }
+                        else if (CategorieMenu == 11)
+                        {
+                            New_Categorie = "DrinkenBier";
+                        }
+                        else if (CategorieMenu == 12)
+                        {
+                            New_Categorie = "DrinkenWijn";
+                        }
+                        else if (CategorieMenu == 13)
+                        {
+                            New_Categorie = "DrinkenCoktail";
+                        }
+                        else
+                        {
+                            New_Categorie = "";
+                        }
+                    }
+
 
                     while (i < len)
                     {
