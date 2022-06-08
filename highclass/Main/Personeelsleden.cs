@@ -192,6 +192,10 @@ namespace Main
             {
                 MenuAanpassen.mainAanpassen(gebruikerNaam, "admin");
             }
+            else
+            {
+                menuMain(gebruikerNaam, gebruiker);
+            }
         }
         public static void bestellingenMain(string gebruikerNaam)
         {

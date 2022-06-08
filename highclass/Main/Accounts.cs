@@ -44,7 +44,7 @@ namespace Main
             var JsonData = File.ReadAllText(medewerkerPath); // file can be found in the bin => just keep clicking until you find all extra files
             var MederwerkerList = JsonConvert.DeserializeObject<List<MedewerkerINFO>>(JsonData) ?? new List<MedewerkerINFO>();
 
-            Console.WriteLine("                                                Wat is uw voornaam naam?");
+            Console.WriteLine("                                                Wat is uw volledige naam?");
             Console.CursorLeft = Console.WindowWidth / 2;
             string naamIN = Console.ReadLine();
             bool IsAlleenLetters = char.IsLetter(naamIN, 0);
@@ -65,7 +65,7 @@ namespace Main
             while (!IsAlleenLetters || !isSpace)
             {
                 Console.WriteLine("                                     Naam kan alleen uit letter bestaan probeer opnieuw.");
-                Console.WriteLine("                                                Wat is uw voornaam naam?");
+                Console.WriteLine("                                                Wat is uw volledige  naam?");
                 Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                 naamIN = Console.ReadLine();
                 for (int i = 0; i < naamIN.Length; i++)
@@ -366,12 +366,16 @@ namespace Main
             }
             if (medewerkerNaam == "")
             {
-                Console.WriteLine("                                            Medewerker met die naam bestaat niet. \n                                                 [1] Probeer opnieuw.");
+                Console.WriteLine("                                            Medewerker met die naam bestaat niet. \n                                                 [1] Probeer opnieuw.\n\n                                                 [0] Terug.");
                 Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
                 {
                     wijzigMedewerkers();
+                }
+                else if (rkey.Key == ConsoleKey.D0)
+                {
+                    Admin.adminMedewerkers();
                 }
                 else
                 {
