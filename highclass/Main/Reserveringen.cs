@@ -18,18 +18,6 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
         public string Eindtijd { get; set; }
         public double Prijs { get; set; }
     }
-    public class Beschikbaarheidjson
-    {
-        public string Datum { get; set; }
-        public string Tijdslot1 { get; set; }
-        public int Tijdslot1_Beschikbaarheid { get; set; }
-        public string Tijdslot2 { get; set; }
-        public int Tijdslot2_Beschikbaarheid { get; set; }
-        public string Tijdslot3 { get; set; }
-        public int Tijdslot3_Beschikbaarheid { get; set; }
-        public string Tijdslot4 { get; set; }
-        public int Tijdslot4_Beschikbaarheid { get; set; }
-    }
     public class Reserveringen
     {
         public static void AddReservering()
@@ -43,24 +31,57 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             var JsonData = File.ReadAllText(ReserveringPath);
             var ReserveringenList = JsonConvert.DeserializeObject<List<Reserveringenjson>>(JsonData) ?? new List<Reserveringenjson>();
 
-            string BeschikbaarheidPath = Path.GetFullPath(@"Beschikbaarheid.json");
-            bool fileExist2 = File.Exists(BeschikbaarheidPath);
-            if (!fileExist)
-            {
-                using (File.Create(ReserveringPath)) ;
-            }
-            var JsonData2 = File.ReadAllText(ReserveringPath);
-            var BeschikbaarheidList = JsonConvert.DeserializeObject<List<Beschikbaarheidjson>>(JsonData) ?? new List<Beschikbaarheidjson>();
-
             Console.Clear();
-            Console.WriteLine("╒═════════════════════════════════════════════════════╕");
-            Console.WriteLine(" HC\n");
-            Console.WriteLine("Volledige naam: ");
+            Console.WriteLine("                                                    ┌─────────────┐            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $$$$$ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    └─────────────┘           \n");
+            string str = "|Reserveren|";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            Console.WriteLine();
+            str = "Reserveringsnaam:";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            Console.CursorLeft = Console.WindowWidth / 2;
             string naamIN = Console.ReadLine();
-            Console.WriteLine("\nWat zijn uw persoonlijke voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] hen/hun");
+            for (int i = 0; i < ReserveringenList.Count; i++)
+            {
+                if (ReserveringenList[i].Naam == naamIN)
+                {
+                    Console.WriteLine();
+                    str = "Er bestaat al een reservering onder deze naam.";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "[1] Probeer opnieuw";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    Console.WriteLine();
+                    str = "[0] Terug";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    Console.CursorLeft = Console.WindowWidth / 2;
+                    ConsoleKeyInfo keuze = Console.ReadKey();
+                    if (keuze.Key == ConsoleKey.D1)
+                    {
+                        AddReservering();
+                    }
+                    else if (keuze.Key == ConsoleKey.D0)
+                    {
+                        Program.Main();
+                    }
+                }
+            }
+
+            Console.WriteLine();
+            str = "Wat zijn uw persoonlijke voornaamwoorden?";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            str = "[1] hij/hem";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            str = "[2] zij/haar";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            str = "[3] hen/hun";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            Console.CursorLeft = Console.WindowWidth / 2;
             ConsoleKeyInfo ckey = Console.ReadKey();
-            // Console.SetCursorPosition(0, Console.CursorTop);
-            // ClearCurrentConsoleLine();
             string pronounsIN = "";
             if (ckey.Key == ConsoleKey.D1)
             {
@@ -75,25 +96,60 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 pronounsIN = "hen/hun";
             }
 
-            Console.WriteLine("\n\nGroepsgrote: ");
+            Console.WriteLine();
+            Console.WriteLine();
+            str = "Groepsgrote:";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            Console.CursorLeft = Console.WindowWidth / 2;
             int aantalIN = Convert.ToInt32(Console.ReadLine());
             if (aantalIN > 200)
             {
-                Console.WriteLine("Niet mogelijk om een reservering te maken voor meer\ndan 200 personen.");
-                Console.WriteLine("[1] Doorgaan\n");
-                Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                Console.WriteLine();
+                str = "Niet mogelijk om een reservering te maken voor meer";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "dan 200 personen.";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[1] Opnieuw proberen";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.WriteLine();
+                str = "[0] Terug";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = Console.WindowWidth / 2;
                 ConsoleKeyInfo keuze = Console.ReadKey();
-                if (keuze.Key == ConsoleKey.D1)
+                if (keuze.Key == ConsoleKey.D0)
                 {
                     Program.Main();
                 }
+                else if (keuze.Key == ConsoleKey.D1)
+                {
+                    AddReservering();
+                }
             }
-
-            Console.WriteLine("\nDatum van reservering\nDag (1 t/m 31): ");
+            
+            Console.Clear();
+            Console.WriteLine("                                                    ┌─────────────┐            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $$$$$ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    └─────────────┘           \n");
+            str = "|Reserveren|";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            Console.WriteLine();
+            str = "Datum van reservering";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            str = "Dag (1 t/m 31):";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            Console.CursorLeft = Console.WindowWidth / 2;
             int dag = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Maand: ");
+            str = "Maand:";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            Console.CursorLeft = Console.WindowWidth / 2;
             int maand = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Jaar: ");
+            str = "Jaar:";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            Console.CursorLeft = Console.WindowWidth / 2;
             int jaar = Convert.ToInt32(Console.ReadLine());
 
             int today = DateTime.Now.Day; // dag van vandaag (bijv. 7)
@@ -130,10 +186,20 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 }
                 else
                 {
-                    Console.WriteLine("\nU kunt helaas niet reserveren voor deze datum.\n" +
-                    "Deze datum bestaat niet of is langer dan twee weken\nverwijderd van vandaag.");
-                    Console.WriteLine("Wilt u opnieuw proberen een reservering aan te maken?\n\t[1] Ja\n\t[2] Nee");
-                    Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                    Console.WriteLine();
+                    str = "U kunt helaas niet reserveren voor deze datum.";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "Deze datum bestaat niet of is langer dan twee weken";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "verwijderd van vandaag.";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "Wilt u opnieuw proberen de reservering te wijzigen?";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "[1] Ja";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "[2] Nee";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    Console.CursorLeft = Console.WindowWidth / 2;
                     ConsoleKeyInfo ckey3 = Console.ReadKey();
                     if (ckey3.Key == ConsoleKey.D1)
                     {
@@ -154,10 +220,20 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 }
                 else
                 {
-                    Console.WriteLine("\nU kunt helaas niet reserveren voor deze datum.\n" +
-                    "Deze datum bestaat niet of is langer dan twee weken\nverwijderd van vandaag.");
-                    Console.WriteLine("Wilt u opnieuw proberen een reservering aan te maken?\n\t[1] Ja\n\t[2] Nee");
-                    Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                    Console.WriteLine();
+                    str = "U kunt helaas niet reserveren voor deze datum.";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "Deze datum bestaat niet of is langer dan twee weken";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "verwijderd van vandaag.";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "Wilt u opnieuw proberen een reservering aan te maken?";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "[1] Ja";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "[2] Nee";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    Console.CursorLeft = Console.WindowWidth / 2;
                     ConsoleKeyInfo ckey3 = Console.ReadKey();
                     if (ckey3.Key == ConsoleKey.D1)
                     {
@@ -171,10 +247,20 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
             else
             {
-                Console.WriteLine("\nU kunt helaas niet reserveren voor deze datum.\n" +
-                    "Deze datum bestaat niet of is langer dan twee weken\nverwijderd van vandaag.");
-                Console.WriteLine("Wilt u opnieuw proberen een reservering aan te maken?\n\t[1] Ja\n\t[2] Nee");
-                Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                Console.WriteLine();
+                str = "U kunt helaas niet reserveren voor deze datum.";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "Deze datum bestaat niet of is langer dan twee weken";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "verwijderd van vandaag.";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "Wilt u opnieuw proberen een reservering aan te maken?";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[1] Ja";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[2] Nee";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = Console.WindowWidth / 2;
                 ConsoleKeyInfo ckey3 = Console.ReadKey();
                 if (ckey3.Key == ConsoleKey.D1)
                 {
@@ -197,18 +283,20 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             var JsonData = File.ReadAllText(ReserveringPath);
             var ReserveringenList = JsonConvert.DeserializeObject<List<Reserveringenjson>>(JsonData) ?? new List<Reserveringenjson>();
 
-            string BeschikbaarheidPath = Path.GetFullPath(@"Beschikbaarheid.json");
-            bool fileExist2 = File.Exists(BeschikbaarheidPath);
-            if (!fileExist)
-            {
-                using (File.Create(ReserveringPath)) ;
-            }
-            var JsonData2 = File.ReadAllText(ReserveringPath);
-            var BeschikbaarheidList = JsonConvert.DeserializeObject<List<Beschikbaarheidjson>>(JsonData2) ?? new List<Beschikbaarheidjson>();
-
-
-            Console.WriteLine($"\nKies een tijdslot:\n\t[1] 11:00-15:00\n\t[2] 15:00-19:00\n\t[3] 19:00-22:00\n\t[4] 22:00-23:00" +
-                $"\nLet op! Tijdslot 4 heeft een tijdsduur van een uur, ipv. 4 uur.");
+            Console.WriteLine();
+            string str = "Kies een tijdslot:";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            str = "[1] 11:00-15:00";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            str = "[2] 15:00-19:00";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            str = "[3] 19:00-22:00";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            str = "[4] 22:00-23:00";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            str = "Let op! Tijdslot 4 heeft een tijdsduur van een uur, ipv. 4 uur.";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            Console.CursorLeft = Console.WindowWidth / 2;
             ConsoleKeyInfo ckey2 = Console.ReadKey();
             string tijdslotIN = "";
             if (ckey2.Key == ConsoleKey.D1)
@@ -236,7 +324,10 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 {
                     if (ReserveringenList[i].Tijdslot == tijdslotIN)
                     {
-                        plekken += ReserveringenList[i].Groepsgrote;
+                        if (ReserveringenList[i].Eindtijd == "")
+                        {
+                            plekken += ReserveringenList[i].Groepsgrote;
+                        }
                     }
                 }
             }
@@ -255,9 +346,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 JsonData = JsonConvert.SerializeObject(ReserveringenList);
                 System.IO.File.WriteAllText(ReserveringPath, JsonData);
 
-                Console.WriteLine("\nUw reservering is succesvol opgeslagen.");
-                Console.WriteLine("[1] Doorgaan\n");
-                Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                Console.WriteLine();
+                Console.WriteLine();
+                str = "Uw reservering is succesvol opgeslagen.";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[1] Doorgaan";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = Console.WindowWidth / 2;
                 ConsoleKeyInfo keus = Console.ReadKey();
                 if (keus.Key == ConsoleKey.D1)
                 {
@@ -266,9 +361,19 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
             else
             {
-                Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {tijdslotIN} op {datumIN}.\n" +
-                                "Wilt u opnieuw proberen een reservering aan te maken?\n\t[1] Ja\n\t[2] Nee");
-                Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                Console.WriteLine();
+                Console.WriteLine();
+                str = $"Er zijn niet genoeg plekken beschikbaar";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = $"tussen {tijdslotIN} op {datumIN}.";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "Wilt u opnieuw proberen een reservering aan te maken?";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[1] Ja";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[2] Nee";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = Console.WindowWidth / 2;
                 ConsoleKeyInfo ckey4 = Console.ReadKey();
                 if (ckey4.Key == ConsoleKey.D1)
                 {
@@ -501,18 +606,19 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             var JsonData = File.ReadAllText(ReserveringPath);
             var ReserveringenList = JsonConvert.DeserializeObject<List<Reserveringenjson>>(JsonData) ?? new List<Reserveringenjson>();
 
-            string BeschikbaarheidPath = Path.GetFullPath(@"Beschikbaarheid.json");
-            bool fileExist2 = File.Exists(BeschikbaarheidPath);
-            if (!fileExist)
-            {
-                using (File.Create(ReserveringPath)) ;
-            }
-            var JsonData2 = File.ReadAllText(ReserveringPath);
-            var BeschikbaarheidList = JsonConvert.DeserializeObject<List<Beschikbaarheidjson>>(JsonData) ?? new List<Beschikbaarheidjson>();
-
-            Console.WriteLine("╒════════════════════════════════════════════════════════╕");
-            Console.WriteLine(" HC\n");
-            Console.WriteLine("Volledige naam: ");
+            Console.WriteLine("                                                    ┌─────────────┐            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $$$$$ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    └─────────────┘           \n");
+            string str = "|Reservering wijzigen|";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            Console.WriteLine();
+            str = "Reserveringsnaam:";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            Console.CursorLeft = Console.WindowWidth / 2;
             string zoekNaam = Console.ReadLine();
 
             int len = ReserveringenList.Count;
@@ -527,8 +633,17 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
             if (reserveringsNaam == "")
             {
-                Console.WriteLine($"\nEen reservering onder de naam '{zoekNaam}' bestaat niet. \n[1] Probeer opnieuw.\n[2] Maak nieuwe reservering aan.\n\t[0] Terug");
-                Console.WriteLine("╘════════════════════════════════════════════════════════╛");
+                Console.WriteLine();
+                str = $"Een reservering onder de naam '{zoekNaam}' bestaat niet.";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[1] Probeer opnieuw.";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[2] Maak nieuwe reservering aan.";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.WriteLine();
+                str = "[0] Terug";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = Console.WindowWidth / 2;
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
                 {
@@ -552,32 +667,93 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
             if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
             {
-                Console.WriteLine("\nWat wilt u wijzigen? \n\t[1] Naam\n\t[2] Persoonlijk voornaamwoorden\n\t[3] Groepsgrote\n\t[4] Datum\n\t[5] Tijdslot\n[6] Eindtijd  ");
-                Console.WriteLine("╘════════════════════════════════════════════════════════╛");
+                Console.WriteLine();
+                str = "Wat wilt u wijzigen?";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[1] Naam";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[2] Persoonlijk voornaamwoorden";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[3] Groepsgrote";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[4] Datum";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[5] Tijdslot";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[6] Eindtijd";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
             }
             else
             {
-                Console.WriteLine("\nWat wilt u wijzigen? \n\t[1] Naam\n\t[2] Persoonlijk voornaamwoorden\n\t[3] Groepsgrote\n\t[4] Datum\n\t[5] Tijdslot\n");
-                Console.WriteLine("╘════════════════════════════════════════════════════════╛");
+                Console.WriteLine();
+                str = "Wat wilt u wijzigen?";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[1] Naam";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[2] Persoonlijk voornaamwoorden";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[3] Groepsgrote";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[4] Datum";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[5] Tijdslot";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
             }
-
+            Console.CursorLeft = Console.WindowWidth / 2;
             ConsoleKeyInfo readkey = Console.ReadKey();
             if (readkey.Key == ConsoleKey.D1)
             {
                 Console.Clear();
-                Console.WriteLine("╒══════════════════════════════════════════════════════════════════════════════════════════════╕");
-                Console.WriteLine(" HC\n");
-                Console.WriteLine("Nieuwe volledige naam: ");
+                Console.WriteLine("                                                    ┌─────────────┐            ");
+                Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                Console.WriteLine("                                                    │ $   $ $     │            ");
+                Console.WriteLine("                                                    │ $$$$$ $     │            ");
+                Console.WriteLine("                                                    │ $   $ $     │            ");
+                Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                Console.WriteLine("                                                    └─────────────┘           \n");
+                str = "|Reservering wijzigen|";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.WriteLine();
+                str = "Nieuwe reserveringsnaam:";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = Console.WindowWidth / 2;
                 string new_naam = Console.ReadLine();
+                for (int j = 0; j < ReserveringenList.Count; j++)
+                {
+                    if (ReserveringenList[j].Naam == new_naam)
+                    {
+                        Console.WriteLine();
+                        str = "Er bestaat al een reservering onder deze naam.";
+                        Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                        str = "[1] Probeer opnieuw";
+                        Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                        Console.WriteLine();
+                        str = "[0] Terug";
+                        Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                        Console.CursorLeft = Console.WindowWidth / 2;
+                        ConsoleKeyInfo keuze = Console.ReadKey();
+                        if (keuze.Key == ConsoleKey.D1)
+                        {
+                            AddReservering();
+                        }
+                        else if (keuze.Key == ConsoleKey.D0)
+                        {
+                            Program.Main();
+                        }
+                    }
+                }
 
                 while (i < len)
                 {
                     if (ReserveringenList[i].Naam == zoekNaam)
                     {
+                        Console.WriteLine();
                         ReserveringenList[i].Naam = new_naam;
-                        Console.WriteLine($"\n\nDe naam waaronder de reservering is opgeslagen is gewijzigd naar: {new_naam}\n");
-                        Console.WriteLine("[1] Doorgaan\n");
-                        Console.WriteLine("╘══════════════════════════════════════════════════════════════════════════════════════════════╛");
+                        str = $"De naam waaronder de reservering is opgeslagen is gewijzigd naar: {new_naam}";
+                        Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                        str = "[1] Doorgaan";
+                        Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                        Console.CursorLeft = Console.WindowWidth / 2;
                         ConsoleKeyInfo keus = Console.ReadKey();
                         if (keus.Key == ConsoleKey.D1)
                         {
@@ -596,16 +772,32 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             }
                             break;
                         }
-                        i++;
                     }
+                    i++;
                 }
             }
             else if (readkey.Key == ConsoleKey.D2)
             {
                 Console.Clear();
-                Console.WriteLine("╒══════════════════════════════════════════════════════════════════════════╕");
-                Console.WriteLine(" HC\n");
-                Console.WriteLine("Nieuwe persoonlijk voornaamwoorden?\n\t[1] hij/hem\n\t[2] zij/haar\n\t[3] hen/hun");
+                Console.WriteLine("                                                    ┌─────────────┐            ");
+                Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                Console.WriteLine("                                                    │ $   $ $     │            ");
+                Console.WriteLine("                                                    │ $$$$$ $     │            ");
+                Console.WriteLine("                                                    │ $   $ $     │            ");
+                Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                Console.WriteLine("                                                    └─────────────┘           \n");
+                str = "|Reservering wijzigen|";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.WriteLine();
+                str = "Nieuwe persoonlijk voornaamwoorden?";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[1] hij/hem";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[2] zij/haar";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[3] hen/hun";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = Console.WindowWidth / 2;
                 ConsoleKeyInfo AKey = Console.ReadKey();
                 string pronounsIN = "";
                 if (AKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
@@ -625,10 +817,14 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 {
                     if (ReserveringenList[i].Naam == zoekNaam)
                     {
+                        Console.WriteLine();
+                        Console.WriteLine();
                         ReserveringenList[i].Voornaamwoorden = pronounsIN;
-                        Console.WriteLine($"\n\nUw persoonlijk voornaamwoorden zijn gewijzigd naar: {pronounsIN}\n");
-                        Console.WriteLine("[1] Doorgaan\n");
-                        Console.WriteLine("╘══════════════════════════════════════════════════════════════════════════╛");
+                        str = $"Uw persoonlijk voornaamwoorden zijn gewijzigd naar: {pronounsIN}";
+                        Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                        str = "[1] Doorgaan";
+                        Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                        Console.CursorLeft = Console.WindowWidth / 2;
                         ConsoleKeyInfo keus = Console.ReadKey();
                         if (keus.Key == ConsoleKey.D1)
                         {
@@ -651,9 +847,19 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             else if (readkey.Key == ConsoleKey.D3)
             {
                 Console.Clear();
-                Console.WriteLine("╒══════════════════════════════════════════════════════════════╕");
-                Console.WriteLine(" HC\n");
-                Console.WriteLine("Nieuwe groepsgrote: ");
+                Console.WriteLine("                                                    ┌─────────────┐            ");
+                Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                Console.WriteLine("                                                    │ $   $ $     │            ");
+                Console.WriteLine("                                                    │ $$$$$ $     │            ");
+                Console.WriteLine("                                                    │ $   $ $     │            ");
+                Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                Console.WriteLine("                                                    └─────────────┘           \n");
+                str = "|Reservering wijzigen|";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.WriteLine();
+                str = "Nieuwe groepsgrote:";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = Console.WindowWidth / 2;
                 int new_groepsgrote = Convert.ToInt32(Console.ReadLine());
 
                 while (i < len)
@@ -667,16 +873,21 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             {
                                 if (ReserveringenList[j].Tijdslot == ReserveringenList[i].Tijdslot)
                                 {
-                                    plekken += ReserveringenList[j].Groepsgrote;
+                                    if (ReserveringenList[j].Eindtijd == "")
+                                    {
+                                        plekken += ReserveringenList[j].Groepsgrote;
+                                    }
                                 }
                             }
                         }
                         if (plekken + ReserveringenList[i].Groepsgrote <= 200)
                         {
+                            Console.WriteLine();
                             ReserveringenList[i].Groepsgrote = new_groepsgrote;
-                            Console.WriteLine($"\n\nDe groepsgrote van uw reservering is gewijzigd naar: {new_groepsgrote}\n");
-                            Console.WriteLine("[1] Doorgaan\n");
-                            Console.WriteLine("╘══════════════════════════════════════════════════════════════╛");
+                            str = $"De groepsgrote van uw reservering is gewijzigd naar: {new_groepsgrote}";
+                            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                            str = "[1] Doorgaan";
+                            Console.CursorLeft = Console.WindowWidth / 2;
                             ConsoleKeyInfo keus = Console.ReadKey();
                             if (keus.Key == ConsoleKey.D1)
                             {
@@ -695,9 +906,18 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                         }
                         else
                         {
-                            Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {ReserveringenList[i].Tijdslot} op {ReserveringenList[i].Datum}.\n" +
-                                        "Wilt u opnieuw proberen een uw reservering te wijzigen?\n\t[1] Ja\n\t[2] Nee");
-                            Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                            Console.WriteLine();
+                            str = "Er zijn niet genoeg plekken beschikbaar";
+                            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                            str = $"tussen {ReserveringenList[i].Tijdslot} op {ReserveringenList[i].Datum}.";
+                            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                            str = "Wilt u opnieuw proberen om de reservering te wijzigen?";
+                            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                            str = "[1] Ja";
+                            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                            str = "[2] Nee";
+                            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                            Console.CursorLeft = Console.WindowWidth / 2;
                             ConsoleKeyInfo ckey4 = Console.ReadKey();
                             if (ckey4.Key == ConsoleKey.D1)
                             {
@@ -722,13 +942,29 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             else if (readkey.Key == ConsoleKey.D4)
             {
                 Console.Clear();
-                Console.WriteLine("╒════════════════════════════════════════════════════════════════╕");
-                Console.WriteLine(" HC\n");
-                Console.WriteLine("\nNieuwe reserveringsdatum\nDag (1 t/m 31): ");
+                Console.WriteLine("                                                    ┌─────────────┐            ");
+                Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                Console.WriteLine("                                                    │ $   $ $     │            ");
+                Console.WriteLine("                                                    │ $$$$$ $     │            ");
+                Console.WriteLine("                                                    │ $   $ $     │            ");
+                Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                Console.WriteLine("                                                    └─────────────┘           \n");
+                str = "|Reservering wijzigen|";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.WriteLine();
+                str  = "Nieuwe reserveringsdatum";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "Dag (1 t/m 31):";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = Console.WindowWidth / 2;
                 int newdag = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Maand: ");
+                str = "Maand:";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = Console.WindowWidth / 2;
                 int newmaand = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Jaar: ");
+                str = "Jaar:";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = Console.WindowWidth / 2;
                 int newjaar = Convert.ToInt32(Console.ReadLine());
                 string new_Datum = $"{newdag}-{newmaand}-{newjaar}";
 
@@ -772,16 +1008,22 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                     {
                                         if (ReserveringenList[j].Tijdslot == ReserveringenList[i].Tijdslot)
                                         {
-                                            plekken += ReserveringenList[j].Groepsgrote;
+                                            if (ReserveringenList[j].Eindtijd == "")
+                                            {
+                                                plekken += ReserveringenList[j].Groepsgrote;
+                                            }
                                         }
                                     }
                                 }
                                 if (plekken + ReserveringenList[i].Groepsgrote <= 200)
                                 {
+                                    Console.WriteLine();
                                     ReserveringenList[i].Datum = new_Datum;
-                                    Console.WriteLine($"De datum van uw reservering is gewijzigd naar: {new_Datum}\n");
-                                    Console.WriteLine("[1] Doorgaan\n");
-                                    Console.WriteLine("╘════════════════════════════════════════════════════════════════╛");
+                                    str = $"De datum van uw reservering is gewijzigd naar: {new_Datum}";
+                                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                    str = "[1] Doorgaan";
+                                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                    Console.CursorLeft = Console.WindowWidth / 2;
                                     ConsoleKeyInfo keus = Console.ReadKey();
                                     if (keus.Key == ConsoleKey.D1)
                                     {
@@ -800,9 +1042,18 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                 }
                                 else
                                 {
-                                    Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {ReserveringenList[i].Tijdslot} op {new_Datum}.\n" +
-                                        "Wilt u opnieuw proberen een uw reservering te wijzigen?\n\t[1] Ja\n\t[2] Nee");
-                                    Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                                    Console.WriteLine();
+                                    str = "Er zijn niet genoeg plekken beschikbaar";
+                                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                    str = $"tussen {ReserveringenList[i].Tijdslot} op {ReserveringenList[i].Datum}.";
+                                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                    str = "Wilt u opnieuw proberen de reservering te wijzigen?";
+                                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                    str = "[1] Ja";
+                                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                    str = "[2] Nee";
+                                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                    Console.CursorLeft = Console.WindowWidth / 2;
                                     ConsoleKeyInfo ckey4 = Console.ReadKey();
                                     if (ckey4.Key == ConsoleKey.D1)
                                     {
@@ -824,9 +1075,18 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             }
                             else
                             {
-                                Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {ReserveringenList[i].Tijdslot} op {new_Datum}.\n" +
-                                    "Wilt u opnieuw proberen een uw reservering te wijzigen?\n\t[1] Ja\n\t[2] Nee");
-                                Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                                Console.WriteLine();
+                                str = "Er zijn niet genoeg plekken beschikbaar";
+                                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                str = $"tussen {ReserveringenList[i].Tijdslot} op {ReserveringenList[i].Datum}.";
+                                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                str = "Wilt u opnieuw proberen de reservering te wijzigen?";
+                                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                str = "[1] Ja";
+                                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                str = "[2] Nee";
+                                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                Console.CursorLeft = Console.WindowWidth / 2;
                                 ConsoleKeyInfo ckey4 = Console.ReadKey();
                                 if (ckey4.Key == ConsoleKey.D1)
                                 {
@@ -856,16 +1116,22 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                     {
                                         if (ReserveringenList[j].Tijdslot == ReserveringenList[i].Tijdslot)
                                         {
-                                            plekken += ReserveringenList[j].Groepsgrote;
+                                            if (ReserveringenList[j].Eindtijd == "")
+                                            {
+                                                plekken += ReserveringenList[j].Groepsgrote;
+                                            }
                                         }
                                     }
                                 }
                                 if (plekken + ReserveringenList[i].Groepsgrote <= 200)
                                 {
+                                    Console.WriteLine();
                                     ReserveringenList[i].Datum = new_Datum;
-                                    Console.WriteLine($"De datum van uw reservering is gewijzigd naar: {new_Datum}\n");
-                                    Console.WriteLine("[1] Doorgaan\n");
-                                    Console.WriteLine("╘════════════════════════════════════════════════════════════════╛");
+                                    str = $"De datum van uw reservering is gewijzigd naar: {new_Datum}";
+                                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                    str = "[1] Doorgaan";
+                                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                    Console.CursorLeft = Console.WindowWidth / 2;
                                     ConsoleKeyInfo keus = Console.ReadKey();
                                     if (keus.Key == ConsoleKey.D1)
                                     {
@@ -884,9 +1150,18 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                 }
                                 else
                                 {
-                                    Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {ReserveringenList[i].Tijdslot} op {new_Datum}.\n" +
-                                        "Wilt u opnieuw proberen een uw reservering te wijzigen?\n\t[1] Ja\n\t[2] Nee");
-                                    Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                                    Console.WriteLine();
+                                    str = "Er zijn niet genoeg plekken beschikbaar";
+                                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                    str = $"tussen {ReserveringenList[i].Tijdslot} op {ReserveringenList[i].Datum}.";
+                                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                    str = "Wilt u opnieuw proberen de reservering te wijzigen?";
+                                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                    str = "[1] Ja";
+                                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                    str = "[2] Nee";
+                                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                    Console.CursorLeft = Console.WindowWidth / 2;
                                     ConsoleKeyInfo ckey4 = Console.ReadKey();
                                     if (ckey4.Key == ConsoleKey.D1)
                                     {
@@ -908,9 +1183,18 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             }
                             else
                             {
-                                Console.WriteLine($"Er zijn niet genoeg plekken beschikbaar tussen {ReserveringenList[i].Tijdslot} op {new_Datum}.\n" +
-                                    "Wilt u opnieuw proberen een uw reservering te wijzigen?\n\t[1] Ja\n\t[2] Nee");
-                                Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                                Console.WriteLine();
+                                str = "Er zijn niet genoeg plekken beschikbaar";
+                                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                str = $"tussen {ReserveringenList[i].Tijdslot} op {ReserveringenList[i].Datum}.";
+                                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                str = "Wilt u opnieuw proberen de reservering te wijzigen?";
+                                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                str = "[1] Ja";
+                                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                str = "[2] Nee";
+                                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                Console.CursorLeft = Console.WindowWidth / 2;
                                 ConsoleKeyInfo ckey4 = Console.ReadKey();
                                 if (ckey4.Key == ConsoleKey.D1)
                                 {
@@ -931,9 +1215,16 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                         }
                         else
                         {
-                            Console.WriteLine($"U kunt niet reserveren voor deze datum.\n" +
-                                        "Wilt u opnieuw proberen een uw reservering te wijzigen?\n\t[1] Ja\n\t[2] Nee");
-                            Console.WriteLine("╘═════════════════════════════════════════════════════╛");
+                            Console.WriteLine();
+                            str = "U kunt niet reserveren voor deze datum.";
+                            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                            str = "Wilt u opnieuw proberen de reservering te wijzigen?";
+                            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                            str = "[1] Ja";
+                            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                            str = "[2] Nee";
+                            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                            Console.CursorLeft = Console.WindowWidth / 2;
                             ConsoleKeyInfo ckey4 = Console.ReadKey();
                             if (ckey4.Key == ConsoleKey.D1)
                             {
@@ -958,10 +1249,29 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             else if (readkey.Key == ConsoleKey.D5)
             {
                 Console.Clear();
-                Console.WriteLine("╒════════════════════════════════════════════════════════════════╕");
-                Console.WriteLine(" HC\n");
-
-                Console.WriteLine("\nKies een tijdslot:\n\t[1] 11:00-15:00\n\t[2] 15:00-19:00\n\t[3] 19:00-22:00\n\t[4] 22:00-23:00");
+                Console.WriteLine("                                                    ┌─────────────┐            ");
+                Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                Console.WriteLine("                                                    │ $   $ $     │            ");
+                Console.WriteLine("                                                    │ $$$$$ $     │            ");
+                Console.WriteLine("                                                    │ $   $ $     │            ");
+                Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                Console.WriteLine("                                                    └─────────────┘           \n");
+                str = "|Reservering wijzigen|";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.WriteLine();
+                str = "Kies een tijdslot:";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[1] 11:00-15:00";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[2] 15:00-19:00";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[3] 19:00-22:00";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[4] 22:00-23:00";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "Let op! Tijdslot 4 heeft een tijdsduur van een uur, ipv. 4 uur.";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = Console.WindowWidth / 2;
                 ConsoleKeyInfo ckey = Console.ReadKey();
                 string new_Tijdslot = "";
                 if (ckey.Key == ConsoleKey.D1)
@@ -992,16 +1302,23 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             {
                                 if (ReserveringenList[j].Tijdslot == new_Tijdslot)
                                 {
-                                    plekken += ReserveringenList[j].Groepsgrote;
+                                    if (ReserveringenList[j].Eindtijd == "")
+                                    {
+                                        plekken += ReserveringenList[j].Groepsgrote;
+                                    }
                                 }
                             }
                         }
                         if (plekken + ReserveringenList[i].Groepsgrote <= 200)
                         {
+                            Console.WriteLine();
+                            Console.WriteLine();
                             ReserveringenList[i].Tijdslot = new_Tijdslot;
-                            Console.WriteLine($"Het tijdslot van uw reservering is gewijzigd naar: {new_Tijdslot}\n");
-                            Console.WriteLine("[1] Doorgaan\n");
-                            Console.WriteLine("╘════════════════════════════════════════════════════════════════╛");
+                            str = $"Het tijdslot van uw reservering is gewijzigd naar: {new_Tijdslot}";
+                            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                            str = "[1] Doorgaan";
+                            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                            Console.CursorLeft = Console.WindowWidth / 2;
                             ConsoleKeyInfo keus = Console.ReadKey();
                             if (keus.Key == ConsoleKey.D1)
                             {
@@ -1018,6 +1335,38 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             }
                             break;
                         }
+                        else
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine();
+                            str = "Er zijn niet genoeg plekken beschikbaar";
+                            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                            str = $"tussen {ReserveringenList[i].Tijdslot} op {ReserveringenList[i].Datum}.";
+                            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                            str = "Wilt u opnieuw proberen de reservering te maken wijzigen?";
+                            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                            str = "[1] Ja";
+                            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                            str = "[2] Nee";
+                            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                            Console.CursorLeft = Console.WindowWidth / 2;
+                            ConsoleKeyInfo ckey4 = Console.ReadKey();
+                            if (ckey4.Key == ConsoleKey.D1)
+                            {
+                                WijzigReservering(gebruikerNaam);
+                            }
+                            else if (ckey4.Key == ConsoleKey.D2)
+                            {
+                                if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
+                                {
+                                    Personeelsleden.personeelMain(gebruikerNaam);
+                                }
+                                else
+                                {
+                                    Program.Main();
+                                }
+                            }
+                        }
                     }
                     i++;
                 }
@@ -1027,12 +1376,21 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 Console.Clear();
                 if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
                 {
-                    Console.WriteLine("╒════════════════════════════════════════════════════════════════╕");
-                    Console.WriteLine(" HC\n");
-                    Console.WriteLine($"Eindtijd {reserveringsNaam}: ");
+                    Console.Clear();
+                    Console.WriteLine("                                                    ┌─────────────┐            ");
+                    Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                    Console.WriteLine("                                                    │ $   $ $     │            ");
+                    Console.WriteLine("                                                    │ $$$$$ $     │            ");
+                    Console.WriteLine("                                                    │ $   $ $     │            ");
+                    Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+                    Console.WriteLine("                                                    └─────────────┘           \n");
+                    str = "|Reservering wijzigen|";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    Console.WriteLine();
+                    str = $"Eindtijd {reserveringsNaam}:";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    Console.CursorLeft = Console.WindowWidth / 2;
                     string new_EindTijd = Console.ReadLine();
-
-
 
                     while (i < len)
                     {
@@ -1045,10 +1403,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
 
                             if (hour < max_hour && hour >= min_hour && minutes < 60)
                             {
+                                Console.WriteLine();
                                 ReserveringenList[i].Eindtijd = new_EindTijd;
-                                Console.WriteLine($"{reserveringsNaam} is vertrokken om {new_EindTijd} uur.");
-                                Console.WriteLine("[1] Doorgaan\n");
-                                Console.WriteLine("╘════════════════════════════════════════════════════════════════╛");
+                                str = $"{reserveringsNaam} is vertrokken om {new_EindTijd} uur.";
+                                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                str = "[1] Doorgaan";
+                                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                Console.CursorLeft = Console.WindowWidth / 2;
                                 ConsoleKeyInfo keus = Console.ReadKey();
                                 if (keus.Key == ConsoleKey.D1)
                                 {
@@ -1060,9 +1421,17 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             }
                             else
                             {
-                                Console.WriteLine($"Ingevulde tijd is geen echte tijd of valt buiten deze persoon's\ngereserveerde tijdslot");
-                                Console.WriteLine("\n\t[1] Opnieuw proberen\n\t[0] Terug");
-                                Console.WriteLine("╘════════════════════════════════════════════════════════════════╛");
+                                Console.WriteLine();
+                                str = $"Ingevulde tijd is geen echte tijd of valt buiten {ReserveringenList[i].Naam}'s";
+                                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                str = "gereserveerde tijdslot";
+                                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                str = "[1] Opnieuw proberen";
+                                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                Console.WriteLine();
+                                str = "[0] Terug";
+                                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                Console.CursorLeft = Console.WindowWidth / 2;
                                 ConsoleKeyInfo keus = Console.ReadKey();
                                 if (keus.Key == ConsoleKey.D1)
                                 {
@@ -1093,9 +1462,19 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             var ReserveringenList = JsonConvert.DeserializeObject<List<Reserveringenjson>>(JsonData) ?? new List<Reserveringenjson>();
 
             Console.Clear();
-            Console.WriteLine("╒════════════════════════════════════════════════════════════════════════════════════════╕");
-            Console.WriteLine(" HC\n");
-            Console.WriteLine("Volledige naam: ");
+            Console.WriteLine("                                                    ┌─────────────┐            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $$$$$ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    └─────────────┘           \n");
+            string str = "|Reservering annuleren|";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            Console.WriteLine();
+            str = "Reserveringsnaam:";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            Console.CursorLeft = Console.WindowWidth / 2;
             string zoekNaam = Console.ReadLine();
 
             int len = ReserveringenList.Count;
@@ -1111,8 +1490,15 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
             if (reserveringNaam == "")
             {
-                Console.WriteLine("\nEen reservering onder de gegeven naam bestaat niet. \n\t[1] Probeer opnieuw\n\t[0] Terug\n");
-                Console.WriteLine("╘════════════════════════════════════════════════════════════════════════════════════════╛");
+                Console.WriteLine();
+                str = "Een reservering onder de gegeven naam bestaat niet.";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[1] Probeer opnieuw";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.WriteLine();
+                str = "[0] Terug";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = Console.WindowWidth / 2;
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
                 {
@@ -1123,10 +1509,15 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                     Program.Main();
                 }
             }
-
-            Console.WriteLine($"\nWeet u zeker dat u de reservering onder de naam, '{reserveringNaam}', wilt verwijderen?");
-            Console.WriteLine("[1]Ja\n[2]Nee\n");
-            Console.WriteLine("╘════════════════════════════════════════════════════════════════════════════════════════╛");
+           
+            Console.WriteLine();
+            str = $"Weet u zeker dat u de reservering onder de naam, '{reserveringNaam}', wilt annuleren?";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            str = "[1] Ja";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            str = "[2] Nee";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            Console.CursorLeft = Console.WindowWidth / 2;
             ConsoleKeyInfo readkey = Console.ReadKey();
             if (readkey.Key == ConsoleKey.D1)
             {
@@ -1134,11 +1525,11 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 {
                     if (ReserveringenList[i].Naam == zoekNaam)
                     {
+                        Console.WriteLine();
+                        Console.WriteLine();
                         ReserveringenList.RemoveAt(i);
-                        Console.Clear();
-                        Console.WriteLine("╒════════════════════════════════════════════════════════════════════════════╕");
-                        Console.WriteLine(" HC\n");
-                        Console.WriteLine($"De reservering onder de naam, '{zoekNaam}', is verwijderd");
+                        str = $"De reservering onder de naam, '{zoekNaam}', is geannuleerd.";
+                        Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
 
                         count++;
                         break;
@@ -1151,9 +1542,10 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             JsonData = JsonConvert.SerializeObject(ReserveringenList);
             System.IO.File.WriteAllText(ReserveringPath, JsonData);
 
-            Console.WriteLine("\n [1] Doorgaan");
-            Console.WriteLine("╘════════════════════════════════════════════════════════════════════════════╛");
+            str = "[1] Doorgaan";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
             ConsoleKeyInfo keus = Console.ReadKey();
+            Console.CursorLeft = Console.WindowWidth / 2;
             if (keus.Key == ConsoleKey.D1 && gebruiker == "niet ingelogd")
             {
                 Program.Main();
@@ -1166,7 +1558,6 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
 
         public static void bekijkReservering(string gebruikerNaam)
         {
-            Console.Clear();
             string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
             bool fileExist = File.Exists(ReserveringPath);
             if (!fileExist)
@@ -1177,18 +1568,20 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             var JsonData = File.ReadAllText(ReserveringPath);
             var ReserveringenList = JsonConvert.DeserializeObject<List<Reserveringenjson>>(JsonData) ?? new List<Reserveringenjson>();
 
-            string BeschikbaarheidPath = Path.GetFullPath(@"Beschikbaarheid.json");
-            bool fileExist2 = File.Exists(BeschikbaarheidPath);
-            if (!fileExist)
-            {
-                using (File.Create(ReserveringPath)) ;
-            }
-            var JsonData2 = File.ReadAllText(ReserveringPath);
-            var BeschikbaarheidList = JsonConvert.DeserializeObject<List<Beschikbaarheidjson>>(JsonData) ?? new List<Beschikbaarheidjson>();
-
-            Console.WriteLine("╒════════════════════════════════════════════════════════╕");
-            Console.WriteLine(" HC\n");
-            Console.WriteLine("Volledige naam: ");
+            Console.Clear();
+            Console.WriteLine("                                                    ┌─────────────┐            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $$$$$ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $     │            ");
+            Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
+            Console.WriteLine("                                                    └─────────────┘           \n");
+            string str = "|Reservering annuleren|";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            Console.WriteLine();
+            str = "Reserveringsnaam:";
+            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+            Console.CursorLeft = Console.WindowWidth / 2;
             string zoekNaam = Console.ReadLine();
 
             int len = ReserveringenList.Count;
@@ -1203,8 +1596,14 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
             if (reserveringsNaam == "")
             {
-                Console.WriteLine($"\nEen reservering onder de naam '{zoekNaam}' bestaat niet. \n[1] Probeer opnieuw.\n[2] Maak nieuwe reservering aan.\n");
-                Console.WriteLine("╘════════════════════════════════════════════════════════╛");
+                Console.WriteLine();
+                str = $"Een reservering onder de naam '{zoekNaam}' bestaat niet.";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[1] Probeer opnieuw";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[2] Maak nieuwe reservering aan";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = Console.WindowWidth / 2;
                 ConsoleKeyInfo rkey = Console.ReadKey();
                 if (rkey.Key == ConsoleKey.D1)
                 {
@@ -1215,14 +1614,27 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                     AddReservering();
                 }
             }
-            Console.WriteLine($"\nNaam: {zoekNaam} ");
             foreach (Reserveringenjson reservering in ReserveringenList)
             {
                 if (reservering.Naam == zoekNaam)
                 {
-                    Console.WriteLine($"Voornaamwoorden: {reservering.Voornaamwoorden}\nGroepsgrote: {reservering.Groepsgrote}\nTijdslot: {reservering.Tijdslot}\nDatum: {reservering.Datum}");
-                    Console.WriteLine("\n[1] Opnieuw een reservering bekijken\n[0] Terug naar menu");
-                    Console.WriteLine("╘══════════════════════════════════════════════════════════════════════════════════════════════╛");
+                    Console.WriteLine();
+                    str = $"Voornaamwoorden: {reservering.Voornaamwoorden}";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = $"Groepsgrote: {reservering.Groepsgrote}";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = $"Tijdslot: {reservering.Tijdslot}";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = $"Datum: {reservering.Datum}";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    str = "[1] Opnieuw een reservering bekijken";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    Console.WriteLine();
+                    str = "[0] Terug naar menu";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    Console.CursorLeft = Console.WindowWidth / 2;
                     ConsoleKeyInfo keus = Console.ReadKey();
                     if (keus.Key == ConsoleKey.D1)
                     {
