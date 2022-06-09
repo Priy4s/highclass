@@ -49,6 +49,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
 
             bool IsAlleenLetters = char.IsLetter(naamIN, 0);
             bool isSpace = char.IsWhiteSpace(naamIN, 0);
+            bool isSpaceBackUp = true;
             for (int i = 0; i < naamIN.Length; i++)
             {
                 IsAlleenLetters = char.IsLetter(naamIN, i);
@@ -57,12 +58,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                     isSpace = char.IsWhiteSpace(naamIN, i);
                     if (isSpace == false)
                     {
+                        isSpaceBackUp = false;
                         break;
                     }
                 }
             }
 
-            while (!IsAlleenLetters || !isSpace)
+            while (!IsAlleenLetters || !isSpaceBackUp)
             {
                 Console.WriteLine(); Console.WriteLine();
                 str = "Reserveringsnaam kan alleen uit letters en spaties bestaan.";
@@ -79,8 +81,17 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                         isSpace = char.IsWhiteSpace(naamIN, i);
                         if (isSpace == false)
                         {
+                            isSpaceBackUp = false;
                             break;
                         }
+                        else
+                        {
+                            isSpaceBackUp = true;
+                        }
+                    }
+                    else
+                    {
+                        isSpaceBackUp = true;
                     }
                 }
             }
@@ -853,7 +864,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
         }
     }*/
 
-        public static void WijzigReservering(string gebruikerNaam)
+        public static void WijzigReservering(string gebruikerNaam, string gebruiker = "niet ingelogd")
         {
             Console.Clear();
             string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
@@ -915,7 +926,11 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 }
                 else
                 {
-                    if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
+                    if (gebruiker == "admin")
+                    {
+                        Admin.adminMain();
+                    }
+                    else if (gebruiker == "personeel")
                     {
                         Personeelsleden.personeelMain(gebruikerNaam);
                     }
@@ -925,7 +940,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                     }
                 }
             }
-            if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
+            if (gebruiker == "admin" || gebruiker == "personeel")
             {
                 Console.WriteLine();
                 str = "Wat wilt u wijzigen?";
@@ -1034,6 +1049,14 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                         {
                             AddReservering();
                         }
+                        else if (keuze.Key == ConsoleKey.D0 && gebruiker == "admin")
+                        {
+                            Admin.adminMain();
+                        }
+                        else if (keuze.Key == ConsoleKey.D0 && gebruiker == "personeel")
+                        {
+                            Personeelsleden.personeelMain(gebruikerNaam);
+                        }
                         else
                         {
                             Program.Main();
@@ -1057,15 +1080,15 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                         {
                             JsonData = JsonConvert.SerializeObject(ReserveringenList);
                             System.IO.File.WriteAllText(ReserveringPath, JsonData);
-                            if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
+                            if (gebruiker == "admin" || gebruiker == "personeel")
                             {
-                                if (gebruikerNaam == "admin")
+                                if (gebruiker == "admin")
                                 {
-                                    Personeelsleden.personeelMain("admin");
+                                    Admin.adminMain();
                                 }
-                                else if (gebruikerNaam == "personeel")
+                                else if (gebruiker == "personeel")
                                 {
-                                    Personeelsleden.personeelMain("personeel");
+                                    Personeelsleden.personeelMain(gebruikerNaam);
                                 }
                                 else
                                 {
@@ -1083,13 +1106,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             ConsoleKeyInfo teruglkey = Console.ReadKey();
                             if (teruglkey.Key == ConsoleKey.D0)
                             {
-                                if (gebruikerNaam == "admin")
+                                if (gebruiker == "admin")
                                 {
-                                    Personeelsleden.personeelMain("admin");
+                                    Admin.adminMain();
                                 }
-                                else if (gebruikerNaam == "personeel")
+                                else if (gebruiker == "personeel")
                                 {
-                                    Personeelsleden.personeelMain("personeel");
+                                    Personeelsleden.personeelMain(gebruikerNaam);
                                 }
                                 else
                                 {
@@ -1098,13 +1121,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             }
                             else
                             {
-                                if (gebruikerNaam == "admin")
+                                if (gebruiker == "admin")
                                 {
-                                    Personeelsleden.personeelMain("admin");
+                                    Admin.adminMain();
                                 }
-                                else if (gebruikerNaam == "personeel")
+                                else if (gebruiker == "personeel")
                                 {
-                                    Personeelsleden.personeelMain("personeel");
+                                    Personeelsleden.personeelMain(gebruikerNaam);
                                 }
                                 else
                                 {
@@ -1195,7 +1218,12 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                         {
                             JsonData = JsonConvert.SerializeObject(ReserveringenList);
                             System.IO.File.WriteAllText(ReserveringPath, JsonData);
-                            if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
+
+                            if (gebruiker == "admin")
+                            {
+                                Admin.adminMain();
+                            }
+                            else if (gebruiker == "personeel")
                             {
                                 Personeelsleden.personeelMain(gebruikerNaam);
                             }
@@ -1213,13 +1241,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             ConsoleKeyInfo teruglkey = Console.ReadKey();
                             if (teruglkey.Key == ConsoleKey.D0)
                             {
-                                if (gebruikerNaam == "admin")
+                                if (gebruiker == "admin")
                                 {
-                                    Personeelsleden.personeelMain("admin");
+                                    Admin.adminMain();
                                 }
-                                else if (gebruikerNaam == "personeel")
+                                else if (gebruiker == "personeel")
                                 {
-                                    Personeelsleden.personeelMain("personeel");
+                                    Personeelsleden.personeelMain(gebruikerNaam);
                                 }
                                 else
                                 {
@@ -1228,13 +1256,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             }
                             else
                             {
-                                if (gebruikerNaam == "admin")
+                                if (gebruiker == "admin")
                                 {
-                                    Personeelsleden.personeelMain("admin");
+                                    Admin.adminMain();
                                 }
-                                else if (gebruikerNaam == "personeel")
+                                else if (gebruiker == "personeel")
                                 {
-                                    Personeelsleden.personeelMain("personeel");
+                                    Personeelsleden.personeelMain(gebruikerNaam);
                                 }
                                 else
                                 {
@@ -1355,13 +1383,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                 JsonData = JsonConvert.SerializeObject(ReserveringenList);
                                 System.IO.File.WriteAllText(ReserveringPath, JsonData);
 
-                                if (gebruikerNaam == "admin")
+                                if (gebruiker == "admin")
                                 {
-                                    Personeelsleden.personeelMain("admin");
+                                    Admin.adminMain();
                                 }
-                                else if (gebruikerNaam == "personeel")
+                                else if (gebruiker == "personeel")
                                 {
-                                    Personeelsleden.personeelMain("personeel");
+                                    Personeelsleden.personeelMain(gebruikerNaam);
                                 }
                                 else
                                 {
@@ -1377,13 +1405,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                 ConsoleKeyInfo teruglkey = Console.ReadKey();
                                 if (teruglkey.Key == ConsoleKey.D0)
                                 {
-                                    if (gebruikerNaam == "admin")
+                                    if (gebruiker == "admin")
                                     {
-                                        Personeelsleden.personeelMain("admin");
+                                        Admin.adminMain();
                                     }
-                                    else if (gebruikerNaam == "personeel")
+                                    else if (gebruiker == "personeel")
                                     {
-                                        Personeelsleden.personeelMain("personeel");
+                                        Personeelsleden.personeelMain(gebruikerNaam);
                                     }
                                     else
                                     {
@@ -1392,13 +1420,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                 }
                                 else
                                 {
-                                    if (gebruikerNaam == "admin")
+                                    if (gebruiker == "admin")
                                     {
-                                        Personeelsleden.personeelMain("admin");
+                                        Admin.adminMain();
                                     }
-                                    else if (gebruikerNaam == "personeel")
+                                    else if (gebruiker == "personeel")
                                     {
-                                        Personeelsleden.personeelMain("personeel");
+                                        Personeelsleden.personeelMain(gebruikerNaam);
                                     }
                                     else
                                     {
@@ -1429,13 +1457,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             }
                             else
                             {
-                                if (gebruikerNaam == "admin")
+                                if (gebruiker == "admin")
                                 {
-                                    Personeelsleden.personeelMain("admin");
+                                    Admin.adminMain();
                                 }
-                                else if (gebruikerNaam == "personeel")
+                                else if (gebruiker == "personeel")
                                 {
-                                    Personeelsleden.personeelMain("personeel");
+                                    Personeelsleden.personeelMain(gebruikerNaam);
                                 }
                                 else
                                 {
@@ -1465,15 +1493,137 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 str = "Dag (1 t/m 31):";
                 Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
                 Console.CursorLeft = Console.WindowWidth / 2;
-                int newdag = Convert.ToInt32(Console.ReadLine());
-                str = "Maand:";
+                string strDag = Console.ReadLine();
+                bool IsDagNummers = char.IsDigit(strDag, 0);
+                for (int index = 0; index < strDag.Length; index++)
+                {
+                    IsDagNummers = char.IsDigit(strDag, index);
+                    Console.CursorLeft = (Console.WindowWidth / 2) - 4;
+                    if (IsDagNummers == false)
+                    {
+                        break;
+                    }
+                }
+                while (!IsDagNummers)
+                {
+                    Console.WriteLine();
+                    str = "Datum bestaat alleen uit cijfers. Dag van de week is niet nodig.";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "Dag (1 t/m 31):";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    Console.CursorLeft = Console.WindowWidth / 2;
+                    strDag = Console.ReadLine();
+
+                    for (int index = 0; index < strDag.Length; index++)
+                    {
+                        IsDagNummers = char.IsDigit(strDag, index);
+                        if (IsDagNummers == false)
+                        {
+                            break;
+                        }
+                    }
+                }
+                int newdag = Convert.ToInt32(strDag);
+
+                while (newdag <= 0 || newdag > 31)
+                {
+                    str = "Foute input. Probeer opnieuw.";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "Dag (1 t/m 31):";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    Console.CursorLeft = Console.WindowWidth / 2;
+                    newdag = Convert.ToInt32(Console.ReadLine());
+                }
+                Console.WriteLine();
+                str = "Maand (1 t/m 12):";
                 Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
                 Console.CursorLeft = Console.WindowWidth / 2;
-                int newmaand = Convert.ToInt32(Console.ReadLine());
+
+                string strMaand = Console.ReadLine();
+                bool IsMaandNummers = char.IsDigit(strMaand, 0);
+                for (int index2 = 0; index2 < strMaand.Length; index2++)
+                {
+                    IsMaandNummers = char.IsDigit(strMaand, index2);
+                    Console.CursorLeft = (Console.WindowWidth / 2) - 4;
+                    if (IsMaandNummers == false)
+                    {
+                        break;
+                    }
+                }
+                while (!IsMaandNummers)
+                {
+                    Console.WriteLine();
+                    str = "Datum bestaat alleen uit cijfers.";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "Maand (1 t/m 12):";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    Console.CursorLeft = Console.WindowWidth / 2;
+                    strMaand = Console.ReadLine();
+
+                    for (int index2 = 0; index2 < strMaand.Length; index2++)
+                    {
+                        IsMaandNummers = char.IsDigit(strDag, index2);
+                        if (IsMaandNummers == false)
+                        {
+                            break;
+                        }
+                    }
+                }
+                int newmaand = Convert.ToInt32(strMaand);
+
+                while (newmaand <= 0 || newmaand > 12)
+                {
+                    str = "Foute input. Probeer opnieuw.";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "Maand (1 t/m 12):";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    Console.CursorLeft = Console.WindowWidth / 2;
+                    newmaand = Convert.ToInt32(Console.ReadLine());
+                }
+                Console.WriteLine();
                 str = "Jaar:";
                 Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
                 Console.CursorLeft = Console.WindowWidth / 2;
-                int newjaar = Convert.ToInt32(Console.ReadLine());
+                string strJaar = Console.ReadLine();
+                bool IsJaarNummer = char.IsDigit(strJaar, 0);
+                for (int index3 = 0; index3 < strJaar.Length; index3++)
+                {
+                    IsJaarNummer = char.IsDigit(strJaar, index3);
+                    Console.CursorLeft = (Console.WindowWidth / 2) - 4;
+                    if (IsJaarNummer == false)
+                    {
+                        break;
+                    }
+                }
+                while (!IsJaarNummer)
+                {
+                    Console.WriteLine();
+                    str = "Datum bestaat alleen uit cijfers.";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "Jaar:";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    Console.CursorLeft = Console.WindowWidth / 2;
+                    strJaar = Console.ReadLine();
+
+                    for (int index3 = 0; index3 < strJaar.Length; index3++)
+                    {
+                        IsJaarNummer = char.IsDigit(strJaar, index3);
+                        if (IsJaarNummer == false)
+                        {
+                            break;
+                        }
+                    }
+                }
+                int newjaar = Convert.ToInt32(strJaar);
+                while (newjaar < 2022)
+                {
+                    str = "Foute input. Probeer opnieuw.";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "Jaar:";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    Console.CursorLeft = Console.WindowWidth / 2;
+                    newjaar = Convert.ToInt32(Console.ReadLine());
+                }
                 string new_Datum = $"{newdag}-{newmaand}-{newjaar}";
 
                 while (i < len)
@@ -1538,13 +1688,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                         JsonData = JsonConvert.SerializeObject(ReserveringenList);
                                         System.IO.File.WriteAllText(ReserveringPath, JsonData);
 
-                                        if (gebruikerNaam == "admin")
+                                        if (gebruiker == "admin")
                                         {
-                                            Personeelsleden.personeelMain("admin");
+                                            Admin.adminMain();
                                         }
-                                        else if (gebruikerNaam == "personeel")
+                                        else if (gebruiker == "personeel")
                                         {
-                                            Personeelsleden.personeelMain("personeel");
+                                            Personeelsleden.personeelMain(gebruikerNaam);
                                         }
                                         else
                                         {
@@ -1574,13 +1724,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                     }
                                     else
                                     {
-                                        if (gebruikerNaam == "admin")
+                                        if (gebruiker == "admin")
                                         {
-                                            Personeelsleden.personeelMain("admin");
+                                            Admin.adminMain();
                                         }
-                                        else if (gebruikerNaam == "personeel")
+                                        else if (gebruiker == "personeel")
                                         {
-                                            Personeelsleden.personeelMain("personeel");
+                                            Personeelsleden.personeelMain(gebruikerNaam);
                                         }
                                         else
                                         {
@@ -1611,13 +1761,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                 }
                                 else
                                 {
-                                    if (gebruikerNaam == "admin")
+                                    if (gebruiker == "admin")
                                     {
-                                        Personeelsleden.personeelMain("admin");
+                                        Admin.adminMain();
                                     }
-                                    else if (gebruikerNaam == "personeel")
+                                    else if (gebruiker == "personeel")
                                     {
-                                        Personeelsleden.personeelMain("personeel");
+                                        Personeelsleden.personeelMain(gebruikerNaam);
                                     }
                                     else
                                     {
@@ -1659,13 +1809,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                         JsonData = JsonConvert.SerializeObject(ReserveringenList);
                                         System.IO.File.WriteAllText(ReserveringPath, JsonData);
 
-                                        if (gebruikerNaam == "admin")
+                                        if (gebruiker == "admin")
                                         {
-                                            Personeelsleden.personeelMain("admin");
+                                            Admin.adminMain();
                                         }
-                                        else if (gebruikerNaam == "personeel")
+                                        else if (gebruiker == "personeel")
                                         {
-                                            Personeelsleden.personeelMain("personeel");
+                                            Personeelsleden.personeelMain(gebruikerNaam);
                                         }
                                         else
                                         {
@@ -1695,13 +1845,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                     }
                                     else
                                     {
-                                        if (gebruikerNaam == "admin")
+                                        if (gebruiker == "admin")
                                         {
-                                            Personeelsleden.personeelMain("admin");
+                                            Admin.adminMain();
                                         }
-                                        else if (gebruikerNaam == "personeel")
+                                        else if (gebruiker == "personeel")
                                         {
-                                            Personeelsleden.personeelMain("personeel");
+                                            Personeelsleden.personeelMain(gebruikerNaam);
                                         }
                                         else
                                         {
@@ -1732,13 +1882,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                 }
                                 else
                                 {
-                                    if (gebruikerNaam == "admin")
+                                    if (gebruiker == "admin")
                                     {
-                                        Personeelsleden.personeelMain("admin");
+                                        Admin.adminMain();
                                     }
-                                    else if (gebruikerNaam == "personeel")
+                                    else if (gebruiker == "personeel")
                                     {
-                                        Personeelsleden.personeelMain("personeel");
+                                        Personeelsleden.personeelMain(gebruikerNaam);
                                     }
                                     else
                                     {
@@ -1766,13 +1916,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             }
                             else
                             {
-                                if (gebruikerNaam == "admin")
+                                if (gebruiker == "admin")
                                 {
-                                    Personeelsleden.personeelMain("admin");
+                                    Admin.adminMain();
                                 }
-                                else if (gebruikerNaam == "personeel")
+                                else if (gebruiker == "personeel")
                                 {
-                                    Personeelsleden.personeelMain("personeel");
+                                    Personeelsleden.personeelMain(gebruikerNaam);
                                 }
                                 else
                                 {
@@ -1897,13 +2047,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                 JsonData = JsonConvert.SerializeObject(ReserveringenList);
                                 System.IO.File.WriteAllText(ReserveringPath, JsonData);
 
-                                if (gebruikerNaam == "admin")
+                                if (gebruiker == "admin")
                                 {
-                                    Personeelsleden.personeelMain("admin");
+                                    Admin.adminMain();
                                 }
-                                else if (gebruikerNaam == "personeel")
+                                else if (gebruiker == "personeel")
                                 {
-                                    Personeelsleden.personeelMain("personeel");
+                                    Personeelsleden.personeelMain(gebruikerNaam);
                                 }
                                 else
                                 {
@@ -1919,13 +2069,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                 ConsoleKeyInfo teruglkey = Console.ReadKey();
                                 if (teruglkey.Key == ConsoleKey.D0)
                                 {
-                                    if (gebruikerNaam == "admin")
+                                    if (gebruiker == "admin")
                                     {
-                                        Personeelsleden.personeelMain("admin");
+                                        Admin.adminMain();
                                     }
-                                    else if (gebruikerNaam == "personeel")
+                                    else if (gebruiker == "personeel")
                                     {
-                                        Personeelsleden.personeelMain("personeel");
+                                        Personeelsleden.personeelMain(gebruikerNaam);
                                     }
                                     else
                                     {
@@ -1934,13 +2084,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                 }
                                 else
                                 {
-                                    if (gebruikerNaam == "admin")
+                                    if (gebruiker == "admin")
                                     {
-                                        Personeelsleden.personeelMain("admin");
+                                        Admin.adminMain();
                                     }
-                                    else if (gebruikerNaam == "personeel")
+                                    else if (gebruiker == "personeel")
                                     {
-                                        Personeelsleden.personeelMain("personeel");
+                                        Personeelsleden.personeelMain(gebruikerNaam);
                                     }
                                     else
                                     {
@@ -1972,13 +2122,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             }
                             else
                             {
-                                if (gebruikerNaam == "admin")
+                                if (gebruiker == "admin")
                                 {
-                                    Personeelsleden.personeelMain("admin");
+                                    Admin.adminMain();
                                 }
-                                else if (gebruikerNaam == "personeel")
+                                else if (gebruiker == "personeel")
                                 {
-                                    Personeelsleden.personeelMain("personeel");
+                                    Personeelsleden.personeelMain(gebruikerNaam);
                                 }
                                 else
                                 {
@@ -1993,7 +2143,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             else if (readkey.Key == ConsoleKey.D6)
             {
                 Console.Clear();
-                if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
+                if (gebruiker == "admin" || gebruiker == "personeel")
                 {
                     Console.Clear();
                     Console.WriteLine("                                                    ┌─────────────┐            ");
@@ -2045,13 +2195,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                     ConsoleKeyInfo teruglkey = Console.ReadKey();
                                     if (teruglkey.Key == ConsoleKey.D0)
                                     {
-                                        if (gebruikerNaam == "admin")
+                                        if (gebruiker == "admin")
                                         {
-                                            Personeelsleden.personeelMain("admin");
+                                            Admin.adminMain();
                                         }
-                                        else if (gebruikerNaam == "personeel")
+                                        else if (gebruiker == "personeel")
                                         {
-                                            Personeelsleden.personeelMain("personeel");
+                                            Personeelsleden.personeelMain(gebruikerNaam);
                                         }
                                         else
                                         {
@@ -2060,13 +2210,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                     }
                                     else
                                     {
-                                        if (gebruikerNaam == "admin")
+                                        if (gebruiker == "admin")
                                         {
-                                            Personeelsleden.personeelMain("admin");
+                                            Admin.adminMain();
                                         }
-                                        else if (gebruikerNaam == "personeel")
+                                        else if (gebruiker == "personeel")
                                         {
-                                            Personeelsleden.personeelMain("personeel");
+                                            Personeelsleden.personeelMain(gebruikerNaam);
                                         }
                                         else
                                         {
@@ -2092,9 +2242,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                 ConsoleKeyInfo keus = Console.ReadKey();
                                 if (keus.Key == ConsoleKey.D1)
                                 {
-                                    Reserveringen.WijzigReservering(gebruikerNaam = "personeel");
+                                    WijzigReservering(gebruikerNaam);
                                 }
-                                else if (keus.Key == ConsoleKey.D0)
+                                else if (keus.Key == ConsoleKey.D0 && gebruiker == "admin")
+                                {
+                                    Admin.adminMain();
+                                }
+                                else if (keus.Key == ConsoleKey.D0 && gebruiker == "personeel")
                                 {
                                     Personeelsleden.personeelMain(gebruikerNaam);
                                 }
@@ -2114,17 +2268,17 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 str = "[0] Terug.";
                 Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
                 Console.ReadKey();
-                if (gebruikerNaam == "admin")
+                if (gebruiker == "admin")
                 {
-                    Personeelsleden.personeelMain("admin");
+                    Admin.adminMain();
                 }
-                else if ( gebruikerNaam == "personeel")
+                else if ( gebruiker == "personeel")
                 {
-                    Personeelsleden.personeelMain("personeel");
+                    Personeelsleden.personeelMain(gebruikerNaam);
                 }
                 else
                 {
-                    Program.Main();
+                    WijzigReservering(gebruikerNaam);
                 }
             }
         }
@@ -2180,21 +2334,18 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
                 Console.CursorLeft = Console.WindowWidth / 2;
                 ConsoleKeyInfo rkey = Console.ReadKey();
-                if (rkey.Key == ConsoleKey.D1)
-                {
-                    verwijderReservering(gebruikerNaam);
-                }
-                else if (gebruikerNaam == "admin")
-                {
-                    Personeelsleden.personeelMain("admin");
-                }
-                else if (gebruikerNaam == "personeel")
-                {
-                    Personeelsleden.personeelMain("personeel");
-                }
-                else
+                Console.WriteLine(gebruiker);
+                if (rkey.Key == ConsoleKey.D1 && gebruiker == "niet ingelogd")
                 {
                     Program.Main();
+                }
+                else if (rkey.Key == ConsoleKey.D0 && gebruiker == "admin")
+                {
+                    Admin.adminMain();
+                }
+                else if (rkey.Key == ConsoleKey.D0 && gebruiker == "personeel")
+                {
+                    Personeelsleden.personeelMain(gebruikerNaam);
                 }
             }
            
@@ -2237,17 +2388,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             {
                 Program.Main();
             }
-            else if (gebruikerNaam == "admin")
+            else if (keus.Key == ConsoleKey.D1 && gebruiker == "admin")
             {
-                Personeelsleden.personeelMain("admin");
+                Admin.adminMain();
             }
-            else if (gebruikerNaam == "personeel")
+            else if (keus.Key == ConsoleKey.D1  && gebruiker == "personeel")
             {
-                Personeelsleden.personeelMain("personeel");
-            }
-            else
-            {
-                Program.Main();
+                Personeelsleden.personeelMain(gebruikerNaam);
             }
         }
 
@@ -2271,7 +2418,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             Console.WriteLine("                                                    │ $   $ $     │            ");
             Console.WriteLine("                                                    │ $   $ $$$$$ │            ");
             Console.WriteLine("                                                    └─────────────┘           \n");
-            string str = "|Reservering annuleren|";
+            string str = "|Reservering bekijken|";
             Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
             Console.WriteLine();
             str = "Reserveringsnaam:";

@@ -58,6 +58,14 @@ namespace Main
             {
                 persoonlijkeInfo(gebruikerNaam);
             }
+            else if (ckey.Key == ConsoleKey.D5)
+            {
+                Medewerkers.Uitloggen();
+            }
+            else
+            {
+                personeelMain(gebruikerNaam);
+            }
         }
         public static void reserverenMain(string gebruikerNaam, string gebruiker = "personeel")
         {
@@ -98,7 +106,7 @@ namespace Main
             }
             if (ckey.Key == ConsoleKey.D2 && gebruiker == "personeel")
             {
-                Reserveringen.WijzigReservering("personeel");
+                Reserveringen.WijzigReservering(gebruikerNaam, "personeel");
             }
             if (ckey.Key == ConsoleKey.D2 && gebruiker == "admin")
             {

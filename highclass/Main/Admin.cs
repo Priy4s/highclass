@@ -98,7 +98,7 @@ namespace Main
                 {
                     Console.WriteLine($"                                               Name: {person.naam}\n                                               Voornaamwoorden: {person.pronouns}\n                                               Telefoonnummer: {person.telefoonnummer}\n                                               E-Mail: {person.eMail}\n                                               Functie: {person.functie}\n                                               Gebruikersnaam: *****\n                                               Wachtwoord: ******\n\n");
                 }
-                Console.WriteLine("                                                    Scroll voor meer\n                                                    [1] doorgaan");
+                Console.WriteLine("                                                    Scroll (met de muis) voor meer\n                                                    [1] doorgaan");
 
                 Console.CursorLeft = (Console.WindowWidth / 2) - 4;
                 ConsoleKeyInfo doorgaan = Console.ReadKey();
