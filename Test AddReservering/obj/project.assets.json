@@ -5973,19 +5973,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\shery\\.nuget\\packages\\": {}
+    "C:\\Users\\Yvonn\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shery\\OneDrive\\Bureaublad\\GitHub\\highclass\\Test AddReservering\\Test AddReservering.csproj",
+      "projectUniqueName": "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\Test AddReservering\\Test AddReservering.csproj",
       "projectName": "Test AddReservering",
-      "projectPath": "C:\\Users\\shery\\OneDrive\\Bureaublad\\GitHub\\highclass\\Test AddReservering\\Test AddReservering.csproj",
-      "packagesPath": "C:\\Users\\shery\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shery\\OneDrive\\Bureaublad\\GitHub\\highclass\\Test AddReservering\\obj\\",
+      "projectPath": "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\Test AddReservering\\Test AddReservering.csproj",
+      "packagesPath": "C:\\Users\\Yvonn\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\Test AddReservering\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\shery\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Yvonn\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6047,7 +6047,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

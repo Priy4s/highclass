@@ -46,6 +46,45 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
             Console.CursorLeft = Console.WindowWidth / 2;
             string naamIN = Console.ReadLine();
+
+            bool IsAlleenLetters = char.IsLetter(naamIN, 0);
+            bool isSpace = char.IsWhiteSpace(naamIN, 0);
+            for (int i = 0; i < naamIN.Length; i++)
+            {
+                IsAlleenLetters = char.IsLetter(naamIN, i);
+                if (IsAlleenLetters == false)
+                {
+                    isSpace = char.IsWhiteSpace(naamIN, i);
+                    if (isSpace == false)
+                    {
+                        break;
+                    }
+                }
+            }
+
+            while (!IsAlleenLetters || !isSpace)
+            {
+                Console.WriteLine(); Console.WriteLine();
+                str = "Reserveringsnaam kan alleen uit letters en spaties bestaan.";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "Reserveringsnaam:";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = (Console.WindowWidth / 2) - 4;
+                naamIN = Console.ReadLine();
+                for (int i = 0; i < naamIN.Length; i++)
+                {
+                    IsAlleenLetters = char.IsLetter(naamIN, i);
+                    if (IsAlleenLetters == false)
+                    {
+                        isSpace = char.IsWhiteSpace(naamIN, i);
+                        if (isSpace == false)
+                        {
+                            break;
+                        }
+                    }
+                }
+            }
+
             for (int i = 0; i < ReserveringenList.Count; i++)
             {
                 if (ReserveringenList[i].Naam == naamIN)
@@ -64,7 +103,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                     {
                         AddReservering();
                     }
-                    else if (keuze.Key == ConsoleKey.D0)
+                    else
                     {
                         Program.Main();
                     }
@@ -93,15 +132,72 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
             else if (ckey.Key == ConsoleKey.D3)
             {
-                pronounsIN = "hen/hun";
+                pronounsIN = "die/hen";
             }
+            while (pronounsIN == "")
+            {
+                Console.WriteLine();
+                str = "Wat zijn uw persoonlijke voornaamwoorden?";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[1] hij/hem";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[2] zij/haar";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[3] hen/hun";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = Console.WindowWidth / 2;
+                ckey = Console.ReadKey();
+                if (ckey.Key == ConsoleKey.D1)
+                {
+                    pronounsIN = "hij/hem";
+                }
+                else if (ckey.Key == ConsoleKey.D2)
+                {
+                    pronounsIN = "zij/haar";
+                }
+                else if (ckey.Key == ConsoleKey.D3)
+                {
+                    pronounsIN = "die/hen";
+                }
+            }
+
 
             Console.WriteLine();
             Console.WriteLine();
             str = "Groepsgrote:";
             Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
             Console.CursorLeft = Console.WindowWidth / 2;
-            int aantalIN = Convert.ToInt32(Console.ReadLine());
+            string straantalIN = Console.ReadLine();
+            bool isAantalAlleenNummers = char.IsDigit(straantalIN, 0);
+            for (int i = 0; i < straantalIN.Length; i++)
+            {
+                isAantalAlleenNummers = char.IsDigit(straantalIN, i);
+                Console.CursorLeft = (Console.WindowWidth / 2) - 4;
+                if (isAantalAlleenNummers == false)
+                {
+                    break;
+                }
+            }
+            while (!isAantalAlleenNummers)
+            {
+                Console.WriteLine();
+                str = "Groepsgrote bestaat alleen uit cijfer";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "Groepsgrote:";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = Console.WindowWidth / 2;
+                straantalIN = Console.ReadLine();
+
+                for (int i = 0; i < straantalIN.Length; i++)
+                {
+                    isAantalAlleenNummers = char.IsDigit(straantalIN, i);
+                    if (isAantalAlleenNummers == false)
+                    {
+                        break;
+                    }
+                }
+            }
+            int aantalIN = Convert.ToInt32(straantalIN);
             if (aantalIN > 200)
             {
                 Console.WriteLine();
@@ -124,6 +220,10 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 {
                     AddReservering();
                 }
+                else
+                {
+                    Program.Main();
+                }
             }
             
             Console.Clear();
@@ -142,16 +242,137 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             str = "Dag (1 t/m 31):";
             Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
             Console.CursorLeft = Console.WindowWidth / 2;
-            int dag = Convert.ToInt32(Console.ReadLine());
-            str = "Maand:";
+            string strDag = Console.ReadLine();
+            bool IsDagNummers = char.IsDigit(strDag, 0);
+            for (int i = 0; i < strDag.Length; i++)
+            {
+                IsDagNummers = char.IsDigit(strDag, i);
+                Console.CursorLeft = (Console.WindowWidth / 2) - 4;
+                if (IsDagNummers == false)
+                {
+                    break;
+                }
+            }
+            while (!IsDagNummers)
+            {
+                Console.WriteLine();
+                str = "Datum bestaat alleen uit cijfers. Dag van de week is niet nodig.";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "Dag (1 t/m 31):";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = Console.WindowWidth / 2;
+                strDag = Console.ReadLine();
+
+                for (int i = 0; i < strDag.Length; i++)
+                {
+                    IsDagNummers = char.IsDigit(strDag, i);
+                    if (IsDagNummers == false)
+                    {
+                        break;
+                    }
+                }
+            }
+            int dag = Convert.ToInt32(strDag);
+
+            while (dag <= 0 || dag > 31)
+            {
+                str = "Foute input. Probeer opnieuw.";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "Dag (1 t/m 31):";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = Console.WindowWidth / 2;
+                dag = Convert.ToInt32(Console.ReadLine());
+            }
+            Console.WriteLine();
+            str = "Maand (1 t/m 12):";
             Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
             Console.CursorLeft = Console.WindowWidth / 2;
-            int maand = Convert.ToInt32(Console.ReadLine());
+
+            string strMaand = Console.ReadLine();
+            bool IsMaandNummers = char.IsDigit(strMaand, 0);
+            for (int i = 0; i < strMaand.Length; i++)
+            {
+                IsMaandNummers = char.IsDigit(strMaand, i);
+                Console.CursorLeft = (Console.WindowWidth / 2) - 4;
+                if (IsMaandNummers == false)
+                {
+                    break;
+                }
+            }
+            while (!IsMaandNummers)
+            {
+                Console.WriteLine();
+                str = "Datum bestaat alleen uit cijfers.";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "Maand (1 t/m 12):";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = Console.WindowWidth / 2;
+                strMaand = Console.ReadLine();
+
+                for (int i = 0; i < strMaand.Length; i++)
+                {
+                    IsMaandNummers = char.IsDigit(strDag, i);
+                    if (IsMaandNummers == false)
+                    {
+                        break;
+                    }
+                }
+            }
+            int maand = Convert.ToInt32(strMaand);
+
+            while (maand <= 0 || maand > 12)
+            {
+                str = "Foute input. Probeer opnieuw.";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "Maand (1 t/m 12):";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = Console.WindowWidth / 2;
+                maand = Convert.ToInt32(Console.ReadLine());
+            }
+            Console.WriteLine();
             str = "Jaar:";
             Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
-            Console.CursorLeft = Console.WindowWidth / 2;
-            int jaar = Convert.ToInt32(Console.ReadLine());
+            Console.CursorLeft = Console.WindowWidth / 2; 
+            string strJaar = Console.ReadLine();
+            bool IsJaarNummer = char.IsDigit(strJaar, 0);
+            for (int i = 0; i < strJaar.Length; i++)
+            {
+                IsJaarNummer = char.IsDigit(strJaar, i);
+                Console.CursorLeft = (Console.WindowWidth / 2) - 4;
+                if (IsJaarNummer == false)
+                {
+                    break;
+                }
+            }
+            while (!IsJaarNummer)
+            {
+                Console.WriteLine();
+                str = "Datum bestaat alleen uit cijfers.";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "Jaar:";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = Console.WindowWidth / 2;
+                strJaar = Console.ReadLine();
 
+                for (int i = 0; i < strJaar.Length; i++)
+                {
+                    IsJaarNummer = char.IsDigit(strJaar, i);
+                    if (IsJaarNummer == false)
+                    {
+                        break;
+                    }
+                }
+            }
+            int jaar = Convert.ToInt32(strJaar);
+            while (jaar < 2022)
+            {
+                str = "Foute input. Probeer opnieuw.";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "Jaar:";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = Console.WindowWidth / 2;
+                jaar = Convert.ToInt32(Console.ReadLine());
+            }
             int today = DateTime.Now.Day; // dag van vandaag (bijv. 7)
             int days_in_month = DateTime.DaysInMonth(jaar, maand); // hoeveel maanden in aangegeven maand
             int maxdag = today;
@@ -206,7 +427,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                         // in json
                         AddReservering();
                     }
-                    else if (ckey3.Key == ConsoleKey.D2)
+                    else
                     {
                         Program.Main();
                     }
@@ -239,7 +460,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                     {
                         AddReservering();
                     }
-                    else if (ckey3.Key == ConsoleKey.D2)
+                    else
                     {
                         Program.Main();
                     }
@@ -266,7 +487,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 {
                     AddReservering();
                 }
-                else if (ckey3.Key == ConsoleKey.D2)
+                else
                 {
                     Program.Main();
                 }
@@ -315,6 +536,41 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             {
                 tijdslotIN = "22:00-23:00";
             }
+
+            while (tijdslotIN == "")
+            {
+                Console.WriteLine();
+                str = "Kies een tijdslot:";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[1] 11:00-15:00";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[2] 15:00-19:00";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[3] 19:00-22:00";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "[4] 22:00-23:00";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                str = "Let op! Tijdslot 4 heeft een tijdsduur van een uur, ipv. 4 uur.";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.CursorLeft = Console.WindowWidth / 2;
+                ckey2 = Console.ReadKey();
+                if (ckey2.Key == ConsoleKey.D1)
+                {
+                    tijdslotIN = "11:00-15:00";
+                }
+                else if (ckey2.Key == ConsoleKey.D2)
+                {
+                    tijdslotIN = "15:00 - 19:00";
+                }
+                else if (ckey2.Key == ConsoleKey.D3)
+                {
+                    tijdslotIN = "19:00 - 22:00";
+                }
+                else if (ckey2.Key == ConsoleKey.D4)
+                {
+                    tijdslotIN = "22:00-23:00";
+                }
+            }
             string datumIN = $"{dag}-{maand}-{jaar}";
 
             int plekken = 0;
@@ -358,6 +614,10 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 {
                     Program.Main();
                 }
+                else
+                {
+                    Program.Main();
+                }
             }
             else
             {
@@ -379,7 +639,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 {
                     AddReservering();
                 }
-                else if (ckey4.Key == ConsoleKey.D2)
+                else
                 {
                     Program.Main();
                 }
@@ -653,7 +913,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 {
                     AddReservering();
                 }
-                else if (rkey.Key == ConsoleKey.D0)
+                else
                 {
                     if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
                     {
@@ -718,6 +978,44 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
                 Console.CursorLeft = Console.WindowWidth / 2;
                 string new_naam = Console.ReadLine();
+
+                bool IsAlleenLetters = char.IsLetter(new_naam, 0);
+                bool isSpace = char.IsWhiteSpace(new_naam, 0);
+                for (int ii = 0; ii < new_naam.Length; ii++)
+                {
+                    IsAlleenLetters = char.IsLetter(new_naam, ii);
+                    if (IsAlleenLetters == false)
+                    {
+                        isSpace = char.IsWhiteSpace(new_naam, ii);
+                        if (isSpace == false)
+                        {
+                            break;
+                        }
+                    }
+                }
+
+                while (!IsAlleenLetters || !isSpace)
+                {
+                    Console.WriteLine(); Console.WriteLine();
+                    str = "Reserveringsnaam kan alleen uit letters en spaties bestaan.";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "Reserveringsnaam:";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    Console.CursorLeft = (Console.WindowWidth / 2) - 4;
+                    new_naam = Console.ReadLine();
+                    for (int ii = 0; ii < new_naam.Length; ii++)
+                    {
+                        IsAlleenLetters = char.IsLetter(new_naam, ii);
+                        if (IsAlleenLetters == false)
+                        {
+                            isSpace = char.IsWhiteSpace(new_naam, ii);
+                            if (isSpace == false)
+                            {
+                                break;
+                            }
+                        }
+                    }
+                }
                 for (int j = 0; j < ReserveringenList.Count; j++)
                 {
                     if (ReserveringenList[j].Naam == new_naam)
@@ -736,7 +1034,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                         {
                             AddReservering();
                         }
-                        else if (keuze.Key == ConsoleKey.D0)
+                        else
                         {
                             Program.Main();
                         }
@@ -761,9 +1059,13 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             System.IO.File.WriteAllText(ReserveringPath, JsonData);
                             if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
                             {
-                                if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
+                                if (gebruikerNaam == "admin")
                                 {
-                                    Personeelsleden.personeelMain(gebruikerNaam);
+                                    Personeelsleden.personeelMain("admin");
+                                }
+                                else if (gebruikerNaam == "personeel")
+                                {
+                                    Personeelsleden.personeelMain("personeel");
                                 }
                                 else
                                 {
@@ -771,6 +1073,44 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                 }
                             }
                             break;
+                        }
+                        else
+                        {
+                            str = $"Er is een fout, probeer opnieuw.";
+                            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                            str = $"[0] Terug";
+                            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                            ConsoleKeyInfo teruglkey = Console.ReadKey();
+                            if (teruglkey.Key == ConsoleKey.D0)
+                            {
+                                if (gebruikerNaam == "admin")
+                                {
+                                    Personeelsleden.personeelMain("admin");
+                                }
+                                else if (gebruikerNaam == "personeel")
+                                {
+                                    Personeelsleden.personeelMain("personeel");
+                                }
+                                else
+                                {
+                                    Program.Main();
+                                }
+                            }
+                            else
+                            {
+                                if (gebruikerNaam == "admin")
+                                {
+                                    Personeelsleden.personeelMain("admin");
+                                }
+                                else if (gebruikerNaam == "personeel")
+                                {
+                                    Personeelsleden.personeelMain("personeel");
+                                }
+                                else
+                                {
+                                    Program.Main();
+                                }
+                            }
                         }
                     }
                     i++;
@@ -800,7 +1140,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 Console.CursorLeft = Console.WindowWidth / 2;
                 ConsoleKeyInfo AKey = Console.ReadKey();
                 string pronounsIN = "";
-                if (AKey.Key == ConsoleKey.D1) // check welke voornaamwoorden user heeft gekozen.
+                if (AKey.Key == ConsoleKey.D1) //check welke voornaamwoorden user heeft gekozen
                 {
                     pronounsIN = "hij/hem";
                 }
@@ -810,9 +1150,34 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 }
                 else if (AKey.Key == ConsoleKey.D3)
                 {
-                    pronounsIN = "hen/hun";
+                    pronounsIN = "die/hen";
                 }
-
+                while (pronounsIN == "")
+                {
+                    Console.WriteLine();
+                    str = "Wat zijn uw persoonlijke voornaamwoorden?";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "[1] hij/hem";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "[2] zij/haar";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "[3] hen/hun";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    Console.CursorLeft = Console.WindowWidth / 2;
+                    AKey = Console.ReadKey();
+                    if (AKey.Key == ConsoleKey.D1)
+                    {
+                        pronounsIN = "hij/hem";
+                    }
+                    else if (AKey.Key == ConsoleKey.D2)
+                    {
+                        pronounsIN = "zij/haar";
+                    }
+                    else if (AKey.Key == ConsoleKey.D3)
+                    {
+                        pronounsIN = "die/hen";
+                    }
+                }
                 while (i < len)
                 {
                     if (ReserveringenList[i].Naam == zoekNaam)
@@ -839,6 +1204,44 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                 Program.Main();
                             }
                         }
+                        else
+                        {
+                            str = $"Er is een fout, probeer opnieuw.";
+                            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                            str = $"[0] Terug";
+                            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                            ConsoleKeyInfo teruglkey = Console.ReadKey();
+                            if (teruglkey.Key == ConsoleKey.D0)
+                            {
+                                if (gebruikerNaam == "admin")
+                                {
+                                    Personeelsleden.personeelMain("admin");
+                                }
+                                else if (gebruikerNaam == "personeel")
+                                {
+                                    Personeelsleden.personeelMain("personeel");
+                                }
+                                else
+                                {
+                                    Program.Main();
+                                }
+                            }
+                            else
+                            {
+                                if (gebruikerNaam == "admin")
+                                {
+                                    Personeelsleden.personeelMain("admin");
+                                }
+                                else if (gebruikerNaam == "personeel")
+                                {
+                                    Personeelsleden.personeelMain("personeel");
+                                }
+                                else
+                                {
+                                    Program.Main();
+                                }
+                            }
+                        }
                         break;
                     }
                     i++;
@@ -860,8 +1263,65 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 str = "Nieuwe groepsgrote:";
                 Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
                 Console.CursorLeft = Console.WindowWidth / 2;
-                int new_groepsgrote = Convert.ToInt32(Console.ReadLine());
+                string strNew_groepsgrote = Console.ReadLine();
+                bool isAantalAlleenNummers = char.IsDigit(strNew_groepsgrote, 0);
+                for (int Ii = 0; Ii < strNew_groepsgrote.Length; Ii++)
+                {
+                    isAantalAlleenNummers = char.IsDigit(strNew_groepsgrote, Ii);
+                    Console.CursorLeft = (Console.WindowWidth / 2) - 4;
+                    if (isAantalAlleenNummers == false)
+                    {
+                        break;
+                    }
+                }
+                while (!isAantalAlleenNummers)
+                {
+                    Console.WriteLine();
+                    str = "Groepsgrote bestaat alleen uit cijfer";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "Groepsgrote:";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    Console.CursorLeft = Console.WindowWidth / 2;
+                    strNew_groepsgrote = Console.ReadLine();
 
+                    for (int Ii = 0; Ii < strNew_groepsgrote.Length; Ii++)
+                    {
+                        isAantalAlleenNummers = char.IsDigit(strNew_groepsgrote, Ii);
+                        if (isAantalAlleenNummers == false)
+                        {
+                            break;
+                        }
+                    }
+                }
+
+                int new_groepsgrote = Convert.ToInt32(strNew_groepsgrote);
+                if (new_groepsgrote > 200)
+                {
+                    Console.WriteLine();
+                    str = "Niet mogelijk om een reservering te maken voor meer";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "dan 200 personen.";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "[1] Opnieuw proberen";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    Console.WriteLine();
+                    str = "[0] Terug";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    Console.CursorLeft = Console.WindowWidth / 2;
+                    ConsoleKeyInfo keuze = Console.ReadKey();
+                    if (keuze.Key == ConsoleKey.D0)
+                    {
+                        Program.Main();
+                    }
+                    else if (keuze.Key == ConsoleKey.D1)
+                    {
+                        WijzigReservering(gebruikerNaam);
+                    }
+                    else
+                    {
+                        Program.Main();
+                    }
+                }
                 while (i < len)
                 {
                     if (ReserveringenList[i].Naam == zoekNaam)
@@ -887,19 +1347,63 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             str = $"De groepsgrote van uw reservering is gewijzigd naar: {new_groepsgrote}";
                             Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
                             str = "[1] Doorgaan";
+                            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
                             Console.CursorLeft = Console.WindowWidth / 2;
                             ConsoleKeyInfo keus = Console.ReadKey();
                             if (keus.Key == ConsoleKey.D1)
                             {
                                 JsonData = JsonConvert.SerializeObject(ReserveringenList);
                                 System.IO.File.WriteAllText(ReserveringPath, JsonData);
-                                if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
+
+                                if (gebruikerNaam == "admin")
                                 {
-                                    Personeelsleden.personeelMain(gebruikerNaam);
+                                    Personeelsleden.personeelMain("admin");
+                                }
+                                else if (gebruikerNaam == "personeel")
+                                {
+                                    Personeelsleden.personeelMain("personeel");
                                 }
                                 else
                                 {
                                     Program.Main();
+                                }
+                            }
+                            else
+                            {
+                                str = $"Er is een fout, probeer opnieuw.";
+                                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                str = $"[0] Terug";
+                                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                ConsoleKeyInfo teruglkey = Console.ReadKey();
+                                if (teruglkey.Key == ConsoleKey.D0)
+                                {
+                                    if (gebruikerNaam == "admin")
+                                    {
+                                        Personeelsleden.personeelMain("admin");
+                                    }
+                                    else if (gebruikerNaam == "personeel")
+                                    {
+                                        Personeelsleden.personeelMain("personeel");
+                                    }
+                                    else
+                                    {
+                                        Program.Main();
+                                    }
+                                }
+                                else
+                                {
+                                    if (gebruikerNaam == "admin")
+                                    {
+                                        Personeelsleden.personeelMain("admin");
+                                    }
+                                    else if (gebruikerNaam == "personeel")
+                                    {
+                                        Personeelsleden.personeelMain("personeel");
+                                    }
+                                    else
+                                    {
+                                        Program.Main();
+                                    }
                                 }
                             }
                             break;
@@ -923,11 +1427,15 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             {
                                 WijzigReservering(gebruikerNaam);
                             }
-                            else if (ckey4.Key == ConsoleKey.D2)
+                            else
                             {
-                                if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
+                                if (gebruikerNaam == "admin")
                                 {
-                                    Personeelsleden.personeelMain(gebruikerNaam);
+                                    Personeelsleden.personeelMain("admin");
+                                }
+                                else if (gebruikerNaam == "personeel")
+                                {
+                                    Personeelsleden.personeelMain("personeel");
                                 }
                                 else
                                 {
@@ -1029,9 +1537,14 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                     {
                                         JsonData = JsonConvert.SerializeObject(ReserveringenList);
                                         System.IO.File.WriteAllText(ReserveringPath, JsonData);
-                                        if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
+
+                                        if (gebruikerNaam == "admin")
                                         {
-                                            Personeelsleden.personeelMain(gebruikerNaam);
+                                            Personeelsleden.personeelMain("admin");
+                                        }
+                                        else if (gebruikerNaam == "personeel")
+                                        {
+                                            Personeelsleden.personeelMain("personeel");
                                         }
                                         else
                                         {
@@ -1059,11 +1572,15 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                     {
                                         WijzigReservering(gebruikerNaam);
                                     }
-                                    else if (ckey4.Key == ConsoleKey.D2)
+                                    else
                                     {
-                                        if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
+                                        if (gebruikerNaam == "admin")
                                         {
-                                            Personeelsleden.personeelMain(gebruikerNaam);
+                                            Personeelsleden.personeelMain("admin");
+                                        }
+                                        else if (gebruikerNaam == "personeel")
+                                        {
+                                            Personeelsleden.personeelMain("personeel");
                                         }
                                         else
                                         {
@@ -1092,11 +1609,15 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                 {
                                     WijzigReservering(gebruikerNaam);
                                 }
-                                else if (ckey4.Key == ConsoleKey.D2)
+                                else
                                 {
-                                    if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
+                                    if (gebruikerNaam == "admin")
                                     {
-                                        Personeelsleden.personeelMain(gebruikerNaam);
+                                        Personeelsleden.personeelMain("admin");
+                                    }
+                                    else if (gebruikerNaam == "personeel")
+                                    {
+                                        Personeelsleden.personeelMain("personeel");
                                     }
                                     else
                                     {
@@ -1137,9 +1658,14 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                     {
                                         JsonData = JsonConvert.SerializeObject(ReserveringenList);
                                         System.IO.File.WriteAllText(ReserveringPath, JsonData);
-                                        if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
+
+                                        if (gebruikerNaam == "admin")
                                         {
-                                            Personeelsleden.personeelMain(gebruikerNaam);
+                                            Personeelsleden.personeelMain("admin");
+                                        }
+                                        else if (gebruikerNaam == "personeel")
+                                        {
+                                            Personeelsleden.personeelMain("personeel");
                                         }
                                         else
                                         {
@@ -1167,11 +1693,15 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                     {
                                         WijzigReservering(gebruikerNaam);
                                     }
-                                    else if (ckey4.Key == ConsoleKey.D2)
+                                    else
                                     {
-                                        if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
+                                        if (gebruikerNaam == "admin")
                                         {
-                                            Personeelsleden.personeelMain(gebruikerNaam);
+                                            Personeelsleden.personeelMain("admin");
+                                        }
+                                        else if (gebruikerNaam == "personeel")
+                                        {
+                                            Personeelsleden.personeelMain("personeel");
                                         }
                                         else
                                         {
@@ -1200,11 +1730,15 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                 {
                                     WijzigReservering(gebruikerNaam);
                                 }
-                                else if (ckey4.Key == ConsoleKey.D2)
+                                else
                                 {
-                                    if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
+                                    if (gebruikerNaam == "admin")
                                     {
-                                        Personeelsleden.personeelMain(gebruikerNaam);
+                                        Personeelsleden.personeelMain("admin");
+                                    }
+                                    else if (gebruikerNaam == "personeel")
+                                    {
+                                        Personeelsleden.personeelMain("personeel");
                                     }
                                     else
                                     {
@@ -1230,11 +1764,15 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             {
                                 WijzigReservering(gebruikerNaam);
                             }
-                            else if (ckey4.Key == ConsoleKey.D2)
+                            else
                             {
-                                if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
+                                if (gebruikerNaam == "admin")
                                 {
-                                    Personeelsleden.personeelMain(gebruikerNaam);
+                                    Personeelsleden.personeelMain("admin");
+                                }
+                                else if (gebruikerNaam == "personeel")
+                                {
+                                    Personeelsleden.personeelMain("personeel");
                                 }
                                 else
                                 {
@@ -1291,6 +1829,40 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                     new_Tijdslot = "22:00-23:00";
                 }
 
+                while (new_Tijdslot == "")
+                {
+                    Console.WriteLine();
+                    str = "Kies een tijdslot:";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "[1] 11:00-15:00";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "[2] 15:00-19:00";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "[3] 19:00-22:00";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "[4] 22:00-23:00";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    str = "Let op! Tijdslot 4 heeft een tijdsduur van een uur, ipv. 4 uur.";
+                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                    Console.CursorLeft = Console.WindowWidth / 2;
+                    ckey = Console.ReadKey();
+                    if (ckey.Key == ConsoleKey.D1)
+                    {
+                        new_Tijdslot = "11:00-15:00";
+                    }
+                    else if (ckey.Key == ConsoleKey.D2)
+                    {
+                        new_Tijdslot = "15:00 - 19:00";
+                    }
+                    else if (ckey.Key == ConsoleKey.D3)
+                    {
+                        new_Tijdslot = "19:00 - 22:00";
+                    }
+                    else if (ckey.Key == ConsoleKey.D4)
+                    {
+                        new_Tijdslot = "22:00-23:00";
+                    }
+                }
                 while (i < len)
                 {
                     if (ReserveringenList[i].Naam == zoekNaam)
@@ -1324,13 +1896,56 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             {
                                 JsonData = JsonConvert.SerializeObject(ReserveringenList);
                                 System.IO.File.WriteAllText(ReserveringPath, JsonData);
-                                if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
+
+                                if (gebruikerNaam == "admin")
                                 {
-                                    Personeelsleden.personeelMain(gebruikerNaam);
+                                    Personeelsleden.personeelMain("admin");
+                                }
+                                else if (gebruikerNaam == "personeel")
+                                {
+                                    Personeelsleden.personeelMain("personeel");
                                 }
                                 else
                                 {
                                     Program.Main();
+                                }
+                            }
+                            else
+                            {
+                                str = $"Er is een fout, probeer opnieuw.";
+                                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                str = $"[0] Terug";
+                                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                ConsoleKeyInfo teruglkey = Console.ReadKey();
+                                if (teruglkey.Key == ConsoleKey.D0)
+                                {
+                                    if (gebruikerNaam == "admin")
+                                    {
+                                        Personeelsleden.personeelMain("admin");
+                                    }
+                                    else if (gebruikerNaam == "personeel")
+                                    {
+                                        Personeelsleden.personeelMain("personeel");
+                                    }
+                                    else
+                                    {
+                                        Program.Main();
+                                    }
+                                }
+                                else
+                                {
+                                    if (gebruikerNaam == "admin")
+                                    {
+                                        Personeelsleden.personeelMain("admin");
+                                    }
+                                    else if (gebruikerNaam == "personeel")
+                                    {
+                                        Personeelsleden.personeelMain("personeel");
+                                    }
+                                    else
+                                    {
+                                        Program.Main();
+                                    }
                                 }
                             }
                             break;
@@ -1355,11 +1970,15 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                             {
                                 WijzigReservering(gebruikerNaam);
                             }
-                            else if (ckey4.Key == ConsoleKey.D2)
+                            else
                             {
-                                if (gebruikerNaam == "admin" || gebruikerNaam == "personeel")
+                                if (gebruikerNaam == "admin")
                                 {
-                                    Personeelsleden.personeelMain(gebruikerNaam);
+                                    Personeelsleden.personeelMain("admin");
+                                }
+                                else if (gebruikerNaam == "personeel")
+                                {
+                                    Personeelsleden.personeelMain("personeel");
                                 }
                                 else
                                 {
@@ -1417,6 +2036,44 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                                     System.IO.File.WriteAllText(ReserveringPath, JsonData);
                                     Personeelsleden.personeelMain(gebruikerNaam);
                                 }
+                                else
+                                {
+                                    str = $"Er is een fout, probeer opnieuw.";
+                                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                    str = $"[0] Terug";
+                                    Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                                    ConsoleKeyInfo teruglkey = Console.ReadKey();
+                                    if (teruglkey.Key == ConsoleKey.D0)
+                                    {
+                                        if (gebruikerNaam == "admin")
+                                        {
+                                            Personeelsleden.personeelMain("admin");
+                                        }
+                                        else if (gebruikerNaam == "personeel")
+                                        {
+                                            Personeelsleden.personeelMain("personeel");
+                                        }
+                                        else
+                                        {
+                                            Program.Main();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (gebruikerNaam == "admin")
+                                        {
+                                            Personeelsleden.personeelMain("admin");
+                                        }
+                                        else if (gebruikerNaam == "personeel")
+                                        {
+                                            Personeelsleden.personeelMain("personeel");
+                                        }
+                                        else
+                                        {
+                                            Program.Main();
+                                        }
+                                    }
+                                }
                                 break;
                             }
                             else
@@ -1445,6 +2102,29 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                         }
                         i++;
                     }
+                }
+            }
+            else
+            {
+                Console.WriteLine("");
+                str = "Verkeerde input.";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+
+                Console.WriteLine("");
+                str = "[0] Terug.";
+                Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
+                Console.ReadKey();
+                if (gebruikerNaam == "admin")
+                {
+                    Personeelsleden.personeelMain("admin");
+                }
+                else if ( gebruikerNaam == "personeel")
+                {
+                    Personeelsleden.personeelMain("personeel");
+                }
+                else
+                {
+                    Program.Main();
                 }
             }
         }
@@ -1504,7 +2184,15 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 {
                     verwijderReservering(gebruikerNaam);
                 }
-                else if (rkey.Key == ConsoleKey.D0)
+                else if (gebruikerNaam == "admin")
+                {
+                    Personeelsleden.personeelMain("admin");
+                }
+                else if (gebruikerNaam == "personeel")
+                {
+                    Personeelsleden.personeelMain("personeel");
+                }
+                else
                 {
                     Program.Main();
                 }
@@ -1536,7 +2224,6 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                     }
                     i++;
                 }
-
             }
 
             JsonData = JsonConvert.SerializeObject(ReserveringenList);
@@ -1550,9 +2237,17 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             {
                 Program.Main();
             }
+            else if (gebruikerNaam == "admin")
+            {
+                Personeelsleden.personeelMain("admin");
+            }
+            else if (gebruikerNaam == "personeel")
+            {
+                Personeelsleden.personeelMain("personeel");
+            }
             else
             {
-                Personeelsleden.personeelMain(gebruikerNaam);
+                Program.Main();
             }
         }
 
@@ -1613,6 +2308,10 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 {
                     AddReservering();
                 }
+                else
+                {
+                    bekijkReservering(gebruikerNaam);
+                }
             }
             foreach (Reserveringenjson reservering in ReserveringenList)
             {
@@ -1640,7 +2339,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                     {
                         bekijkReservering(gebruikerNaam);
                     }
-                    else if (keus.Key == ConsoleKey.D0)
+                    else
                     {
                         Personeelsleden.reserverenMain(gebruikerNaam);
                     }
