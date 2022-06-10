@@ -98,11 +98,11 @@ namespace Main
             }
             if (ckey.Key == ConsoleKey.D1 && gebruiker == "personeel")
             {
-                Reserveringen.bekijkReservering(gebruikerNaam);
+                Reserveringen.bekijkReservering(gebruikerNaam, "personeel");
             }
             else if (ckey.Key == ConsoleKey.D1 && gebruiker == "admin")
             {
-                Reserveringen.bekijkReservering("admin");
+                Reserveringen.bekijkReservering(gebruikerNaam, "admin");
             }
             if (ckey.Key == ConsoleKey.D2 && gebruiker == "personeel")
             {
@@ -110,7 +110,7 @@ namespace Main
             }
             if (ckey.Key == ConsoleKey.D2 && gebruiker == "admin")
             {
-                Reserveringen.WijzigReservering("admin");
+                Reserveringen.WijzigReservering(gebruikerNaam, "admin");
             }
             else if (ckey.Key == ConsoleKey.D3 && gebruiker == "personeel")
             {

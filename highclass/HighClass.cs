@@ -149,7 +149,7 @@ namespace Main
                         }
                         else if (cvkey.Key == ConsoleKey.D2)
                         {
-                            Reserveringen.AddReservering();
+                            Reserveringen.AddReservering("niet ingelogd", "niet ingelogd");
                         }
                         else if (cvkey.Key == ConsoleKey.D0)
                         {

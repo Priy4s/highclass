@@ -20,7 +20,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
     }
     public class Reserveringen
     {
-        public static void AddReservering()
+        public static void AddReservering(string gebruikerNaam, string gebruiker = "niet ingelogd")
         {
             string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
             bool fileExist = File.Exists(ReserveringPath);
@@ -112,11 +112,19 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                     ConsoleKeyInfo keuze = Console.ReadKey();
                     if (keuze.Key == ConsoleKey.D1)
                     {
-                        AddReservering();
+                        AddReservering(gebruikerNaam, gebruiker);
                     }
-                    else
+                    else if (keuze.Key == ConsoleKey.D1 && gebruiker == "niet ingelogd")
                     {
                         Program.Main();
+                    }
+                    else if (keuze.Key == ConsoleKey.D1 && gebruiker == "personeel")
+                    {
+                        Personeelsleden.personeelMain(gebruikerNaam);
+                    }
+                    else if (keuze.Key == ConsoleKey.D1 && gebruiker == "admin")
+                    {
+                        Admin.adminMain();
                     }
                 }
             }
@@ -223,17 +231,21 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
                 Console.CursorLeft = Console.WindowWidth / 2;
                 ConsoleKeyInfo keuze = Console.ReadKey();
-                if (keuze.Key == ConsoleKey.D0)
+                if (keuze.Key == ConsoleKey.D1)
+                {
+                    AddReservering(gebruikerNaam, gebruiker);
+                }
+                else if (keuze.Key == ConsoleKey.D1 && gebruiker == "niet ingelogd")
                 {
                     Program.Main();
                 }
-                else if (keuze.Key == ConsoleKey.D1)
+                else if (keuze.Key == ConsoleKey.D1 && gebruiker == "personeel")
                 {
-                    AddReservering();
+                    Personeelsleden.personeelMain(gebruikerNaam);
                 }
-                else
+                else if (keuze.Key == ConsoleKey.D1 && gebruiker == "admin")
                 {
-                    Program.Main();
+                    Admin.adminMain();
                 }
             }
             
@@ -414,7 +426,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             {
                 if (dag <= maxdag)
                 {
-                    AddReservering2(dag, maand, jaar, naamIN, pronounsIN, aantalIN);
+                    AddReservering2(dag, maand, jaar, naamIN, pronounsIN, aantalIN, gebruikerNaam, gebruiker);
                 }
                 else
                 {
@@ -435,12 +447,19 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                     ConsoleKeyInfo ckey3 = Console.ReadKey();
                     if (ckey3.Key == ConsoleKey.D1)
                     {
-                        // in json
-                        AddReservering();
+                        AddReservering(gebruikerNaam, gebruiker);
                     }
-                    else
+                    else if (ckey3.Key == ConsoleKey.D1 && gebruiker == "niet ingelogd")
                     {
                         Program.Main();
+                    }
+                    else if (ckey3.Key == ConsoleKey.D1 && gebruiker == "personeel")
+                    {
+                        Personeelsleden.personeelMain(gebruikerNaam);
+                    }
+                    else if (ckey3.Key == ConsoleKey.D1 && gebruiker == "admin")
+                    {
+                        Admin.adminMain();
                     }
                 }
             }
@@ -448,7 +467,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             {
                 if (dag <= days_in_month && dag >= DateTime.Now.Day)
                 {
-                    AddReservering2(dag, maand, jaar, naamIN, pronounsIN, aantalIN);
+                    AddReservering2(dag, maand, jaar, naamIN, pronounsIN, aantalIN, gebruikerNaam, gebruiker);
                 }
                 else
                 {
@@ -469,11 +488,19 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                     ConsoleKeyInfo ckey3 = Console.ReadKey();
                     if (ckey3.Key == ConsoleKey.D1)
                     {
-                        AddReservering();
+                        AddReservering(gebruikerNaam, gebruiker);
                     }
-                    else
+                    else if (ckey3.Key == ConsoleKey.D1 && gebruiker == "niet ingelogd")
                     {
                         Program.Main();
+                    }
+                    else if (ckey3.Key == ConsoleKey.D1 && gebruiker == "personeel")
+                    {
+                        Personeelsleden.personeelMain(gebruikerNaam);
+                    }
+                    else if (ckey3.Key == ConsoleKey.D1 && gebruiker == "admin")
+                    {
+                        Admin.adminMain();
                     }
                 }
             }
@@ -496,15 +523,23 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 ConsoleKeyInfo ckey3 = Console.ReadKey();
                 if (ckey3.Key == ConsoleKey.D1)
                 {
-                    AddReservering();
+                    AddReservering(gebruikerNaam, gebruiker);
                 }
-                else
+                else if (ckey3.Key == ConsoleKey.D1 && gebruiker == "niet ingelogd")
                 {
                     Program.Main();
                 }
+                else if (ckey3.Key == ConsoleKey.D1 && gebruiker == "personeel")
+                {
+                    Personeelsleden.personeelMain(gebruikerNaam);
+                }
+                else if (ckey3.Key == ConsoleKey.D1 && gebruiker == "admin")
+                {
+                    Admin.adminMain();
+                }
             }
         }
-        private static void AddReservering2(int dag, int maand, int jaar, string naamIN, string pronounsIN, int aantalIN)
+        private static void AddReservering2(int dag, int maand, int jaar, string naamIN, string pronounsIN, int aantalIN, string gebruikerNaam, string gebruiker = "niet ingelogd")
         {
             string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
             bool fileExist = File.Exists(ReserveringPath);
@@ -621,13 +656,18 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (str.Length / 2)) + "}", str));
                 Console.CursorLeft = Console.WindowWidth / 2;
                 ConsoleKeyInfo keus = Console.ReadKey();
-                if (keus.Key == ConsoleKey.D1)
+                
+                if (keus.Key == ConsoleKey.D1 && gebruiker == "niet ingelogd")
                 {
                     Program.Main();
                 }
-                else
+                else if (keus.Key == ConsoleKey.D1 && gebruiker == "personeel")
                 {
-                    Program.Main();
+                    Personeelsleden.personeelMain(gebruikerNaam);
+                }
+                else if (keus.Key == ConsoleKey.D1 && gebruiker == "admin")
+                {
+                    Admin.adminMain();
                 }
             }
             else
@@ -648,11 +688,19 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 ConsoleKeyInfo ckey4 = Console.ReadKey();
                 if (ckey4.Key == ConsoleKey.D1)
                 {
-                    AddReservering();
+                    AddReservering(gebruikerNaam, gebruiker);
                 }
-                else
+                else if (ckey4.Key == ConsoleKey.D1 && gebruiker == "niet ingelogd")
                 {
                     Program.Main();
+                }
+                else if (ckey4.Key == ConsoleKey.D1 && gebruiker == "personeel")
+                {
+                    Personeelsleden.personeelMain(gebruikerNaam);
+                }
+                else if (ckey4.Key == ConsoleKey.D1 && gebruiker == "admin")
+                {
+                    Admin.adminMain();
                 }
             }
         }
@@ -922,7 +970,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 }
                 else if (rkey.Key == ConsoleKey.D2)
                 {
-                    AddReservering();
+                    AddReservering(gebruikerNaam, gebruiker);
                 }
                 else
                 {
@@ -1047,7 +1095,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                         ConsoleKeyInfo keuze = Console.ReadKey();
                         if (keuze.Key == ConsoleKey.D1)
                         {
-                            AddReservering();
+                            AddReservering(gebruikerNaam, gebruiker);
                         }
                         else if (keuze.Key == ConsoleKey.D0 && gebruiker == "admin")
                         {
@@ -2398,7 +2446,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
             }
         }
 
-        public static void bekijkReservering(string gebruikerNaam)
+        public static void bekijkReservering(string gebruikerNaam, string gebruiker = "niet ingelogd")
         {
             string ReserveringPath = Path.GetFullPath(@"Reserveringen.json");
             bool fileExist = File.Exists(ReserveringPath);
@@ -2453,7 +2501,7 @@ namespace Main // Namespace moet dezelfde naam hebben, anders kan je de code nie
                 }
                 else if (rkey.Key == ConsoleKey.D2)
                 {
-                    AddReservering();
+                    AddReservering(gebruikerNaam, gebruiker);
                 }
                 else
                 {
