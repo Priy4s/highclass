@@ -37,7 +37,7 @@ namespace Main
             ConsoleKeyInfo ckey = Console.ReadKey();
             if (ckey.Key == ConsoleKey.D1)
             {
-                Personeelsleden.reserverenMain("admin");
+                Personeelsleden.reserverenMain("admin", "admin");
             }
             else if (ckey.Key == ConsoleKey.D2)
             {

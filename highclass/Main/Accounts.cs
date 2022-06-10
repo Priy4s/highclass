@@ -730,7 +730,7 @@ namespace Main
                 }
             }
         }
-        public static bool Uitloggen()
+        public static void Uitloggen()
         {
             while (true)
             {

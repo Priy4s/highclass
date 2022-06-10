@@ -50,10 +50,6 @@ namespace Main
             {
                 bestellingenMain(gebruikerNaam);
             }
-            else if (ckey.Key == ConsoleKey.D5)
-            {
-                Program.Main();
-            }
             else if (ckey.Key == ConsoleKey.D4)
             {
                 persoonlijkeInfo(gebruikerNaam);
