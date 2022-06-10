@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\MenuItemToevoegen\\MenuItemToevoegen.csproj": {}
+    "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\MenuItemToevoegen\\MenuItemToevoegen.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\MenuItemToevoegen\\MenuItemToevoegen.csproj": {
+    "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\MenuItemToevoegen\\MenuItemToevoegen.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\MenuItemToevoegen\\MenuItemToevoegen.csproj",
+        "projectUniqueName": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\MenuItemToevoegen\\MenuItemToevoegen.csproj",
         "projectName": "MenuItemToevoegen",
-        "projectPath": "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\MenuItemToevoegen\\MenuItemToevoegen.csproj",
-        "packagesPath": "C:\\Users\\Yvonn\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Yvonn\\OneDrive\\Documents\\GitHub\\highclasss\\MenuItemToevoegen\\obj\\",
+        "projectPath": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\MenuItemToevoegen\\MenuItemToevoegen.csproj",
+        "packagesPath": "C:\\Users\\priya\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\priya\\OneDrive\\Documenten\\GitHub\\Restaurant\\highclass\\MenuItemToevoegen\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Yvonn\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\priya\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
