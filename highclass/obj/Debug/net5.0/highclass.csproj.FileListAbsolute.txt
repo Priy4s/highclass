@@ -120,3 +120,4 @@ C:\Users\priya\OneDrive\Documenten\GitHub\Restaurant\highclass\highclass\obj\Deb
 C:\Users\priya\OneDrive\Documenten\GitHub\Restaurant\highclass\highclass\obj\Debug\net5.0\ref\HighClass.dll
 C:\Users\priya\OneDrive\Documenten\GitHub\Restaurant\highclass\highclass\obj\Debug\net5.0\HighClass.pdb
 C:\Users\priya\OneDrive\Documenten\GitHub\Restaurant\highclass\highclass\obj\Debug\net5.0\HighClass.genruntimeconfig.cache
+C:\Users\priya\OneDrive\Documenten\GitHub\Restaurant\highclass\highclass\obj\Debug\net5.0\HighClass.csproj.AssemblyReference.cache

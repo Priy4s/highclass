@@ -1,7 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\highclass",
+    "\\highclass\\bin",
+    "\\highclass\\bin\\Debug",
+    "\\highclass\\bin\\Debug\\net5.0",
+    "\\highclass\\Main"
   ],
-  "SelectedNode": "\\HighClass.sln",
+  "SelectedNode": "\\highclass\\Main\\Reserveringen.cs",
   "PreviewInSolutionExplorer": false
 }

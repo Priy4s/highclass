@@ -390,12 +390,5 @@
     "Allergie": "V",
     "Categorie": "Lunch",
     "ID": 245
-  },
-  {
-    "Naam": "Aarbijen",
-    "Prijs": 5.55,
-    "Allergie": "L",
-    "Categorie": "Lunch",
-    "ID": 555
   }
 ]
